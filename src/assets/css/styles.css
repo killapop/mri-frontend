@@ -1,0 +1,89 @@
+:root {
+  --shadow-light: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  --very-very-light: #fafafa;
+  --very-ver-light: #eaeaea;
+  --primary-color: #f90;
+  --white: #fff;
+}
+
+body {
+  font-family: PTSansRegular, Sans-serif;
+  overflow-x: hidden;
+}
+
+.title,
+#root__title {
+  font-family: "PTSansNarrowRegular", sans-serif;
+  font-weight: 700;
+  font-size: 1.7em;
+  text-transform: uppercase;
+  margin-bottom: 1.5em;
+  padding: 0 0 0.25em 0;
+}
+
+form label {
+  color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.4em;
+  font-weight: 100;
+}
+
+.form-control {
+  border-radius: 0;
+  background-color: var(--very-very-light);
+  border-color: var(--very-ver-light);
+  transition: all ease 0.2s;
+}
+
+.form-control:focus {
+  border-color: #f90c;
+  border-width: 1px;
+  box-shadow: 0 6px 2px -5px #0004;
+  color: #333;
+}
+
+.help-block {
+  color: #999;
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+.form-control:focus + label,
+.form-control:focus ~ .help-block {
+  color: #f90c;
+}
+
+.shadow-light {
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.12);
+}
+
+.t-shadow-light {
+  text-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.fa-15x {
+  font-size: 1.5em;
+}
+
+.bg-very-very-light {
+  background-color: var(--very-very-light);
+}
+
+.primary-color {
+  color: var(--primary-color);
+}
+
+.bg-primary-color {
+  background-color: var(--primary-color);
+}
+
+.b--primary-color {
+  border-color: var(--primary-color);
+}
+
+.userNav a {
+  flex-basis: 100%;
+}
+
+.section:nth-of-type(2n+2) {
+  background-color: var(--white);
+}
