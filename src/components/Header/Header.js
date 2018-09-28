@@ -2,11 +2,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.svg';
+import './Header.css';
 
 const userLinks = [
 	{
 		label: 'Account',
-		path: '/account',
+		path: '/user',
 		Icon: 'user-circle'
 	},
 	{
@@ -36,11 +37,11 @@ const Header = () => (
 			<Link to="/" className="logo">
 				<img src={logo} alt="Martin Roth-Initiative" />
 			</Link>
-			<nav className="ttu flex justify-between">
-				<div className="userNav flex flex-column justify-start items-start">
+			<nav className="ttu flex justify-between mt3">
+				<div className="userNav flex flex-column justify-start w-100 items-start">
 					{userLinks.map(({ label, Icon, path }, key) => (
-						<Link key={key} to={path} className="pt1 link silver dim mv3">
-							<div className="flex flex-column f6 items-start">
+						<Link key={key} to={path} className="pt1 link silver mv3 w-100">
+							<div className="flex flex-column f6 items-start items-center">
 								<i className={`fa fa-${Icon} mb2 fa-2x`} />
 								<span className="f7">{label}</span>
 							</div>

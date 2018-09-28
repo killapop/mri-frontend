@@ -6,11 +6,16 @@ form label {
   font-weight: 100;
 }
 
+.form-group {
+  margin-bottom: 30px;
+}
+
 .form-control {
   border-radius: 0;
   background-color: var(--very-very-light);
   border-color: var(--very-ver-light);
   transition: all ease 0.2s;
+  margin-bottom: 0.6em;
 }
 
 .form-control:focus {
@@ -26,7 +31,7 @@ form label {
   font-style: italic;
 }
 
-.form-control:focus + label,
+.form-control:focus ~ label,
 .form-control:focus ~ .help-block {
   color: #f90c;
 }

@@ -4,6 +4,7 @@
   --very-ver-light: #eaeaea;
   --primary-color: #f90;
   --white: #fff;
+  --yellow: #f59c00;
 }
 
 body {
@@ -29,8 +30,16 @@ body {
   text-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 
+.small-box {
+  max-width: 400px;
+}
+
 .fa-15x {
   font-size: 1.5em;
+}
+
+.b--very-ver-light {
+  border-color: var(--very-ver-light);
 }
 
 .bg-very-very-light {
@@ -47,10 +56,6 @@ body {
 
 .b--primary-color {
   border-color: var(--primary-color);
-}
-
-.userNav a {
-  flex-basis: 100%;
 }
 
 .section:nth-of-type(2n+2) {

@@ -15,7 +15,7 @@ class UserIndex extends React.Component {
 		const formSchema = Schemas[page ? page : 'login'];
 		return (
 			<Layout>
-				<div className="center w-90 w-50-ns bg-very-very-light shadow-light pa4">
+				<div className="center small-box w-90 w-50-ns bg-very-very-light shadow-light pa4 mt6 ba b--very-ver-light ">
 					<Form schema={formSchema.schema} uiSchema={formSchema.uiSchema}>
 						<div className="form-group flex justify-end">
 							<button type="submit">{formSchema.schema.submitButton}</button>

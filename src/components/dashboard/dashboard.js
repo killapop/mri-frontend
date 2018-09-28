@@ -240,7 +240,7 @@ class Dashboard extends React.Component {
 						</div>
 					))}
 				</TestValues>
-				<div className="w-80-ns center pa4">
+				<div className=" w-80-ns center pa4">
 					<div className="title">Dashboard - {this.state.activeRole}</div>
 					{this.badges()}
 				</div>

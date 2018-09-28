@@ -13,7 +13,7 @@ class App extends Component {
 				<div>
 					<Header />
 					<Layout>
-						<Route exact path="/" render={() => <Redirect to="/Dashboard" />} />
+						<Route exact path="/" render={() => <Redirect to="/dashboard" />} />
 						<Route path="/user" component={UserIndex} />
 						<Route path="/dashboard" component={Dashboard} />
 					</Layout>
