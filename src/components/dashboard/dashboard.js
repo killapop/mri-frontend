@@ -4,7 +4,7 @@ import _ from 'lodash';
 import TestValues from '../common/testValues.js';
 import Badge from './badge.js';
 import List from './list.js';
-import './badge.css';
+import './dashboard.css';
 
 class Dashboard extends React.Component {
 	constructor(props) {
@@ -225,7 +225,7 @@ class Dashboard extends React.Component {
 			<div>
 				<TestValues>
 					{_.map(this.state.roles, (role, idx) => (
-						<div className="form-control b0" key={idx}>
+						<div className="br0 b0" key={idx}>
 							<input
 								id={role.toLowerCase()}
 								onChange={this.roleChangeHandler}
@@ -234,7 +234,7 @@ class Dashboard extends React.Component {
 									this.state.activeRole.toLowerCase() === role.toLowerCase()
 								}
 							/>
-							<label className="ml1 gray dim" htmlFor={role.toLowerCase()}>
+							<label className="ml1 white" htmlFor={role.toLowerCase()}>
 								{role}
 							</label>
 						</div>

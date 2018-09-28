@@ -3,6 +3,8 @@ import Form from 'react-jsonschema-form';
 import * as Schemas from '../../schema/user';
 import Layout from '../common/layout';
 
+import '../../assets/css/forms.css';
+
 class UserIndex extends React.Component {
 	// constructor(props) {
 	//   super(props)

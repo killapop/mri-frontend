@@ -1,0 +1,32 @@
+@import url('./bootstrap-forms.min.css');
+
+form label {
+  color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.4em;
+  font-weight: 100;
+}
+
+.form-control {
+  border-radius: 0;
+  background-color: var(--very-very-light);
+  border-color: var(--very-ver-light);
+  transition: all ease 0.2s;
+}
+
+.form-control:focus {
+  border-color: #f90c;
+  border-width: 1px;
+  box-shadow: 0 6px 2px -5px #0004;
+  color: #333;
+}
+
+.help-block {
+  color: #999;
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+.form-control:focus + label,
+.form-control:focus ~ .help-block {
+  color: #f90c;
+}
