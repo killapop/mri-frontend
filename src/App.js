@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/Header/Header.js';
 import Layout from './components/common/layout';
 import UserIndex from './components/user';
@@ -13,7 +13,7 @@ class App extends Component {
 				<div>
 					<Header />
 					<Layout>
-						<Route exact path="/" render={() => <Redirect to="/dashboard" />} />
+						<Route exact path="/" component={UserIndex} />
 						<Route path="/user" component={UserIndex} />
 						<Route path="/dashboard" component={Dashboard} />
 					</Layout>

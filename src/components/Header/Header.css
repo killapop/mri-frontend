@@ -1,9 +1,18 @@
+.header {
+  box-shadow: 2px 0 3px rgba(0, 0, 0, 0.1);
+}
+
 .userNav a {
   border-right: 4px solid var(--very-ver-light);
 }
 
 .userNav a:focus,
-.userNav a:hover {
+.userNav a:hover,
+.userNav a.active {
   border-right-color: var(--yellow);
   outline: 0;
+}
+
+.navLink * {
+  pointer-events: none;
 }

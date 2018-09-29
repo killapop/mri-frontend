@@ -1,194 +1,21 @@
 /* eslint no-unused-expresions: 0 */
 import React from 'react';
 import _ from 'lodash';
-import TestValues from '../common/testValues.js';
 import Badge from './badge.js';
 import List from './list.js';
+import { listData, badges } from '../../data/testData.js';
 import './dashboard.css';
 
 class Dashboard extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			roles: ['Facilitator', 'Organisation', 'Beneficiary'],
-			activeRole: this.getRole(),
 			activeBadge: 'users',
-			badges: [
-				{
-					title: 'Users',
-					icon: 'users',
-					types: [
-						{
-							title: 'Organisations',
-							value: 33
-						},
-						{
-							title: 'Beneficiaries',
-							value: 104
-						},
-						{
-							title: 'Facilitators',
-							value: 5
-						}
-					]
-				},
-				{
-					title: 'Project proposals',
-					icon: 'project-diagram',
-					types: [
-						{
-							title: 'Submitted',
-							value: 16
-						},
-						{
-							title: 'Bundled',
-							value: 33
-						}
-					]
-				},
-				{
-					title: 'Personal statements',
-					icon: 'id-card-alt',
-					types: [
-						{
-							title: 'Submitted',
-							value: 133
-						},
-						{
-							title: 'Bundled',
-							value: 201
-						}
-					]
-				},
-				{
-					title: 'Bundles',
-					icon: 'cubes',
-					types: [
-						{
-							title: 'Submitted',
-							value: 5
-						},
-						{
-							title: 'Validated',
-							value: 8
-						},
-						{
-							title: 'Assessed',
-							value: 9
-						},
-						{
-							title: 'Accepted',
-							value: 3
-						},
-						{
-							title: 'Rejected',
-							value: 6
-						}
-					]
-				}
-			],
-			listData: {
-				users: {
-					columns: ['email', 'type'],
-					data: [
-						{
-							email: 'boo@baaa.com',
-							type: 'Organisation'
-						},
-						{
-							email: 'cats@dogs.com',
-							type: 'Artist'
-						},
-						{
-							email: 'boo@baaa.com',
-							type: 'Organisation'
-						},
-						{
-							email: 'boo@baaa.com',
-							type: 'Artist'
-						}
-					]
-				},
-				projectproposals: {
-					columns: ['email', 'type'],
-					data: [
-						{
-							email: 'boo@baaa.com',
-							type: 'Organisation'
-						},
-						{
-							email: 'cats@dogs.com',
-							type: 'Artist'
-						},
-						{
-							email: 'boo@baaa.com',
-							type: 'Organisation'
-						},
-						{
-							email: 'boo@baaa.com',
-							type: 'Artist'
-						}
-					]
-				},
-				bundles: {
-					columns: ['email', 'type'],
-					data: [
-						{
-							email: 'boo@baaa.com',
-							type: 'Organisation'
-						},
-						{
-							email: 'cats@dogs.com',
-							type: 'Artist'
-						},
-						{
-							email: 'boo@baaa.com',
-							type: 'Organisation'
-						},
-						{
-							email: 'boo@baaa.com',
-							type: 'Artist'
-						}
-					]
-				},
-				personalstatements: {
-					columns: ['email', 'type'],
-					data: [
-						{
-							email: 'boo@baaa.com',
-							type: 'Organisation'
-						},
-						{
-							email: 'cats@dogs.com',
-							type: 'Artist'
-						},
-						{
-							email: 'boo@baaa.com',
-							type: 'Organisation'
-						},
-						{
-							email: 'boo@baaa.com',
-							type: 'Artist'
-						}
-					]
-				}
-			}
+			listData,
+			badges
 		};
-		this.roleChangeHandler = this.roleChangeHandler.bind(this);
 		this.badges = this.badges.bind(this);
 		this.badgeChangeHandler = this.badgeChangeHandler.bind(this);
-	}
-
-	getRole() {
-		const rolePathname = window.location.pathname.split('/').reverse()[0];
-		return rolePathname && rolePathname !== 'dashboard'
-			? rolePathname
-			: 'facilitator';
-	}
-
-	roleChangeHandler(e) {
-		e.persist();
-		this.setState(state => ({ activeRole: e.target.id }));
 	}
 
 	badgeChangeHandler(e) {
@@ -200,8 +27,13 @@ class Dashboard extends React.Component {
 		return e.target.id === this.state.activeRole ? true : false;
 	}
 
+	componentWillUpdate() {
+		return true;
+	}
+
 	badges() {
-		return this.state.activeRole === 'facilitator' ? (
+		return !sessionStorage.getItem('role') ||
+			sessionStorage.getItem('role') === 'facilitator' ? (
 			<div className="badges flex flex-wrap">
 				{_.map(this.state.badges, (badge, idx) => (
 					<Badge
@@ -223,23 +55,6 @@ class Dashboard extends React.Component {
 	render() {
 		return (
 			<div>
-				<TestValues>
-					{_.map(this.state.roles, (role, idx) => (
-						<div className="br0 b0" key={idx}>
-							<input
-								id={role.toLowerCase()}
-								onChange={this.roleChangeHandler}
-								type="checkbox"
-								checked={
-									this.state.activeRole.toLowerCase() === role.toLowerCase()
-								}
-							/>
-							<label className="ml1 white" htmlFor={role.toLowerCase()}>
-								{role}
-							</label>
-						</div>
-					))}
-				</TestValues>
 				<div className=" w-80-ns center pa4">
 					<div className="title">Dashboard - {this.state.activeRole}</div>
 					{this.badges()}
