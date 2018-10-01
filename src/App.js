@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import Devtools from 'mobx-react-devtools';
 import Header from './components/header/Header.js';
 import Layout from './components/common/layout';
 import UserIndex from './components/user';
@@ -17,6 +18,7 @@ class App extends Component {
 		return (
 			<Router>
 				<div>
+					<Devtools />
 					<Header />
 					<Layout>
 						<Route
