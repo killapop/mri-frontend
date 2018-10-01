@@ -57,7 +57,6 @@ class Dashboard extends React.Component {
 	}
 
 	render() {
-		console.log(this.state.listSchema);
 		return (
 			<div>
 				<div className=" w-80-ns center pa4">

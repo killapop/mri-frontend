@@ -1,34 +1,33 @@
-.table {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  border: 1px solid $dark-color;
-  font-size: 1rem;
-  margin: 1rem auto;
-  line-height: 1.5;
-  width: 100%;
+@import url('~react-table/react-table.css');
+
+.rt-td,
+.rt-th {
+  padding: 0.5em !important;
+  color: rgba(0, 0, 0, 0.7);
+  align-self: center;
 }
 
-.table * {
-  border-collapse: collapse;
+.rt-th * {
+  font-weight: 700;
+  justify-content: flex-start;
+  text-align: left;
 }
 
-.table-row {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
+.action {
+  padding: 0.5em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.table-row:nth-of-type(even) {
-  background-color: var(--very-very-light);
+.fa-trash {
+  color: var(--red);
 }
 
-.table-header {
-  background-color: var(--very-ver-light);
+.ReactTable .rt-thead .rt-th.-sort-desc {
+  box-shadow: inset 0 -3px 0 0 var(--yellow);
+  outline: none;
 }
 
-.table-cell {
-  word-wrap: break-word;
-  padding: 4px 15px;
-  flex-grow: 1;
+.ReactTable .rt-thead .rt-th.-sort-asc {
+  box-shadow: inset 0 3px 0 0 var(--yellow);
+  outline: none;
 }

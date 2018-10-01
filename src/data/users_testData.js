@@ -1,3 +1,5 @@
+// eslint-disable //
+
 export const users = [
 	{
 		id: '1c3ae3a1-d8d2-4778-a7d0-346b501b415f',
@@ -2209,28 +2211,28 @@ export const users = [
 export const userSchema = {
 	columns: [
 		{
-			field: 'first_name',
-			title: 'First Name'
+			accessor: 'first_name',
+			Header: 'First Name'
 		},
 		{
-			field: 'last_name',
-			title: 'Last name'
+			accessor: 'last_name',
+			Header: 'Last name'
 		},
 		{
-			field: 'user_name',
-			title: 'Username'
+			accessor: 'user_name',
+			Header: 'Username'
 		},
 		{
-			field: 'email',
-			title: 'Email'
+			accessor: 'email',
+			Header: 'Email'
 		},
 		{
-			field: 'type',
-			title: 'Type'
+			accessor: 'type',
+			Header: 'Type'
 		},
 		{
-			field: 'organization',
-			title: 'Organization'
+			accessor: 'organiazation',
+			Header: 'Organization'
 		}
 	],
 	filterable: ['type']
