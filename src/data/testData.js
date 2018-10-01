@@ -1,29 +1,4 @@
-export const users = [
-	{
-		first_name: 'Willie',
-		last_name: 'Wonka',
-		artist_name: 'The Lunatic',
-		email: 'willie@willie.org',
-		organisation: 'The Chocolate factory',
-		role: 'host'
-	},
-	{
-		first_name: 'Poppy',
-		last_name: 'Goes',
-		artist_name: 'The Weasel',
-		email: 'poppy@poppy.org',
-		organisation: '',
-		role: 'beneficiary'
-	},
-	{
-		first_name: 'Sadguru',
-		last_name: 'Connie',
-		artist_name: 'The Con',
-		email: 'maddy@maddy.org',
-		organisation: '',
-		role: 'mri'
-	}
-];
+export { users, userSchema } from './users_testData.js';
 
 export const sessionFilters = [
 	{
@@ -146,7 +121,9 @@ export const listData = {
 		data: [
 			{
 				email: 'boo@baaa.com',
-				type: 'Organisation'
+				type: 'Organisation',
+				first_name: 'Haa',
+				last_name: 'hooo'
 			},
 			{
 				email: 'cats@dogs.com',

@@ -3,7 +3,7 @@ import React from 'react';
 import _ from 'lodash';
 import Badge from './badge.js';
 import List from './list.js';
-import { listData, badges } from '../../data/testData.js';
+import { users, userSchema, badges } from '../../data/testData.js';
 import './dashboard.css';
 
 class Dashboard extends React.Component {
@@ -11,12 +11,14 @@ class Dashboard extends React.Component {
 		super(props);
 		this.state = {
 			activeBadge: 'users',
-			listData,
+			listData: { users },
+			listSchema: { users: userSchema },
 			badges,
 			activeRole: sessionStorage.getItem('activeRole')
 		};
 		this.badges = this.badges.bind(this);
 		this.badgeChangeHandler = this.badgeChangeHandler.bind(this);
+		this.sluggify = this.sluggify.bind(this);
 	}
 
 	badgeChangeHandler(e) {
@@ -26,6 +28,10 @@ class Dashboard extends React.Component {
 
 	isChecked(e) {
 		return e.target.id === this.state.activeRole ? true : false;
+	}
+
+	sluggify(s) {
+		return s.replace(' ', '').toLowerCase();
 	}
 
 	componentWillUpdate() {
@@ -40,10 +46,8 @@ class Dashboard extends React.Component {
 						badge={badge}
 						key={idx}
 						clickHandler={this.badgeChangeHandler}
-						active={
-							this.state.activeBadge ===
-							badge.title.replace(' ', '').toLowerCase()
-						}
+						size={_.size(this.state.listData[this.sluggify(badge.title)])}
+						active={this.state.activeBadge === this.sluggify(badge.title)}
 					/>
 				))}
 			</div>
@@ -53,18 +57,18 @@ class Dashboard extends React.Component {
 	}
 
 	render() {
+		console.log(this.state.listSchema);
 		return (
 			<div>
 				<div className=" w-80-ns center pa4">
 					<div className="title">Dashboard - {this.state.activeRole}</div>
 					{this.badges()}
 				</div>
-				<div className="lists w-80-ns center">
+				<div className="lists w-80-ns center pa4">
 					<List
-						data={
-							this.state.listData[
-								this.state.activeBadge.replace(' ', '').toLowerCase()
-							]
+						data={this.state.listData[this.sluggify(this.state.activeBadge)]}
+						schema={
+							this.state.listSchema[this.sluggify(this.state.activeBadge)]
 						}
 						title={this.state.activeBadge}
 					/>
