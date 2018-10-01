@@ -9,10 +9,14 @@ import './App.css';
 
 class App extends Component {
 	componentDidMount() {
+		this.loggedIn = this.loggedIn.bind(this);
 		sessionStorage.setItem(
 			'activeUserState',
 			sessionStorage.getItem('activeUserState') || 'loggedout'
 		);
+	}
+	loggedIn() {
+		return sessionStorage.getItem('activeUserState') === 'loggedin';
 	}
 	render() {
 		return (
@@ -25,17 +29,16 @@ class App extends Component {
 							exact
 							path="/"
 							render={() => (
-								<Redirect
-									to={
-										sessionStorage.getItem('activeUserState') === 'loggedin'
-											? '/dashboard'
-											: '/user'
-									}
-								/>
+								<Redirect to={this.loggedIn() ? '/dashboard' : '/user'} />
 							)}
 						/>
 						<Route path="/user" component={UserIndex} />
-						<Route path="/dashboard" component={Dashboard} />
+						<Route
+							path="/dashboard"
+							render={() =>
+								this.loggedIn() ? <Dashboard /> : <Redirect to="/user" />
+							}
+						/>
 					</Layout>
 				</div>
 			</Router>

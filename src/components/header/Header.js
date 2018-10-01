@@ -39,7 +39,6 @@ class Header extends React.Component {
 	}
 
 	render() {
-		console.log(this.state.activeState);
 		return (
 			<div>
 				<div className="header fixed top-0 left-0 pv2 h-100 bg-white">
