@@ -12,7 +12,8 @@ class Dashboard extends React.Component {
 		this.state = {
 			activeBadge: 'users',
 			listData,
-			badges
+			badges,
+			activeRole: sessionStorage.getItem('activeRole')
 		};
 		this.badges = this.badges.bind(this);
 		this.badgeChangeHandler = this.badgeChangeHandler.bind(this);
@@ -32,8 +33,7 @@ class Dashboard extends React.Component {
 	}
 
 	badges() {
-		return !sessionStorage.getItem('role') ||
-			sessionStorage.getItem('role') === 'facilitator' ? (
+		return sessionStorage.getItem('activeRole') === 'facilitator' ? (
 			<div className="badges flex flex-wrap">
 				{_.map(this.state.badges, (badge, idx) => (
 					<Badge

@@ -16,8 +16,8 @@ class Header extends React.Component {
 			navOpen: true,
 			userLinks,
 			sessionFilters,
-			activeUserState: '',
-			activeRole: ''
+			activeUserState: sessionStorage.getItem('activeUserState'),
+			activeRole: sessionStorage.getItem('activeRole')
 		};
 	}
 
@@ -31,14 +31,12 @@ class Header extends React.Component {
 	roleChangeHandler(e) {
 		const id = e.target.id;
 		const filtertype = e.target.dataset.filtertype;
-		console.log(id, filtertype);
 		e.persist();
 		sessionStorage.setItem(
 			filtertype,
 			sessionStorage.getItem(filtertype) === id ? '' : id
 		);
-		console.log(filtertype, sessionStorage);
-		this.setState(state => ({ filtertype: id }));
+		this.setState(state => ({ [filtertype]: id }));
 	}
 
 	render() {
