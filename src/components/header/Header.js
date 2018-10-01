@@ -10,22 +10,15 @@ import './Header.css';
 class Header extends React.Component {
 	constructor(props) {
 		super(props);
-		this.navClickHandler = this.navClickHandler.bind(this);
 		this.roleChangeHandler = this.roleChangeHandler.bind(this);
 		this.state = {
+			activeState: '',
 			navOpen: true,
 			userLinks,
 			sessionFilters,
 			activeUserState: sessionStorage.getItem('activeUserState'),
 			activeRole: sessionStorage.getItem('activeRole')
 		};
-	}
-
-	navClickHandler(e) {
-		e.persist();
-		this.setState(state => ({
-			activeState: e.target.id
-		}));
 	}
 
 	roleChangeHandler(e) {
@@ -39,11 +32,18 @@ class Header extends React.Component {
 		this.setState(state => ({ [filtertype]: id }));
 	}
 
+	componentDidMount() {
+		this.setState(state => ({
+			activeState: '/' + window.location.pathname.split('/')[1]
+		}));
+	}
+
 	render() {
+		console.log(this.state.activeState);
 		return (
 			<div>
 				<div className="header fixed top-0 left-0 pv2 h-100 bg-white">
-					<Link to="/" className="logo ph3">
+					<Link to="/" onClick={this.navClickHandler} className="logo ph3">
 						<img src={logo} alt="Martin Roth-Initiative" />
 					</Link>
 					<nav className="ttu flex justify-between mt3">
@@ -53,10 +53,10 @@ class Header extends React.Component {
 									key={key}
 									to={path}
 									id={label.toLowerCase().replace(' ', '')}
-									onClick={this.navClickHandler}
+									data-path={path}
 									className={`navLink pt1 pv2 link silver mv3 w-100 ${
-										this.state.activeState ===
-										label.toLowerCase().replace(' ', '')
+										window.location.pathname.split('/')[1] ===
+										path.split('/')[1]
 											? 'active'
 											: ''
 									}`}>
