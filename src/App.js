@@ -4,6 +4,7 @@ import { view } from 'react-easy-state';
 import { authStore } from './lib/store.js';
 import Header from './components/header/Header.js';
 import Layout from './components/common/layout';
+import Messages from './components/common/messages';
 import UserIndex from './components/user';
 import Dashboard from './components/dashboard/dashboard';
 import './App.css';
@@ -20,12 +21,16 @@ class App extends Component {
     return authStore.isLoggedIn;
   }
   render() {
-    console.log(authStore);
     return (
       <Router>
         <div>
           <Header />
           <Layout>
+            {authStore.messages.length > 0 ? (
+              <Messages messages={authStore.messages} />
+            ) : (
+              ''
+            )}
             <Route
               exact
               path="/"
@@ -36,8 +41,8 @@ class App extends Component {
             <Route path="/user" component={UserIndex} />
             <Route
               path="/dashboard"
-              render={
-                () => (this.loggedIn() ? <Dashboard /> : '') //<Redirect to="/user" />//
+              render={() =>
+                this.loggedIn() ? <Dashboard /> : <Redirect to="/user" />
               }
             />
           </Layout>

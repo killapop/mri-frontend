@@ -42,7 +42,7 @@ class Header extends React.Component {
     return (
       <div>
         <div className="header fixed top-0 left-0 pv2 h-100 bg-white">
-          <Link to="/" onClick={this.navClickHandler} className="logo ph3">
+          <Link to="/" className="logo ph3">
             <img src={logo} alt="Martin Roth-Initiative" />
           </Link>
           <nav className="ttu flex justify-between mt3">

@@ -5,7 +5,6 @@ import Badge from './badge.js';
 import List from './list.js';
 import { users, userSchema, badges } from '../../data/testData.js';
 import { view } from 'react-easy-state';
-import { authStore } from '../../lib/store.js';
 import './dashboard.css';
 
 class Dashboard extends React.Component {
@@ -55,7 +54,6 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    console.log(authStore);
     return (
       <div>
         <div className=" w-80-ns center pa4">

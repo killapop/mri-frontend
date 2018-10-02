@@ -26,6 +26,10 @@ class Login extends React.Component {
       .then(result => {
         authStore.isLoggedIn = true;
         authStore.token = result.data.token;
+        authStore.messages.push({
+          message: `Logged in as ${formData.email}`,
+          level: 'success'
+        });
       })
       .catch(err => console.log(err));
   }
@@ -35,7 +39,6 @@ class Login extends React.Component {
   }
 
   render() {
-    console.log(authStore);
     return (
       <div>
         {authStore.isLoggedIn ? (
