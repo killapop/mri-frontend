@@ -8,42 +8,42 @@ import Dashboard from './components/dashboard/dashboard';
 import './App.css';
 
 class App extends Component {
-	componentDidMount() {
-		this.loggedIn = this.loggedIn.bind(this);
-		sessionStorage.setItem(
-			'activeUserState',
-			sessionStorage.getItem('activeUserState') || 'loggedout'
-		);
-	}
-	loggedIn() {
-		return sessionStorage.getItem('activeUserState') === 'loggedin';
-	}
-	render() {
-		return (
-			<Router>
-				<div>
-					<Devtools />
-					<Header />
-					<Layout>
-						<Route
-							exact
-							path="/"
-							render={() => (
-								<Redirect to={this.loggedIn() ? '/dashboard' : '/user'} />
-							)}
-						/>
-						<Route path="/user" component={UserIndex} />
-						<Route
-							path="/dashboard"
-							render={() =>
-								this.loggedIn() ? <Dashboard /> : <Redirect to="/user" />
-							}
-						/>
-					</Layout>
-				</div>
-			</Router>
-		);
-	}
+  componentDidMount() {
+    this.loggedIn = this.loggedIn.bind(this);
+    sessionStorage.setItem(
+      'activeUserState',
+      sessionStorage.getItem('activeUserState') || 'loggedout'
+    );
+  }
+  loggedIn() {
+    return sessionStorage.getItem('activeUserState') === 'loggedin';
+  }
+  render() {
+    return (
+      <Router>
+        <div>
+          <Devtools />
+          <Header />
+          <Layout>
+            <Route
+              exact="exact"
+              path="/"
+              render={() => (
+                <Redirect to={this.loggedIn() ? '/dashboard' : '/user'} />
+              )}
+            />
+            <Route path="/user" component={UserIndex} />
+            <Route
+              path="/dashboard"
+              render={() =>
+                this.loggedIn() ? <Dashboard /> : <Redirect to="/user" />
+              }
+            />
+          </Layout>
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;

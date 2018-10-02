@@ -28,6 +28,7 @@ class List extends React.Component {
 			Header: 'Actions',
 			accessor: 'id',
 			filterable: false,
+			sortable: false,
 			Cell: row => (
 				<div>
 					<div id={row.row.id} className="actions">
@@ -50,7 +51,7 @@ class List extends React.Component {
 				<ReactTable
 					data={this.props.data}
 					columns={newSchema}
-					className="-striped -highlight"
+					className="-highlight"
 					filterable={true}
 				/>
 			</div>
