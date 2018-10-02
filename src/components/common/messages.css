@@ -1,0 +1,48 @@
+.notifications {
+  position: fixed;
+  z-index: 999;
+  margin: auto;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  align-items: center;
+  list-style: none;
+  pointer-events: none;
+}
+
+.notification {
+  min-width: 400px;
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 10px;
+  background-color: var(--very-ver-light);
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.14);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.14);
+  color: #0008;
+  font-family: "PTSansBold", sans-serif;
+  position: relative;
+  pointer-events: auto;
+}
+
+i.fa-times-circle {
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+}
+
+.success {
+  background-color: var(--success);
+}
+
+.info {
+  background-color: var(--info);
+}
+
+.warning {
+  background-color: var(--warning);
+}
+
+.danger {
+  background-color: var(--danger);
+}
