@@ -2,6 +2,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Form from 'react-jsonschema-form';
 import { login } from '../../schema/user';
+import { view } from 'react-easy-state';
+import { authStore } from '../../lib/store.js';
 import { postOptions, baseURL, apiRoutes } from '../../lib/api-calls.js';
 import '../../assets/css/forms.css';
 
@@ -13,23 +15,17 @@ class Login extends React.Component {
       formData: {
         email: 'mary@domain.com',
         password: 'secret'
-      },
-      authToken: '',
-      loggedIn: false
+      }
     };
   }
 
   login({ formData, formErrors }) {
     Object.assign(postOptions, { body: JSON.stringify(formData) });
-    console.log(postOptions.body);
     return fetch(baseURL + apiRoutes.auth, postOptions)
       .then(response => response.json())
       .then(result => {
-        this.setState(state => ({
-          authToken: result.data.token,
-          loggedIn: true
-        }));
-        sessionStorage.setItem('activeUserState', 'loggedin');
+        authStore.isLoggedIn = true;
+        authStore.token = result.data.token;
       })
       .catch(err => console.log(err));
   }
@@ -39,11 +35,11 @@ class Login extends React.Component {
   }
 
   render() {
-    console.log(this.state.authToken, this.state.loggedIn);
+    console.log(authStore);
     return (
       <div>
-        {this.state.loggedIn ? (
-          <Redirect to="/dashboard" />
+        {authStore.isLoggedIn ? (
+          <Redirect to="/" />
         ) : (
           <div className="center small-box w-90 w-50-ns bg-very-very-light shadow-light pa4 mt6 ba b--very-ver-light ">
             <Form
@@ -64,4 +60,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default view(Login);
