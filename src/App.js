@@ -26,7 +26,7 @@ class App extends Component {
           <Header />
           <Layout>
             <Route
-              exact="exact"
+              exact
               path="/"
               render={() => (
                 <Redirect to={this.loggedIn() ? '/dashboard' : '/user'} />
