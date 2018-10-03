@@ -65,7 +65,7 @@ class Header extends React.Component {
               ))}
               <a
                 rel="noopener noreferrer"
-                href="https://martin-roth-initiative.org"
+                href="https://martin-roth-initiative.de"
                 target="_blank"
                 className="navLink pt1 pv2  link silver mv3 w-100">
                 <div className="flex flex-column f6 items-start items-center">
