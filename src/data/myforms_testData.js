@@ -51,7 +51,6 @@ export const myforms = {
         accessor: 'state',
         Header: 'Status'
       }
-    ],
-    filterable: ['state']
+    ]
   }
 };

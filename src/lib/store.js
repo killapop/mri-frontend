@@ -5,7 +5,8 @@ const authStore = store({
   currentRole: '',
   token: '',
   messages: [],
-  activeList: 'users'
+  activeList: 'users',
+  activeListSize: 0
 });
 
 export { authStore };

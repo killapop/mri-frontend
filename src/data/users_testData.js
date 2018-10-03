@@ -551,7 +551,6 @@ export const users = {
         accessor: 'organiazation',
         Header: 'Organization'
       }
-    ],
-    filterable: ['type']
+    ]
   }
 };

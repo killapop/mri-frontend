@@ -118,7 +118,6 @@ export const bundles = {
         accessor: 'state',
         Header: 'State'
       }
-    ],
-    filterable: ['state']
+    ]
   }
 };

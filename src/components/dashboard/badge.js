@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 import { view } from 'react-easy-state';
 import { authStore } from '../../lib/store';
+import { listData } from '../../data/testData';
 
 class Badge extends React.Component {
   constructor(props) {
@@ -11,13 +13,15 @@ class Badge extends React.Component {
 
   setActiveBadge(e) {
     authStore.activeList = e.target.id;
-    console.log(authStore);
   }
 
   render() {
     const badge = this.props.badge;
     const slug = badge.title.replace(' ', '').toLowerCase();
-
+    const list =
+      slug === 'projectproposals' || slug === 'personalstatements'
+        ? 'forms'
+        : slug;
     return (
       <div
         onClick={this.setActiveBadge}
@@ -26,7 +30,7 @@ class Badge extends React.Component {
         }`}
         id={slug}>
         <i className={`fa fa-${badge.icon} fa-3x mt3 mb1 gray`} />
-        <div className="badgeValue">{this.props.size}</div>
+        <div className="badgeValue">{_.size(listData[list].data)}</div>
         <div className="f4 gray t-shadow-light b">{this.props.badge.title}</div>
       </div>
     );

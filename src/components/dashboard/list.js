@@ -17,10 +17,15 @@ class List extends React.Component {
       ]
     };
     this.clickHandler = this.clickHandler.bind(this);
+    this.setDataSize = this.setDataSize.bind(this);
   }
 
   clickHandler(e) {
     console.log(e.target.dataset.action, e.target.parentElement.id);
+  }
+
+  setDataSize(size) {
+    authStore.activeListSize = size;
   }
 
   render() {
@@ -54,6 +59,7 @@ class List extends React.Component {
     const newSchema = _.concat(listData[list].schema, addActions);
     return (
       <div className="lists w-80-ns center pa4">
+        {this.setDataSize(_.size(listData[list].data))}
         <ReactTable
           data={listData[list].data}
           columns={newSchema}
