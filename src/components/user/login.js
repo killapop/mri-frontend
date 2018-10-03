@@ -11,6 +11,7 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.login = this.login.bind(this);
+    this.errors = this.errors.bind(this);
     this.state = {
       formData: {
         email: 'mary@domain.com',
@@ -19,22 +20,44 @@ class Login extends React.Component {
     };
   }
 
-  login({ formData, formErrors }) {
+  login({ formData }) {
     Object.assign(postOptions, { body: JSON.stringify(formData) });
     return fetch(baseURL + apiRoutes.auth, postOptions)
-      .then(response => response.json())
-      .then(result => {
-        authStore.isLoggedIn = true;
-        authStore.token = result.data.token;
-        authStore.messages.push({
-          message: `Logged in as ${formData.email}`,
-          level: 'success'
-        });
+      .then(response => {
+        if (response.status !== 401) {
+          return response.json();
+        } else {
+          authStore.messages.push({
+            id: Math.random(),
+            message: 'Error: Please check the email or password',
+            level: 'danger'
+          });
+        }
       })
-      .catch(err => console.log(err));
+      .then(result => {
+        console.log(result);
+        if (result.data) {
+          authStore.isLoggedIn = true;
+          authStore.token = result.data.token;
+          authStore.messages.push({
+            id: Math.random(),
+            message: `Logged in as ${formData.email}`,
+            level: 'success'
+          });
+        }
+        console.log(authStore);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   errors({ errors }) {
+    authStore.messages.push({
+      id: Math.Random(),
+      message: 'There was an error submitting the form',
+      level: 'error'
+    });
     console.log(errors);
   }
 
@@ -51,6 +74,7 @@ class Login extends React.Component {
               onSubmit={this.login}
               onError={this.errors}
               formData={this.state.formData}
+              showErrorList={true}
               method="POST">
               <div className="form-group flex justify-end">
                 <button type="submit">{login.schema.submitButton}</button>

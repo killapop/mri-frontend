@@ -20,7 +20,6 @@ class UserIndex extends React.Component {
   render() {
     return (
       <div>
-        Hello
         <Route
           exact
           path={`${this.props.match.url}`}
