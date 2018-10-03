@@ -11,9 +11,9 @@ class List extends React.Component {
     super(props);
     this.state = {
       actionButtons: [
-        { icon: 'trash', label: 'delete' },
+        { icon: 'eye', label: 'view' },
         { icon: 'edit', label: 'edit' },
-        { icon: 'eye', label: 'view' }
+        { icon: 'trash', label: 'delete' }
       ]
     };
     this.clickHandler = this.clickHandler.bind(this);
