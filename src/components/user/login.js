@@ -37,11 +37,15 @@ class Login extends React.Component {
       .then(result => {
         if (result.data) {
           authStore.isLoggedIn = true;
-          authStore.currentRole =
-            formData.email === 'mary@domain.com'
-              ? 'facilitator'
-              : 'organisation';
           authStore.token = result.data.token;
+          // TODO: fetch actual roles.
+          if (formData.email === 'mary@domain.com') {
+            authStore.currentRole = 'facilitator';
+            authStore.activeList = 'users';
+          } else {
+            authStore.currentRole = 'organisation';
+            authStore.activeList = 'forms';
+          }
           authStore.messages.push({
             id: Math.random(),
             message: `Logged in as ${formData.email}`,

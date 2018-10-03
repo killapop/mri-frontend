@@ -4,7 +4,8 @@ const authStore = store({
   isLoggedIn: false,
   currentRole: '',
   token: '',
-  messages: []
+  messages: [],
+  activeList: 'users'
 });
 
 export { authStore };
