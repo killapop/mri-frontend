@@ -35,9 +35,12 @@ class Login extends React.Component {
         }
       })
       .then(result => {
-        console.log(result);
         if (result.data) {
           authStore.isLoggedIn = true;
+          authStore.currentRole =
+            formData.email === 'mary@domain.com'
+              ? 'facilitator'
+              : 'organisation';
           authStore.token = result.data.token;
           authStore.messages.push({
             id: Math.random(),
@@ -45,7 +48,6 @@ class Login extends React.Component {
             level: 'success'
           });
         }
-        console.log(authStore);
       })
       .catch(err => {
         console.log(err);

@@ -5,11 +5,6 @@ export const sessionFilters = [
     states: ['Facilitator', 'Organisation', 'Beneficiary'],
     title: 'Roles',
     sessionItem: 'activeRole'
-  },
-  {
-    states: ['logged in', 'logged out'],
-    title: 'User state',
-    sessionItem: 'activeUserState'
   }
 ];
 

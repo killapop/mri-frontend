@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import logo from '../../assets/images/logo.svg';
 import TestValues from '../common/testValues';
+import { authStore } from '../../lib/store';
 import { userLinks, sessionFilters } from '../../data/testData';
 import './Header.css';
 
@@ -16,8 +17,7 @@ class Header extends React.Component {
       navOpen: true,
       userLinks,
       sessionFilters,
-      activeUserState: sessionStorage.getItem('activeUserState'),
-      activeRole: sessionStorage.getItem('activeRole')
+      activeRole: authStore.currentRole
     };
   }
 
@@ -25,10 +25,7 @@ class Header extends React.Component {
     const id = e.target.id;
     const filtertype = e.target.dataset.filtertype;
     e.persist();
-    sessionStorage.setItem(
-      filtertype,
-      sessionStorage.getItem(filtertype) === id ? '' : id
-    );
+    authStore.currentRole = authStore.currentRole === id ? '' : id;
     this.setState(state => ({ [filtertype]: id }));
   }
 
