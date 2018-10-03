@@ -5,6 +5,7 @@ import _ from 'lodash';
 import logo from '../../assets/images/logo.svg';
 import TestValues from '../common/testValues';
 import { authStore } from '../../lib/store';
+import { view } from 'react-easy-state';
 import { userLinks, sessionFilters } from '../../data/testData';
 import './Header.css';
 

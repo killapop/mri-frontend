@@ -1,6 +1,5 @@
 /* eslint no-unused-expresions: 0 */
 import React from 'react';
-import _ from 'lodash';
 import Badges from './badges';
 import List from './list';
 import { authStore } from '../../lib/store';
@@ -39,13 +38,7 @@ class Dashboard extends React.Component {
           <div className="title">Dashboard - {authStore.currentRole}</div>
           {authStore.currentRole === 'facilitator' ? <Badges /> : ''}
         </div>
-        {/* <List
-            data={this.state.listData[this.sluggify(this.state.activeBadge)]}
-            schema={
-          this.state.listSchema[this.sluggify(this.state.activeBadge)]
-            }
-            title={this.state.activeBadge}
-        /> */}
+        <List />
       </div>
     );
   }

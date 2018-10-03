@@ -1,15 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import _ from 'lodash';
 import ReactTable from 'react-table';
+import { view } from 'react-easy-state';
+import { authStore } from '../../lib/store';
+import { listData } from '../../data/testData';
 import './list.css';
 
 class List extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sortBy: '',
-      sortOrder: 'asc',
       actionButtons: [
         { icon: 'trash', label: 'delete' },
         { icon: 'edit', label: 'edit' },
@@ -24,6 +24,13 @@ class List extends React.Component {
   }
 
   render() {
+    const list =
+      authStore.currentRole !== 'facilitator'
+        ? 'myforms'
+        : authStore.activeList === 'personalstatements' ||
+          authStore.activeList === 'projectproposals'
+          ? 'forms'
+          : authStore.activeList;
     const addActions = {
       Header: 'Actions',
       accessor: 'id',
@@ -44,12 +51,11 @@ class List extends React.Component {
         </div>
       )
     };
-    const newSchema = _.concat(this.props.schema.columns, addActions);
+    const newSchema = _.concat(listData[list].schema, addActions);
     return (
       <div className="lists w-80-ns center pa4">
-        <div className="f4 ttu b mb3">{this.props.title}</div>
         <ReactTable
-          data={this.props.data}
+          data={listData[list].data}
           columns={newSchema}
           className="-highlight"
           filterable={true}
@@ -59,10 +65,4 @@ class List extends React.Component {
   }
 }
 
-List.propTypes = {
-  data: PropTypes.array,
-  title: PropTypes.string,
-  schema: PropTypes.object
-};
-
-export default List;
+export default view(List);
