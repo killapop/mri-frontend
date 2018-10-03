@@ -6,6 +6,7 @@ import { authStore } from '../../lib/store.js';
 import Login from './login.js';
 import ForgotPassword from './forgotPassword.js';
 import MyAccount from './myAccount.js';
+import CreateUser from './create';
 
 import '../../assets/css/forms.css';
 
@@ -38,6 +39,7 @@ class UserIndex extends React.Component {
           path={`${this.props.match.url}/my-account`}
           component={MyAccount}
         />
+        <Route path={`${this.props.match.url}/create`} component={CreateUser} />
       </div>
     );
   }

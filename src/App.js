@@ -57,13 +57,13 @@ class App extends Component {
           <Layout>
             {this.loggedIn() ? (
               <div className="loggedIn">
-                <Clock
+                {/* <Clock
                   clock={new Date(this.state.clock * 1000)
                     .toISOString()
                     .substr(14, 5)}
                   startClock={this.startClock}
                   stopClock={this.stopClock}
-                />
+                /> */}
                 <span onClick={this.logout} className="logout">
                   <i className="fas fa-sign-out-alt fa-15x" />Logout
                 </span>

@@ -1,8 +1,8 @@
-import React from 'react'
-import Form from 'react-jsonschema-form'
-import * as Schemas from '../../schema/forms'
-import Layout from '../../components/layout'
-import '../../components/form/form.css'
+import React from 'react';
+import Form from 'react-jsonschema-form';
+import * as Schemas from '../../schema/forms';
+import Layout from '../../components/layout';
+import '../../components/form/form.css';
 
 class FormIndex extends React.Component {
   // constructor(props) {
@@ -10,10 +10,10 @@ class FormIndex extends React.Component {
   // }
 
   render() {
-    const page = window.location.pathname.split('/').reverse()[0]
-    const formSchema = Schemas[page ? page : 'login']
+    const page = window.location.pathname.split('/').reverse()[0];
+    const formSchema = Schemas[page ? page : 'login'];
     return (
-      <>
+      <div>
         <Layout>
           <div className="center w-100  bg-very-very-light shadow-light pa4">
             <Form schema={formSchema.schema} uiSchema={formSchema.uiSchema}>
@@ -23,9 +23,9 @@ class FormIndex extends React.Component {
             </Form>
           </div>
         </Layout>
-      </>
-    )
+      </div>
+    );
   }
 }
 
-export default FormIndex
+export default FormIndex;

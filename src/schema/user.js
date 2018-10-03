@@ -9,22 +9,22 @@ export const login = {
       email: {
         type: 'string',
         title: 'Email',
-        placeholder: 'Email address',
+        placeholder: 'Email address'
       },
-      password: { type: 'string', title: 'Password' },
-    },
+      password: { type: 'string', title: 'Password' }
+    }
   },
   uiSchema: {
     email: {
       'ui:widget': 'email',
       'ui:autofocus': true,
-      'ui:help': 'Please enter a valid email address',
+      'ui:help': 'Please enter a valid email address'
     },
     password: {
-      'ui:widget': 'password',
-    },
-  },
-}
+      'ui:widget': 'password'
+    }
+  }
+};
 
 export const forgot = {
   schema: {
@@ -37,18 +37,18 @@ export const forgot = {
       email: {
         type: 'string',
         title: 'Email',
-        placeholder: 'Email address',
-      },
-    },
+        placeholder: 'Email address'
+      }
+    }
   },
   uiSchema: {
     email: {
       'ui:widget': 'email',
       'ui:autofocus': true,
-      'ui:help': 'Please enter your email address',
-    },
-  },
-}
+      'ui:help': 'Please enter your email address'
+    }
+  }
+};
 
 export const change = {
   schema: {
@@ -61,39 +61,47 @@ export const change = {
       current_password: {
         type: 'string',
         title: 'Current password',
-        placeholder: 'Current password',
-      },
-    },
+        placeholder: 'Current password'
+      }
+    }
   },
   uiSchema: {
     email: {
       'ui:widget': 'email',
       'ui:autofocus': true,
-      'ui:help': 'Please enter your email address',
-    },
-  },
-}
+      'ui:help': 'Please enter your email address'
+    }
+  }
+};
 
 export const create = {
   schema: {
-    title: 'Add user',
+    title: 'Create user',
     type: 'object',
     required: ['email'],
     submitButton: 'Create user',
     cancelButton: 'Cancel',
     properties: {
-      current_password: {
+      email: {
         type: 'string',
-        title: 'Current password',
-        placeholder: 'Current password',
+        title: 'Email'
       },
-    },
+      role: {
+        type: 'number',
+        title: 'Type of user',
+        enum: [1, 2, 3],
+        enumNames: ['Facilitator', 'Organisation', 'Beneficiary']
+      }
+    }
   },
   uiSchema: {
     email: {
       'ui:widget': 'email',
-      'ui:autofocus': true,
-      'ui:help': 'Please enter your email address',
+      'ui:autofocus': true
     },
-  },
-}
+    role: {
+      'ui:widget': 'select',
+      'ui:placeholder': 'Select'
+    }
+  }
+};
