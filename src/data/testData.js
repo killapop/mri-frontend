@@ -22,16 +22,6 @@ export const userLinks = [
     label: 'Dashboard',
     path: '/dashboard',
     Icon: 'tachometer-alt'
-  },
-  {
-    label: 'Info',
-    path: '/info',
-    Icon: 'info-circle'
-  },
-  {
-    label: 'Help',
-    path: '/help',
-    Icon: 'question-circle'
   }
 ];
 

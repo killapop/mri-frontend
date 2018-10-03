@@ -62,6 +62,16 @@ class Header extends React.Component {
                   </div>
                 </Link>
               ))}
+              <a
+                rel="noopener noreferrer"
+                href="https://martin-roth-initiative.org"
+                target="_blank"
+                className="navLink pt1 pv2  link silver mv3 w-100">
+                <div className="flex flex-column f6 items-start items-center">
+                  <i className={`fa fa-info mb2 fa-2x`} />
+                  <span className="f7">Info</span>
+                </div>
+              </a>
             </div>
           </nav>
         </div>
