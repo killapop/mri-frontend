@@ -6,6 +6,7 @@ import Header from './components/header/Header.js';
 import Layout from './components/common/layout';
 import Messages from './components/common/messages';
 import UserIndex from './components/user';
+import FormsIndex from './components/forms';
 import Clock from './components/common/clock';
 import Dashboard from './components/dashboard/dashboard';
 import './App.css';
@@ -15,8 +16,6 @@ class App extends Component {
     super(props);
     this.loggedIn = this.loggedIn.bind(this);
     this.logout = this.logout.bind(this);
-    this.startClock = this.startClock.bind(this);
-    this.stopClock = this.stopClock.bind(this);
     this.state = {
       clock: 3600
     };
@@ -32,21 +31,6 @@ class App extends Component {
     authStore.messages.push({ message: 'logged out', level: 'success' });
   }
 
-  startClock() {
-    this.clockTimer = window.setInterval(() => {
-      let c = this.state.clock;
-      c--;
-      this.setState(state => ({
-        clock: c
-      }));
-    }, 1000);
-  }
-
-  stopClock() {
-    this.setState(state => ({ clock: 3600 }));
-    window.clearInterval(this.clockTimer);
-  }
-
   componentDidMount() {}
 
   render() {
@@ -57,13 +41,7 @@ class App extends Component {
           <Layout>
             {this.loggedIn() ? (
               <div className="loggedIn">
-                {/* <Clock
-                  clock={new Date(this.state.clock * 1000)
-                    .toISOString()
-                    .substr(14, 5)}
-                  startClock={this.startClock}
-                  stopClock={this.stopClock}
-                /> */}
+                <Clock />
                 <span onClick={this.logout} className="logout">
                   <i className="fas fa-sign-out-alt fa-15x" />Logout
                 </span>
@@ -84,6 +62,7 @@ class App extends Component {
               )}
             />
             <Route path="/user" component={UserIndex} />
+            <Route path="/forms" component={FormsIndex} />
             <Route
               path="/dashboard"
               render={() =>
