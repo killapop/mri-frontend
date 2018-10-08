@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Form from 'react-jsonschema-form';
 import { login } from '../../schema/user';
 import { view } from 'react-easy-state';
-import { authStore } from '../../lib/store.js';
+import { authStore, messages } from '../../lib/store.js';
 import { postOptions, baseURL, apiRoutes } from '../../lib/api-calls.js';
 import '../../assets/css/forms.css';
 
@@ -27,7 +27,7 @@ class Login extends React.Component {
         if (response.status !== 401) {
           return response.json();
         } else {
-          authStore.messages.push({
+          messages.messages.push({
             id: Math.random(),
             message: 'Error: Please check the email or password',
             level: 'danger'
@@ -41,12 +41,10 @@ class Login extends React.Component {
           // TODO: fetch actual roles.
           if (formData.email === 'mary@domain.com') {
             authStore.currentRole = 'facilitator';
-            authStore.activeList = 'users';
           } else {
             authStore.currentRole = 'organisation';
-            authStore.activeList = 'forms';
           }
-          authStore.messages.push({
+          messages.messages.push({
             id: Math.random(),
             message: `Logged in as ${formData.email}`,
             level: 'success'
@@ -59,7 +57,7 @@ class Login extends React.Component {
   }
 
   errors({ errors }) {
-    authStore.messages.push({
+    messages.messages.push({
       id: Math.Random(),
       message: 'There was an error submitting the form',
       level: 'error'

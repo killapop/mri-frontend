@@ -17,21 +17,17 @@ class List extends React.Component {
         { icon: 'trash', label: 'delete' }
       ]
     };
-    this.clickHandler = this.clickHandler.bind(this);
-  }
-
-  clickHandler(e) {
-    console.log(e.target.dataset.action, e.target.parentElement.id);
   }
 
   render() {
     const list =
       authStore.currentRole !== 'facilitator'
         ? 'myforms'
-        : authStore.activeList === 'personalstatements' ||
-          authStore.activeList === 'projectproposals'
+        : authStore.activeList.slug === 'personalstatements' ||
+          authStore.activeList.slug === 'projectproposals'
           ? 'forms'
-          : authStore.activeList;
+          : authStore.activeList.slug;
+
     const addActions = {
       Header: 'Actions',
       accessor: 'id',
@@ -54,7 +50,7 @@ class List extends React.Component {
     };
     const newSchema = _.concat(listData[list].schema, addActions);
     let link;
-    switch (authStore.activeList) {
+    switch (authStore.activeList.slug) {
       case 'users':
         link = '/user/create';
         break;

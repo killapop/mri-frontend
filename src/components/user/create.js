@@ -27,40 +27,16 @@ class CreateUser extends React.Component {
         {!authStore.isLoggedIn ? (
           <Redirect to="/" />
         ) : (
-          <div>
-            {this.state.created ? (
-              <div className="center small-box w-90 w-100 bg-very-very-light shadow-light pa4 mt6 ba b--very-ver-light ">
-                An account was created for {this.state.user}. <br />
-                <br />The activatition url is
-                https://mri-appplication.de/user/activate/{Math.random()
-                  .toString(36)
-                  .substring(2)}
-                <br />
-                <br />The temporary password to use at the time of activation
-                is: &nbsp;
-                {Math.random()
-                  .toString(30)
-                  .substring(2)}
+          <div className="center small-box w-90 w-50-ns bg-very-very-light shadow-light pa4 mt6 ba b--very-ver-light ">
+            <Form schema={create.schema} uiSchema={create.uiSchema}>
+              <div className="form-group flex justify-end">
+                <button type="submit">{create.schema.submitButton}</button>
               </div>
-            ) : (
-              <div className="center small-box w-90 w-50-ns bg-very-very-light shadow-light pa4 mt6 ba b--very-ver-light ">
-                <Form
-                  schema={create.schema}
-                  uiSchema={create.uiSchema}
-                  showErrorList={true}
-                  method="POST"
-                  onSubmit={this.create}>
-                  <div className="form-group flex justify-end">
-                    <button type="submit">{create.schema.submitButton}</button>
-                  </div>
-                </Form>
-              </div>
-            )}
+            </Form>
           </div>
         )}
       </div>
     );
   }
 }
-
 export default CreateUser;

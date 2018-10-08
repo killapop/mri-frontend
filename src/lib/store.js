@@ -4,9 +4,15 @@ const authStore = store({
   isLoggedIn: false,
   currentRole: '',
   token: '',
-  messages: [],
-  activeList: 'users',
-  activeListSize: 0
+  activeList: {
+    title: 'Users',
+    slug: 'users',
+    size: 0
+  }
 });
 
-export { authStore };
+const messages = store({
+  messages: []
+});
+
+export { authStore, messages };

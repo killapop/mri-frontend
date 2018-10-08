@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { authStore } from '../../lib/store';
+import { view } from 'react-easy-state';
+import { messages } from '../../lib/store';
 
 class Message extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Message extends React.Component {
 
   dismiss(e) {
     this.setState(state => ({ alive: false }));
-    _.remove(authStore.messages, m => (m.id = this.props.message.id));
+    _.remove(messages.messages, m => (m.id = this.props.message.id));
   }
 
   componentDidMount() {
@@ -45,4 +46,4 @@ Message.propTypes = {
   message: PropTypes.object
 };
 
-export default Message;
+export default view(Message);

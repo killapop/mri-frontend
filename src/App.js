@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { view } from 'react-easy-state';
-import { authStore } from './lib/store.js';
+import { authStore, messages } from './lib/store.js';
 import Header from './components/header/Header.js';
 import Layout from './components/common/layout';
 import Messages from './components/common/messages';
@@ -28,7 +28,7 @@ class App extends Component {
   logout() {
     authStore.isLoggedIn = false;
     authStore.token = '';
-    authStore.messages.push({ message: 'logged out', level: 'success' });
+    messages.messages.push({ message: 'logged out', level: 'success' });
   }
 
   componentDidMount() {}
@@ -49,8 +49,8 @@ class App extends Component {
             ) : (
               ''
             )}
-            {authStore.messages.length > 0 ? (
-              <Messages messages={authStore.messages} />
+            {messages.messages.length > 0 ? (
+              <Messages messages={messages.messages} />
             ) : (
               ''
             )}

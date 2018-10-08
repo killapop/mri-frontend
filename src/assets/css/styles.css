@@ -17,6 +17,10 @@ body {
   overflow-x: hidden;
 }
 
+.main {
+  padding-left: 160px;
+}
+
 .title,
 #root__title {
   font-family: "PTSansNarrowRegular", sans-serif;

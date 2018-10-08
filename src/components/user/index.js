@@ -11,13 +11,6 @@ import CreateUser from './create';
 import '../../assets/css/forms.css';
 
 class UserIndex extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeUserState: sessionStorage.getItem('activeUserState')
-    };
-  }
-
   render() {
     return (
       <div>
