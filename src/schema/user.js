@@ -91,6 +91,10 @@ export const create = {
         title: 'Type of user',
         enum: [1, 2, 3],
         enumNames: ['Facilitator', 'Organisation', 'Beneficiary']
+      },
+      email_notify: {
+        type: 'boolean',
+        title: 'Notify via email?'
       }
     }
   },
