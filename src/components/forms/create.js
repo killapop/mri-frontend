@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from 'react-jsonschema-form';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+import { view } from 'react-easy-state';
 import { authStore } from '../../lib/store';
 import { create } from '../../schema/forms';
 
@@ -32,12 +33,12 @@ class CreateForm extends React.Component {
               <div className="center small-box w-90 w-100 bg-very-very-light shadow-light pa4 mt6 ba b--very-ver-light ">
                 An form was created for {this.state.user}. <br />
                 <br />The unique url to the form is{`  `}
-                <a
-                  href={`/forms/edit/${Math.random()
+                <Link
+                  to={`/forms/edit/${Math.random()
                     .toString(36)
                     .substring(2)}`}>
                   here
-                </a>
+                </Link>
               </div>
             ) : (
               <div className="center small-box w-90 w-50-ns bg-very-very-light shadow-light pa4 mt6 ba b--very-ver-light ">
@@ -60,4 +61,4 @@ class CreateForm extends React.Component {
   }
 }
 
-export default CreateForm;
+export default view(CreateForm);
