@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Layout = ({ children }) => (
   <div>
     <div
-      className="main center w-100 bg-near-white pt3 pb6"
+      className="main center w-100  pb6"
       style={{ width: '100vw', height: '100%', minHeight: '100vh' }}>
       {children}
     </div>

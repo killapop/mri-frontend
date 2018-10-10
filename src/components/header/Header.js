@@ -1,9 +1,10 @@
 /* eslint no-unused-vars: 0 */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import logo from '../../assets/images/logo.svg';
-import TestValues from '../common/testValues';
+// import TestValues from '../common/testValues';
 import { authStore } from '../../lib/store';
 import { view } from 'react-easy-state';
 import { userLinks, sessionFilters } from '../../data/testData';
@@ -37,27 +38,28 @@ class Header extends React.Component {
   }
 
   render() {
+    const { sticky } = this.props;
     return (
       <div>
-        <div className="header fixed top-0 left-0 pv2 h-100 bg-white">
-          <Link to="/" className="logo ph3">
+        <div className={`header ${sticky ? 'sticky' : ''} ph2 w-100 flex`}>
+          <Link to="/" className="logo pa2">
             <img src={logo} alt="Martin Roth-Initiative" />
           </Link>
           <nav className="ttu flex justify-between mt3">
-            <div className="userNav flex flex-column justify-start w-100 items-start">
+            <div className="userNav flex justify-start h-100 items-start">
               {this.state.userLinks.map(({ label, Icon, path }, key) => (
                 <Link
                   key={key}
                   to={path}
                   id={label.toLowerCase().replace(' ', '')}
                   data-path={path}
-                  className={`navLink pt1 pv2 link silver mv3 w-100 ${
+                  className={`navLink pv2 h-100 ${
                     window.location.pathname.split('/')[1] ===
                     path.split('/')[1]
                       ? 'active'
                       : ''
                   }`}>
-                  <div className="flex flex-column f6 items-start items-center">
+                  <div className="flex f6 items-center">
                     <i className={`fa fa-${Icon} mb2 fa-2x`} />
                     <span className="f7">{label}</span>
                   </div>
@@ -67,8 +69,8 @@ class Header extends React.Component {
                 rel="noopener noreferrer"
                 href="https://martin-roth-initiative.de"
                 target="_blank"
-                className="navLink pt1 pv2  link silver mv3 w-100">
-                <div className="flex flex-column f6 items-start items-center">
+                className="navLink pv2 h-100">
+                <div className="flex f6 items-center">
                   <i className={`fa fa-info mb2 fa-2x`} />
                   <span className="f7">Info</span>
                 </div>
@@ -76,12 +78,13 @@ class Header extends React.Component {
             </div>
           </nav>
         </div>
-        <TestValues
-          data={this.state.sessionFilters}
-          roleChangeHandler={this.roleChangeHandler}
-        />
       </div>
     );
   }
 }
+
+Header.propTypes = {
+  sticky: PropTypes.bool
+};
+
 export default Header;

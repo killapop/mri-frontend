@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { view } from 'react-easy-state';
+import { StickyContainer, Sticky } from 'react-sticky';
 import { authStore, messages } from './lib/store.js';
 import Header from './components/header/Header.js';
 import Layout from './components/common/layout';
@@ -36,8 +37,14 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <Header />
+        <StickyContainer>
+          <Sticky topOffset={10}>
+            {({ style, isSticky }) => (
+              <div style={style}>
+                <Header sticky={isSticky} />
+              </div>
+            )}
+          </Sticky>
           <Layout>
             {this.loggedIn() ? (
               <div className="loggedIn">
@@ -70,7 +77,7 @@ class App extends Component {
               }
             />
           </Layout>
-        </div>
+        </StickyContainer>
       </Router>
     );
   }

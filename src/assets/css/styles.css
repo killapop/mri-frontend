@@ -2,6 +2,7 @@
   --shadow-light: 0 0 2px 1px rgba(0, 0, 0, 0.2);
   --very-very-light: #fafafa;
   --very-ver-light: #eaeaea;
+  --near-white: #f4f4f4;
   --primary-color: #f90;
   --white: #fff;
   --yellow: #f59c00;
@@ -15,10 +16,7 @@
 body {
   font-family: PTSansRegular, Sans-serif;
   overflow-x: hidden;
-}
-
-.main {
-  padding-left: 160px;
+  background-color: var(--near-white);
 }
 
 .title,
