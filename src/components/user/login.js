@@ -15,7 +15,7 @@ class Login extends React.Component {
     this.state = {
       formData: {
         email: 'mary@domain.com',
-        password: 'secret'
+        password: 'secretsecret'
       }
     };
   }
@@ -67,24 +67,22 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="center small-box w-90 w-50-l">
         {authStore.isLoggedIn ? (
-          <Redirect to="/" />
+          <Redirect to="/dashboard" />
         ) : (
-          <div className="center small-box w-90 w-50-ns bg-very-very-light shadow-light pa4 mt6 ba b--very-ver-light ">
-            <Form
-              schema={login.schema}
-              uiSchema={login.uiSchema}
-              onSubmit={this.login}
-              onError={this.errors}
-              formData={this.state.formData}
-              showErrorList={true}
-              method="POST">
-              <div className="form-group flex justify-end">
-                <button type="submit">{login.schema.submitButton}</button>
-              </div>
-            </Form>
-          </div>
+          <Form
+            schema={login.schema}
+            uiSchema={login.uiSchema}
+            onSubmit={this.login}
+            onError={this.errors}
+            formData={this.state.formData}
+            showErrorList={true}
+            method="POST">
+            <div className="form-group flex justify-end">
+              <button type="submit">{login.schema.submitButton}</button>
+            </div>
+          </Form>
         )}
       </div>
     );

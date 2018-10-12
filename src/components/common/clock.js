@@ -15,7 +15,8 @@ class Clock extends React.Component {
   }
 
   componentWillUnmount() {
-    this.stopClock();
+    // this.stopClock();
+    window.clearInterval(this.clockTimer);
   }
 
   startClock() {
@@ -29,7 +30,6 @@ class Clock extends React.Component {
   }
 
   stopClock() {
-    this.setState(state => ({ timer: 3600 }));
     window.clearInterval(this.clockTimer);
   }
 

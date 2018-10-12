@@ -18,9 +18,9 @@
 
 .logo {
   opacity: 1;
-  max-height: 100px;
+  min-width: 70px;
   max-width: 80px;
-  margin-right: 40px;
+  height: fit-content;
 }
 
 .sticky .logo {
@@ -28,13 +28,19 @@
   max-height: 45px;
   overflow-y: hidden;
   margin-right: 30px;
+  margin-top: 0;
+}
+
+.sticky .logo img {
+  margin-top: -57px;
 }
 
 .userNav a {
-  min-width: 80px;
+  min-width: 40px;
   text-decoration: none;
-  margin-right: 30px;
+  margin-right: 20px;
   color: #999;
+  transition: none;
 }
 
 .userNav a > div {
@@ -44,9 +50,13 @@
   align-items: center;
 }
 
+.userNav a .fa {
+  font-size: 1.2em;
+}
+
 .sticky .userNav a {
-  border-bottom: 4px solid var(--very-ver-light);
-  margin-right: 30px;
+  /* border-bottom: 4px solid var(--very-ver-light); */
+  margin-right: 15px;
   padding: 0 0 10px 0;
 }
 
@@ -58,19 +68,57 @@
 }
 
 .sticky .userNav a .fa {
-  font-size: 18px;
+  font-size: 15px;
   margin-right: 5px;
 }
 
 .userNav a:focus,
 .userNav a:hover,
 .userNav a.active {
-  border-color: var(--yellow);
+  /* border-color: var(--yellow); */
   outline: 0;
-  color: #333;
+  color: var(--yellow);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .navLink * {
   pointer-events: none;
+}
+
+@media screen and (min-width: 60em) {
+  .logo {
+    opacity: 1;
+    max-height: 100px;
+    max-width: 120px;
+    margin-right: 40px;
+    margin-top: 0;
+  }
+
+  .sticky .logo {
+    padding: 5px 0 0 0;
+    max-width: 65px;
+    min-width: 50px;
+  }
+
+  .sticky .logo img {
+    margin-top: -70px;
+  }
+
+  .userNav a {
+    font-size: 1em;
+    margin-right: 50px;
+  }
+
+  .sticky .userNav a {
+    margin-right: 50px;
+  }
+
+  .userNav a .fa {
+    font-size: 1.3em;
+  }
+
+  .sticky .userNav a .fa {
+    font-size: 18px;
+    margin-right: 5px;
+  }
 }

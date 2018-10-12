@@ -17,14 +17,16 @@ export const userStates = ['logged in', 'logged out'];
 
 export const userLinks = [
   {
-    label: 'Account',
-    path: '/user',
-    Icon: 'user-circle'
-  },
-  {
     label: 'Dashboard',
     path: '/dashboard',
-    Icon: 'tachometer-alt'
+    Icon: 'tachometer-alt',
+    authenticated: true
+  },
+  {
+    label: 'My account',
+    path: '/user/edit',
+    Icon: 'user',
+    authenticated: true
   }
 ];
 

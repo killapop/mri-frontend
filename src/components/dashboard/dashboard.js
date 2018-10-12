@@ -1,5 +1,6 @@
 /* eslint no-unused-expresions: 0 */
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import Badges from './badges';
 import List from './list';
 import { authStore } from '../../lib/store';
@@ -34,11 +35,17 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div>
-        <div className=" w-80-ns center pa4">
-          <div className="title">Dashboard - {authStore.currentRole}</div>
-          {authStore.currentRole === 'facilitator' ? <Badges /> : ''}
-        </div>
-        <List />
+        {authStore.isLoggedIn ? (
+          <div>
+            <div className=" w-80-ns center pa4">
+              <div className="title">Dashboard - {authStore.currentRole}</div>
+              {authStore.currentRole === 'facilitator' ? <Badges /> : ''}
+            </div>
+            <List />
+          </div>
+        ) : (
+          <Redirect to="/" />
+        )}
       </div>
     );
   }

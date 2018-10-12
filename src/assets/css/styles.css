@@ -29,6 +29,10 @@ body {
   padding: 0 0 0.25em 0;
 }
 
+.main {
+  margin-top: 40px;
+}
+
 .shadow-light {
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.12);
 }
@@ -67,4 +71,10 @@ body {
 
 .section:nth-of-type(2n+2) {
   background-color: var(--white);
+}
+
+@media screen and (min-width: 60em) {
+  .main {
+    margin-top: 60px;
+  }
 }
