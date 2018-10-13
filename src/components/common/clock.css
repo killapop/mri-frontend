@@ -1,0 +1,41 @@
+.clock {
+  font-size: 1.2em;
+  font-family: PTSansBold, sans-serif;
+  display: flex;
+  padding: 5px 10px;
+  border-radius: 2px;
+  flex-flow: column;
+  align-items: flex-start;
+  margin-top: -10px;
+}
+
+.clock-timer {
+  position: relative;
+  line-height: 1.4;
+}
+
+.clock .reset::before {
+  background-color: var(--yellow);
+  margin-left: 5px;
+  font-size: 0.7em;
+  position: absolute;
+  top: 0;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.clock-title {
+  font-size: 0.6em;
+  padding-bottom: 0.5em;
+  color: #666;
+}
+
+.sticky .clock {
+  margin-top: -20px;
+}
