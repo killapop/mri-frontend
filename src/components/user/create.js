@@ -1,7 +1,9 @@
 import React from 'react';
 import Form from 'react-jsonschema-form';
 import { Redirect } from 'react-router-dom';
+import SmallBox from '../common/smallBox';
 import { authStore } from '../../lib/store';
+
 import { create } from '../../schema/user';
 
 class CreateUser extends React.Component {
@@ -23,19 +25,20 @@ class CreateUser extends React.Component {
 
   render() {
     return (
-      <div>
-        {!authStore.isLoggedIn ? (
-          <Redirect to="/" />
+      <SmallBox>
+        {authStore.isLoggedIn ? (
+          <Form schema={create.schema} uiSchema={create.uiSchema}>
+            <div className="form-actions form-group flex justify-end">
+              <button type="submit">
+                {create.schema.submitButton}
+                <i className="fa fa-user-plus ml2" />
+              </button>
+            </div>
+          </Form>
         ) : (
-          <div className="center small-box w-90 w-50-ns bg-very-very-light shadow-light pa4 mt6 ba b--very-ver-light ">
-            <Form schema={create.schema} uiSchema={create.uiSchema}>
-              <div className="form-group flex justify-end">
-                <button type="submit">{create.schema.submitButton}</button>
-              </div>
-            </Form>
-          </div>
+          <Redirect to="/" />
         )}
-      </div>
+      </SmallBox>
     );
   }
 }

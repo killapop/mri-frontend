@@ -2,6 +2,7 @@ import React from 'react';
 import Form from 'react-jsonschema-form';
 import { Redirect, Link } from 'react-router-dom';
 import { view } from 'react-easy-state';
+import SmallBox from '../common/smallBox';
 import { authStore } from '../../lib/store';
 import { create } from '../../schema/forms';
 
@@ -24,13 +25,13 @@ class CreateForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <SmallBox>
         {!authStore.isLoggedIn ? (
           <Redirect to="/" />
         ) : (
           <div>
             {this.state.created ? (
-              <div className="center small-box w-90 w-100 bg-very-very-light shadow-light pa4 mt6 ba b--very-ver-light ">
+              <div>
                 An form was created for {this.state.user}. <br />
                 <br />The unique url to the form is{`  `}
                 <Link
@@ -41,22 +42,23 @@ class CreateForm extends React.Component {
                 </Link>
               </div>
             ) : (
-              <div className="center small-box w-90 w-50-ns bg-very-very-light shadow-light pa4 mt6 ba b--very-ver-light ">
-                <Form
-                  schema={create.schema}
-                  uiSchema={create.uiSchema}
-                  showErrorList={true}
-                  method="POST"
-                  onSubmit={this.create}>
-                  <div className="form-group flex justify-end">
-                    <button type="submit">{create.schema.submitButton}</button>
-                  </div>
-                </Form>
-              </div>
+              <Form
+                schema={create.schema}
+                uiSchema={create.uiSchema}
+                showErrorList={true}
+                method="POST"
+                onSubmit={this.create}>
+                <div className="form-actions form-group flex justify-end">
+                  <button type="submit">
+                    {create.schema.submitButton}
+                    <i className="fa fa-plus-circle ml2" />
+                  </button>
+                </div>
+              </Form>
             )}
           </div>
         )}
-      </div>
+      </SmallBox>
     );
   }
 }

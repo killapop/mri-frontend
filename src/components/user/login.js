@@ -1,6 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Form from 'react-jsonschema-form';
+import SmallBox from '../common/smallBox';
+
 import { login } from '../../schema/user';
 import { view } from 'react-easy-state';
 import { authStore, messages } from '../../lib/store.js';
@@ -67,7 +69,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="center small-box w-90 w-50-l">
+      <SmallBox>
         {authStore.isLoggedIn ? (
           <Redirect to="/dashboard" />
         ) : (
@@ -79,12 +81,15 @@ class Login extends React.Component {
             formData={this.state.formData}
             showErrorList={true}
             method="POST">
-            <div className="form-group flex justify-end">
-              <button type="submit">{login.schema.submitButton}</button>
+            <div className="form-actions form-group flex justify-end">
+              <button type="submit">
+                {login.schema.submitButton}
+                <i className="fa fa-sign-in-alt ml2" />
+              </button>
             </div>
           </Form>
         )}
-      </div>
+      </SmallBox>
     );
   }
 }

@@ -19,16 +19,6 @@ body {
   background-color: var(--near-white);
 }
 
-.title,
-#root__title {
-  font-family: "PTSansNarrowRegular", sans-serif;
-  font-weight: 700;
-  font-size: 1.7em;
-  text-transform: uppercase;
-  margin-bottom: 1.5em;
-  padding: 0 0 0.25em 0;
-}
-
 .main {
   margin-top: 40px;
 }

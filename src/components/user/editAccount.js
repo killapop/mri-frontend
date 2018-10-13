@@ -1,4 +1,5 @@
 import React from 'react';
+import SmallBox from '../common/smallBox';
 import { authStore } from '../../lib/store.js';
 import { view } from 'react-easy-state';
 import { Redirect } from 'react-router-dom';
@@ -12,16 +13,15 @@ class MyAccount extends React.Component {
 
   render() {
     return (
-      <div>
+      <SmallBox>
         {authStore.isLoggedIn ? (
-          <div>
-            <div className="center small-box w-90 w-50-ns bg-very-very-light shadow-light pa4 mt6 ba b--very-ver-light " />{' '}
-            Wheeee
+          <div className="center small-box w-90 w-50-ns bg-very-very-light shadow-light pa4 mt6 ba b--very-ver-light ">
+            AHAH
           </div>
         ) : (
           <Redirect to="/" />
         )}
-      </div>
+      </SmallBox>
     );
   }
 }
