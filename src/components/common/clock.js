@@ -36,7 +36,6 @@ class Clock extends React.Component {
         r = 255;
         g = Math.floor((255 * (mid - ((c - 1) % mid))) / mid);
       }
-      console.log(r, g, b);
       bgColor = 'rgba(' + r + ', ' + g + ', ' + b + ', 0.8)';
 
       c--;
