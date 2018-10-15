@@ -5,9 +5,8 @@ const authStore = store({
   currentRole: '',
   token: '',
   activeList: {
-    title: 'Project Proposals',
-    slug: 'projectproposals',
-    size: 0
+    title: 'Users',
+    slug: 'users'
   }
 });
 

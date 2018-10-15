@@ -100,7 +100,7 @@ class Header extends React.Component {
                       <span className="dn db-l">Logout</span>
                     </div>
                   </Link>
-                  <Clock />
+                  {/* <Clock /> */}
                 </div>
               ) : (
                 ''

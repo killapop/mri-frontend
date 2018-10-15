@@ -13,7 +13,6 @@ class Badge extends React.Component {
     const dataset = e.target.dataset;
     authStore.activeList.title = dataset.title;
     authStore.activeList.slug = dataset.slug;
-    authStore.activeList.size = dataset.size;
   }
 
   render() {
