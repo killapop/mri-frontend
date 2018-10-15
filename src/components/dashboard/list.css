@@ -68,3 +68,15 @@
   box-shadow: inset 0 3px 0 0 var(--yellow);
   outline: none;
 }
+
+.list-size {
+  background-color: #f90;
+  border-radius: 20%;
+  padding: 0.1em 0.3em;
+  color: white;
+  margin-top: -10px;
+  font-size: 0.8em;
+  font-family: "PTSansNarrowRegular", sans-serif;
+  font-weight: 700;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}

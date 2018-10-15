@@ -1,23 +1,41 @@
 import React from 'react';
 import _ from 'lodash';
+import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 import { Link } from 'react-router-dom';
 import { view } from 'react-easy-state';
 import { authStore } from '../../lib/store';
 import { listData } from '../../data/testData';
+import { getOptions, baseURL, apiRoutes } from '../../lib/api-calls.js';
+
 import './list.css';
 
-class List extends React.Component {
+class FacilitatorList extends React.Component {
   constructor(props) {
     super(props);
+    this.getList = this.getList.bind(this);
     this.state = {
       actionButtons: [
         { icon: 'eye', label: 'view' },
         { icon: 'edit', label: 'edit' },
         { icon: 'trash', label: 'delete' }
-      ]
+      ],
+      listData: []
     };
   }
+
+  componentDidMount() {
+    const apiPath =
+      authStore.currentRole !== 'facilitator'
+        ? 'applications'
+        : authStore.activeList.slug === 'personalstatements' ||
+          authStore.activeList.slug === 'projectproposals'
+          ? 'applications'
+          : authStore.activeList.slug;
+    this.getList(apiPath);
+  }
+
+  getList(list) {}
 
   render() {
     const list =
@@ -64,17 +82,22 @@ class List extends React.Component {
       default:
         link = '';
     }
+    const listObject = this.props.list;
     return (
-      <div className="lists w-80-ns center pa4 flex flex-column">
+      <div className="lists w-80-l center pa4 flex flex-column">
         {authStore.currentRole === 'facilitator' ? (
           <Link
             to={link}
-            className="create pointer right ttu f6 b self-end pv2 ph3 white bg-primary-color mb2 ba b--very-ver-light link">
+          className="create pointer right ttu f6 b self-end pv2 ph3 white bg-primary-color mb2 ba b--very-ver-light link">
             <i className="fa fa-plus-circle" /> Create
           </Link>
         ) : (
           ''
         )}
+        <h1>
+          {listObject.title}{' '}
+          <span className="list-size">{_.size(list) || 0}</span>
+        </h1>
         <ReactTable
           data={listData[list].data}
           columns={newSchema}
@@ -86,4 +109,8 @@ class List extends React.Component {
   }
 }
 
-export default view(List);
+FacilitatorList.propTypes = {
+  list: PropTypes.object
+};
+
+export default view(FacilitatorList);

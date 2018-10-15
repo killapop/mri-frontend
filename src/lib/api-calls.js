@@ -4,6 +4,13 @@ const baseURL =
     ? 'http://devs:3001'
     : `http://${en.API_PATH}:${en.API_PORT}`;
 
+const getOptions = {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+};
+
 const postOptions = {
   method: 'POST',
   mode: 'cors',
@@ -18,7 +25,8 @@ const postOptions = {
 };
 
 const apiRoutes = {
-  auth: '/users'
+  auth: '/users',
+  application_lists: '/'
 };
 
-export { baseURL, postOptions, apiRoutes };
+export { baseURL, getOptions, postOptions, apiRoutes };

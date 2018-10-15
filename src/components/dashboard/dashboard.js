@@ -2,7 +2,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Badges from './badges';
-import List from './list';
+import FacilitatorList from './list';
+import UserList from './userList';
 import { authStore } from '../../lib/store';
 import { view } from 'react-easy-state';
 import './dashboard.css';
@@ -38,10 +39,14 @@ class Dashboard extends React.Component {
         {authStore.isLoggedIn ? (
           <div>
             <div className=" w-80-ns center pa4">
-              <div className="title">Dashboard - {authStore.currentRole}</div>
+              <div className="title pb0">Dashboard</div>
               {authStore.currentRole === 'facilitator' ? <Badges /> : ''}
             </div>
-            <List />
+            {authStore.currentRole === 'facilitator' ? (
+              <FacilitatorList list={authStore.activeList} />
+            ) : (
+              <UserList />
+            )}
           </div>
         ) : (
           <Redirect to="/" />
