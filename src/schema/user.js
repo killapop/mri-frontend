@@ -109,3 +109,37 @@ export const create = {
     }
   }
 };
+
+export const activate = {
+  schema: {
+    title: 'Activate account',
+    type: 'object',
+    required: ['password', 'name', 'new_password'],
+    submitButton: 'Activate my account',
+    cancelButton: 'Cancel',
+    properties: {
+      password: {
+        type: 'string',
+        title: 'Activation password'
+      },
+      name: {
+        type: 'string',
+        title: 'Name'
+      },
+      new_password: {
+        type: 'string',
+        title: 'Preferred password'
+      }
+    }
+  },
+  uiSchema: {
+    password: {
+      'ui:widget': 'password',
+      'ui:autofocus': true
+    },
+    new_password: {
+      'ui:widget': 'password',
+      'ui:autofocus': true
+    }
+  }
+};

@@ -6,6 +6,7 @@ import Login from './login.js';
 import ForgotPassword from './forgotPassword.js';
 import EditAccount from './editAccount.js';
 import CreateUser from './create';
+import ActivateUser from './activate';
 
 import '../../assets/css/forms.css';
 
@@ -25,6 +26,10 @@ class UserIndex extends React.Component {
         />
         <Route path={`${this.props.match.url}/edit`} component={EditAccount} />
         <Route path={`${this.props.match.url}/create`} component={CreateUser} />
+        <Route
+          path={`${this.props.match.url}/activate/:token`}
+          component={ActivateUser}
+        />
       </div>
     );
   }

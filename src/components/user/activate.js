@@ -1,37 +1,47 @@
 import React from 'react';
 import Form from 'react-jsonschema-form';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import SmallBox from '../common/smallBox';
 import { authStore, messages } from '../../lib/store';
 import { baseURL, postOptions } from '../../lib/api-calls';
 
-import { create } from '../../schema/user';
+import { activate } from '../../schema/user';
 
-class CreateUser extends React.Component {
+class ActivateUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      created: false,
+      activated: false,
       user: ''
     };
-    this.create = this.create.bind(this);
+    this.activate = this.activate.bind(this);
   }
 
-  create({ formData }) {
+  activate({ formData }) {
     console.log(formData);
-
+    const body = {
+      // token: this.props.match.params.token,
+      password: formData.password,
+      account: {
+        name: formData.name,
+        password: formData.new_password
+      }
+    };
     Object.assign(postOptions, {
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + authStore.token
+        Authorization: this.props.match.params.token,
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(body)
     });
     console.log(postOptions);
-    return fetch(baseURL + '/activations', postOptions)
+    return fetch(
+      baseURL + '/activations/' + this.props.match.params.token,
+      postOptions
+    )
       .then(response => {
         if (response.status !== 401) {
-          return response.json();
+          return response;
         } else {
           messages.messages.push({
             id: Math.random(),
@@ -42,14 +52,15 @@ class CreateUser extends React.Component {
       })
       .then(result => {
         console.log(result);
-        if (result.data) {
+        if (result) {
           this.setState(state => ({
-            user: result.data,
-            created: true
+            activated: true
           }));
           messages.messages.push({
             id: Math.random(),
-            message: `Logged in as ${formData.email}`,
+            message: `Success! account for ${
+              formData.email
+            } has been activated`,
             level: 'success'
           });
         }
@@ -62,27 +73,20 @@ class CreateUser extends React.Component {
   render() {
     return (
       <SmallBox>
-        {this.state.created ? (
+        {this.state.activated ? (
           <div>
-            <p>
-              A new user account has been created for {this.state.user.email}.
-            </p>
-            <p>
-              {' '}
-              To activate the account, the user has to open this link in a
-              browser: http://devs:3000/user/activate/{this.state.user.token}.
-            </p>
-            <p>The password for activation is: {this.state.user.password}</p>
+            <h1> Your account has been activated</h1>
+            <Link to="/user/login">login now</Link>
           </div>
         ) : (
           <Form
-            schema={create.schema}
-            uiSchema={create.uiSchema}
-            onSubmit={this.create}
+            schema={activate.schema}
+            uiSchema={activate.uiSchema}
+            onSubmit={this.activate}
             method="POST">
             <div className="form-actions form-group flex justify-end">
               <button type="submit">
-                {create.schema.submitButton}
+                {activate.schema.submitButton}
                 <i className="fa fa-user-plus ml2" />
               </button>
             </div>
@@ -92,4 +96,4 @@ class CreateUser extends React.Component {
     );
   }
 }
-export default CreateUser;
+export default ActivateUser;
