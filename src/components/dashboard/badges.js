@@ -8,6 +8,7 @@ class Badges extends React.Component {
     super(props);
     this.state = {
       badges: [
+        { title: 'Activations', icon: 'user-check' },
         {
           title: 'Users',
           icon: 'users'
