@@ -24,7 +24,6 @@ class Login extends React.Component {
 
   login({ formData }) {
     Object.assign(postOptions, { body: JSON.stringify(formData) });
-    console.log(postOptions);
     return fetch(baseURL + apiRoutes.auth, postOptions)
       .then(response => {
         if (response.status !== 401) {
