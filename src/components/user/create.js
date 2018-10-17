@@ -1,6 +1,5 @@
 import React from 'react';
 import Form from 'react-jsonschema-form';
-import { Redirect } from 'react-router-dom';
 import SmallBox from '../common/smallBox';
 import { authStore, messages } from '../../lib/store';
 import { baseURL, postOptions } from '../../lib/api-calls';
