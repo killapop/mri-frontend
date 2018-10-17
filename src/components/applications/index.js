@@ -7,7 +7,7 @@ import CreateForm from './create';
 
 import '../../assets/css/forms.css';
 
-class FormsIndex extends React.Component {
+class ApplicationsIndex extends React.Component {
   render() {
     return (
       <div>
@@ -23,4 +23,4 @@ class FormsIndex extends React.Component {
   }
 }
 
-export default view(FormsIndex);
+export default view(ApplicationsIndex);

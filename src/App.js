@@ -7,7 +7,7 @@ import Header from './components/header/Header.js';
 import Layout from './components/common/layout';
 import Messages from './components/common/messages';
 import UserIndex from './components/user';
-import FormsIndex from './components/forms';
+import FormsIndex from './components/applictions';
 // import Clock from './components/common/clock';
 import Dashboard from './components/dashboard/dashboard';
 import './App.css';
@@ -52,7 +52,7 @@ class App extends Component {
                 }
               />
               <Route path="/user" component={UserIndex} />
-              <Route path="/forms" component={FormsIndex} />
+              <Route path="/applications" component={FormsIndex} />
               <Route path="/dashboard" component={Dashboard} />
             </Layout>
           </div>
