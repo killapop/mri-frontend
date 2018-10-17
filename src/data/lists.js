@@ -1,4 +1,16 @@
 export const listSchema = {
+  activations: {
+    columns: [
+      {
+        accessor: 'id',
+        Header: 'ID'
+      },
+      {
+        accessor: 'email',
+        Header: 'Email'
+      }
+    ]
+  },
   users: {
     columns: [
       {

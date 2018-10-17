@@ -7,7 +7,7 @@ import Header from './components/header/Header.js';
 import Layout from './components/common/layout';
 import Messages from './components/common/messages';
 import UserIndex from './components/user';
-import FormsIndex from './components/applictions';
+import FormsIndex from './components/applications';
 // import Clock from './components/common/clock';
 import Dashboard from './components/dashboard/dashboard';
 import './App.css';
