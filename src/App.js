@@ -35,11 +35,11 @@ class App extends Component {
               )}
             </Sticky>
             <Layout>
-              {messages.messages.length > 0 ? (
+              {/* {messages.messages.length > 0 ? (
                 <Messages messages={messages.messages} />
-              ) : (
+                ) : (
                 ''
-              )}
+              )} */}
               <Route
                 exact
                 path="/"

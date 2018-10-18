@@ -14,10 +14,6 @@ export const listSchema = {
   users: {
     columns: [
       {
-        accessor: 'id',
-        Header: 'ID'
-      },
-      {
         accessor: 'email',
         Header: 'Email'
       },

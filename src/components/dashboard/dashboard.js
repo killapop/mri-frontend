@@ -34,6 +34,7 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    const list = authStore.activeList;
     return (
       <div>
         {authStore.isLoggedIn ? (
@@ -43,7 +44,7 @@ class Dashboard extends React.Component {
               {authStore.currentRole === 'facilitator' ? <Badges /> : ''}
             </div>
             {authStore.currentRole === 'facilitator' ? (
-              <FacilitatorList list={authStore.activeList} />
+              <FacilitatorList list={list} />
             ) : (
               <UserList />
             )}

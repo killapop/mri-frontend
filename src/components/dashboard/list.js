@@ -16,15 +16,21 @@ class FacilitatorList extends React.Component {
       { icon: 'eye', label: 'view' },
       { icon: 'edit', label: 'edit' },
       { icon: 'trash', label: 'delete' }
-    ],
-    loaded: null
+    ]
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
+    // console.log(nextProps.list, prevState.list);
     if (nextProps.list !== prevState.list) {
       return { list: nextProps.list, loaded: null };
     }
     return null;
+  }
+  componentDidUpdate(prevProps, prevState) {
+    console.log(this.state.loaded, prevState.loaded);
+    if (this.state.loaded === null && prevState.loaded !== null) {
+      this._getList();
+    }
   }
 
   componentDidMount() {
@@ -33,13 +39,6 @@ class FacilitatorList extends React.Component {
 
   shouldComponentUpdate() {
     return true;
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.loaded === null) {
-      // At this point, we're in the "commit" phase, so it's safe to load the new data.
-      // this._getList();
-    }
   }
 
   _getPath() {
@@ -53,10 +52,8 @@ class FacilitatorList extends React.Component {
     Object.assign(getOptions, {
       headers: { Authorization: 'Bearer ' + authStore.token }
     });
-    this.setState(state => ({ loaded: null }));
     return fetch(baseURL + '/' + this._getPath(), getOptions)
       .then(response => {
-        this.setState(state => ({ loaded: true }));
         if (response.status !== 401) {
           return response.json();
         } else {
@@ -69,8 +66,9 @@ class FacilitatorList extends React.Component {
       })
       .then(result => {
         if (result.data) {
-          this.setState(state => ({
-            listData: result.data
+          return this.setState(state => ({
+            listData: result.data,
+            loaded: !this.state.loaded
           }));
         }
       });
@@ -97,51 +95,46 @@ class FacilitatorList extends React.Component {
         </div>
       )
     };
+
     const newSchema = _.concat(listSchema[this._getPath()], addActions);
-    let link;
-    switch (authStore.activeList.slug) {
-      case 'users':
-        link = '/user/create';
-        break;
-      case 'projectproposals':
-      case 'personalstatements':
-        link = '/forms/create';
-        break;
-      case 'bundles':
-        link = '/bundles/create';
-        break;
-      default:
-        link = '';
-    }
+
+    // console.log(newSchema);
     return (
-      <div className="lists w-80-l center pa4 flex flex-column">
-        {this.state.loaded ? (
+      <div>
+        {this.state.loaded === null ? (
           <div>
-            {console.log(this.state.loaded)}
-            <Link
-              to={link}
-            className="create pointer right ttu f6 b self-end pv2 ph3 white bg-primary-color mb2 ba b--very-ver-light link">
-              <i className="fa fa-plus-circle" /> Create
-            </Link>
-            <h1>
-              {this.state.list.title} {` `}
-              <span className="list-size">
-                {_.size(this.state.listData) || 0}
-              </span>
-              {this.state.loaded}
-            </h1>
-            {_.map(this.state.listData, (e, i) => (
-              <li key={i}>
-                {e.id} - {e.email}
-              </li>
-            ))}
-            <ReactTable
-              data={this.state.ListData}
-              columns={listSchema['users'].columns}
-            />
+            <h1>AAAAAAA LOADING</h1>
           </div>
         ) : (
-          ''
+          <div>
+            <div className="lists w-80-l center pa4 flex flex-column">
+              {this.props.list.slug !== 'activations' ? (
+                <Link
+                  to={`/${this._getPath()}/create`}
+                  className="create pointer right ttu f6 b self-end pv2 ph3 white bg-primary-color mb2 ba b--very-ver-light link">
+                  <i className="fa fa-plus-circle" /> Create
+                </Link>
+              ) : (
+                ''
+              )}
+              <h1>
+                {this.props.list.title} {` `}
+                <span className="list-size">
+                  {_.size(this.state.listData) || 0}
+                </span>
+              </h1>
+              {_.map(this.state.listData, (e, i) => (
+                <li key={i}>
+                  {e.id} - {e.email}
+                </li>
+              ))}
+              <ReactTable
+                data={this.state.listData}
+                columns={newSchema}
+                filterable={true}
+              />
+            </div>
+          </div>
         )}
       </div>
     );
