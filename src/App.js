@@ -47,11 +47,11 @@ class App extends Component {
                   authStore.isLoggedIn ? (
                     <Dashboard />
                   ) : (
-                    <Redirect to="/user/login" />
+                    <Redirect to="/users/login" />
                   )
                 }
               />
-              <Route path="/user" component={UserIndex} />
+              <Route path="/users" component={UserIndex} />
               <Route path="/applications" component={FormsIndex} />
               <Route path="/dashboard" component={Dashboard} />
             </Layout>

@@ -3,7 +3,7 @@ import Form from 'react-jsonschema-form';
 import SmallBox from '../common/smallBox';
 import { authStore, messages } from '../../lib/store';
 import { baseURL, postOptions } from '../../lib/api-calls';
-
+import { view } from 'react-easy-state';
 import { create } from '../../schema/user';
 
 class CreateUser extends React.Component {
@@ -61,6 +61,7 @@ class CreateUser extends React.Component {
   render() {
     return (
       <SmallBox>
+        Hellooo
         {this.state.created ? (
           <div>
             <p>
@@ -74,21 +75,23 @@ class CreateUser extends React.Component {
             <p>The password for activation is: {this.state.user.password}</p>
           </div>
         ) : (
-          <Form
-            schema={create.schema}
-            uiSchema={create.uiSchema}
-            onSubmit={this.create}
-            method="POST">
-            <div className="form-actions form-group flex justify-end">
-              <button type="submit">
-                {create.schema.submitButton}
-                <i className="fa fa-user-plus ml2" />
-              </button>
-            </div>
-          </Form>
+          <div>
+            <Form
+              schema={create.schema}
+              uiSchema={create.uiSchema}
+              onSubmit={this.create}
+              method="POST">
+              <div className="form-actions form-group flex justify-end">
+                <button type="submit">
+                  {create.schema.submitButton}
+                  <i className="fa fa-user-plus ml2" />
+                </button>
+              </div>
+            </Form>
+          </div>
         )}
       </SmallBox>
     );
   }
 }
-export default CreateUser;
+export default view(CreateUser);
