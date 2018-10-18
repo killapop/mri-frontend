@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { view } from 'react-easy-state';
 import { authStore, messages } from '../../lib/store';
 import { listSchema } from '../../data/lists';
-import { getOptions, baseURL } from '../../lib/api-calls.js';
+import { baseURL } from '../../lib/api-calls.js';
 
 import './list.css';
 
@@ -16,65 +16,82 @@ class FacilitatorList extends React.Component {
       { icon: 'eye', label: 'view' },
       { icon: 'edit', label: 'edit' },
       { icon: 'trash', label: 'delete' }
-    ]
+    ],
+    activations: [],
+    users: [],
+    applications: [],
+    projectProposals: [],
+    personalStatements: [],
+    bundles: []
   };
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    // console.log(nextProps.list, prevState.list);
-    if (nextProps.list !== prevState.list) {
-      return { list: nextProps.list, loaded: null };
-    }
-    return null;
-  }
-  componentDidUpdate(prevProps, prevState) {
-    console.log(this.state.loaded, prevState.loaded);
-    if (this.state.loaded === null && prevState.loaded !== null) {
-      this._getList();
-    }
-  }
-
   componentDidMount() {
-    this._getList();
-  }
-
-  shouldComponentUpdate() {
-    return true;
+    this._getLists();
   }
 
   _getPath() {
-    const l = this.props.list;
-    return l.slug === 'personalstatements' || l.slug === 'projectproposals'
+    const { list } = this.props;
+    return list.slug === 'personalStatements' ||
+      list.slug === 'projectProposals'
       ? 'applications'
-      : l.slug;
+      : list.slug;
   }
 
-  _getList() {
-    Object.assign(getOptions, {
-      headers: { Authorization: 'Bearer ' + authStore.token }
-    });
-    return fetch(baseURL + '/' + this._getPath(), getOptions)
-      .then(response => {
-        if (response.status !== 401) {
-          return response.json();
-        } else {
-          messages.messages.push({
-            id: Math.random(),
-            message: 'Error: There was an error retrieving data',
-            level: 'danger'
+  _getLists() {
+    const getOptions = {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + authStore.token,
+        'Content-Type': 'application/json'
+      }
+    };
+    _.forEach(
+      [
+        'activations',
+        'users',
+        'projectProposals',
+        'personalStatements',
+        'bundles'
+      ],
+      k => {
+        fetch(
+          baseURL +
+            '/' +
+            (k === 'personalStatements' || k === 'projectProposals'
+              ? 'applications'
+              : k),
+          getOptions
+        )
+          .then(response => {
+            if (response.status !== 401) {
+              return response.json();
+            } else {
+              messages.messages.push({
+                id: Math.random(),
+                message: 'Error: There was an error retrieving data',
+                level: 'danger'
+              });
+            }
+          })
+          .then(result => {
+            if (result.data) {
+              return this.setState(state => ({
+                [k]: result.data,
+                loaded: true
+              }));
+            }
           });
-        }
-      })
-      .then(result => {
-        if (result.data) {
-          return this.setState(state => ({
-            listData: result.data,
-            loaded: !this.state.loaded
-          }));
-        }
-      });
+      }
+    );
   }
 
   render() {
+    const { loaded } = this.state;
+    const { list } = this.props;
+    const path =
+      list.slug === 'personalStatements' || list.slug === 'projectProposals'
+        ? 'applications'
+        : list.slug;
     const addActions = {
       Header: 'Actions',
       accessor: 'id',
@@ -96,21 +113,20 @@ class FacilitatorList extends React.Component {
       )
     };
 
-    const newSchema = _.concat(listSchema[this._getPath()], addActions);
+    const newSchema = _.concat(listSchema[path], addActions);
 
-    // console.log(newSchema);
     return (
       <div>
-        {this.state.loaded === null ? (
-          <div>
+        {loaded === null ? (
+          <div className="center">
             <h1>AAAAAAA LOADING</h1>
           </div>
         ) : (
           <div>
             <div className="lists w-80-l center pa4 flex flex-column">
-              {this.props.list.slug !== 'activations' ? (
+              {list.slug !== 'activations' ? (
                 <Link
-                  to={`/${this._getPath()}/create`}
+                  to={`/${path}/create`}
                   className="create pointer right ttu f6 b self-end pv2 ph3 white bg-primary-color mb2 ba b--very-ver-light link">
                   <i className="fa fa-plus-circle" /> Create
                 </Link>
@@ -118,18 +134,18 @@ class FacilitatorList extends React.Component {
                 ''
               )}
               <h1>
-                {this.props.list.title} {` `}
+                {list.title} {` `}
                 <span className="list-size">
-                  {_.size(this.state.listData) || 0}
+                  {_.size(this.state[path]) || 0}
                 </span>
               </h1>
-              {_.map(this.state.listData, (e, i) => (
+              {_.map(this.state[path], (e, i) => (
                 <li key={i}>
                   {e.id} - {e.email}
                 </li>
               ))}
               <ReactTable
-                data={this.state.listData}
+                data={this.state[path]}
                 columns={newSchema}
                 filterable={true}
               />

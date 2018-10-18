@@ -1,4 +1,4 @@
-export { projectProposal as projectproposals } from './project_proposal';
+export { projectProposal } from './project_proposal';
 
 export const create = {
   schema: {
