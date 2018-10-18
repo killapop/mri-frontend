@@ -127,7 +127,7 @@ class FacilitatorList extends React.Component {
               {list.slug !== 'activations' ? (
                 <Link
                   to={`/${path}/create`}
-                  className="create pointer right ttu f6 b self-end pv2 ph3 white bg-primary-color mb2 ba b--very-ver-light link">
+                className="create pointer right ttu f6 b self-end pv2 ph3 white bg-primary-color mb2 ba b--very-ver-light link">
                   <i className="fa fa-plus-circle" /> Create
                 </Link>
               ) : (
@@ -148,6 +148,11 @@ class FacilitatorList extends React.Component {
                 data={this.state[path]}
                 columns={newSchema}
                 filterable={true}
+                defaultFilterMethod={(filter, row) =>
+                  String(row[filter.id])
+                  .toLowerCase()
+                  .indexOf(filter.value) >= 0
+                }
               />
             </div>
           </div>
