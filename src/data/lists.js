@@ -104,8 +104,39 @@ export const listSchema = {
       {
         accessor: 'roles',
         Header: 'Roles',
-        Cell: ({ roles }) => (
-          <div>{_.map(roles, role => <span>{role}</span>)}</div>
+        Cell: row => (
+          <div>
+            {_.map(row.value, (role, key) => {
+              return (
+                <span
+                  key={key}
+                  className="mr2 br2 ph2 pv1 gray f6  bg-white shadow-light">
+                  {role}
+                </span>
+              );
+            })}
+          </div>
+        ),
+        filterMethod: (filter, row) => {
+          if (filter.value !== 'all') {
+            console.log(_.includes(row.roles, filter.value));
+            if (_.includes(row.roles, filter.value)) {
+              return row;
+            }
+          } else {
+            return row;
+          }
+        },
+        Filter: ({ filter, onChange }) => (
+          <select
+            onChange={event => onChange(event.target.value)}
+            style={{ width: '100%' }}
+            value={filter ? filter.value : 'all'}>
+            <option value="all">Show All</option>
+            <option value="mri-staff">mri-staff</option>
+            <option value="applicant">organisation</option>
+            <option value="applicant">beneficiary</option>
+          </select>
         )
       }
     ]

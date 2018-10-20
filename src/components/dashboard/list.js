@@ -13,7 +13,8 @@ import './list.css';
 class FacilitatorList extends React.Component {
   state = {
     actionButtons: {
-      activations: [{ icon: 'ban', label: 'invalidate' }]
+      activations: [{ icon: 'ban', label: 'invalidate' }],
+      users: [{ icon: 'trash', label: 'delete' }]
     },
     activations: [],
     users: [],
@@ -113,10 +114,11 @@ class FacilitatorList extends React.Component {
                 key={i}
                 data-action={b.label}
                 data-type={path === 'activations' ? 'users' : path}
-                data-id={row.row.token}
+                data-id={path === 'activations' ? row.row.token : row.row.id}
                 data-data={row}
                 className={`fa fa-${b.icon} action pointer`}
                 onClick={e => this.clickHandler(e)}
+                title={b.label}
               />
             ))}
           </div>
