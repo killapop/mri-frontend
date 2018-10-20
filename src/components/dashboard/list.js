@@ -2,7 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 import { view } from 'react-easy-state';
 import { authStore, messages } from '../../lib/store';
 import { listSchema } from '../../data/lists';
@@ -12,11 +12,9 @@ import './list.css';
 
 class FacilitatorList extends React.Component {
   state = {
-    actionButtons: [
-      { icon: 'eye', label: 'view' },
-      { icon: 'edit', label: 'edit' },
-      { icon: 'trash', label: 'delete' }
-    ],
+    actionButtons: {
+      activations: [{ icon: 'ban', label: 'invalidate' }]
+    },
     activations: [],
     users: [],
     applications: [],
@@ -76,13 +74,23 @@ class FacilitatorList extends React.Component {
           .then(result => {
             if (result.data) {
               return this.setState(state => ({
-                [k]: result.data,
+                [k]:
+                  k === 'personalStatements' || k === 'projectProposals'
+                    ? _.filter(result.data, r => r.form === k)
+                    : result.data,
                 loaded: true
               }));
             }
           });
       }
     );
+  }
+
+  clickHandler(e) {
+    const { type, id, action } = e.target.dataset;
+    const pathname = `/${type}/${action}/${id}`;
+    console.log(pathname);
+    this.setState(state => ({ redirect: pathname }));
   }
 
   render() {
@@ -94,18 +102,21 @@ class FacilitatorList extends React.Component {
         : list.slug;
     const addActions = {
       Header: 'Actions',
-      accessor: 'id',
+      accessor: path === 'activations' ? 'token' : 'id',
       filterable: false,
       sortable: false,
       Cell: row => (
         <div>
-          <div id={row.row.id} className="actions">
-            {_.map(this.state.actionButtons, (b, i) => (
+          <div id={row.row.token} className="actions">
+            {_.map(this.state.actionButtons[path], (b, i) => (
               <i
                 key={i}
                 data-action={b.label}
+                data-type={path === 'activations' ? 'users' : path}
+                data-id={row.row.token}
+                data-data={row}
                 className={`fa fa-${b.icon} action pointer`}
-                onClick={this.clickHandler}
+                onClick={e => this.clickHandler(e)}
               />
             ))}
           </div>
@@ -117,6 +128,7 @@ class FacilitatorList extends React.Component {
 
     return (
       <div>
+        {this.state.redirect ? <Redirect to={this.state.redirect} /> : ''}
         {loaded === null ? (
           <div className="center">
             <h1>AAAAAAA LOADING</h1>
@@ -124,34 +136,33 @@ class FacilitatorList extends React.Component {
         ) : (
           <div>
             <div className="lists w-80-l center pa4 flex flex-column">
-              {list.slug !== 'activations' ? (
-                <Link
-                  to={`/${path}/create`}
-                className="create pointer right ttu f6 b self-end pv2 ph3 white bg-primary-color mb2 ba b--very-ver-light link">
-                  <i className="fa fa-plus-circle" /> Create
-                </Link>
-              ) : (
-                ''
-              )}
-              <h1>
-                {list.title} {` `}
-                <span className="list-size">
-                  {_.size(this.state[path]) || 0}
-                </span>
-              </h1>
-              {_.map(this.state[path], (e, i) => (
-                <li key={i}>
-                  {e.id} - {e.email}
-                </li>
-              ))}
+              <div className="flex justify-between">
+                <h1>
+                  {list.title} {` `}
+                  <span className="list-size">
+                    {_.size(this.state[path]) || 0}
+                  </span>
+                </h1>
+                {list.slug !== 'activations' ? (
+                  <Link
+                    to={`/${path}/create`}
+                    className="create pointer right ttu f6 b self-end pv2 ph3 white bg-primary-color mb2 ba b--very-ver-light link">
+                    <i className="fa fa-plus-circle" /> Create
+                  </Link>
+                ) : (
+                  ''
+                )}
+              </div>
               <ReactTable
                 data={this.state[path]}
                 columns={newSchema}
                 filterable={true}
+                defaultPageSize={10}
+                className="-striped -highlight"
                 defaultFilterMethod={(filter, row) =>
                   String(row[filter.id])
-                  .toLowerCase()
-                  .indexOf(filter.value) >= 0
+                    .toLowerCase()
+                    .indexOf(filter.value) >= 0
                 }
               />
             </div>
@@ -163,7 +174,8 @@ class FacilitatorList extends React.Component {
 }
 
 FacilitatorList.propTypes = {
-  list: PropTypes.object
+  list: PropTypes.object,
+  history: PropTypes.object
 };
 
-export default view(FacilitatorList);
+export default withRouter(view(FacilitatorList));

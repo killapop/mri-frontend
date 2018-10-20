@@ -8,6 +8,7 @@ import Layout from './components/common/layout';
 import Messages from './components/common/messages';
 import UserIndex from './components/user';
 import FormsIndex from './components/applications';
+import InvalidateActivation from './components/user/invalidate';
 // import Clock from './components/common/clock';
 import Dashboard from './components/dashboard/dashboard';
 import './App.css';

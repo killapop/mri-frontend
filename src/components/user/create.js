@@ -70,7 +70,7 @@ class CreateUser extends React.Component {
             <p>
               {' '}
               To activate the account, the user has to open this link in a
-              browser: http://devs:3000/user/activate/{this.state.user.token}.
+              browser: http://devs:3000/users/activate/{this.state.user.token}.
             </p>
             <p>The password for activation is: {this.state.user.password}</p>
           </div>
