@@ -19,7 +19,7 @@ class CreateUser extends React.Component {
   }
 
   async create({ formData }) {
-    await apiCall('POST', '/activations', JSON.stringify(formData))
+    await apiCall('POST', '/activations', JSON.stringify(formData), true)
       .then(result => {
         console.log(result);
         if (result) {
