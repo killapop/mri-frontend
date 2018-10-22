@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import { view } from 'react-easy-state';
-import { authStore, messages } from '../../lib/store';
+// import { authStore, messages } from '../../lib/store';
 import { listSchema } from '../../data/lists';
-import { baseURL } from '../../lib/api-calls.js';
+import { getList } from '../../lib/api-calls.js';
 
 import './list.css';
 
@@ -24,26 +24,11 @@ class FacilitatorList extends React.Component {
     bundles: []
   };
 
-  componentDidMount() {
-    this._getLists();
-  }
-
-  _getPath() {
-    const { list } = this.props;
-    return list.slug === 'personalStatements' ||
-      list.slug === 'projectProposals'
-      ? 'applications'
-      : list.slug;
+  async componentDidMount() {
+    await this._getLists();
   }
 
   _getLists() {
-    const getOptions = {
-      method: 'GET',
-      headers: {
-        Authorization: 'Bearer ' + authStore.token,
-        'Content-Type': 'application/json'
-      }
-    };
     _.forEach(
       [
         'activations',
@@ -53,36 +38,20 @@ class FacilitatorList extends React.Component {
         'bundles'
       ],
       k => {
-        fetch(
-          baseURL +
-            '/' +
+        getList(
+          '/' +
             (k === 'personalStatements' || k === 'projectProposals'
               ? 'applications'
-              : k),
-          getOptions
-        )
-          .then(response => {
-            if (response.status !== 401) {
-              return response.json();
-            } else {
-              messages.messages.push({
-                id: Math.random(),
-                message: 'Error: There was an error retrieving data',
-                level: 'danger'
-              });
-            }
-          })
-          .then(result => {
-            if (result.data) {
-              return this.setState(state => ({
-                [k]:
-                  k === 'personalStatements' || k === 'projectProposals'
-                    ? _.filter(result.data, r => r.form === k)
-                    : result.data,
-                loaded: true
-              }));
-            }
-          });
+              : k)
+        ).then(data =>
+          this.setState(state => ({
+            [k]:
+              k === 'personalStatements' || k === 'projectProposals'
+                ? _.filter(data, r => r.form === k)
+                : data,
+            loaded: true
+          }))
+        );
       }
     );
   }

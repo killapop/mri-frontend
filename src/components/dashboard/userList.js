@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactTable from 'react-table';
-import { getOptions, baseURL, apiRoutes } from '../../lib/api-calls.js';
 
 import './list.css';
 

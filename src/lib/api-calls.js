@@ -1,39 +1,16 @@
+import { authStore, messages } from './store';
+
 const baseURL =
   window.location.protocol +
   '//' +
   window.location.hostname +
   (process.env.NODE_ENV === 'production' ? ':/api' : ':3001');
 
-const getOptions = {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json'
-  }
-};
-
-const postOptions = {
-  method: 'POST',
-  mode: 'cors',
-  cache: 'no-cache',
-  credentials: 'same-origin',
-  headers: {
-    'Content-Type': 'application/json; charset=utf-8'
-  },
-  redirect: 'follow',
-  referrer: 'no-referrer',
-  body: {}
-};
-
-const apiRoutes = {
-  auth: '/users',
-  applications: '/applications'
-};
-
-const getAuth = (method, path, data) => {
+const getAuth = (method, path, body) => {
   return fetch(baseURL + path, {
     method,
     headers: { 'Content-Type': 'application/json' },
-    body: data
+    body
   })
     .then(response => {
       if (response.status !== 401) {
@@ -48,4 +25,30 @@ const getAuth = (method, path, data) => {
     .catch(err => console.log(err));
 };
 
-export { baseURL, getOptions, postOptions, apiRoutes, getAuth };
+const getList = path => {
+  return fetch(baseURL + path, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + authStore.token
+    }
+  })
+    .then(response => {
+      if (response.status !== 401) {
+        return response.json();
+      } else {
+        messages.messages.push({
+          id: Math.random(),
+          message:
+            'Error: There was an error retrieving data. Please try logging in again',
+          level: 'danger'
+        });
+      }
+    })
+    .then(result => {
+      return result.data;
+    })
+    .catch(err => console.log(err));
+};
+
+export { baseURL, getAuth, getList };
