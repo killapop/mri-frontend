@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import { view } from 'react-easy-state';
-// import { authStore, messages } from '../../lib/store';
+import { authStore, messages } from '../../lib/store';
 import { listSchema } from '../../data/lists';
-import { getList } from '../../lib/api-calls.js';
+import { apiCall } from '../../lib/api-calls.js';
 
 import './list.css';
 
@@ -38,20 +38,27 @@ class FacilitatorList extends React.Component {
         'bundles'
       ],
       k => {
-        getList(
+        apiCall(
+          'GET',
           '/' +
             (k === 'personalStatements' || k === 'projectProposals'
               ? 'applications'
-              : k)
-        ).then(data =>
+              : k),
+          '',
+          true
+        ).then(data => {
+          if (data === 401) {
+            authStore.token = '';
+            authStore.user = {};
+          }
           this.setState(state => ({
             [k]:
               k === 'personalStatements' || k === 'projectProposals'
                 ? _.filter(data, r => r.form === k)
                 : data,
             loaded: true
-          }))
-        );
+          }));
+        });
       }
     );
   }
@@ -59,7 +66,6 @@ class FacilitatorList extends React.Component {
   clickHandler(e) {
     const { type, id, action } = e.target.dataset;
     const pathname = `/${type}/${action}/${id}`;
-    console.log(pathname);
     this.setState(state => ({ redirect: pathname }));
   }
 
@@ -97,12 +103,15 @@ class FacilitatorList extends React.Component {
 
     const newSchema = _.concat(listSchema[path], addActions);
 
+    if (authStore.token === '') {
+      return <Redirect to="/" />;
+    }
     return (
       <div>
         {this.state.redirect ? <Redirect to={this.state.redirect} /> : ''}
         {loaded === null ? (
           <div className="center">
-            <h1>AAAAAAA LOADING</h1>
+            <h1>LOADING</h1>
           </div>
         ) : (
           <div>
@@ -145,8 +154,7 @@ class FacilitatorList extends React.Component {
 }
 
 FacilitatorList.propTypes = {
-  list: PropTypes.object,
-  history: PropTypes.object
+  list: PropTypes.object
 };
 
 export default withRouter(view(FacilitatorList));

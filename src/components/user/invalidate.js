@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import SmallBox from '../common/smallBox';
 import { authStore, messages } from '../../lib/store';
-import { baseURL } from '../../lib/api-calls';
+import { apiCall } from '../../lib/api-calls';
 import { view } from 'react-easy-state';
 
 class InvalidateActivation extends React.Component {
@@ -14,25 +14,16 @@ class InvalidateActivation extends React.Component {
     this.invalidate = this.invalidate.bind(this);
   }
 
-  invalidate() {
-    const body = {
-      isValid: false
-    };
-    const options = {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + authStore.token
-      },
-      body: JSON.stringify(body)
-    };
-    return fetch(
-      baseURL + '/activations/' + this.props.match.params.token,
-      options
+  async invalidate() {
+    await apiCall(
+      'PUT',
+      '/activations/' + this.props.match.params.token,
+      JSON.stringify({ isValid: false }),
+      true
     )
-      .then(response => {
-        console.log(response.status);
-        if (response.status === 204) {
+      .then(statusCode => {
+        console.log(statusCode);
+        if (statusCode === 204) {
           this.setState(state => ({
             invalidated: true
           }));
@@ -46,7 +37,7 @@ class InvalidateActivation extends React.Component {
         } else {
           messages.messages.push({
             id: Math.random(),
-            message: 'Error: There was an error add the user.',
+            message: 'Error: There was an error invalidating the activation.',
             level: 'danger'
           });
         }
@@ -57,6 +48,9 @@ class InvalidateActivation extends React.Component {
   }
 
   render() {
+    if (authStore.token === '') {
+      return <Redirect to="/" />;
+    }
     return (
       <SmallBox>
         {this.state.invalidated ? (
@@ -66,7 +60,7 @@ class InvalidateActivation extends React.Component {
               invalidated.{' '}
               <Link to="/dashboard">
                 {' '}
-                Click here to return to the bashboard{' '}
+                Click here to return to the dashboard{' '}
               </Link>
             </h4>
           </div>
@@ -82,7 +76,7 @@ class InvalidateActivation extends React.Component {
               value="Yes. I am sure!"
               onClick={this.invalidate}
             />
-            <Link to="/dashboard">Cancel and to back</Link>
+            <Link to="/dashboard">Cancel and return to the dashboard</Link>
           </div>
         )}
       </SmallBox>

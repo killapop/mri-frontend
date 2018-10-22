@@ -1,10 +1,10 @@
 import React from 'react';
 import Form from 'react-jsonschema-form';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { view } from 'react-easy-state';
 import SmallBox from '../common/smallBox';
 import { authStore, messages } from '../../lib/store';
-import { baseURL, postOptions } from '../../lib/api-calls';
+import { apiCall } from '../../lib/api-calls';
 
 import { create } from '../../schema/user';
 
@@ -18,39 +18,18 @@ class CreateUser extends React.Component {
     this.create = this.create.bind(this);
   }
 
-  create({ formData }) {
-    console.log(formData);
-
-    Object.assign(postOptions, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + authStore.token
-      },
-      body: JSON.stringify(formData)
-    });
-    console.log(postOptions);
-    return fetch(baseURL + '/activations', postOptions)
-      .then(response => {
-        if (response.status !== 401) {
-          return response.json();
-        } else {
-          messages.messages.push({
-            id: Math.random(),
-            message: 'Error: There was an error add the user.',
-            level: 'danger'
-          });
-        }
-      })
+  async create({ formData }) {
+    await apiCall('POST', '/activations', JSON.stringify(formData))
       .then(result => {
         console.log(result);
-        if (result.data) {
+        if (result) {
           this.setState(state => ({
-            user: result.data,
+            user: result,
             created: true
           }));
           messages.messages.push({
             id: Math.random(),
-            message: `Logged in as ${formData.email}`,
+            message: `Created a user account for ${formData.email}`,
             level: 'success'
           });
         }
@@ -61,45 +40,46 @@ class CreateUser extends React.Component {
   }
 
   render() {
+    if (authStore.token === '') {
+      return <Redirect to="/" />;
+    }
     return (
       <SmallBox>
-        {!authStore.isLoggedIn ? (
-          <Redirect to="/" />
-        ) : (
-          <div>
-            {this.state.created ? (
-              <div>
+        <div>
+          {this.state.created ? (
+            <div className="bg-white pv4 ph3 ba b--light-silver">
+              <div className="title">Account created</div>
+              <div className="f4 mb4">
+                A new activation has been created for {this.state.user.email}.
+              </div>
+              <div className="mb3">
+                <label>URL: </label>
                 <p>
-                  A new user account has been created for{' '}
-                  {this.state.user.email}.
-                </p>
-                <p>
-                  {' '}
-                  To activate the account, the user has to open this link in a
-                  browser: http://devs:3000/user/activate/{
+                  {`${window.location.origin}/users/activate/${
                     this.state.user.token
-                  }.
-                </p>
-                <p>
-                  The password for activation is: {this.state.user.password}
+                  }`}
                 </p>
               </div>
-            ) : (
-              <Form
-                schema={create.schema}
-                uiSchema={create.uiSchema}
-                onSubmit={this.create}
-                method="POST">
-                <div className="form-actions form-group flex justify-end">
-                  <button type="submit">
-                    {create.schema.submitButton}
-                    <i className="fa fa-user-plus ml2" />
-                  </button>
-                </div>
-              </Form>
-            )}
-          </div>
-        )}
+              <div>
+                <label>password: </label>
+                <p>{this.state.user.password}</p>
+              </div>
+            </div>
+          ) : (
+            <Form
+              schema={create.schema}
+              uiSchema={create.uiSchema}
+              onSubmit={this.create}
+              method="POST">
+              <div className="form-actions form-group flex justify-end">
+                <button type="submit">
+                  {create.schema.submitButton}
+                  <i className="fa fa-user-plus ml2" />
+                </button>
+              </div>
+            </Form>
+          )}
+        </div>
       </SmallBox>
     );
   }

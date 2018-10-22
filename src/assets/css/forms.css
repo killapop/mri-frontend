@@ -105,11 +105,6 @@ button:active {
 }
 
 @media screen and (min-width: 60em) {
-  .title,
-  #root__title {
-    margin-left: -1em;
-  }
-
   .form-actions {
     padding-right: 2.25em;
   }
