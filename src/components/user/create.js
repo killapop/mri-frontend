@@ -47,7 +47,7 @@ class CreateUser extends React.Component {
       <SmallBox>
         <div>
           {this.state.created ? (
-            <div className="bg-white pv4 ph3 ba b--light-silver">
+            <div className="pv4 ph3">
               <div className="title">Account created</div>
               <div className="f4 mb4">
                 A new activation has been created for {this.state.user.email}.
