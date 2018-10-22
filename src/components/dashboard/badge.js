@@ -22,14 +22,14 @@ class Badge extends React.Component {
     return (
       <div
         onClick={this.setActiveBadge}
-        className={`badge pa3 flex flex-column justify-start items-center  pointer relative bg-light-gray mr3 ${
+        className={`badge flex flex-column justify-center items-center  pointer relative bg-light-gray ${
           authStore.activeList.slug === slug ? 'active' : ''
         }`}
         data-slug={slug}
         data-title={badge.title}
         id={slug}>
-        <i className={`fa fa-${badge.icon} fa-3x mt3 mb1 gray`} />
-        <div className="f4 gray t-shadow-light b">{badge.title}</div>
+        <i className={`fa fa-${badge.icon} fa-2x mb3`} />
+        <div className="badge-title f6 ttu t-shadow-light b">{badge.title}</div>
       </div>
     );
   }

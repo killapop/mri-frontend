@@ -30,7 +30,7 @@ class Badges extends React.Component {
   }
   render() {
     return (
-      <div className="badges flex flex-wrap">
+      <div className="badges flex flex-wrap justify-between">
         {_.map(this.state.badges, (badge, idx) => (
           <Badge badge={badge} key={idx} />
         ))}

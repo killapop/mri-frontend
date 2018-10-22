@@ -1,6 +1,6 @@
 import React from 'react';
 import Form from 'react-jsonschema-form';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { view } from 'react-easy-state';
 import SmallBox from '../common/smallBox';
 import { authStore, messages } from '../../lib/store';
