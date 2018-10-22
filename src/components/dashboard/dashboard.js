@@ -1,6 +1,7 @@
 /* eslint no-unused-expresions: 0 */
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import _ from 'lodash';
 import Badges from './badges';
 import FacilitatorList from './list';
 import UserList from './userList';
@@ -14,14 +15,19 @@ class Dashboard extends React.Component {
     // this.badges = this.badges.bind(this);
     this.badgeChangeHandler = this.badgeChangeHandler.bind(this);
     this.sluggify = this.sluggify.bind(this);
+    this.isStaff = this.isStaff.bind(this);
   }
 
   componentDidMount() {
     if (authStore.currentRole) {
       this.setState(state => ({
-        activeBadge: authStore.currentRole === 'facilitator' ? 'users' : 'forms'
+        activeBadge: this.isStaff()
       }));
     }
+  }
+
+  isStaff() {
+    return _.includes(authStore.user.roles, 'mri-staff');
   }
 
   badgeChangeHandler(e) {
@@ -37,17 +43,13 @@ class Dashboard extends React.Component {
     const list = authStore.activeList;
     return (
       <div>
-        {authStore.isLoggedIn ? (
+        {authStore.token !== '' ? (
           <div>
             <div className=" w-80-ns center pa4">
               <div className="title pb0">Dashboard</div>
-              {authStore.currentRole === 'facilitator' ? <Badges /> : ''}
+              {this.isStaff() ? <Badges /> : ''}
             </div>
-            {authStore.currentRole === 'facilitator' ? (
-              <FacilitatorList list={list} />
-            ) : (
-              <UserList />
-            )}
+            {this.isStaff() ? <FacilitatorList list={list} /> : <UserList />}
           </div>
         ) : (
           <Redirect to="/" />
