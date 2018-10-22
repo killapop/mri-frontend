@@ -69,7 +69,7 @@ class Header extends React.Component {
                   <span className="dn db-l">Info</span>
                 </div>
               </a>
-              {authStore.isLoggedIn ? (
+              {authStore.token !== '' ? (
                 <div className="flex">
                   {this.state.userLinks.map(({ label, Icon, path }, key) => (
                     <Link
