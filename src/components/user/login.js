@@ -2,11 +2,10 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Form from 'react-jsonschema-form';
 import SmallBox from '../common/smallBox';
-
+import jwt from 'jsonwebtoken';
 import { login } from '../../schema/user';
-import { view } from 'react-easy-state';
 import { authStore, messages } from '../../lib/store.js';
-import { postOptions, baseURL, apiRoutes } from '../../lib/api-calls.js';
+import { getAuth } from '../../lib/api-calls.js';
 import '../../assets/css/forms.css';
 
 class Login extends React.Component {
@@ -18,44 +17,25 @@ class Login extends React.Component {
       formData: {
         email: 'mary@domain.com',
         password: 'secretsecret'
-      }
+      },
+      loggedIn: false
     };
   }
 
-  login({ formData }) {
-    Object.assign(postOptions, { body: JSON.stringify(formData) });
-    return fetch(baseURL + apiRoutes.auth, postOptions)
-      .then(response => {
-        if (response.status !== 401) {
-          return response.json();
-        } else {
-          messages.messages.push({
-            id: Math.random(),
-            message: 'Error: Please check the email or password',
-            level: 'danger'
-          });
-        }
-      })
-      .then(result => {
-        if (result.data) {
-          authStore.isLoggedIn = true;
-          authStore.token = result.data.token;
-          // TODO: fetch actual roles.
-          if (formData.email === 'mary@domain.com') {
-            authStore.currentRole = 'facilitator';
-          } else {
-            authStore.currentRole = 'organisation';
-          }
-          messages.messages.push({
-            id: Math.random(),
-            message: `Logged in as ${formData.email}`,
-            level: 'success'
-          });
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  componentDidMount() {
+    this.setState(state => ({
+      loggedIn: authStore.token !== ''
+    }));
+  }
+
+  async login({ formData }) {
+    await getAuth('POST', '/users', JSON.stringify(formData)).then(data => {
+      if (data) {
+        authStore.token = data.token;
+        authStore.user = jwt.decode(data.token);
+        this.setState(() => ({ loggedIn: true }));
+      }
+    });
   }
 
   errors({ errors }) {
@@ -68,30 +48,29 @@ class Login extends React.Component {
   }
 
   render() {
+    if (this.state.loggedIn === true) {
+      return <Redirect to="/dashboard" />;
+    }
     return (
       <SmallBox>
-        {authStore.isLoggedIn ? (
-          <Redirect to="/dashboard" />
-        ) : (
-          <Form
-            schema={login.schema}
-            uiSchema={login.uiSchema}
-            onSubmit={this.login}
-            onError={this.errors}
-            formData={this.state.formData}
-            showErrorList={true}
-            method="POST">
-            <div className="form-actions form-group flex justify-end">
-              <button type="submit">
-                {login.schema.submitButton}
-                <i className="fa fa-sign-in-alt ml2" />
-              </button>
-            </div>
-          </Form>
-        )}
+        <Form
+          schema={login.schema}
+          uiSchema={login.uiSchema}
+          onSubmit={this.login}
+          onError={this.errors}
+          formData={this.state.formData}
+          showErrorList={true}
+          method="POST">
+          <div className="form-actions form-group flex justify-end">
+            <button type="submit">
+              {login.schema.submitButton}
+              <i className="fa fa-sign-in-alt ml2" />
+            </button>
+          </div>
+        </Form>
       </SmallBox>
     );
   }
 }
 
-export default view(Login);
+export default Login;

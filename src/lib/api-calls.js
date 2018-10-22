@@ -1,8 +1,8 @@
-const en = process.env;
 const baseURL =
-  en.NODE_ENV === 'development'
-    ? 'http://devs:3001'
-    : `http://${en.API_PATH}:${en.API_PORT}`;
+  window.location.protocol +
+  '//' +
+  window.location.hostname +
+  (process.env.NODE_ENV === 'production' ? ':/api' : ':3001');
 
 const getOptions = {
   method: 'GET',
@@ -26,7 +26,26 @@ const postOptions = {
 
 const apiRoutes = {
   auth: '/users',
-  application_lists: '/'
+  applications: '/applications'
 };
 
-export { baseURL, getOptions, postOptions, apiRoutes };
+const getAuth = (method, path, data) => {
+  return fetch(baseURL + path, {
+    method,
+    headers: { 'Content-Type': 'application/json' },
+    body: data
+  })
+    .then(response => {
+      if (response.status !== 401) {
+        return response.json();
+      } else {
+        console.log(response.status);
+      }
+    })
+    .then(result => {
+      return result.data;
+    })
+    .catch(err => console.log(err));
+};
+
+export { baseURL, getOptions, postOptions, apiRoutes, getAuth };
