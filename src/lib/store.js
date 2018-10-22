@@ -1,9 +1,8 @@
 import { store } from 'react-easy-state';
 
 const authStore = store({
-  isLoggedIn: false,
-  currentRole: '',
   token: '',
+  user: {},
   activeList: {
     title: 'Users',
     slug: 'users'
