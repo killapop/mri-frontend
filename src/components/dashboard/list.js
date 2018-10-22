@@ -83,18 +83,29 @@ class FacilitatorList extends React.Component {
       sortable: false,
       Cell: row => (
         <div>
-          <div id={row.row.token} className="actions">
+          <div
+            id={row.row[path === 'activations' ? 'token' : 'id']}
+            className="actions">
             {_.map(this.state.actionButtons[path], (b, i) => (
-              <i
-                key={i}
-                data-action={b.label}
-                data-type={path === 'activations' ? 'users' : path}
-                data-id={path === 'activations' ? row.row.token : row.row.id}
-                data-data={row}
-                className={`fa fa-${b.icon} action pointer`}
-                onClick={e => this.clickHandler(e)}
-                title={b.label}
-              />
+              <span key={i}>
+                {(path === 'activations' && row.row.isValid) ||
+                path !== 'activations' ? (
+                  <i
+                    key={i}
+                    data-action={b.label}
+                    data-type={path === 'activations' ? 'users' : path}
+                    data-id={
+                      path === 'activations' ? row.row.token : row.row.id
+                    }
+                    data-data={row.row}
+                    className={`fa fa-${b.icon} action pointer`}
+                    onClick={e => this.clickHandler(e)}
+                    title={b.label}
+                  />
+                ) : (
+                  ''
+                )}
+              </span>
             ))}
           </div>
         </div>
@@ -133,18 +144,24 @@ class FacilitatorList extends React.Component {
                   ''
                 )}
               </div>
-              <ReactTable
-                data={this.state[path]}
-                columns={newSchema}
-                filterable={true}
-                defaultPageSize={10}
-                className="-striped -highlight"
-                defaultFilterMethod={(filter, row) =>
-                  String(row[filter.id])
-                    .toLowerCase()
-                    .indexOf(filter.value) >= 0
-                }
-              />
+              {_.size(this.state[path]) > 0 ? (
+                <ReactTable
+                  data={this.state[path]}
+                  columns={newSchema}
+                  filterable={true}
+                  defaultPageSize={10}
+                  className="-striped -highlight"
+                  defaultFilterMethod={(filter, row) =>
+                    String(row[filter.id])
+                      .toLowerCase()
+                      .indexOf(filter.value.toLowerCase()) >= 0
+                  }
+                />
+              ) : (
+                <div className="text-center mt4 bt b--very-ver-light f4 pt3">
+                  No {path} found
+                </div>
+              )}
             </div>
           </div>
         )}
