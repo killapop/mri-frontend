@@ -76,28 +76,33 @@ class FacilitatorList extends React.Component {
       list.slug === 'personalStatements' || list.slug === 'projectProposals'
         ? 'applications'
         : list.slug;
+    const customIDs = () => {
+      if (path === 'activations') {
+        return 'token';
+      } else if (path === 'users') {
+        return 'email';
+      } else {
+        return 'id';
+      }
+    };
     const addActions = {
       Header: 'Actions',
-      accessor: path === 'activations' ? 'token' : 'id',
+      accessor: customIDs(),
       filterable: false,
       sortable: false,
       Cell: row => (
         <div>
-          <div
-            id={row.row[path === 'activations' ? 'token' : 'id']}
-            className="actions">
+          <div id={row.row[customIDs()]} className="actions">
             {_.map(this.state.actionButtons[path], (b, i) => (
               <span key={i}>
                 {(path === 'activations' && row.row.isValid) ||
-                path !== 'activations' ? (
-                  <i
-                    key={i}
-                    data-action={b.label}
-                    data-type={path === 'activations' ? 'users' : path}
-                    data-id={
-                      path === 'activations' ? row.row.token : row.row.id
-                    }
-                    data-data={row.row}
+                  path !== 'activations' ? (
+                    <i
+                      key={i}
+                      data-action={b.label}
+                      data-type={path === 'activations' ? 'users' : path}
+                      data-id={row.row[customIDs()]}
+                      data-data={row.row}
                     className={`fa fa-${b.icon} action pointer`}
                     onClick={e => this.clickHandler(e)}
                     title={b.label}

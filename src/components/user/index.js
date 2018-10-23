@@ -8,6 +8,7 @@ import EditAccount from './editAccount.js';
 import CreateUser from './create';
 import ActivateUser from './activate';
 import InvalidateActivation from './invalidate';
+import DeleteUser from './delete';
 
 import '../../assets/css/forms.css';
 
@@ -34,6 +35,10 @@ class UserIndex extends React.Component {
         <Route
           path={`${this.props.match.url}/invalidate/:token`}
           component={InvalidateActivation}
+        />
+        <Route
+          path={`${this.props.match.url}/delete/:email`}
+          component={DeleteUser}
         />
       </div>
     );
