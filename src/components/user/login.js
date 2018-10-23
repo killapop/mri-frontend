@@ -34,6 +34,13 @@ class Login extends React.Component {
         authStore.token = data.token;
         authStore.user = jwt.decode(data.token);
         this.setState(() => ({ loggedIn: true }));
+      } else {
+        messages.messages.push({
+          id: Math.Random(),
+          message:
+            'There was an error logging in. Please check your username and password',
+          level: 'error'
+        });
       }
     });
   }
@@ -41,7 +48,7 @@ class Login extends React.Component {
   errors({ errors }) {
     messages.messages.push({
       id: Math.Random(),
-      message: 'There was an error submitting the form',
+      message: 'There was an error logging in',
       level: 'error'
     });
     console.log(errors);
