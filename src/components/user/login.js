@@ -4,7 +4,7 @@ import Form from 'react-jsonschema-form';
 import SmallBox from '../common/smallBox';
 import jwt from 'jsonwebtoken';
 import { login } from '../../schema/user';
-import { authStore, messages } from '../../lib/store.js';
+import { authStore } from '../../lib/store.js';
 import { getAuth } from '../../lib/api-calls.js';
 import { add as addMessage } from '../../lib/message';
 import '../../assets/css/forms.css';

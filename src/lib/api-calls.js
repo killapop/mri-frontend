@@ -1,4 +1,4 @@
-import { authStore, messages } from './store';
+import { authStore } from './store';
 import { add as addMessage } from './message';
 
 const baseURL =

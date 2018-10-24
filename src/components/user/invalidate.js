@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { view } from 'react-easy-state';
 import SmallBox from '../common/smallBox';
-import { authStore, messages } from '../../lib/store';
+import { authStore } from '../../lib/store';
 import { apiCall } from '../../lib/api-calls';
 import { add as addMessage } from '../../lib/message';
 

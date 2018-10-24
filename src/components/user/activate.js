@@ -1,7 +1,6 @@
 import React from 'react';
 import Form from 'react-jsonschema-form';
 import SmallBox from '../common/smallBox';
-import { messages } from '../../lib/store';
 import { apiCall } from '../../lib/api-calls';
 import { add as addMessage } from '../../lib/message';
 
