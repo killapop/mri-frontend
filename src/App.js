@@ -16,6 +16,25 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.loggedIn = this.loggedIn.bind(this);
+    this.leavePage = this.leavePage.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('beforeunload', this.leavePage);
+  }
+
+  componentWillUnmount() {
+    window.removelistener('beforeunload', this.leavePage);
+  }
+
+  leavePage(e) {
+    console.log(e);
+    const leaveMessage =
+      'You are about to leave the MRI application platform. Please make sure to save your work and log out before leaving';
+    e.cancelable = false;
+    e.returnValue = leaveMessage;
+    // e.preventDefault();
+    return leaveMessage;
   }
 
   loggedIn() {
