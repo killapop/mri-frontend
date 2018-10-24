@@ -36,10 +36,10 @@ class Login extends React.Component {
         this.setState(() => ({ loggedIn: true }));
       } else {
         messages.messages.push({
-          id: Math.Random(),
+          id: Math.random(),
+          level: 'danger',
           message:
-            'There was an error logging in. Please check your username and password',
-          level: 'error'
+            'There was a problem logging in. Please check your email address or password.'
         });
       }
     });
