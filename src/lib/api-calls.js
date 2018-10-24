@@ -1,4 +1,5 @@
 import { authStore, messages } from './store';
+import { add as addMessage } from './message';
 
 const baseURL =
   window.location.protocol +
@@ -15,8 +16,6 @@ const getAuth = (method, path, body) => {
     .then(response => {
       if (response.status !== 401) {
         return response.json();
-      } else {
-        console.log(response.status);
       }
     })
     .then(result => {
@@ -48,13 +47,8 @@ const apiCall = (method, path, body, withAuth) => {
       } else if (response.status === 200) {
         return { data: response.status };
       } else {
-        messages.messages.push({
-          id: Math.random(),
-          message:
-            'Error: There was an error connecting to the server. Please try logging in again',
-          level: 'danger'
-        });
-        return response.status;
+        addMessage('danger', 'There was a problem authenticating.');
+        return { data: response.status.json() };
       }
     })
     .then(result => {

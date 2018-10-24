@@ -6,6 +6,7 @@ import { view } from 'react-easy-state';
 import SmallBox from '../common/smallBox';
 import { authStore, messages } from '../../lib/store';
 import { apiCall } from '../../lib/api-calls';
+import { add as addMessage } from '../../lib/message';
 
 class CreateForm extends React.Component {
   constructor(props) {
@@ -34,17 +35,12 @@ class CreateForm extends React.Component {
     Object.assign(formData, {
       form: this.props.match.params.template + '.json'
     });
-    console.log(formData);
     await apiCall('POST', '/applications', JSON.stringify(formData), true).then(
       data => {
         if (data === 204) {
           this.setState(state => ({ created: true }));
         } else {
-          messages.messages.push({
-            id: Math.random(),
-            message: 'Error: There was an error creating the form',
-            level: 'danger'
-          });
+          addMessage('danger', 'Error: There was an error creating the form');
         }
       }
     );

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
+import { view } from 'react-easy-state';
 import SmallBox from '../common/smallBox';
 import { authStore, messages } from '../../lib/store';
 import { apiCall } from '../../lib/api-calls';
-import { view } from 'react-easy-state';
+import { add as addMessage } from '../../lib/message';
 
 class InvalidateActivation extends React.Component {
   constructor(props) {
@@ -22,28 +23,25 @@ class InvalidateActivation extends React.Component {
       true
     )
       .then(statusCode => {
-        console.log(statusCode);
         if (statusCode === 204) {
           this.setState(state => ({
             invalidated: true
           }));
-          messages.messages.push({
-            id: Math.random(),
-            message: `Activation for ${
+          addMessage(
+            'success',
+            `Activation for ${
               this.props.match.params.token
-            } has been invalidated`,
-            level: 'success'
-          });
+            } has been invalidated`
+          );
         } else {
-          messages.messages.push({
-            id: Math.random(),
-            message: 'Error: There was an error invalidating the activation.',
-            level: 'danger'
-          });
+          addMessage(
+            'danger',
+            'There was an error invalidating the activation.'
+          );
         }
       })
       .catch(err => {
-        console.log(err);
+        addMessage('danger', 'There was an error invalidating the activation.');
       });
   }
 

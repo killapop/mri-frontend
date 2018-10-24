@@ -3,6 +3,7 @@ import Form from 'react-jsonschema-form';
 import SmallBox from '../common/smallBox';
 import { messages } from '../../lib/store';
 import { apiCall } from '../../lib/api-calls';
+import { add as addMessage } from '../../lib/message';
 
 import { activate } from '../../schema/user';
 
@@ -32,20 +33,18 @@ class ActivateUser extends React.Component {
       false
     )
       .then(result => {
-        console.log(result);
         if (result === 204) {
           this.setState(state => ({
             activated: true
           }));
-          messages.messages.push({
-            id: Math.random(),
-            message: `Activation successful`,
-            level: 'success'
-          });
+          addMessage('success', 'Activation successful');
         }
       })
       .catch(err => {
-        console.log(err);
+        addMessage(
+          'warning',
+          'Something went wrong while activating this account. Please ensure the data you entered is correct'
+        );
       });
   }
 

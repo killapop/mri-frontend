@@ -6,6 +6,7 @@ import jwt from 'jsonwebtoken';
 import { login } from '../../schema/user';
 import { authStore, messages } from '../../lib/store.js';
 import { getAuth } from '../../lib/api-calls.js';
+import { add as addMessage } from '../../lib/message';
 import '../../assets/css/forms.css';
 
 class Login extends React.Component {
@@ -34,29 +35,21 @@ class Login extends React.Component {
         authStore.token = data.token;
         authStore.user = jwt.decode(data.token);
         this.setState(() => ({ loggedIn: true }));
-        messages.messages.push({
-          id: Math.random(),
-          level: 'success',
-          message: 'Logged in!.'
-        });
+        addMessage('success', 'Logged in');
       } else {
-        messages.messages.push({
-          id: Math.random(),
-          level: 'danger',
-          message:
-            'There was a problem logging in. Please check your email address or password.'
-        });
+        addMessage(
+          'danger',
+          'There was a problem logging in. Please check your email address or password.'
+        );
       }
     });
   }
 
   errors({ errors }) {
-    messages.messages.push({
-      id: Math.Random(),
-      message: 'There was an error logging in',
-      level: 'error'
-    });
-    console.log(errors);
+    addMessage(
+      'danger',
+      'There was a problem logging in. Please check your email address or password.'
+    );
   }
 
   render() {

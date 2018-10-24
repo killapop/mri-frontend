@@ -3,12 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
-import logo from '../../assets/images/logo.svg';
-// import TestValues from '../common/testValues';
-import { messages, authStore } from '../../lib/store';
 import { view } from 'react-easy-state';
+import logo from '../../assets/images/logo.svg';
 import { userLinks, sessionFilters } from '../../data/testData';
 import Clock from '../common/clock';
+import { messages, authStore } from '../../lib/store';
+import { add as addMessage } from '../../lib/message';
 import './Header.css';
 
 class Header extends React.Component {
@@ -28,7 +28,7 @@ class Header extends React.Component {
   logout() {
     authStore.isLoggedIn = false;
     authStore.token = '';
-    messages.messages.push({ message: 'logged out', level: 'success' });
+    addMessage('info', 'Logged out');
   }
 
   roleChangeHandler(e) {

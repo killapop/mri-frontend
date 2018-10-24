@@ -119,7 +119,6 @@ export const listSchema = {
         ),
         filterMethod: (filter, row) => {
           if (filter.value !== 'all') {
-            console.log(_.includes(row.roles, filter.value));
             if (_.includes(row.roles, filter.value)) {
               return row;
             }

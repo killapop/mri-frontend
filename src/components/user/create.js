@@ -5,6 +5,7 @@ import { view } from 'react-easy-state';
 import SmallBox from '../common/smallBox';
 import { authStore, messages } from '../../lib/store';
 import { apiCall } from '../../lib/api-calls';
+import { add as addMessage } from '../../lib/message';
 
 import { create } from '../../schema/user';
 
@@ -21,21 +22,19 @@ class CreateUser extends React.Component {
   async create({ formData }) {
     await apiCall('POST', '/activations', JSON.stringify(formData), true)
       .then(result => {
-        console.log(result);
         if (result) {
           this.setState(state => ({
             user: result,
             created: true
           }));
-          messages.messages.push({
-            id: Math.random(),
-            message: `Created a user account for ${formData.email}`,
-            level: 'success'
-          });
+          addMessage('success', `Created a user account for ${formData.email}`);
         }
       })
       .catch(err => {
-        console.log(err);
+        addMessage(
+          'danger',
+          `There was an error creating an account for ${formData.email}`
+        );
       });
   }
 

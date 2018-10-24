@@ -1,9 +1,10 @@
 import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
+import { view } from 'react-easy-state';
 import SmallBox from '../common/smallBox';
 import { authStore, messages } from '../../lib/store';
 import { apiCall } from '../../lib/api-calls';
-import { view } from 'react-easy-state';
+import { add as addMessage } from '../../lib/message';
 
 class DeleteUser extends React.Component {
   constructor(props) {
@@ -17,28 +18,20 @@ class DeleteUser extends React.Component {
   async delete() {
     await apiCall('DELETE', '/users/' + this.props.match.params.email, '', true)
       .then(statusCode => {
-        console.log(statusCode);
         if (statusCode === 204) {
           this.setState(state => ({
             deleted: true
           }));
-          messages.messages.push({
-            id: Math.random(),
-            message: `User account for ${
-              this.props.match.params.email
-            } has been deleted`,
-            level: 'success'
-          });
+          addMessage(
+            'success',
+            `User account for ${this.props.match.params.email} has been deleted`
+          );
         } else {
-          messages.messages.push({
-            id: Math.random(),
-            message: 'Error: There was an error deleting the account.',
-            level: 'danger'
-          });
+          addMessage('danger', 'There was an error deleting the account.');
         }
       })
       .catch(err => {
-        console.log(err);
+        addMessage('danger', 'There was an error deleting the account.');
       });
   }
 
