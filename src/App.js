@@ -28,12 +28,10 @@ class App extends Component {
   }
 
   leavePage(e) {
-    console.log(e);
     const leaveMessage =
       'You are about to leave the MRI application platform. Please make sure to save your work and log out before leaving';
     e.cancelable = false;
     e.returnValue = leaveMessage;
-    // e.preventDefault();
     return leaveMessage;
   }
 
