@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { view } from 'react-easy-state';
-import FormForm from './form';
 
 import CreateForm from './create';
 
@@ -16,8 +15,11 @@ class ApplicationsIndex extends React.Component {
           path={`${this.props.match.url}`}
           render={() => <Redirect to="/" />}
         />
-        <Route path={`${this.props.match.url}/create`} component={CreateForm} />
-        <Route path={`${this.props.match.url}/edit/:id`} component={FormForm} />
+        <Route
+          path={`${this.props.match.url}/create/:template`}
+          component={CreateForm}
+        />
+        {/* <Route path={`${this.props.match.url}/:id`} component={FormForm} /> */}
       </div>
     );
   }

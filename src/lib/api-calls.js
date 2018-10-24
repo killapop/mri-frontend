@@ -38,10 +38,8 @@ const apiCall = (method, path, body, withAuth) => {
   if (withAuth) {
     Object.assign(opts.headers, { Authorization: 'Bearer ' + authStore.token });
   }
-  console.log(opts);
   return fetch(baseURL + path, opts)
     .then(response => {
-      console.log(response.status);
       if (response.status === 204) {
         return { data: response.status };
       }

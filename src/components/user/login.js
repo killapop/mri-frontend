@@ -34,6 +34,11 @@ class Login extends React.Component {
         authStore.token = data.token;
         authStore.user = jwt.decode(data.token);
         this.setState(() => ({ loggedIn: true }));
+        messages.messages.push({
+          id: Math.random(),
+          level: 'success',
+          message: 'Logged in!.'
+        });
       } else {
         messages.messages.push({
           id: Math.random(),

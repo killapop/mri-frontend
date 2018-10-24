@@ -144,20 +144,73 @@ export const listSchema = {
   applications: {
     columns: [
       {
-        accessor: 'applicant',
-        Header: 'Applicant'
+        accessor: 'id',
+        Header: 'Application ID'
       },
       {
-        accessor: 'applicant_email',
-        Header: "Applicant's email"
-      },
-      {
-        accessor: 'submitted_on',
-        Header: 'Submitted'
+        accessor: 'account',
+        Header: 'Applicant',
+        Cell: row => row.value.email,
+        FilterMethod: (filter, row) => {
+          return (
+            String(row[filter.id].email)
+              .toLowerCase()
+              .indexOf(filter.value.toLowerCase()) >= 0
+          );
+        }
       },
       {
         accessor: 'state',
-        Header: 'Status'
+        Header: 'Status',
+        filterMethod: (filter, row) => {
+          if (filter.value === 'all') {
+            return row;
+          } else {
+            return row[filter.id] === filter.value;
+          }
+        },
+        Filter: ({ filter, onChange }) => (
+          <select
+            onChange={event => onChange(event.target.value)}
+            style={{ width: '100%' }}
+            value={filter ? filter.value : 'all'}>
+            <option value="all">Show All</option>
+            <option value="created">Created</option>
+            <option value="finalized">Finalized</option>
+            <option value="locked">Locked</option>
+          </select>
+        )
+      },
+      {
+        accessor: 'bundled',
+        Header: 'Bundled',
+        Cell: row => (
+          <span style={{ color: row.value === null ? '#3a6' : '#a33' }}>
+            <i
+              className={`mr2 fa fa-15x fa-${row.value ? 'check' : 'times'}`}
+            />
+            {row.value ? 'Bundled' : 'Not bundled'}
+          </span>
+        ),
+        filterMethod: (filter, row) => {
+          if (filter.value === 'all') {
+            return row;
+          } else if (filter.value === 'false') {
+            return row[filter.id] !== null;
+          } else {
+            return row[filter.id] === null;
+          }
+        },
+        Filter: ({ filter, onChange }) => (
+          <select
+            onChange={event => onChange(event.target.value)}
+            style={{ width: '100%' }}
+            value={filter ? filter.value : 'all'}>
+            <option value="all">Show All</option>
+            <option value="true">Bundled</option>
+            <option value="false">Not bundled</option>
+          </select>
+        )
       }
     ]
   },

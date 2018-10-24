@@ -1,6 +1,5 @@
 import React from 'react';
 import Form from 'react-jsonschema-form';
-import { Link } from 'react-router-dom';
 import SmallBox from '../common/smallBox';
 import { messages } from '../../lib/store';
 import { apiCall } from '../../lib/api-calls';
@@ -19,7 +18,6 @@ class ActivateUser extends React.Component {
 
   async activate({ formData }) {
     const body = {
-      // token: this.props.match.params.token,
       password: formData.password,
       account: {
         name: formData.name,
@@ -35,15 +33,13 @@ class ActivateUser extends React.Component {
     )
       .then(result => {
         console.log(result);
-        if (result) {
+        if (result === 204) {
           this.setState(state => ({
             activated: true
           }));
           messages.messages.push({
             id: Math.random(),
-            message: `Success! account for ${
-              formData.email
-            } has been activated`,
+            message: `Activation successful`,
             level: 'success'
           });
         }
@@ -58,8 +54,11 @@ class ActivateUser extends React.Component {
       <SmallBox>
         {this.state.activated ? (
           <div>
-            <h1> Your account has been activated</h1>
-            <Link to="/user/login">login now</Link>
+            <h1>Activated!</h1>
+            <div className="f4">
+              Your account has been activated.
+              <a href="/">login now</a>
+            </div>
           </div>
         ) : (
           <Form

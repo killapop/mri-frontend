@@ -10,7 +10,7 @@ export const create = {
     properties: {
       email: {
         type: 'string',
-        title: 'Email'
+        title: 'Create a form for'
       }
     }
   },
@@ -19,7 +19,7 @@ export const create = {
       'ui:widget': 'email',
       'ui:autofocus': true,
       'ui:description':
-        'Enter the email email of the person (organisation or Beneficiary)',
+        'Enter the email address of the of the intended applicaant (organisation or Beneficiary)',
       'ui:help': 'This will be an autocomplete select box'
     }
   }
