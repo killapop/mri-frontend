@@ -35,18 +35,20 @@ class Message extends React.Component {
 
   dismiss(e) {
     this.setState(state => ({ alive: false }));
-    _.remove(messages.messages, m => (m.id = this.props.message.id));
+    _.remove(
+      messages.messages,
+      m => m.id === (e ? e.target.parentNode.id : this.props.message.id)
+    );
   }
 
   render() {
+    const { id, level, message } = this.props.message;
     return (
       <div>
         {this.state.alive ? (
-          <li
-            id={this.props.message.id}
-            className={`notification ${this.props.message.level}`}>
+          <li id={id} className={`notification ${level}`}>
             <i className="fa fa-times-circle" onClick={this.dismiss} />
-            {this.props.message.message}
+            {message}
           </li>
         ) : (
           ''
