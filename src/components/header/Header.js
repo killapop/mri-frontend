@@ -63,7 +63,7 @@ class Header extends React.Component {
                 href="https://martin-roth-initiative.de"
                 target="_blank"
                 title="Info"
-                className="navLink pv2 h-100">
+              className="navLink pv2 h-100">
                 <div className="flex items-center">
                   <i className={`fa fa-info mb2`} />
                   <span className="dn db-l">Info</span>
@@ -100,7 +100,6 @@ class Header extends React.Component {
                       <span className="dn db-l">Logout</span>
                     </div>
                   </Link>
-                  <Clock />
                 </div>
               ) : (
                 ''
