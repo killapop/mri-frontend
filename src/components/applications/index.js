@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 import { view } from 'react-easy-state';
 import Application from './application.js';
 
@@ -11,16 +11,19 @@ class ApplicationsIndex extends React.Component {
   render() {
     return (
       <div>
-        <Route
-          exact
-          path={`${this.props.match.url}`}
-          render={() => <Redirect to="/" />}
-        />
-        <Route
-          path={`${this.props.match.url}/create/:template`}
-          component={CreateForm}
-        />
-        <Route path={`${this.props.match.url}/:id`} component={Application} />
+        <Switch>
+          <Route
+            exact
+            path={`${this.props.match.url}`}
+            render={() => <Redirect to="/" />}
+          />
+          <Route
+            exact
+            path={`${this.props.match.url}/create/:template`}
+            component={CreateForm}
+          />
+          <Route path={`${this.props.match.url}/:id`} component={Application} />
+        </Switch>
       </div>
     );
   }
