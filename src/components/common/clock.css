@@ -2,16 +2,15 @@
   font-size: 1.2em;
   font-family: PTSansBold, sans-serif;
   display: flex;
-  padding: 15px 10px;
+  padding: 0;
   border-radius: 2px;
-  flex-flow: column;
-  align-items: flex-start;
-  margin-top: -10px;
+  align-items: center;
 }
 
 .clock-timer {
   position: relative;
   line-height: 1.4;
+  color: var(--white);
 }
 
 .clock .reset::before {
@@ -34,19 +33,14 @@
   display: none;
 }
 
-.sticky .clock {
-  margin-top: -20px;
-}
-
 @media screen and (min-width: 60em) {
-  .clock {
-    padding-top: 5px;
-  }
-
   .clock-title {
     display: block;
-    font-size: 0.6em;
-    padding-bottom: 0.5em;
-    color: #666;
+    font-size: 0.7em;
+    padding-right: 1em;
+    color: #aaa;
+    text-transform: uppercase;
+    font-weight: 100;
+    font-family: PTSansNarrowRegular, sans-serif;
   }
 }

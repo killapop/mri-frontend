@@ -36,7 +36,6 @@ form label {
   background-color: #333;
   width: 100%;
   display: flex;
-  justify-content: flex-end;
   margin-bottom: 0;
   padding: 0.5em;
 }
@@ -104,8 +103,33 @@ button:active {
   margin-right: 1.5em;
 }
 
+input#submitLockcheckbox[type=checkbox] {
+  display: none;
+}
+
+input#submitLockcheckbox[type=checkbox] + label {
+  color: #999;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+input#submitLockcheckbox[type=checkbox] + label i.fa {
+  margin-left: 0.5em;
+  font-size: 1.5em;
+}
+
+input#submitLockcheckbox[type=checkbox]:hover + label i.fa,
+input#submitLockcheckbox[type=checkbox]:checked + label i.fa {
+  color: var(--primary-color);
+}
+
+input#submitLockcheckbox[type=checkbox]:hover + label,
+input#submitLockcheckbox[type=checkbox]:checked + label {
+  color: var(--white);
+}
+
 @media screen and (min-width: 60em) {
   .form-actions {
-    padding-right: 2.25em;
+    /* padding-right: 2.25em; */
   }
 }
