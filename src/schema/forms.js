@@ -19,7 +19,7 @@ export const create = {
       'ui:widget': 'email',
       'ui:autofocus': true,
       'ui:description':
-        'Enter the email address of the of the intended applicaant (organisation or Beneficiary)',
+        'Enter the email address of the of the intended applicant (organisation or Beneficiary)',
       'ui:help': 'This will be an autocomplete select box'
     }
   }

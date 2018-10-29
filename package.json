@@ -17,6 +17,7 @@
     "react-scripts": "1.1.5",
     "react-sticky": "^6.0.3",
     "react-table": "^6.8.6",
+    "reactahead": "^1.1.0",
     "tachyons": "^4.11.1"
   },
   "scripts": {

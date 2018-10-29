@@ -128,6 +128,10 @@ input#submitLockcheckbox[type=checkbox]:checked + label {
   color: var(--white);
 }
 
+input.reactahead-input i {
+  display: none;
+}
+
 @media screen and (min-width: 60em) {
   .form-actions {
     /* padding-right: 2.25em; */
