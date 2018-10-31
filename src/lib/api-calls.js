@@ -54,7 +54,10 @@ const apiCall = (method, path, body, withAuth) => {
     .then(result => {
       return result.data;
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log(err);
+      addMessage('danger', 'There was a problem connecting to the server. Please try again after some time or contact us info@mri-application.de');
+    });
 };
 
 export { baseURL, getAuth, apiCall };

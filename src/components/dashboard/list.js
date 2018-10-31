@@ -98,15 +98,15 @@ class FacilitatorList extends React.Component {
             {_.map(actionButtons[path], (b, i) => (
               <span key={i}>
                 {path === 'applications' ||
-                  // && row.row.state !== 'created'
-                  (path === 'activations' && row.row.isValid) ? (
-                    <i
-                      key={i}
-                      data-action={b.label}
-                      data-type={path === 'activations' ? 'users' : path}
-                      data-id={row.row[customIDs()]}
-                      data-data={row.row}
-                      className={`fa fa-${b.icon} action pointer`}
+                // && row.row.state !== 'created'
+                (path === 'activations' && row.row.isValid) ? (
+                  <i
+                    key={i}
+                    data-action={b.label}
+                    data-type={path === 'activations' ? 'users' : path}
+                    data-id={row.row[customIDs()]}
+                    data-data={row.row}
+                    className={`fa fa-${b.icon} action pointer`}
                     onClick={e => this.clickHandler(e)}
                     title={b.label}
                   />

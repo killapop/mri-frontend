@@ -86,15 +86,17 @@ export const create = {
         type: 'string',
         title: 'Email'
       },
-      role: {
-        type: 'number',
-        title: 'Type of user',
-        enum: [1, 2, 3],
-        enumNames: ['Facilitator', 'Organisation', 'Beneficiary']
-      },
-      email_notify: {
+      isStaff: {
         type: 'boolean',
-        title: 'Notify via email?'
+        title: 'Facilitator'
+      },
+      isBeneficiary: {
+        type: 'boolean',
+        title: 'Beneficiary'
+      },
+      isHost: {
+        type: 'boolean',
+        title: 'Organization'
       }
     }
   },
@@ -102,10 +104,6 @@ export const create = {
     email: {
       'ui:widget': 'email',
       'ui:autofocus': true
-    },
-    role: {
-      'ui:widget': 'select',
-      'ui:placeholder': 'Select'
     }
   }
 };
