@@ -133,8 +133,8 @@ export const listSchema = {
             value={filter ? filter.value : 'all'}>
             <option value="all">Show All</option>
             <option value="mri-staff">mri-staff</option>
-            <option value="applicant">organisation</option>
-            <option value="applicant">beneficiary</option>
+            <option value="organization">organization</option>
+            <option value="beneficiary">beneficiary</option>
           </select>
         )
       }
