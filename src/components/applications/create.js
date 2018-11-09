@@ -14,19 +14,19 @@ class CreateForm extends React.Component {
     this.state = {
       created: false,
       users: [],
-      selectedUser: ''
+      selectedUser: '',
+      role: '',
+      formType: '',
+      programLine: 1
     };
-    this.whichRole = this.whichRole.bind(this);
     this.change = this.change.bind(this);
     this.create = this.create.bind(this);
+    this.radioChange = this.radioChange.bind(this);
   }
 
-  whichRole() {
-    if (this.props.match.params.template === 'projectProposals') {
-      return 'applicant';
-    } else {
-      return 'applicant';
-    }
+  radioChange(e) {
+    e.persist();
+    this.setState(state => ({programLine: parseInt(e.target.value, 10)}))
   }
 
   change(o, i) {
@@ -36,11 +36,18 @@ class CreateForm extends React.Component {
   }
 
   async componentDidMount() {
+    const template = this.props.match.params.template === 'projectProposals'
+    this.setState(state => (
+      {
+        role: template ? 'organization' : 'beneficiary',
+        formType: template ? 'Project Proposal' : 'Personal Statement'
+      }
+    ));
     await apiCall('GET', '/users', '', true)
       .then(users => {
         if (users) {
           const urs = _.map(
-            _.filter(users, user => _.includes(user.roles, this.whichRole())),
+            _.filter(users, user => _.includes(user.roles, this.state.role)),
             'email'
           );
           this.setState(state => ({ users: urs }));
@@ -50,12 +57,13 @@ class CreateForm extends React.Component {
   }
 
   async create(e) {
+    const formName = this.props.match.params.template + '-' + this.state.programLine + '.json';
     await apiCall(
       'POST',
       '/applications',
       JSON.stringify({
         email: this.state.selectedUser,
-        form: this.props.match.params.template + '.json'
+        form: formName
       }),
       true
     ).then(data => {
@@ -68,16 +76,18 @@ class CreateForm extends React.Component {
   }
 
   render() {
+    const {created, role, selectedUser, users, formType, programLine} = this.state;
+
     if (authStore.token === '') {
       return <Redirect to="/" />;
     }
     return (
       <SmallBox>
         <div>
-          {this.state.created ? (
+          {created ? (
             <div>
               <h4 className="f4">
-                A form was created for {this.state.selectedUser}.
+                A {formType} was created for {selectedUser}.
               </h4>
               <p>
                 <Link to="/dashboard">
@@ -89,23 +99,37 @@ class CreateForm extends React.Component {
             <div>
               <div className="form-group field field-object">
                 <fieldset>
-                  <legend id="root__title">Create Form</legend>
+                  <legend id="root__title">Create {formType}</legend>
                   <div className="form-group field field-string">
-                    <label className="control-label" htmlFor="root_email">
-                      Create a form for <b>{this.state.selectedUser}</b>
-                    </label>
                     <p
                       id="root_email__description"
-                      className="field-description">
-                      Enter the email address of the of the intended applicaant
-                      (organisation or Beneficiary)
+                    className="field-description">
+                      Enter the email address of the of the {role}
                     </p>
                     <Reactahead
                       api={api => (this.my_reactahead = api)}
                       noResultMsg="Found no users that match your search"
-                      suggestions={this.state.users}
+                      suggestions={users}
                       onSubmit={this.change}
+                      placeholder={`Find ${role}`}
                     />
+                    {selectedUser ?
+                      (<div className="form-group mt3">
+                        <label className="ttu">
+                          {role}: {selectedUser}
+                        </label>
+                        <fieldset>
+                          <div className="form-group mt2">
+                            {[1, 2].map((e, i) => (
+                              <span key={i} className="mr3">
+                                <input type="radio" name="programeLine" value={e} id={`programLine${e}`} onChange={el => this.radioChange(el)} checked={programLine === e}/><label className="mh3" htmlFor={`programLine${e}`}>Program Line  {e}</label>
+                              </span>
+                            ))}
+                          </div>
+                        </fieldset>
+                      </div>
+                      )
+                    : ''}
                     <div />
                   </div>
                 </fieldset>
@@ -121,8 +145,8 @@ class CreateForm extends React.Component {
           )}
         </div>
       </SmallBox>
-    );
-  }
-}
+                      );
+                      }
+                      }
 
-export default view(CreateForm);
+                      export default view(CreateForm);

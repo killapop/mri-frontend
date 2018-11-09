@@ -55,7 +55,7 @@ class FacilitatorList extends React.Component {
           this.setState(state => ({
             [k]:
               k === 'personalStatements' || k === 'projectProposals'
-                ? _.filter(data, r => _.trim(r.form) === k + '.json')
+                ? _.filter(data, r => _.startsWith(r.form, k))
                 : data,
             loaded: true
           }));
