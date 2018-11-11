@@ -5,7 +5,7 @@ const baseURL =
   window.location.protocol +
   '//' +
   window.location.hostname +
-  (process.env.NODE_ENV === 'production' ? ':/api' : ':3001');
+  (process.env.NODE_ENV === 'production' ? '/api' : ':3001');
 
 const getAuth = (method, path, body) => {
   return fetch(baseURL + path, {

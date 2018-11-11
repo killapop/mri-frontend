@@ -147,10 +147,8 @@ export const listSchema = {
         Header: 'Application ID'
       },
       {
-        accessor: 'account',
+        accessor: 'account.email',
         Header: 'Applicant',
-        Cell: row => row.value.email,
-        FilterMethod: (filter, row) => row.value.email.includes(filter.value)
       },
       {
         accessor: 'form',
