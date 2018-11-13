@@ -147,16 +147,30 @@ export const listSchema = {
         Header: 'Application ID'
       },
       {
-        accessor: 'account',
+        accessor: 'account.email',
         Header: 'Applicant',
-        Cell: row => row.value.email,
-        FilterMethod: (filter, row) => {
-          return (
-            String(row[filter.id].email)
-              .toLowerCase()
-              .indexOf(filter.value.toLowerCase()) >= 0
-          );
-        }
+      },
+      {
+        accessor: 'form',
+        Header: 'Program line',
+        Cell: row => row.row.form.split('-').pop().charAt(0),
+        filterMethod: (filter, row) => {
+          if (filter.value === 'all') {
+            return row;
+          } else {
+            return row.form.includes(filter.value);
+          }
+        },
+        Filter: ({ filter, onChange }) => (
+          <select
+            onChange={event => onChange(event.target.value)}
+            style={{ width: '100%' }}
+            value={filter ? filter.value : 'all'}>
+            <option value="all">Show All</option>
+            <option value="1">Program line 1</option>
+            <option value="2">Program line 2</option>
+          </select>
+        )
       },
       {
         accessor: 'form',

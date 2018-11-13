@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Form from 'react-jsonschema-form';
+import { Sticky } from 'react-sticky';
 import { authStore } from '../../lib/store';
 // import { view } from 'react-easy-state';
 import Clock from '../../components/common/clock';
@@ -10,7 +11,6 @@ import { add as addMessage } from '../../lib/message';
 class Application extends React.Component {
   constructor(props) {
     super(props);
-    // this.changeHandler = this.changeHandler.bind(this);
     this.formSubmitHandler = this.formSubmitHandler.bind(this);
     this.lockHandler = this.lockHandler.bind(this);
     this.errors = this.errors.bind(this);
@@ -21,37 +21,13 @@ class Application extends React.Component {
       uiSchema: {},
       errors: {},
       locked: false,
-      forms: {}
+      forms: {},
+      containerSticky: false
     };
-    this.fetchData();
   }
 
   async componentDidMount() {
-    // await apiCall(
-    //   'GET',
-    //   '/applications/' + this.props.match.params.id,
-    //   '',
-    //   true
-    // )
-    //   .then(data => {
-    //     console.log(data);
-    //     this.setState(state => ({
-    //       form: data
-    //     }));
-    //   })
-    //   .catch(err => {
-    //     addMessage('danger', 'Error retrieving data');
-    //   });
-    //
-    // await apiCall('GET', '/forms/' + this.state.form.form, '', true)
-    //   .then(data => {
-    //     console.log(data);
-    //     this.setState(state => ({
-    //       schema: data.template.schema,
-    //       uiSchema: data.template.uiSchema
-    //     }));
-    //   })
-    //   .catch(err => addMessage('danger', 'Error retrieving data'));
+    this.fetchData();
   }
 
   async fetchData() {
@@ -62,7 +38,6 @@ class Application extends React.Component {
       true
     )
       .then(data => {
-        console.log(data);
         this.setState(state => ({
           form: data
         }));
@@ -73,7 +48,6 @@ class Application extends React.Component {
 
     await apiCall('GET', '/forms/' + this.state.form.form, '', true)
       .then(data => {
-        console.log(data);
         this.setState(state => ({
           schema: data.template.schema,
           uiSchema: data.template.uiSchema
@@ -90,7 +64,6 @@ class Application extends React.Component {
   }
 
   async formSubmitHandler({ formData }) {
-    console.log(formData);
     await apiCall(
       'PUT',
       '/applications/' + this.props.match.params.id,
@@ -98,7 +71,6 @@ class Application extends React.Component {
       true
     )
       .then(data => {
-        console.log(data);
         this.setState(state => ({ form: data }));
         addMessage(
           `${this.state.locked ? 'success' : 'info'}`,
@@ -121,15 +93,18 @@ class Application extends React.Component {
   refreshSessionHandler() {}
 
   render() {
-    const { form, schema, uiSchema } = this.state;
+    const { form, schema, uiSchema, containerSticky } = this.state;
     if (authStore.token === '') {
       this.timeoutHandler();
       return <Redirect to="/" />;
     }
-    // const form = forms[authStore.activeList.slug];
+    const sidebarTop = '100';
     return (
-      <div>
-        <div className="formContainer">
+      <div
+        className={`applications flex flex-wrap ${
+          containerSticky ? 'is-sticky' : ''
+        }`}>
+        <div className="formContainer w-70-l">
           <Form
             schema={schema}
             uiSchema={uiSchema}
@@ -167,6 +142,18 @@ class Application extends React.Component {
               </div>
             </div>
           </Form>
+        </div>
+        <div className="sidebar w-30-l">
+          <Sticky topOffset={100}>
+            {({ style, isSticky, distanceFromTop = { sidebarTop } }) => (
+              <div style={style}>
+                <div className={`sidebar-content ${isSticky ? 'sticky' : ''}`}>
+                  {' '}
+                  Sidebar
+                </div>
+              </div>
+            )}
+          </Sticky>
         </div>
       </div>
     );

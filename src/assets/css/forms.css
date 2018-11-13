@@ -1,7 +1,43 @@
 @import url('./bootstrap-forms.min.css');
 
-.formContainer {
-  width: 95%;
+form.rjsf fieldset {
+  padding: 0;
+}
+
+form.rjsf legend {
+  letter-spacing: 0.05em;
+  border-bottom: 0;
+}
+
+form.rjsf > .form-group > fieldset > .form-group {
+  padding: 30px 30px;
+}
+
+form.rjsf .col-fieldset-2 > fieldset > .form-group {
+  display: inline-block;
+  width: 45%;
+}
+
+form.rjsf .col-fieldset-2 > fieldset > .form-group:last-of-type {
+  margin-left: 40px;
+}
+
+form.rjsf > .form-group > fieldset > .form-group:nth-of-type(odd) {
+  background-color: var(--white);
+  border: 1px solid var(--very-ver-light);
+  border-width: 1px 0;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1) inset, 0 -1px 5px rgba(0, 0, 0, 0.1) inset;
+}
+
+form > .form-group > fieldset > .form-group > fieldset > legend {
+  font-size: 1.8em;
+  margin-left: -30px;
+  padding: 5px 0 10px 20px;
+  border-left: 5px solid #66a;
+  margin-bottom: 20px;
+  color: #66a;
+  font-family: PTSansNarrowBold, sans-serif;
+  text-transform: uppercase;
 }
 
 .title,
@@ -15,18 +51,33 @@
   border: 0;
 }
 
+.formContainer .title,
+.formContainer #root__title {
+  margin-left: 200px;
+}
+
+form.rjsf .col-fieldset-2 > fieldset legend,
 form label {
-  color: rgba(0, 0, 0, 1);
-  margin-bottom: 0.4em;
+  color: #000a;
+  margin-bottom: 0;
   font-weight: 500;
   font-family: "PTSansNarrowRegular", "PTSansRegular", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-size: 17px;
+  font-size: 1em;
 }
 
-.form-group {
-  margin-bottom: 30px;
+form.rjsf .col-fieldset-2 > fieldset legend {
+  font-weight: bold;
+}
+
+
+form .field-description {
+  color: #aa6;
+  font-style: italic;
+  margin: 3px 0 5px 3px;
+  font-size: 0.8em;
+
 }
 
 .form-actions {
@@ -38,6 +89,7 @@ form label {
   display: flex;
   margin-bottom: 0;
   padding: 0.5em;
+  z-index: 100;
 }
 
 .form-control {
@@ -71,6 +123,20 @@ input,
 textarea,
 select {
   transition: all ease 0.2s;
+}
+
+.sidebar .sidebar-content {
+  transition: all ease 0.4s;
+  overflow-y: auto;
+  height: calc(100vh - 50px);
+}
+
+.sidebar .sidebar-content.sticky {
+  margin-top: 50px;
+  background-color: var(--white);
+  border-left: 1px solid var(--light-silver);
+  box-shadow: 1px 0 2px #0003 inset;
+  padding: 20px;
 }
 
 button,
@@ -128,9 +194,10 @@ input#submitLockcheckbox[type=checkbox]:checked + label {
   color: var(--white);
 }
 
-input.reactahead-input i {
+input.reactahead-input span.glyphicons {
   display: none;
 }
+
 
 @media screen and (min-width: 60em) {
   .form-actions {

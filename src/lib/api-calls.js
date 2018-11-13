@@ -5,7 +5,7 @@ const baseURL =
   window.location.protocol +
   '//' +
   window.location.hostname +
-  (process.env.NODE_ENV === 'production' ? ':/api' : ':3001');
+  (process.env.NODE_ENV === 'production' ? '/api' : ':3001');
 
 const getAuth = (method, path, body) => {
   return fetch(baseURL + path, {
@@ -56,7 +56,10 @@ const apiCall = (method, path, body, withAuth) => {
     })
     .catch(err => {
       console.log(err);
-      addMessage('danger', 'There was a problem connecting to the server. Please try again after some time or contact us info@mri-application.de');
+      addMessage(
+        'danger',
+        'There was a problem connecting to the server. Please try again after some time or contact us info@mri-application.de'
+      );
     });
 };
 
