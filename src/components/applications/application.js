@@ -3,10 +3,13 @@ import { Redirect } from 'react-router-dom';
 import Form from 'react-jsonschema-form';
 import { Sticky } from 'react-sticky';
 import { authStore } from '../../lib/store';
-// import { view } from 'react-easy-state';
+import { view } from 'react-easy-state';
 import Clock from '../../components/common/clock';
 import { apiCall } from '../../lib/api-calls';
 import { add as addMessage } from '../../lib/message';
+import History from './history';
+import Comments from './comments';
+import Attachments from './attachments';
 
 class Application extends React.Component {
   constructor(props) {
@@ -15,14 +18,22 @@ class Application extends React.Component {
     this.lockHandler = this.lockHandler.bind(this);
     this.errors = this.errors.bind(this);
     this.fetchData = this.fetchData.bind(this);
+    this.tabHandler = this.tabHandler.bind(this);
     this.state = {
       form: {},
+      attachments: [],
       schema: {},
       uiSchema: {},
       errors: {},
       locked: false,
       forms: {},
-      containerSticky: false
+      containerSticky: false,
+      currentTab: 'history',
+      tabs: [
+        { title: 'history', icon: 'clipboard-list' },
+        { title: 'comments', icon: 'comments' },
+        { title: 'attachments', icon: 'paperclip' }
+      ]
     };
   }
 
@@ -46,6 +57,21 @@ class Application extends React.Component {
         addMessage('danger', 'Error retrieving data');
       });
 
+    // await apiCall(
+    //   'GET',
+    //   '/applications/' + this.props.match.params.id + '/attachments',
+    //   '',
+    //   true
+    // )
+    //   .then(data => {
+    //     this.setState(state => ({
+    //       attachments: data
+    //     }));
+    //   })
+    //   .catch(err => {
+    //     addMessage('danger', 'Error retrieving data');
+    //   });
+
     await apiCall('GET', '/forms/' + this.state.form.form, '', true)
       .then(data => {
         this.setState(state => ({
@@ -61,6 +87,11 @@ class Application extends React.Component {
     this.setState(state => ({
       locked: e.target.checked
     }));
+  }
+
+  tabHandler(e) {
+    e.persist();
+    this.setState(state => ({ currentTab: e.target.id }));
   }
 
   async formSubmitHandler({ formData }) {
@@ -93,12 +124,32 @@ class Application extends React.Component {
   refreshSessionHandler() {}
 
   render() {
-    const { form, schema, uiSchema, containerSticky } = this.state;
+    const {
+      form,
+      attachments,
+      schema,
+      uiSchema,
+      containerSticky,
+      tabs,
+      currentTab
+    } = this.state;
     if (authStore.token === '') {
       this.timeoutHandler();
       return <Redirect to="/" />;
     }
     const sidebarTop = '100';
+
+    const sidebarComponent = () => {
+      switch (currentTab) {
+        case 'comments':
+          return <Comments comments={form.comments} />;
+        case 'attachments':
+          return <Attachments attachments={attachments} />;
+        default:
+          return <History history={form.history} />;
+      }
+    };
+
     return (
       <div
         className={`applications flex flex-wrap ${
@@ -143,13 +194,27 @@ class Application extends React.Component {
             </div>
           </Form>
         </div>
-        <div className="sidebar w-30-l">
+        <div className="sidebar w-30-l relative">
           <Sticky topOffset={100}>
             {({ style, isSticky, distanceFromTop = { sidebarTop } }) => (
               <div style={style}>
                 <div className={`sidebar-content ${isSticky ? 'sticky' : ''}`}>
                   {' '}
-                  Sidebar
+                  <div className="sidebar-tabs tabs flex justify-between">
+                    {tabs.map((tab, idx) => (
+                      <div
+                        id={tab.title}
+                        onClick={e => this.tabHandler(e)}
+                        key={idx}
+                        className={`tab tab-${tab.title} ${
+                          currentTab === tab.title ? 'active' : ''
+                        }`}>
+                        <i className={`fa fa-${tab.icon}`} />
+                        {tab.title}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="sidebar-lists">{sidebarComponent()}</div>
                 </div>
               </div>
             )}
@@ -160,4 +225,4 @@ class Application extends React.Component {
   }
 }
 
-export default Application;
+export default view(Application);
