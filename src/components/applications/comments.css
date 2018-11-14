@@ -1,0 +1,47 @@
+.comments {
+  display: flex;
+  flex-flow: column nowrap;
+  margin-top: 30px;
+  border: 1px solid #0001;
+  padding: 20px 0;
+  box-shadow: 0 0 2px 2px #0001 inset;
+  background-color: #66a1;
+}
+
+.comment {
+  transition: all ease 0.3s;
+  width: 80%;
+  display: flex;
+  flex-flow: column;
+  border-radius: 4px;
+  margin-left: 10px;
+  background-color: #99a2;
+  border: 1px solid #0002;
+  box-shadow: 1px 1px 4px #0002;
+  padding: 10px 10px 5px 10px;
+  margin-bottom: 20px;
+}
+
+.comment .text {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.comment .meta {
+  color: #888;
+  align-self: flex-end;
+  font-size: 0.8em;
+}
+
+.comment.not-own {
+  background-color: #fffd;
+  align-self: flex-end;
+  margin-right: 10px;
+}
+
+.empty {
+  text-transform: uppercase;
+  color: #999;
+  margin: auto;
+  margin-top: 30px;
+}

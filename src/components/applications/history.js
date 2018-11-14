@@ -30,7 +30,7 @@ class History extends React.Component {
 }
 
 History.propTypes = {
-  history: PropTypes.array.isRequired
+  history: PropTypes.array
 };
 
 export default History;
