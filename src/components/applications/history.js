@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import './history.css';
 
 class History extends React.Component {
   render() {
@@ -10,9 +11,11 @@ class History extends React.Component {
         {history ? (
           <div>
             {history.map((item, idx) => (
-              <div key={idx}>
-                {item.event} -{' '}
-                {moment(item.created_at).format('DD.MM.YYYY HH:mm:ss')}
+              <div key={idx} className="history-item">
+                <span className="dark">{item.event} - </span>
+                <span className="i">
+                  {moment(item.created_at).format('Do MMM YYYY HH:mm:ss')}
+                </span>
               </div>
             ))}
           </div>
