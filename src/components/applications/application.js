@@ -19,9 +19,12 @@ class Application extends React.Component {
     this.errors = this.errors.bind(this);
     this.fetchData = this.fetchData.bind(this);
     this.tabHandler = this.tabHandler.bind(this);
+    this.submitComments = this.submitComments.bind(this);
     this.state = {
       form: {},
       attachments: [],
+      comments: [],
+      history: [],
       schema: {},
       uiSchema: {},
       errors: {},
@@ -50,7 +53,9 @@ class Application extends React.Component {
     )
       .then(data => {
         this.setState(state => ({
-          form: data
+          form: data,
+          comments: data.comments,
+          history: data.history
         }));
       })
       .catch(err => {
@@ -102,7 +107,11 @@ class Application extends React.Component {
       true
     )
       .then(data => {
-        this.setState(state => ({ form: data }));
+        this.setState(state => ({
+          form: data,
+          comments: data.comments,
+          history: data.history
+        }));
         addMessage(
           `${this.state.locked ? 'success' : 'info'}`,
           `Form ${
@@ -113,6 +122,42 @@ class Application extends React.Component {
         );
       })
       .catch(err => addMessage('danger', 'Error retrieving data'));
+  }
+
+  async submitComments(body) {
+    console.log(body);
+    await apiCall(
+      'POST',
+      '/applications/' + this.props.match.params.id + '/comments',
+      JSON.stringify(body),
+      true
+    )
+      .then(data => {
+        if (data === 204) {
+          return apiCall(
+            'GET',
+            '/applications/' + this.props.match.params.id,
+            '',
+            true
+          ).then(commentData => {
+            this.setState(state => ({
+              comments: commentData.comments,
+              history: commentData.history
+            }));
+            addMessage('success', 'Comment posted');
+          });
+        }
+        // this.setState(state => ({ form: data }));
+        // addMessage(
+        //   `${this.state.locked ? 'success' : 'info'}`,
+        //   `Form ${
+        //     this.state.locked
+        //       ? 'submitted for processing. One of our staff witll contact you shortly'
+        //       : 'saved temporarirly'
+        //   }`
+        // );
+      })
+      .catch(err => addMessage('danger', 'Error submitting the comment'));
   }
 
   errors({ errors }) {
@@ -131,6 +176,8 @@ class Application extends React.Component {
       uiSchema,
       containerSticky,
       tabs,
+      comments,
+      history,
       currentTab
     } = this.state;
     if (authStore.token === '') {
@@ -142,11 +189,16 @@ class Application extends React.Component {
     const sidebarComponent = () => {
       switch (currentTab) {
         case 'comments':
-          return <Comments comments={form.comments} />;
+          return (
+            <Comments
+              comments={comments}
+              submitComments={this.submitComments}
+            />
+          );
         case 'attachments':
           return <Attachments attachments={attachments} />;
         default:
-          return <History history={form.history} />;
+          return <History history={history} />;
       }
     };
 

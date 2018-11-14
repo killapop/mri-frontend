@@ -131,6 +131,7 @@ select {
   height: calc(100vh - 50px);
   padding: 10px;
   box-shadow: 1px 0 2px #0003 inset;
+  padding-bottom: 100px;
 }
 
 .sidebar .sidebar-content.sticky {
