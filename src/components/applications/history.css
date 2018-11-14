@@ -6,6 +6,7 @@
   color: #666;
   font-size: 0.9em;
   padding: 10px 15px;
+  background-color: #aaa1;
 }
 
 .history-item:nth-last-of-type(odd) {
@@ -13,4 +14,8 @@
   border-color: #6661;
   border-width: 1px 0;
   border-style: solid;
+}
+
+.history-item .event {
+  color: #66a;
 }

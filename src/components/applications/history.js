@@ -12,8 +12,10 @@ class History extends React.Component {
           <div>
             {history.map((item, idx) => (
               <div key={idx} className="history-item">
-                <span className="dark">{item.event} - </span>
-                <span className="i">
+                <span className={`dark event ${item.event}`}>
+                  {item.event} -{' '}
+                </span>
+                <span className="i date">
                   {moment(item.created_at).format('Do MMM YYYY HH:mm:ss')}
                 </span>
               </div>
