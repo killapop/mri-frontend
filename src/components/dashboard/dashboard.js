@@ -47,6 +47,9 @@ class Dashboard extends React.Component {
           <div>
             <div className=" w-80-ns center pa4">
               <div className="title pb0">Dashboard</div>
+              <div className="f3 silver">
+                Logged in as: {authStore.user.email}
+              </div>
               {this.isStaff() ? <Badges /> : ''}
             </div>
             {this.isStaff() ? <FacilitatorList list={list} /> : <UserList />}
