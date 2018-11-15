@@ -9,7 +9,7 @@ form.rjsf legend {
   border-bottom: 0;
 }
 
-form.rjsf > .form-group > fieldset > .form-group {
+.applications form.rjsf > .form-group > fieldset > .form-group {
   padding: 30px 30px;
 }
 
@@ -22,7 +22,7 @@ form.rjsf .col-fieldset-2 > fieldset > .form-group:last-of-type {
   margin-left: 40px;
 }
 
-form.rjsf > .form-group > fieldset > .form-group:nth-of-type(odd) {
+.applications form.rjsf > .form-group > fieldset > .form-group:nth-of-type(odd) {
   background-color: var(--white);
   border: 1px solid var(--very-ver-light);
   border-width: 1px 0;
