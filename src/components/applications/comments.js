@@ -50,7 +50,12 @@ class Comments extends React.Component {
                 }`}>
                 <div className="text">{comment.body}</div>
                 <div className="meta">
-                  <span className="author">{comment.author.name} - </span>
+                  <span className="author">
+                    {comment.author.email === authStore.user.email
+                      ? 'Me'
+                      : comment.author.name}{' '}
+                    -{' '}
+                  </span>
                   <span className="date">
                     {moment(comment.created_at).format('Do MMM YYYY HH:mm:ss')}
                   </span>
