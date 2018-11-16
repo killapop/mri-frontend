@@ -14,6 +14,14 @@ class ActivateUser extends React.Component {
       user: ''
     };
     this.activate = this.activate.bind(this);
+    this.validate = this.validate.bind(this);
+  }
+
+  validate(formData, errors) {
+    if (formData.pass1 !== formData.pass2) {
+      errors.pass2.addError("Passwords don't match");
+    }
+    return errors;
   }
 
   async activate({ formData }) {
@@ -21,7 +29,7 @@ class ActivateUser extends React.Component {
       password: formData.password,
       account: {
         name: formData.name,
-        password: formData.new_password
+        password: formData.pass1
       }
     };
 
@@ -63,6 +71,7 @@ class ActivateUser extends React.Component {
             schema={activate.schema}
             uiSchema={activate.uiSchema}
             onSubmit={this.activate}
+            validate={this.validate}
             method="POST">
             <div className="form-actions form-group flex justify-end">
               <button type="submit">

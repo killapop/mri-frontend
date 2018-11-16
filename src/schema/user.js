@@ -112,7 +112,7 @@ export const activate = {
   schema: {
     title: 'Activate account',
     type: 'object',
-    required: ['password', 'name', 'new_password'],
+    required: ['password', 'name', 'pass1', 'pass2'],
     submitButton: 'Activate my account',
     cancelButton: 'Cancel',
     properties: {
@@ -124,9 +124,15 @@ export const activate = {
         type: 'string',
         title: 'Name'
       },
-      new_password: {
+      pass1: {
         type: 'string',
-        title: 'Preferred password'
+        title: 'Preferred password',
+        minLength: 12
+      },
+      pass2: {
+        type: 'string',
+        title: 'Confirm password',
+        minLength: 12
       }
     }
   },
@@ -135,9 +141,11 @@ export const activate = {
       'ui:widget': 'password',
       'ui:autofocus': true
     },
-    new_password: {
-      'ui:widget': 'password',
-      'ui:autofocus': true
+    pass1: {
+      'ui:widget': 'password'
+    },
+    pass2: {
+      'ui:widget': 'password'
     }
   }
 };

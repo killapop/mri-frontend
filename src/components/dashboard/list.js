@@ -97,11 +97,11 @@ class FacilitatorList extends React.Component {
           <div id={row.row[customIDs()]} className="actions">
             {_.map(actionButtons[path], (b, i) => (
               <span key={i}>
-                {path === 'applications' ||
-                // && row.row.state !== 'created'
-                (path === 'activations' && row.row.isValid) ? (
-                  <i
-                    key={i}
+                {(path === 'applications' && row.row.state !== 'created') ||
+                  //
+                  (path === 'activations' && row.row.isValid) ? (
+                    <i
+                      key={i}
                     data-action={b.label}
                     data-type={path === 'activations' ? 'users' : path}
                     data-id={row.row[customIDs()]}
