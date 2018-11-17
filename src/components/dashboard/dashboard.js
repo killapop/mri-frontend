@@ -1,6 +1,6 @@
 /* eslint no-unused-expresions: 0 */
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import _ from 'lodash';
 import Badges from './badges';
 import FacilitatorList from './list';
@@ -46,9 +46,12 @@ class Dashboard extends React.Component {
         {authStore.token !== '' ? (
           <div>
             <div className=" w-80-ns center pa4">
-              <div className="title pb0">Dashboard</div>
-              <div className="f3 silver">
-                Logged in as: {authStore.user.email}
+              <div className="title pb0 flex justify-start">
+                Dashboard
+                <div className="meta">Logged in as: {authStore.user.email}</div>
+                <Link className="meta" to="/users/change-password">
+                  <i className="fa fa-key" />Change password
+                </Link>
               </div>
               {this.isStaff() ? <Badges /> : ''}
             </div>

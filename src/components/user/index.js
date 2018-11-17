@@ -19,7 +19,7 @@ class UserIndex extends React.Component {
         <Route
           exact
           path={`${this.props.match.url}`}
-          render={() => <Redirect to="/users/my-account" />}
+          render={() => <Redirect to="/dashboard" />}
         />
         <Route path={`${this.props.match.url}/login`} component={Login} />
         <Route

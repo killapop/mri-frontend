@@ -1,3 +1,22 @@
+.meta {
+  font-family: PTSansNarrowRegular, sans-serif;
+  font-size: 0.35em;
+  font-weight: 100;
+  align-self: flex-end;
+  margin: 0 0 7px 10px;
+  color: #666;
+  text-decoration: none;
+}
+
+a.meta {
+  color: #66a;
+  margin-left: 20px;
+  text-shadow: 1px 1px 2px #0001;
+}
+
+a.meta i.fa {
+  margin-right: 3px;
+}
 
 .badge {
   transition: all ease 0.2s;
