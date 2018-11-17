@@ -19,6 +19,7 @@ class Application extends React.Component {
     this.errors = this.errors.bind(this);
     this.fetchData = this.fetchData.bind(this);
     this.tabHandler = this.tabHandler.bind(this);
+    this.uploadFiles = this.uploadFiles.bind(this);
     this.submitComments = this.submitComments.bind(this);
     this.state = {
       form: {},
@@ -62,20 +63,20 @@ class Application extends React.Component {
         addMessage('danger', 'Error retrieving data');
       });
 
-    // await apiCall(
-    //   'GET',
-    //   '/applications/' + this.props.match.params.id + '/attachments',
-    //   '',
-    //   true
-    // )
-    //   .then(data => {
-    //     this.setState(state => ({
-    //       attachments: data
-    //     }));
-    //   })
-    //   .catch(err => {
-    //     addMessage('danger', 'Error retrieving data');
-    //   });
+    await apiCall(
+      'GET',
+      '/applications/' + this.props.match.params.id + '/attachments',
+      '',
+      true
+    )
+      .then(data => {
+        this.setState(state => ({
+          attachments: data
+        }));
+      })
+      .catch(err => {
+        addMessage('danger', 'Error retrieving data');
+      });
 
     await apiCall('GET', '/forms/' + this.state.form.form, '', true)
       .then(data => {
@@ -125,7 +126,6 @@ class Application extends React.Component {
   }
 
   async submitComments(body) {
-    console.log(body);
     await apiCall(
       'POST',
       '/applications/' + this.props.match.params.id + '/comments',
@@ -147,17 +147,34 @@ class Application extends React.Component {
             addMessage('success', 'Comment posted');
           });
         }
-        // this.setState(state => ({ form: data }));
-        // addMessage(
-        //   `${this.state.locked ? 'success' : 'info'}`,
-        //   `Form ${
-        //     this.state.locked
-        //       ? 'submitted for processing. One of our staff witll contact you shortly'
-        //       : 'saved temporarirly'
-        //   }`
-        // );
       })
       .catch(err => addMessage('danger', 'Error submitting the comment'));
+  }
+
+  async uploadFiles(body) {
+    console.log(body);
+    await apiCall(
+      'POST',
+      '/applications/' + this.props.match.params.id + '/attachments',
+      body,
+      true
+    )
+      .then(data => {
+        if (data === 204) {
+          return apiCall(
+            'GET',
+            '/applications/' + this.props.match.params.id + '/attachments',
+            '',
+            true
+          ).then(attachments => {
+            this.setState(state => ({
+              attachments
+            }));
+            addMessage('success', 'File uploaded');
+          });
+        }
+      })
+      .catch(err => addMessage('danger', 'Error uploading the file'));
   }
 
   errors({ errors }) {
@@ -196,7 +213,12 @@ class Application extends React.Component {
             />
           );
         case 'attachments':
-          return <Attachments attachments={attachments} />;
+          return (
+            <Attachments
+              attachments={attachments}
+              uploadFiles={this.uploadFiles}
+            />
+          );
         default:
           return <History history={history} />;
       }

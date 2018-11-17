@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { authStore } from '../../lib/store';
 import moment from 'moment';
 import { orderBy } from 'lodash';
-import './comments.css';
+import './sidebar-panel.css';
 
 class Comments extends React.Component {
   constructor(props) {
