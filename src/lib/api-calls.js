@@ -47,7 +47,12 @@ const apiCall = (method, path, body, withAuth) => {
       } else if (response.status === 200) {
         return { data: response.status };
       } else {
-        addMessage('danger', 'There was a problem authenticating.');
+        addMessage(
+          'danger',
+          'There was a problem authenticating. Please try logging in again.'
+        );
+        authStore.token = '';
+        authStore.user = {};
         return { data: response.status.json() };
       }
     })
