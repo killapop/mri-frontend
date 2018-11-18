@@ -157,7 +157,8 @@ class Application extends React.Component {
       'POST',
       '/applications/' + this.props.match.params.id + '/attachments',
       body,
-      true
+      true,
+      'form'
     )
       .then(data => {
         if (data === 204) {

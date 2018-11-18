@@ -24,13 +24,20 @@ const getAuth = (method, path, body) => {
     .catch(err => console.log(err));
 };
 
-const apiCall = (method, path, body, withAuth) => {
-  const opts = Object.assign({
-    method,
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
+const apiCall = (method, path, body, withAuth, contentType = 'json') => {
+  let headers;
+  switch (contentType) {
+    case 'json':
+      headers = {'Content-Type': 'application/json'};
+      break;
+    case 'form':
+      headers = {};
+      break;
+    default:
+      headers = {};
+      break;
+  }
+  const opts = Object.assign({method, headers});
   if (method !== 'GET') {
     Object.assign(opts, { body });
   }
