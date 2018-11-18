@@ -46,46 +46,21 @@ class Application extends React.Component {
   }
 
   async fetchData() {
-    await apiCall(
-      'GET',
-      '/applications/' + this.props.match.params.id,
-      '',
-      true
-    )
-      .then(data => {
-        this.setState(state => ({
-          form: data,
-          comments: data.comments,
-          history: data.history
-        }));
-      })
-      .catch(err => {
-        addMessage('danger', 'Error retrieving data');
-      });
-
-    await apiCall(
-      'GET',
-      '/applications/' + this.props.match.params.id + '/attachments',
-      '',
-      true
-    )
-      .then(data => {
-        this.setState(state => ({
-          attachments: data
-        }));
-      })
-      .catch(err => {
-        addMessage('danger', 'Error retrieving data');
-      });
-
-    await apiCall('GET', '/forms/' + this.state.form.form, '', true)
-      .then(data => {
-        this.setState(state => ({
-          schema: data.template.schema,
-          uiSchema: data.template.uiSchema
-        }));
-      })
-      .catch(err => addMessage('danger', 'Error retrieving data'));
+    try {
+      const appData = await apiCall('GET', '/applications/' + this.props.match.params.id, '', true);
+      const attachmentData = await apiCall('GET', '/applications/' + this.props.match.params.id + '/attachments', '', true);
+      const formData = await apiCall('GET', '/forms/' + appData.form, '', true);
+      this.setState(state => ({
+        form: appData,
+        comments: appData.comments,
+        history: appData.history,
+        attachments: attachmentData,
+        schema: formData.template.schema,
+        uiSchema: formData.template.uiSchema
+      }));
+    } catch (err) {
+      addMessage('danger', 'Error retrieving data');
+    }
   }
 
   lockHandler(e) {
