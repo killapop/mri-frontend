@@ -21,6 +21,7 @@ class Application extends React.Component {
     this.tabHandler = this.tabHandler.bind(this);
     this.uploadFiles = this.uploadFiles.bind(this);
     this.submitComments = this.submitComments.bind(this);
+    this.finalizeForm = this.finalizeForm.bind(this);
     this.state = {
       form: {},
       attachments: [],
@@ -39,6 +40,7 @@ class Application extends React.Component {
         { title: 'attachments', icon: 'paperclip' }
       ]
     };
+    this.form = React.createRef();
   }
 
   async componentDidMount() {
@@ -73,6 +75,13 @@ class Application extends React.Component {
   tabHandler(e) {
     e.persist();
     this.setState(state => ({ currentTab: e.target.id }));
+  }
+
+  async finalizeForm(ev) {
+    this.setState(state => ({
+      locked: 'submit',
+    }));
+    await this.form.current.onSubmit(ev);
   }
 
   async formSubmitHandler({ formData }) {
@@ -206,44 +215,49 @@ class Application extends React.Component {
           containerSticky ? 'is-sticky' : ''
         }`}>
         <div className="formContainer w-70-l">
-          <Form
-            schema={schema}
-            uiSchema={uiSchema}
-            onError={this.errors}
-            formData={form.formData}
-            onSubmit={this.formSubmitHandler}>
-            <div className="form-actions form-group flex justify-between">
-              <Clock />
-              <div className="flex items-center">
-                <div className="submitLock pr3">
-                  <input
-                    id="submitLockcheckbox"
-                    type="checkbox"
-                    onChange={e => this.lockHandler(e)}
-                  />
+        <Form
+      ref={this.form}
+      schema={schema}
+      uiSchema={uiSchema}
+      onError={this.errors}
+      formData={form.formData}
+      onSubmit={this.formSubmitHandler}>
+        <div className="form-actions form-group flex justify-between">
+        <Clock />
+        <div className="flex items-center">
+        <div className="submitLock pr3">
+        <input
+      id="submitLockcheckbox"
+      type="checkbox"
+      onChange={e => this.lockHandler(e)}
+        />
 
-                  <label className="white pr2 f6" htmlFor="submitLockcheckbox">
-                    {this.state.locked ? (
-                      <span>
-                        Locked (Unlock)
-                        <i className="fa fa-2x fa-lock pr2" />
-                      </span>
-                    ) : (
-                      <span>
-                        Lock for submission
-                        <i className="fa fa-2x fa-lock-open pr2" />
-                      </span>
-                    )}
-                  </label>
-                </div>
-                <button type="submit" data-type="save">
-                  {schema.saveButton || 'Save'}
-                  <i className="fa fa-save ml2" />
-                </button>
-              </div>
-            </div>
-          </Form>
-        </div>
+        <label className="white pr2 f6" htmlFor="submitLockcheckbox">
+      {this.state.locked ? (
+          <span>
+        Locked (Unlock)
+          <i className="fa fa-2x fa-lock pr2" />
+        </span>
+      ) : (
+          <span>
+        Lock for submission
+          <i className="fa fa-2x fa-lock-open pr2" />
+        </span>
+      )}
+      </label>
+      </div>
+        <button type="submit" data-type="save">
+      {schema.saveButton || 'Save'}
+        <i className="fa fa-save ml2" />
+      </button>
+        <button onClick={this.finalizeForm}>
+      "Finalize Form"
+        <i className="fa fa-save ml2" />
+      </button>
+      </div>
+      </div>
+      </Form>
+      </div>
         <div className="sidebar w-30-l relative">
           <Sticky topOffset={100}>
             {({ style, isSticky, distanceFromTop = { sidebarTop } }) => (
