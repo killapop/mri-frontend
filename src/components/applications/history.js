@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import './history.css';
+import './sidebar-panel.css';
 
 class History extends React.Component {
   render() {
@@ -22,7 +22,7 @@ class History extends React.Component {
             ))}
           </div>
         ) : (
-          'NO have'
+          'No activity yet'
         )}
       </div>
     );

@@ -1,3 +1,56 @@
+.history {
+  margin: 20px 0;
+}
+
+.history-item {
+  color: #666;
+  font-size: 0.9em;
+  padding: 10px 15px;
+  background-color: #bbb1;
+}
+
+.history-item:nth-last-of-type(odd) {
+  background-color: #6661;
+  border-color: #6661;
+  border-width: 1px 0;
+  border-style: solid;
+}
+
+.history-item .event {
+  color: #66a;
+}
+
+.history-item i.fa {
+  margin-right: 10px;
+  border: 1px solid #9aa;
+  font-size: 0.8em;
+  padding: 7px;
+  border-radius: 50%;
+  color: #fffd;
+  background-color: #66ad;
+  cursor: pointer;
+  text-shadow: 1px 1px 2px #0002;
+}
+
+button.upload[type="submit"] {
+  font-family: PTSansNarrowRegular, sans-serif;
+  font-weight: 100;
+  border-radius: 4px;
+  padding: 2px 5px;
+  margin-right: 0;
+  background-color: var(--primary-color);
+}
+
+.upload i.fa {
+  margin-right: 5px;
+}
+
+.history-item i.fa:hover {
+  color: #fff;
+  background-color: #66a;
+  box-shadow: 1px 1px 2px #0002;
+}
+
 .comments {
   display: flex;
   flex-flow: column nowrap;

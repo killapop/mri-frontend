@@ -28,7 +28,7 @@ const apiCall = (method, path, body, withAuth, contentType = 'json') => {
   let headers;
   switch (contentType) {
     case 'json':
-      headers = {'Content-Type': 'application/json'};
+      headers = { 'Content-Type': 'application/json' };
       break;
     case 'form':
       headers = {};
@@ -37,7 +37,7 @@ const apiCall = (method, path, body, withAuth, contentType = 'json') => {
       headers = {};
       break;
   }
-  const opts = Object.assign({method, headers});
+  const opts = Object.assign({ method, headers });
   if (method !== 'GET') {
     Object.assign(opts, { body });
   }

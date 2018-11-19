@@ -49,8 +49,18 @@ class Application extends React.Component {
 
   async fetchData() {
     try {
-      const appData = await apiCall('GET', '/applications/' + this.props.match.params.id, '', true);
-      const attachmentData = await apiCall('GET', '/applications/' + this.props.match.params.id + '/attachments', '', true);
+      const appData = await apiCall(
+        'GET',
+        '/applications/' + this.props.match.params.id,
+        '',
+        true
+      );
+      const attachmentData = await apiCall(
+        'GET',
+        '/applications/' + this.props.match.params.id + '/attachments',
+        '',
+        true
+      );
       const formData = await apiCall('GET', '/forms/' + appData.form, '', true);
       this.setState(state => ({
         form: appData,
@@ -79,7 +89,7 @@ class Application extends React.Component {
 
   async finalizeForm(ev) {
     this.setState(state => ({
-      locked: 'submit',
+      locked: 'submit'
     }));
     await this.form.current.onSubmit(ev);
   }
@@ -166,7 +176,9 @@ class Application extends React.Component {
     console.log(errors);
   }
 
-  timeoutHandler() {}
+  timeoutHandler() {
+    addMessage('danger', 'You need be log in to access the form');
+  }
 
   refreshSessionHandler() {}
 
@@ -201,6 +213,7 @@ class Application extends React.Component {
           return (
             <Attachments
               attachments={attachments}
+              formId={form.id}
               uploadFiles={this.uploadFiles}
             />
           );
@@ -215,49 +228,49 @@ class Application extends React.Component {
           containerSticky ? 'is-sticky' : ''
         }`}>
         <div className="formContainer w-70-l">
-        <Form
-      ref={this.form}
-      schema={schema}
-      uiSchema={uiSchema}
-      onError={this.errors}
-      formData={form.formData}
-      onSubmit={this.formSubmitHandler}>
-        <div className="form-actions form-group flex justify-between">
-        <Clock />
-        <div className="flex items-center">
-        <div className="submitLock pr3">
-        <input
-      id="submitLockcheckbox"
-      type="checkbox"
-      onChange={e => this.lockHandler(e)}
-        />
+          <Form
+            ref={this.form}
+            schema={schema}
+            uiSchema={uiSchema}
+            onError={this.errors}
+            formData={form.formData}
+            onSubmit={this.formSubmitHandler}>
+            <div className="form-actions form-group flex justify-between">
+              <Clock />
+              <div className="flex items-center">
+                <div className="submitLock pr3">
+                  <input
+                    id="submitLockcheckbox"
+                    type="checkbox"
+                    onChange={e => this.lockHandler(e)}
+                  />
 
-        <label className="white pr2 f6" htmlFor="submitLockcheckbox">
-      {this.state.locked ? (
-          <span>
-        Locked (Unlock)
-          <i className="fa fa-2x fa-lock pr2" />
-        </span>
-      ) : (
-          <span>
-        Lock for submission
-          <i className="fa fa-2x fa-lock-open pr2" />
-        </span>
-      )}
-      </label>
-      </div>
-        <button type="submit" data-type="save">
-      {schema.saveButton || 'Save'}
-        <i className="fa fa-save ml2" />
-      </button>
-        <button onClick={this.finalizeForm}>
-      "Finalize Form"
-        <i className="fa fa-save ml2" />
-      </button>
-      </div>
-      </div>
-      </Form>
-      </div>
+                  <label className="white pr2 f6" htmlFor="submitLockcheckbox">
+                    {this.state.locked ? (
+                      <span>
+                        Locked (Unlock)
+                        <i className="fa fa-2x fa-lock pr2" />
+                      </span>
+                    ) : (
+                      <span>
+                        Lock for submission
+                        <i className="fa fa-2x fa-lock-open pr2" />
+                      </span>
+                    )}
+                  </label>
+                </div>
+                <button type="submit" data-type="save">
+                  {schema.saveButton || 'Save'}
+                  <i className="fa fa-save ml2" />
+                </button>
+                <button onClick={this.finalizeForm}>
+                  "Finalize Form"
+                  <i className="fa fa-save ml2" />
+                </button>
+              </div>
+            </div>
+          </Form>
+        </div>
         <div className="sidebar w-30-l relative">
           <Sticky topOffset={100}>
             {({ style, isSticky, distanceFromTop = { sidebarTop } }) => (
