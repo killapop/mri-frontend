@@ -2,9 +2,8 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { view } from 'react-easy-state';
 
-import Login from './login.js';
-import ForgotPassword from './forgotPassword.js';
-import EditAccount from './editAccount.js';
+import Login from './login';
+import ChangePassword from './changePassword';
 import CreateUser from './create';
 import ActivateUser from './activate';
 import InvalidateActivation from './invalidate';
@@ -23,10 +22,9 @@ class UserIndex extends React.Component {
         />
         <Route path={`${this.props.match.url}/login`} component={Login} />
         <Route
-          path={`${this.props.match.url}/forgot-password`}
-          component={ForgotPassword}
+          path={`${this.props.match.url}/password/:email`}
+          component={ChangePassword}
         />
-        <Route path={`${this.props.match.url}/edit`} component={EditAccount} />
         <Route path={`${this.props.match.url}/create`} component={CreateUser} />
         <Route
           path={`${this.props.match.url}/activate/:token`}

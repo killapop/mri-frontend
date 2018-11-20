@@ -54,23 +54,24 @@ export const change = {
   schema: {
     title: 'Change your password',
     type: 'object',
-    required: ['current_password'],
     submitButton: 'Change password',
     cancelButton: 'Cancel',
     properties: {
-      current_password: {
+      pass1: {
         type: 'string',
-        title: 'Current password',
-        placeholder: 'Current password'
+        title: 'Enter new password',
+        minLength: 12
+      },
+      pass2: {
+        type: 'string',
+        title: 'Confirm password',
+        minLength: 12
       }
     }
   },
   uiSchema: {
-    email: {
-      'ui:widget': 'email',
-      'ui:autofocus': true,
-      'ui:help': 'Please enter your email address'
-    }
+    pass1: { 'ui:widget': 'password' },
+    pass2: { 'ui:widget': 'password' }
   }
 };
 

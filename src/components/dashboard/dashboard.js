@@ -49,7 +49,9 @@ class Dashboard extends React.Component {
               <div className="title pb0 flex justify-start">
                 Dashboard
                 <div className="meta">Logged in as: {authStore.user.email}</div>
-                <Link className="meta" to="/users/change-password">
+                <Link
+                  className="meta"
+                  to={`/users/password/${authStore.user.email}`}>
                   <i className="fa fa-key" />Change password
                 </Link>
               </div>
