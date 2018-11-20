@@ -69,10 +69,10 @@ class Attachments extends React.Component {
           encType="multipart/form-data"
           className="comments-form"
           onSubmit={e => this.uploadfile(e)}>
-          <div className="form-group flex justify-between">
-            <input name="files" type="file" required />
-            <button type="submit" className="upload">
-              <i className="fa fa-file-upload" />upload
+          <div className="form-group flex flex-column overflow-x-hidden justify-between items-end">
+            <input name="files" type="file" required className="self-start" />
+            <button type="submit" className="flex f7 b pv1 ph2 br1">
+              <i className="fa fa-file-upload mr2" />upload
             </button>
           </div>
         </form>

@@ -102,6 +102,7 @@ class Application extends React.Component {
       true
     )
       .then(data => {
+        console.log(data);
         this.setState(state => ({
           form: data,
           comments: data.comments,
@@ -259,14 +260,21 @@ class Application extends React.Component {
                     )}
                   </label>
                 </div>
-                <button type="submit" data-type="save">
-                  {schema.saveButton || 'Save'}
-                  <i className="fa fa-save ml2" />
-                </button>
-                <button onClick={this.finalizeForm}>
-                  "Finalize Form"
-                  <i className="fa fa-save ml2" />
-                </button>
+                {form.state === 'created' &&
+                authStore.user.roles.indexOf('mri-staff') === -1 ? (
+                  <div>
+                    <button type="submit" data-type="save">
+                      {schema.saveButton || 'Save and continue'}
+                      <i className="fa fa-save ml2" />
+                    </button>
+                    <button type="submit" onClick={this.finalizeForm}>
+                      Finalize
+                      <i className="fa fa-save ml2" />
+                    </button>
+                  </div>
+                ) : (
+                  ''
+                )}
               </div>
             </div>
           </Form>
