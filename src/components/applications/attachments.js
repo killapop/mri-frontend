@@ -77,7 +77,7 @@ class Attachments extends React.Component {
           </div>
         </form>
         <div className="">
-          {attachments ? (
+          {attachments.length > 0 ? (
             <div>
               {attachments.map((item, idx) => (
                 <div key={idx} className="history-item">

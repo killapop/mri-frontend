@@ -46,7 +46,7 @@ const apiCall = (method, path, body, withAuth, contentType = 'json') => {
   }
   return fetch(baseURL + path, opts)
     .then(response => {
-      if (response.status === 204) {
+      if (response.status === 204 || response.status === 404) {
         return { data: response.status };
       }
       if (withAuth && response.status !== 401) {

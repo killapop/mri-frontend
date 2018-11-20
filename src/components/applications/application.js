@@ -70,7 +70,7 @@ class Application extends React.Component {
         form: appData,
         comments: appData.comments,
         history: appData.history,
-        attachments: attachmentData,
+        attachments: attachmentData === 404 ? [] : attachmentData,
         schema: formData.template.schema,
         uiSchema: formData.template.uiSchema,
         disabled:
@@ -269,30 +269,30 @@ class Application extends React.Component {
               <Clock />
               <div className="flex items-center">
                 {form.state === 'finalized' &&
-                  authStore.user.roles.indexOf('mri-staff') !== -1 ? (
-                    <div>
-                      {' '}
-                      <button
-                        className="lock"
-                        type="button"
-                        onClick={this.lockHandler}>
-                        Lock
-                        <i className="fa fa-lock ml2" />
-                      </button>
-                    </div>
-                  ) : (
-                    ''
-                  )}
+                authStore.user.roles.indexOf('mri-staff') !== -1 ? (
+                  <div>
+                    {' '}
+                    <button
+                      className="lock"
+                      type="button"
+                      onClick={this.lockHandler}>
+                      Lock
+                      <i className="fa fa-lock ml2" />
+                    </button>
+                  </div>
+                ) : (
+                  ''
+                )}
                 {form.state === 'created' &&
-                  authStore.user.roles.indexOf('mri-staff') === -1 ? (
-                    <div>
-                      <button
-                        className="finalize"
-                        type="button"
-                        onClick={this.finalizeForm}>
-                        Finalize
-                        <i className="fa fa-check ml2" />
-                      </button>
+                authStore.user.roles.indexOf('mri-staff') === -1 ? (
+                  <div>
+                    <button
+                      className="finalize"
+                      type="button"
+                      onClick={this.finalizeForm}>
+                      Finalize
+                      <i className="fa fa-check ml2" />
+                    </button>
                     <button
                       type="button"
                       data-type="save"
