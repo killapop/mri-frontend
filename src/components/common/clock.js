@@ -1,23 +1,47 @@
 import React from 'react';
+import { authStore } from '../../lib/store';
+import { apiCall } from '../../lib/api-calls';
+import { add as addMessage } from '../../lib/message';
 import './clock.css';
 
 class Clock extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      timer: 3600
+      timer: 0
     };
     this.startClock = this.startClock.bind(this);
     this.stopClock = this.stopClock.bind(this);
+    this.resetSession = this.resetSession.bind(this);
   }
 
   componentDidMount() {
+    this.resetSession('new');
     this.startClock();
   }
 
   componentWillUnmount() {
-    // this.stopClock();
     window.clearInterval(this.clockTimer);
+  }
+
+  async resetSession(type) {
+    await apiCall('POST', '/users/refresh', '', true)
+      .then(data => {
+        window.clearInterval(this.clockTimer);
+        this.setState(state => ({ timer: 3600 }));
+        authStore.token = data.token;
+        if (type !== 'new') {
+          addMessage('success', 'Your session has been reset');
+        }
+        this.startClock();
+      })
+      .catch(err => {
+        addMessage(
+          'warning',
+          'Your session will expire soon. Please click the refresh button at the clock to refresh it.'
+        );
+        console.log(err);
+      });
   }
 
   startClock() {
@@ -61,6 +85,7 @@ class Clock extends React.Component {
             className="reset fa fa-sync pointer"
             alt="Refresh session"
             title="Refresh session"
+            onClick={this.resetSession}
           />
         </div>
       </div>
