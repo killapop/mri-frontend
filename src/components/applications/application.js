@@ -21,7 +21,9 @@ class Application extends React.Component {
     this.tabHandler = this.tabHandler.bind(this);
     this.uploadFiles = this.uploadFiles.bind(this);
     this.submitComments = this.submitComments.bind(this);
+    this.saveForm = this.saveForm.bind(this);
     this.finalizeForm = this.finalizeForm.bind(this);
+    this.saveAndExit = this.saveAndExit.bind(this);
     this.state = {
       form: {},
       attachments: [],
@@ -31,9 +33,11 @@ class Application extends React.Component {
       uiSchema: {},
       errors: {},
       locked: false,
+      noValidate: true,
       forms: {},
+      close: false,
       containerSticky: false,
-      currentTab: 'history',
+      currentTab: 'attachments',
       tabs: [
         { title: 'history', icon: 'clipboard-list' },
         { title: 'comments', icon: 'comments' },
@@ -68,7 +72,11 @@ class Application extends React.Component {
         history: appData.history,
         attachments: attachmentData,
         schema: formData.template.schema,
-        uiSchema: formData.template.uiSchema
+        uiSchema: formData.template.uiSchema,
+        disabled:
+          authStore.user.roles.indexOf('mri-staff') !== -1 ||
+          (authStore.user.roles.indexOf('mri-staff') === -1 &&
+            appData.state === 'finalized')
       }));
     } catch (err) {
       addMessage('danger', 'Error retrieving data');
@@ -89,8 +97,17 @@ class Application extends React.Component {
 
   async finalizeForm(ev) {
     this.setState(state => ({
-      locked: 'submit'
+      locked: true
     }));
+    await this.form.current.onSubmit(ev);
+  }
+
+  async saveAndExit(ev) {
+    await this.form.current.onSubmit(ev);
+    this.setState(state => ({ close: true }));
+  }
+
+  async saveForm(ev) {
     await this.form.current.onSubmit(ev);
   }
 
@@ -98,11 +115,13 @@ class Application extends React.Component {
     await apiCall(
       'PUT',
       '/applications/' + this.props.match.params.id,
-      JSON.stringify({ type: this.state.locked ? 'submit' : 'save', formData }),
+      JSON.stringify({
+        type: this.state.locked ? 'submit' : 'save',
+        formData
+      }),
       true
     )
       .then(data => {
-        console.log(data);
         this.setState(state => ({
           form: data,
           comments: data.comments,
@@ -116,6 +135,11 @@ class Application extends React.Component {
               : 'saved temporarirly'
           }`
         );
+      })
+      .then(() => {
+        if (this.state.close) {
+          return this.props.history.push('/');
+        }
       })
       .catch(err => addMessage('danger', 'Error retrieving data'));
   }
@@ -147,7 +171,6 @@ class Application extends React.Component {
   }
 
   async uploadFiles(body) {
-    console.log(body);
     await apiCall(
       'POST',
       '/applications/' + this.props.match.params.id + '/attachments',
@@ -193,7 +216,9 @@ class Application extends React.Component {
       tabs,
       comments,
       history,
-      currentTab
+      currentTab,
+      noValidate,
+      disabled
     } = this.state;
     if (authStore.token === '') {
       this.timeoutHandler();
@@ -230,15 +255,19 @@ class Application extends React.Component {
         }`}>
         <div className="formContainer w-70-l">
           <Form
+            disabled={disabled}
             ref={this.form}
             schema={schema}
             uiSchema={uiSchema}
             onError={this.errors}
             formData={form.formData}
+            noValidate={noValidate}
+            noHtml5Validate={noValidate}
             onSubmit={this.formSubmitHandler}>
             <div className="form-actions form-group flex justify-between">
               <Clock />
               <div className="flex items-center">
+                {noValidate ? 'DONT VALIDATE' : 'VALIDATE'}
                 <div className="submitLock pr3">
                   <input
                     id="submitLockcheckbox"
@@ -263,12 +292,22 @@ class Application extends React.Component {
                 {form.state === 'created' &&
                 authStore.user.roles.indexOf('mri-staff') === -1 ? (
                   <div>
-                    <button type="submit" data-type="save">
-                      {schema.saveButton || 'Save and continue'}
-                      <i className="fa fa-save ml2" />
-                    </button>
-                    <button type="submit" onClick={this.finalizeForm}>
+                    <button
+                      className="finalize"
+                      type="button"
+                      onClick={this.finalizeForm}>
                       Finalize
+                      <i className="fa fa-lock ml2" />
+                    </button>
+                    <button
+                      type="button"
+                      data-type="save"
+                      onClick={this.saveAndExit}>
+                      Save and close
+                      <i className="fa fa-exit-alt ml2" />
+                    </button>
+                    <button type="submit" data-type="save">
+                      Save and continue
                       <i className="fa fa-save ml2" />
                     </button>
                   </div>
