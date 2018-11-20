@@ -80,6 +80,11 @@ class UserList extends React.Component {
                       {_.size(application.comments)}
                       {` `}
                     </div>
+                    <div>
+                      Processing status{`: `}
+                      {application.bundled ? 'under process' : 'pre-process'}
+                      {` `}
+                    </div>
                   </div>
                 </div>
               ))}
