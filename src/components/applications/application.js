@@ -255,6 +255,7 @@ class Application extends React.Component {
         }`}>
         <div className="formContainer w-70-l">
           <Form
+            className={`${disabled ? 'disabled' : ''} rjsf`}
             disabled={disabled}
             ref={this.form}
             schema={schema}
@@ -267,38 +268,31 @@ class Application extends React.Component {
             <div className="form-actions form-group flex justify-between">
               <Clock />
               <div className="flex items-center">
-                {noValidate ? 'DONT VALIDATE' : 'VALIDATE'}
-                <div className="submitLock pr3">
-                  <input
-                    id="submitLockcheckbox"
-                    type="checkbox"
-                    onChange={e => this.lockHandler(e)}
-                  />
-
-                  <label className="white pr2 f6" htmlFor="submitLockcheckbox">
-                    {this.state.locked ? (
-                      <span>
-                        Locked (Unlock)
-                        <i className="fa fa-2x fa-lock pr2" />
-                      </span>
-                    ) : (
-                      <span>
-                        Lock for submission
-                        <i className="fa fa-2x fa-lock-open pr2" />
-                      </span>
-                    )}
-                  </label>
-                </div>
+                {form.state === 'finalized' &&
+                  authStore.user.roles.indexOf('mri-staff') !== -1 ? (
+                    <div>
+                      {' '}
+                      <button
+                        className="lock"
+                        type="button"
+                        onClick={this.lockHandler}>
+                        Lock
+                        <i className="fa fa-lock ml2" />
+                      </button>
+                    </div>
+                  ) : (
+                    ''
+                  )}
                 {form.state === 'created' &&
-                authStore.user.roles.indexOf('mri-staff') === -1 ? (
-                  <div>
-                    <button
-                      className="finalize"
-                      type="button"
-                      onClick={this.finalizeForm}>
-                      Finalize
-                      <i className="fa fa-lock ml2" />
-                    </button>
+                  authStore.user.roles.indexOf('mri-staff') === -1 ? (
+                    <div>
+                      <button
+                        className="finalize"
+                        type="button"
+                        onClick={this.finalizeForm}>
+                        Finalize
+                        <i className="fa fa-check ml2" />
+                      </button>
                     <button
                       type="button"
                       data-type="save"

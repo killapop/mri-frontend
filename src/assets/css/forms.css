@@ -258,6 +258,15 @@ fieldset[disabled] .form-control {
   max-height: fit-content;
 }
 
+.form-control[disabled] ~ p.help-block {
+  display: none;
+}
+
+form.disabled p.field-description {
+  color: #666;
+  font-size: 0.9em;
+}
+
 @media screen and (min-width: 60em) {
   .form-actions {
     /* padding-right: 2.25em; */
