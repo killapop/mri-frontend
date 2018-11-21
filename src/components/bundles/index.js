@@ -3,6 +3,7 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import { view } from 'react-easy-state';
 
 import CreateBundle from './create';
+import Bundle from './bundle';
 
 import '../../assets/css/forms.css';
 
@@ -21,7 +22,7 @@ class BundlesIndex extends React.Component {
             path={`${this.props.match.url}/create`}
             component={CreateBundle}
           />
-          {/* <Route path={`${this.props.match.url}/:id`} component={Application} /> */}
+          <Route path={`${this.props.match.url}/:id`} component={Bundle} />
         </Switch>
       </div>
     );

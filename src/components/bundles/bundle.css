@@ -1,0 +1,13 @@
+.bundle-meta {
+  border: 1px solid #ddd;
+  border-width: 5px 0;
+}
+
+.bundle-meta > div {
+  width: 25%;
+  padding: 10px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  border-right: 1px solid #ddda;
+}

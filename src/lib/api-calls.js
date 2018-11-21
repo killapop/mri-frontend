@@ -16,6 +16,10 @@ const getAuth = (method, path, body) => {
     .then(response => {
       if (response.status !== 401) {
         return response.json();
+      } else {
+        authStore.token = '';
+        authStore.user = {};
+        addMessage('danger', 'Your session has timed out. Please log in again');
       }
     })
     .then(result => {

@@ -15,7 +15,8 @@ class FacilitatorList extends React.Component {
     actionButtons: {
       activations: [{ icon: 'ban', label: 'invalidate' }],
       users: [{ icon: 'trash', label: 'delete' }],
-      applications: [{ icon: 'eye', label: 'view' }]
+      applications: [{ icon: 'eye', label: 'view' }],
+      bundles: [{ icon: 'eye', label: 'view' }]
     },
     activations: [],
     users: [],
@@ -66,7 +67,8 @@ class FacilitatorList extends React.Component {
 
   clickHandler(e) {
     const { type, id, action } = e.target.dataset;
-    const actionPath = type === 'applications' ? '' : '/' + action;
+    const actionPath =
+      type === 'applications' || type === 'bundles' ? '' : '/' + action;
     const pathname = `/${type}${actionPath}/${id}`;
     this.setState(state => ({ redirect: pathname }));
   }
@@ -99,7 +101,8 @@ class FacilitatorList extends React.Component {
               <span key={i}>
                 {(path === 'applications' && row.row.state !== 'created') ||
                 (path === 'activations' && row.row.isValid) ||
-                path === 'users' ? (
+                path === 'users' ||
+                path === 'bundles' ? (
                   <i
                     key={i}
                     data-action={b.label}

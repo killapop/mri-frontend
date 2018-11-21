@@ -86,7 +86,6 @@ class CreateForm extends React.Component {
   }
 
   async create(e) {
-    const { selected } = this.state;
     e.persist();
     await apiCall(
       'POST',

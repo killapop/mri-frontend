@@ -234,24 +234,38 @@ export const listSchema = {
   bundles: {
     columns: [
       {
-        accessor: 'bundle_name',
+        accessor: 'id',
         Header: 'Bundle ID'
       },
       {
-        accessor: 'organisation',
-        Header: 'Organisation'
+        accessor: 'case_worker.name',
+        Header: 'MRI contact'
       },
       {
-        id: 'beneficiaries',
-        Header: 'Beneficiarie(s)'
+        accessor: 'applications',
+        Header: 'Applicants',
+        Cell: row => (
+          <div className="flex flex-wrap">
+            {_.map(row.row.applications, (applicant, key) => {
+              return (
+                <span
+                  key={key}
+                  className="mr2 br2 ph2 pv1 mv1 gray f6  bg-white shadow-light">
+                  {applicant.applicant}
+                </span>
+              );
+            })}
+          </div>
+        )
       },
       {
-        accessor: 'created_on',
-        Header: 'Created'
+        accessor: 'created_at',
+        Header: 'Created',
+        Cell: row => formatDate(row.value)
       },
       {
         accessor: 'state',
-        Header: 'State'
+        Header: 'Status'
       }
     ]
   },
