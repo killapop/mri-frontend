@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import { baseURL } from '../../lib/api-calls';
 import { authStore } from '../../lib/store';
 import { add as addMessage } from '../../lib/message';
@@ -7,6 +8,12 @@ import { add as addMessage } from '../../lib/message';
 import './sidebar-panel.css';
 
 class Attachments extends React.Component {
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -24,14 +31,9 @@ class Attachments extends React.Component {
   }
 
   async downloadFile(e) {
-    const fileName = e.target.dataset.filename;
     e.persist();
-    const path =
-      baseURL +
-      '/applications/' +
-      this.props.formId +
-      '/attachments/' +
-      fileName;
+    const fileName = e.target.dataset.filename;
+    const path = baseURL + this.props.match.url + '/attachments/' + fileName;
     await fetch(path, {
       method: 'GET',
       headers: {
@@ -106,4 +108,4 @@ Attachments.propTypes = {
   formId: PropTypes.string
 };
 
-export default Attachments;
+export default withRouter(Attachments);
