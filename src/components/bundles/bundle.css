@@ -8,6 +8,35 @@
   padding: 10px;
   display: flex;
   flex-flow: column;
-  align-items: center;
   border-right: 1px solid #ddda;
+  font-family: PTSansNarrowRegular, sans-serif;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.bundle-meta > div b {
+  padding: 10px 0;
+  text-transform: none;
+  font-family: PTSansRegular, sans-serif;
+  color: #333;
+}
+
+.bundle-meta > div.state b {
+  text-transform: capitalize;
+}
+
+.associate-application {
+  align-self: flex-end;
+  flex-flow: column;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.reactahead {
+  box-shadow: none !important;
+}
+
+.associate-application button {
+  margin-left: 5px;
 }

@@ -53,6 +53,7 @@ const apiCall = (method, path, body, withAuth, contentType = 'json') => {
       if (response.status === 204 || response.status === 404) {
         return { data: response.status };
       }
+
       if (withAuth && response.status !== 401) {
         return response.json();
       } else if (response.status === 200) {
