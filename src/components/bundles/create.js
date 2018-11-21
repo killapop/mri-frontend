@@ -77,7 +77,7 @@ class CreateForm extends React.Component {
           const all = _.filter(
             applications,
             application =>
-              application.state === 'finalized' && !application.bundled
+              application.state === 'finalized' && !application.bundle
           );
           this.setState(state => ({ all, listed: _.map(all, 'id') }));
         }
@@ -86,27 +86,27 @@ class CreateForm extends React.Component {
   }
 
   async create(e) {
-    const formName =
-      this.props.match.params.template + '-' + this.state.programLine + '.json';
-    if (this.state.selectedUser) {
-      await apiCall(
-        'POST',
-        '/applications',
-        JSON.stringify({
-          email: this.state.selectedUser,
-          form: formName
-        }),
-        true
-      ).then(data => {
-        if (data === 204) {
-          this.setState(state => ({ created: true }));
-        } else {
-          addMessage('danger', 'Error: There was an error creating the form');
-        }
+    const { selected } = this.state;
+    e.persist();
+    await apiCall(
+      'POST',
+      '/bundles',
+      JSON.stringify({
+        case_worker: authStore.user.email,
+        applications: this.state.selected
+      }),
+      true
+    )
+      .then(data => {
+        this.setState(state => ({ created: true }));
+        addMessage('success', 'New bundle created');
+      })
+      .catch(err => {
+        addMessage(
+          'danger',
+          'There was an error creating the bundle. Please try again after some time'
+        );
       });
-    } else {
-      addMessage('warning', `Please choose the ${this.state.role}`);
-    }
   }
 
   getType(form) {
@@ -123,7 +123,7 @@ class CreateForm extends React.Component {
   }
 
   render() {
-    const { all, listed, selected } = this.state;
+    const { all, listed, selected, created } = this.state;
     let lApplications = [],
       sApplications = [];
     _.forEach(
@@ -135,8 +135,7 @@ class CreateForm extends React.Component {
       li => (sApplications[li] = _.find(all, a => a.id === li))
     );
 
-    console.log(lApplications, sApplications);
-    if (authStore.token === '') {
+    if (authStore.token === '' || created) {
       return <Redirect to="/" />;
     }
     return (
@@ -198,6 +197,16 @@ class CreateForm extends React.Component {
             <div />
           )}
         </div>
+        {selected.length > 0 ? (
+          <div className="form-actions form-group flex justify-end">
+            <button type="button" onClick={e => this.create(e)}>
+              Create bundle
+              <i className="fa fa-cubes ml2" />
+            </button>
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     );
   }
