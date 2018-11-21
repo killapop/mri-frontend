@@ -27,6 +27,11 @@ class CreateForm extends React.Component {
           Header: 'Applicant'
         },
         {
+          accessor: 'form',
+          Header: 'Type',
+          Cell: row => this.getType(row.row.form)
+        },
+        {
           Header: 'Actions',
           accessor: 'id',
           filterable: false,
@@ -105,12 +110,12 @@ class CreateForm extends React.Component {
   }
 
   getType(form) {
-    switch (form) {
-      case 'personalStatement-1.json':
+    switch (_.trim(form)) {
+      case 'personalStatements-1.json':
         return 'Personal Statement PL 1';
-      case 'personalStatement-2.json':
+      case 'personalStatements-2.json':
         return 'Personal Statement PL 2';
-      case 'projectProposal-1.json':
+      case 'projectProposals-1.json':
         return 'Project Proposal PL 1';
       default:
         return 'Project Proposal PL 2';
@@ -147,12 +152,16 @@ class CreateForm extends React.Component {
               <div className="selected-header w-100 flex">
                 <div className="text-center b">Id</div>
                 <div className="text-center b">Applicant</div>
+                <div className="text-center b">Type</div>
                 <div className="text-center b">Actions</div>
               </div>
               {_.map(selected, (item, idx) => (
                 <div className="selected-item w-100 flex" key={idx}>
                   <div className="id">{item}</div>
                   <div className="id">{sApplications[item].account.email}</div>
+                  <div className="id">
+                    {this.getType(sApplications[item].form)}
+                  </div>
                   <div className="id">
                     <div id={item} onClick={this.deselect} className="pointer">
                       <i className="mr2 fa fa-trash red" />deselect
