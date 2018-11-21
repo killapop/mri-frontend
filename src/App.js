@@ -8,7 +8,7 @@ import Layout from './components/common/layout';
 import Messages from './components/common/messages';
 import UserIndex from './components/user';
 import FormsIndex from './components/applications';
-// import Clock from './components/common/clock';
+import BundlesIndex from './components/bundles';
 import Dashboard from './components/dashboard/dashboard';
 import './App.css';
 
@@ -68,9 +68,10 @@ class App extends Component {
                   )
                 }
               />
+              <Route path="/dashboard" component={Dashboard} />
               <Route path="/users" component={UserIndex} />
               <Route path="/applications" component={FormsIndex} />
-              <Route path="/dashboard" component={Dashboard} />
+              <Route path="/bundles" component={BundlesIndex} />
             </Layout>
           </div>
         </Router>
