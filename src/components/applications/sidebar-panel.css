@@ -78,6 +78,7 @@ button.upload[type="submit"] {
 .comment .text {
   color: #666;
   margin-bottom: 10px;
+  white-space: pre-wrap;
 }
 
 .comment .meta {
