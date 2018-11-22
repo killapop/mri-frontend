@@ -76,8 +76,7 @@ class CreateForm extends React.Component {
         if (applications) {
           const all = _.filter(
             applications,
-            application =>
-              application.state === 'finalized' && !application.bundle
+            application => application.state === 'locked' && !application.bundle
           );
           this.setState(state => ({ all, listed: _.map(all, 'id') }));
         }

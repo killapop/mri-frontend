@@ -67,8 +67,7 @@ class Bundle extends React.Component {
         applications: _.map(
           _.filter(
             applicationData,
-            application =>
-              application.state === 'finalized' && !application.bundle
+            application => application.state === 'locked' && !application.bundle
           ),
           'id'
         ),

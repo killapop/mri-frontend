@@ -68,6 +68,7 @@ class Application extends React.Component {
       const formData = await apiCall('GET', '/forms/' + appData.form, '', true);
       this.setState(state => ({
         form: appData,
+        type: '',
         comments: appData.comments,
         history: appData.history,
         attachments: attachmentData === 404 ? [] : attachmentData,
@@ -76,18 +77,18 @@ class Application extends React.Component {
         disabled:
           authStore.user.roles.indexOf('mri-staff') !== -1 ||
           (authStore.user.roles.indexOf('mri-staff') === -1 &&
-            appData.state === 'finalized')
+            appData.state === 'locked')
       }));
     } catch (err) {
       addMessage('danger', 'Error retrieving data');
     }
   }
 
-  lockHandler(e) {
-    e.persist();
+  async lockHandler(ev) {
     this.setState(state => ({
-      locked: e.target.checked
+      type: 'lock'
     }));
+    await this.form.current.onSubmit(ev);
   }
 
   tabHandler(e) {
@@ -112,13 +113,21 @@ class Application extends React.Component {
   }
 
   async formSubmitHandler({ formData }) {
+    let body = {};
+    let message = '';
+    if (this.state.type === 'lock') {
+      body = { type: this.state.type };
+      message = 'The form has been locked and no further editing is allowed';
+    } else {
+      body = { type: this.state.locked ? 'submit' : 'save', formData };
+      message = this.state.locked
+        ? 'Your form has been submitted for review and validation'
+        : 'Your form has been temporarily saved';
+    }
     await apiCall(
       'PUT',
       '/applications/' + this.props.match.params.id,
-      JSON.stringify({
-        type: this.state.locked ? 'submit' : 'save',
-        formData
-      }),
+      JSON.stringify(body),
       true
     )
       .then(data => {
@@ -127,14 +136,7 @@ class Application extends React.Component {
           comments: data.comments,
           history: data.history
         }));
-        addMessage(
-          `${this.state.locked ? 'success' : 'info'}`,
-          `Form ${
-            this.state.locked
-              ? 'submitted for processing. One of our staff witll contact you shortly'
-              : 'saved temporarirly'
-          }`
-        );
+        addMessage('success', message);
       })
       .then(() => {
         if (this.state.close) {
@@ -283,16 +285,20 @@ class Application extends React.Component {
                 ) : (
                   ''
                 )}
-                {form.state === 'created' &&
+                {form.state !== 'locked' &&
                 authStore.user.roles.indexOf('mri-staff') === -1 ? (
                   <div>
-                    <button
-                      className="finalize"
-                      type="button"
-                      onClick={this.finalizeForm}>
-                      Finalize
-                      <i className="fa fa-check ml2" />
-                    </button>
+                    {form.state !== 'finalized' ? (
+                      <button
+                        className="finalize"
+                        type="button"
+                        onClick={this.finalizeForm}>
+                        Finalize
+                        <i className="fa fa-check ml2" />
+                      </button>
+                    ) : (
+                      ''
+                    )}
                     <button
                       type="button"
                       data-type="save"
