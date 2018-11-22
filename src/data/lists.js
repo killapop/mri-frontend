@@ -199,23 +199,23 @@ export const listSchema = {
         )
       },
       {
-        accessor: 'bundled',
+        accessor: 'bundle',
         Header: 'Bundled',
         Cell: row => (
-          <span style={{ color: row.value === null ? '#3a6' : '#a33' }}>
+          <span style={{ color: row.value ? '#3a6' : '#a33' }}>
             <i
               className={`mr2 fa fa-15x fa-${row.value ? 'check' : 'times'}`}
             />
-            {row.value ? 'Bundled' : 'Not bundled'}
+            {row.value !== null ? 'Bundled' : 'Not bundled'}
           </span>
         ),
         filterMethod: (filter, row) => {
           if (filter.value === 'all') {
             return row;
           } else if (filter.value === 'false') {
-            return row[filter.id] !== null;
+            return !row[filter.id];
           } else {
-            return row[filter.id] === null;
+            return row[filter.id];
           }
         },
         Filter: ({ filter, onChange }) => (
@@ -256,7 +256,14 @@ export const listSchema = {
               );
             })}
           </div>
-        )
+        ),
+        filterMethod: (filter, row) => {
+          return (
+            _
+              .toString(_.map(row.applications, 'applicant'))
+              .indexOf(filter.value) !== -1
+          );
+        }
       },
       {
         accessor: 'created_at',
