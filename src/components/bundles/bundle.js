@@ -38,6 +38,13 @@ class Bundle extends React.Component {
         { title: 'history', icon: 'clipboard-list' },
         { title: 'comments', icon: 'comments' },
         { title: 'attachments', icon: 'paperclip' }
+      ],
+      states: [
+        { label: 'created', action: 'created' },
+        { label: 'assessed', action: 'assess' },
+        { label: 'accepted', action: 'accept' },
+        { label: 'implemented', action: 'implement' },
+        { label: 'reported', action: 'report' }
       ]
     };
     this.associate = React.createRef();
@@ -97,6 +104,7 @@ class Bundle extends React.Component {
 
   async updateBundle(e) {
     e.persist();
+
     const type = e.target.dataset.type;
     const body = { type: type };
     let successMessage = '';
@@ -108,7 +116,7 @@ class Bundle extends React.Component {
       this.associateButton.current.id = null;
       document.getElementById('associate').innerHTML = '';
     } else {
-      successMessage = `Bundle state successfully updated to <b>${type}</b>`;
+      successMessage = `Bundle status successfully updated to ${type}`;
     }
     await apiCall(
       'PUT',
@@ -189,12 +197,12 @@ class Bundle extends React.Component {
       tabs,
       comments,
       history,
-      currentTab
+      currentTab,
+      states
     } = this.state;
     if (authStore.token === '') {
       return <Redirect to="/" />;
     }
-    console.log(applications);
     const sidebarTop = '100';
     const sidebarComponent = () => {
       switch (currentTab) {
@@ -228,10 +236,52 @@ class Bundle extends React.Component {
             Bundle - {bundle.id}
           </div>
           <div className="bundle-meta flex">
-            <div className="state">
-              State:
+            <div className="current-state">
+              Current State:
               <b>{bundle.state}</b>
             </div>
+            {bundle.state === 'rejected' || bundle.state === 'reported' ? (
+              ''
+            ) : (
+              <div className="next-state">
+                Mark the bundle as:{' '}
+                <div className="actions flex flex-column justify-between items-center ml4">
+                  <button
+                    type="button"
+                    data-type={
+                      states[
+                        _.findIndex(
+                          states,
+                          state => bundle.state === state.label
+                        ) + 1
+                      ].action
+                    }
+                    onClick={this.updateBundle}>
+                    {
+                      states[
+                        _.findIndex(
+                          states,
+                          state => bundle.state === state.label
+                        ) + 1
+                      ].label
+                    }
+                  </button>
+                  {bundle.state === 'assessed' ? (
+                    <button
+                      className="mt2 rejected bg-red"
+                      type="button"
+                      data-type="reject"
+                      onClick={this.updateBundle}>
+                      Rejected
+                    </button>
+                  ) : (
+                    ''
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="bundle-meta flex">
             <div className="case-worker">
               Case worker: <b>{case_worker.email}</b>
             </div>
