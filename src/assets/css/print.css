@@ -1,0 +1,23 @@
+@media print {
+  .z-999,
+  .sidebar,
+  .form-actions {
+    display: none;
+  }
+
+  #application-form > .form-group > fieldset > .form-group > fieldset {
+    page-break-after: always;
+  }
+
+  #application-form .title,
+  #application-form #root__title {
+    margin-left: 0;
+  }
+
+  .form-control,
+  legend,
+  label,
+  textarea {
+    page-break-inside: avoid;
+  }
+}

@@ -2,6 +2,7 @@
 @import url('~@fortawesome/fontawesome-free/css/all.css');
 @import url('./assets/css/typography.css');
 @import url('./assets/css/styles.css');
+@import url('./assets/css/print.css');
 
 .App {
   text-align: center;

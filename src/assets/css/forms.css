@@ -267,6 +267,32 @@ form.disabled p.field-description {
   font-size: 0.9em;
 }
 
+.bundle-meta {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-width: 5px 0;
+  justify-content: space-evenly;
+}
+
+.bundle-meta > div {
+  width: calc(100% / 2);
+  padding: 10px;
+  display: flex;
+  flex-flow: column;
+  border-right: 1px solid #ddda;
+  font-family: PTSansNarrowRegular, sans-serif;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.bundle-meta > div b {
+  padding: 10px 0;
+  text-transform: none;
+  font-family: PTSansRegular, sans-serif;
+  color: #333;
+}
+
 @media screen and (min-width: 60em) {
   .form-actions {
     /* padding-right: 2.25em; */

@@ -29,6 +29,7 @@ class Application extends React.Component {
     this.exportPDF = this.exportPDF.bind(this);
     this.state = {
       form: {},
+      account: {},
       attachments: [],
       comments: [],
       history: [],
@@ -71,6 +72,7 @@ class Application extends React.Component {
       const formData = await apiCall('GET', '/forms/' + appData.form, '', true);
       this.setState(state => ({
         form: appData,
+        account: appData.account,
         type: '',
         comments: appData.comments,
         history: appData.history,
@@ -136,6 +138,7 @@ class Application extends React.Component {
       .then(data => {
         this.setState(state => ({
           form: data,
+          account: data.account,
           comments: data.comments,
           history: data.history
         }));
@@ -153,11 +156,15 @@ class Application extends React.Component {
     ev.persist();
     const fileName = this.props.match.params.id + '.pdf';
     const doc = new jsPDF('p', 'mm', 'a4');
-    const printElement = document.getElementById('application-form');
+    const pElement = document.getElementById('application-form');
+    const printElement = pElement;
+    while (pElement.getElementsByTagName('legend').length > 0) {
+      pElement.getElementsByTagName('legend')[0].style.maxWidth = '500mm';
+    }
     console.log(printElement.elements);
     _.forEach(printElement.elements, (element, idx) => {
-      switch (element.localName) {
-        case 'input':
+      switch (element.type) {
+        case 'text':
           element.insertAdjacentHTML(
             'afterend',
             '<div class="tmpDisplay" style="border: 1px solid #3331; padding: 10px;">' +
@@ -165,13 +172,29 @@ class Application extends React.Component {
               '</div>'
           );
           break;
-        case 'select':
+        case 'select-one':
           element.insertAdjacentHTML(
             'afterend',
             '<div class="tmpDisplay" style="border: 1px solid #3331; padding: 10px;">' +
               element.selectedOptions[0].text +
               '</div>'
           );
+          break;
+        case 'checkbox':
+          element.insertAdjacentHTML(
+            'afterbegin',
+            '<span style="font-size:1.2em; font-weight: bold; margin-right: 20px;">' +
+              (element.checked ? 'YES' : 'NO') +
+              '</span>'
+          );
+          break;
+        case 'radio':
+          if (element.checked) {
+            console.log('CHECKED');
+            element.style.fontWeight = 'bold';
+          } else {
+            element.style.opacity = 0;
+          }
           break;
         default:
       }
@@ -250,6 +273,7 @@ class Application extends React.Component {
   render() {
     const {
       form,
+      account,
       attachments,
       schema,
       uiSchema,
@@ -266,7 +290,7 @@ class Application extends React.Component {
       return <Redirect to="/" />;
     }
     const sidebarTop = '100';
-
+    console.log(form);
     const sidebarComponent = () => {
       switch (currentTab) {
         case 'comments':
@@ -298,6 +322,14 @@ class Application extends React.Component {
           id="formContainer"
           className="formContainer w-70-l"
           ref={e => (this.formDiv = e)}>
+          <div className="bundle-meta flex">
+            <div>
+              Applicant: <b>{account.email}</b>
+            </div>
+            <div>
+              Form ID: <b>{form.id}</b>
+            </div>
+          </div>
           <Form
             id="application-form"
             className={`${disabled ? 'disabled' : ''} rjsf`}
