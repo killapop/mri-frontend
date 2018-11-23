@@ -156,12 +156,7 @@ class Application extends React.Component {
     ev.persist();
     const fileName = this.props.match.params.id + '.pdf';
     const doc = new jsPDF('p', 'mm', 'a4');
-    const pElement = document.getElementById('application-form');
-    const printElement = pElement;
-    while (pElement.getElementsByTagName('legend').length > 0) {
-      pElement.getElementsByTagName('legend')[0].style.maxWidth = '500mm';
-    }
-    console.log(printElement.elements);
+    const printElement = document.getElementById('application-form');
     _.forEach(printElement.elements, (element, idx) => {
       switch (element.type) {
         case 'text':
