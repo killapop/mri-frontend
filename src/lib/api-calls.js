@@ -28,10 +28,10 @@ const getAuth = (method, path, body) => {
     .catch(err => console.log(err));
 };
 
-const apiCall = (method, path, body, withAuth, contentType) => {
+const apiCall = (method, path, body, withAuth, contentType = 'json') => {
   let headers;
   switch (contentType) {
-    case '':
+    case 'json':
       headers = { 'Content-Type': 'application/json' };
       break;
     case 'pdf':
