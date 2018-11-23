@@ -1,11 +1,13 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Form from 'react-jsonschema-form';
+import jsPDF from 'jspdf';
+import _ from 'lodash';
 import { Sticky } from 'react-sticky';
 import { authStore } from '../../lib/store';
 import { view } from 'react-easy-state';
 import Clock from '../../components/common/clock';
-import { apiCall, baseURL } from '../../lib/api-calls';
+import { apiCall } from '../../lib/api-calls';
 import { add as addMessage } from '../../lib/message';
 import History from './history';
 import Comments from './comments';
@@ -149,36 +151,38 @@ class Application extends React.Component {
 
   async exportPDF(ev) {
     ev.persist();
-    const fileName = this.props.match.params.id;
-    const path = baseURL + '/applications/' + this.props.match.params.id;
-    await fetch(path, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/pdf',
-        Authorization: 'Bearer ' + authStore.token
+    const fileName = this.props.match.params.id + '.pdf';
+    const doc = new jsPDF('p', 'mm', 'a4');
+    const printElement = document.getElementById('application-form');
+    console.log(printElement.elements);
+    _.forEach(printElement.elements, (element, idx) => {
+      switch (element.localName) {
+        case 'input':
+          element.insertAdjacentHTML(
+            'afterend',
+            '<div class="tmpDisplay" style="border: 1px solid #3331; padding: 10px;">' +
+              element.value +
+              '</div>'
+          );
+          break;
+        case 'select':
+          element.insertAdjacentHTML(
+            'afterend',
+            '<div class="tmpDisplay" style="border: 1px solid #3331; padding: 10px;">' +
+              element.selectedOptions[0].text +
+              '</div>'
+          );
+          break;
+        default:
       }
-    })
-      .then(response => {
-        response.blob().then(b => {
-          if (window.navigator.msSaveOrOpenBlob)
-            window.navigator.msSaveOrOpenBlob(b, fileName);
-          else {
-            var a = document.createElement('a'),
-              url = URL.createObjectURL(b);
-            a.href = url;
-            a.download = fileName;
-            document.body.appendChild(a);
-            a.click();
-            setTimeout(function() {
-              document.body.removeChild(a);
-              window.URL.revokeObjectURL(url);
-            }, 0);
-          }
-        });
-      })
-      .catch(err => {
-        addMessage('danger', 'Error generating pdf');
-      });
+    });
+    doc.fromHTML(printElement);
+    const elements = document.getElementsByClassName('tmpDisplay');
+    while (elements.length > 0) {
+      elements[0].parentNode.removeChild(elements[0]);
+    }
+
+    doc.save(fileName);
   }
 
   async submitComments(body) {
@@ -290,8 +294,12 @@ class Application extends React.Component {
         className={`applications flex flex-wrap ${
           containerSticky ? 'is-sticky' : ''
         }`}>
-        <div className="formContainer w-70-l">
+        <div
+          id="formContainer"
+          className="formContainer w-70-l"
+          ref={e => (this.formDiv = e)}>
           <Form
+            id="application-form"
             className={`${disabled ? 'disabled' : ''} rjsf`}
             disabled={disabled}
             ref={this.form}

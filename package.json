@@ -5,7 +5,9 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.3.1",
     "axios": "^0.18.0",
+    "html2canvas": "^1.0.0-alpha.12",
     "jsonwebtoken": "^8.3.0",
+    "jspdf": "^1.4.1",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
     "react": "^16.5.2",
