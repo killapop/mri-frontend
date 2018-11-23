@@ -240,46 +240,48 @@ class Bundle extends React.Component {
               Current State:
               <b>{bundle.state}</b>
             </div>
-            {bundle.state === 'rejected' || bundle.state === 'reported' ? (
-              ''
-            ) : (
-              <div className="next-state">
-                Mark the bundle as:{' '}
-                <div className="actions flex flex-column justify-between items-center ml4">
-                  <button
-                    type="button"
-                    data-type={
-                      states[
-                        _.findIndex(
-                          states,
-                          state => bundle.state === state.label
-                        ) + 1
-                      ].action
-                    }
-                    onClick={this.updateBundle}>
-                    {
-                      states[
-                        _.findIndex(
-                          states,
-                          state => bundle.state === state.label
-                        ) + 1
-                      ].label
-                    }
-                  </button>
-                  {bundle.state === 'assessed' ? (
+            <div className="next-state">
+              {bundle.state === 'rejected' || bundle.state === 'reported' ? (
+                ''
+              ) : (
+                <div>
+                  Mark the bundle as:{' '}
+                  <div className="actions flex flex-column justify-between items-center ml4">
                     <button
-                      className="mt2 rejected bg-red"
                       type="button"
-                      data-type="reject"
+                      data-type={
+                        states[
+                          _.findIndex(
+                            states,
+                            state => bundle.state === state.label
+                          ) + 1
+                        ].action
+                      }
                       onClick={this.updateBundle}>
-                      Rejected
+                      {
+                        states[
+                          _.findIndex(
+                            states,
+                            state => bundle.state === state.label
+                          ) + 1
+                        ].label
+                      }
                     </button>
-                  ) : (
-                    ''
-                  )}
+                    {bundle.state === 'assessed' ? (
+                      <button
+                        className="mt2 rejected bg-red"
+                        type="button"
+                        data-type="reject"
+                        onClick={this.updateBundle}>
+                        Rejected
+                      </button>
+                    ) : (
+                      ''
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
           <div className="bundle-meta flex">
             <div className="case-worker">
@@ -298,27 +300,31 @@ class Bundle extends React.Component {
                 Applications {` `}{' '}
                 <span className="list-size">{_.size(bundle.applications)}</span>
               </h1>
-              <div className="associate-application">
-                <Reactahead
-                  api={api => (this.applicationChooser = api)}
-                  noResultMsg="Found no applications that match your search"
-                  suggestions={applications}
-                  onSubmit={this.change}
-                  placeholder={`Search by application id`}
-                />
-                <div className="flex items-end mt3">
-                  <span id="associate">&nbsp;</span>
-                  <button
-                    type="button"
-                    data-type="associate"
-                    id=""
-                    className="ml3 flex"
-                    ref={this.associateButton}
-                    onClick={e => this.updateBundle(e)}>
-                    <i className="fa fa-plus mr2" />associate
-                  </button>
+              {bundle.state === 'created' ? (
+                <div className="associate-application">
+                  <Reactahead
+                    api={api => (this.applicationChooser = api)}
+                    noResultMsg="Found no applications that match your search"
+                    suggestions={applications}
+                    onSubmit={this.change}
+                    placeholder={`Search by application id`}
+                  />
+                  <div className="flex items-end mt3">
+                    <span id="associate">&nbsp;</span>
+                    <button
+                      type="button"
+                      data-type="associate"
+                      id=""
+                      className="ml3 flex"
+                      ref={this.associateButton}
+                      onClick={e => this.updateBundle(e)}>
+                      <i className="fa fa-plus mr2" />associate
+                    </button>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                ' '
+              )}
             </div>
             <div className="flex flex-column">
               <div className="selected-header w-100 flex">
@@ -328,20 +334,23 @@ class Bundle extends React.Component {
               </div>
               {_.map(bundle.applications, (application, idx) => (
                 <div className="selected-item w-100 flex" key={idx}>
-                  <div className="id">
-                    <Link to={`/applications/${application.id}`}>
-                      {application.id}
-                    </Link>
-                  </div>
+                  <div className="id">{application.id}</div>
                   <div className="id">{application.applicant}</div>
-                  <div className="id">
+                  <div className="id flex justify-center items-center">
                     <div
+                      title="dissociate"
                       id={application.id}
                       data-type="dissociate"
                       onClick={e => this.updateBundle(e)}
-                      className="pointer">
-                      <i className="mr2 fa fa-trash red" />dissociate
+                      className="pointer action mr3">
+                      <i className="fa fa-trash red" />
                     </div>
+                    <Link
+                      title="view"
+                      to={`/applications/${application.id}`}
+                      className="action gray">
+                      <i className="fa fa-eye" />
+                    </Link>
                   </div>
                 </div>
               ))}
