@@ -5,7 +5,7 @@ import { Sticky } from 'react-sticky';
 import { authStore } from '../../lib/store';
 import { view } from 'react-easy-state';
 import Clock from '../../components/common/clock';
-import { apiCall } from '../../lib/api-calls';
+import { apiCall, baseURL } from '../../lib/api-calls';
 import { add as addMessage } from '../../lib/message';
 import History from './history';
 import Comments from './comments';
@@ -24,6 +24,7 @@ class Application extends React.Component {
     this.saveForm = this.saveForm.bind(this);
     this.finalizeForm = this.finalizeForm.bind(this);
     this.saveAndExit = this.saveAndExit.bind(this);
+    this.exportPDF = this.exportPDF.bind(this);
     this.state = {
       form: {},
       attachments: [],
@@ -144,6 +145,40 @@ class Application extends React.Component {
         }
       })
       .catch(err => addMessage('danger', 'Error retrieving data'));
+  }
+
+  async exportPDF(ev) {
+    ev.persist();
+    const fileName = this.props.match.params.id;
+    const path = baseURL + '/applications/' + this.props.match.params.id;
+    await fetch(path, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/pdf',
+        Authorization: 'Bearer ' + authStore.token
+      }
+    })
+      .then(response => {
+        response.blob().then(b => {
+          if (window.navigator.msSaveOrOpenBlob)
+            window.navigator.msSaveOrOpenBlob(b, fileName);
+          else {
+            var a = document.createElement('a'),
+              url = URL.createObjectURL(b);
+            a.href = url;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(function() {
+              document.body.removeChild(a);
+              window.URL.revokeObjectURL(url);
+            }, 0);
+          }
+        });
+      })
+      .catch(err => {
+        addMessage('danger', 'Error generating pdf');
+      });
   }
 
   async submitComments(body) {
@@ -270,6 +305,12 @@ class Application extends React.Component {
             <div className="form-actions form-group flex justify-between">
               <Clock />
               <div className="flex items-center">
+                <button
+                  className="pdf-export"
+                  onClick={e => this.exportPDF(e)}
+                  type="button">
+                  Print to PDF <i className="fa fa-file-pdf ml2" />
+                </button>
                 {form.state === 'finalized' &&
                 authStore.user.roles.indexOf('mri-staff') !== -1 ? (
                   <div>
