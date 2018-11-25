@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Form from 'react-jsonschema-form';
 import jsPDF from 'jspdf';
 import _ from 'lodash';
@@ -29,6 +29,7 @@ class Application extends React.Component {
     this.exportPDF = this.exportPDF.bind(this);
     this.state = {
       form: {},
+      bundle: '',
       account: {},
       attachments: [],
       comments: [],
@@ -103,7 +104,8 @@ class Application extends React.Component {
 
   async finalizeForm(ev) {
     this.setState(state => ({
-      locked: true
+      locked: true,
+      close: true
     }));
     await this.form.current.onSubmit(ev);
   }
@@ -284,8 +286,8 @@ class Application extends React.Component {
       this.timeoutHandler();
       return <Redirect to="/" />;
     }
-    const sidebarTop = '100';
     console.log(form);
+    const sidebarTop = '100';
     const sidebarComponent = () => {
       switch (currentTab) {
         case 'comments':
@@ -323,6 +325,20 @@ class Application extends React.Component {
             </div>
             <div>
               Form ID: <b>{form.id}</b>
+            </div>
+
+            <div>
+              {form.bundle &&
+                authStore.user.roles.indexOf('mri-staff') !== -1 ? (
+                  <span>
+                    Bundle ID:{' '}
+                    <b>
+                      <Link to={`/bundles/${form.bundle}`}>{form.bundle}</Link>
+                    </b>
+                </span>
+              ) : (
+                <b>Not bundled yet.</b>
+              )}
             </div>
           </div>
           <Form

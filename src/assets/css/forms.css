@@ -288,6 +288,7 @@ form.disabled p.field-description {
 
 .bundle-meta > div b {
   padding: 10px 0;
+  display: block;
   text-transform: none;
   font-family: PTSansRegular, sans-serif;
   color: #333;
