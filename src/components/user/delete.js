@@ -4,15 +4,28 @@ import { view } from 'react-easy-state';
 import SmallBox from '../common/smallBox';
 import { authStore } from '../../lib/store';
 import { apiCall } from '../../lib/api-calls';
+import _ from 'lodash';
 import { add as addMessage } from '../../lib/message';
 
 class DeleteUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      applications: null,
       deleted: false
     };
     this.delete = this.delete.bind(this);
+  }
+
+  async componentDidMount() {
+    const applications = await apiCall('GET', '/applications', '', true);
+    this.setState(state => ({
+      applications: applications.filter(
+        application =>
+          application.account.email === this.props.match.params.email
+      ).length
+    }));
+    console.log(this.state.applications);
   }
 
   async delete() {
@@ -36,21 +49,17 @@ class DeleteUser extends React.Component {
   }
 
   render() {
-    if (authStore.token === '') {
+    if (authStore.token === '' || this.state.deleted) {
       return <Redirect to="/" />;
     }
     return (
       <SmallBox>
-        {this.state.deleted ? (
+        {this.state.applications ? (
           <div>
-            <h4>
-              Account for user - {this.props.match.params.email} has been
-              deleted.{' '}
-              <Link to="/dashboard">
-                {' '}
-                Click here to return to the dashboard{' '}
-              </Link>
-            </h4>
+            <h3>
+              The user {this.props.match.params.email} has{' '}
+              {this.state.applications} application forms and cannot be deleted.
+            </h3>
           </div>
         ) : (
           <div>
@@ -68,9 +77,9 @@ class DeleteUser extends React.Component {
               value="Yes. I am sure!"
               onClick={this.delete}
             />
-            <Link to="/dashboard">Cancel and return to the dashboard</Link>
           </div>
         )}
+        <Link to="/dashboard">Cancel and return to the dashboard</Link>
       </SmallBox>
     );
   }
