@@ -14,7 +14,10 @@ class FacilitatorList extends React.Component {
   state = {
     actionButtons: {
       activations: [{ icon: 'ban', label: 'invalidate' }],
-      users: [{ icon: 'trash', label: 'delete' }],
+      users: [
+        { icon: 'trash', label: 'delete' },
+        { icon: 'key', label: 'password' }
+      ],
       applications: [{ icon: 'eye', label: 'view' }],
       bundles: [{ icon: 'eye', label: 'view' }]
     },

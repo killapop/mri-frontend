@@ -54,7 +54,7 @@ class ChangePassword extends React.Component {
         this.setState(state => ({
           change: true
         }));
-        addMessage('success', 'Your password was successfully changed');
+        addMessage('success', 'Password successfully changed');
       })
       .catch(err => {
         addMessage(
