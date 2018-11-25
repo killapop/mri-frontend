@@ -20,24 +20,22 @@ class CreateUser extends React.Component {
   }
 
   async create({ formData }) {
-    console.log(JSON.stringify(formData));
-
-      await apiCall('POST', '/activations', JSON.stringify(formData), true)
-        .then(result => {
-          if (result) {
-            this.setState(state => ({
-              user: result,
-              created: true
-            }));
-            addMessage('success', `Created a user account for ${formData.email}`);
-          }
-        })
-        .catch(err => {
-          addMessage(
-            'danger',
-            `There was an error creating an account for ${formData.email}`
-          );
-        });
+    await apiCall('POST', '/activations', JSON.stringify(formData), true)
+      .then(result => {
+        if (result) {
+          this.setState(state => ({
+            user: result,
+            created: true
+          }));
+          addMessage('success', `Created a user account for ${formData.email}`);
+        }
+      })
+      .catch(err => {
+        addMessage(
+          'danger',
+          `There was an error creating an account for ${formData.email}`
+        );
+      });
   }
 
   render() {

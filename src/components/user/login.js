@@ -15,10 +15,6 @@ class Login extends React.Component {
     this.login = this.login.bind(this);
     this.errors = this.errors.bind(this);
     this.state = {
-      formData: {
-        email: 'mary@domain.com',
-        password: 'secretsecret'
-      },
       loggedIn: false
     };
   }

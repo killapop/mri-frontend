@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import { view } from 'react-easy-state';
 import logo from '../../assets/images/logo.svg';
-import { userLinks, sessionFilters } from '../../data/testData';
 import Clock from '../common/clock';
 import { messages, authStore } from '../../lib/store';
 import { add as addMessage } from '../../lib/message';
@@ -14,35 +13,13 @@ import './Header.css';
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.roleChangeHandler = this.roleChangeHandler.bind(this);
     this.logout = this.logout.bind(this);
-    this.state = {
-      activeState: '',
-      navOpen: true,
-      userLinks,
-      sessionFilters,
-      activeRole: authStore.currentRole
-    };
   }
 
   logout() {
     authStore.isLoggedIn = false;
     authStore.token = '';
     addMessage('info', 'Logged out');
-  }
-
-  roleChangeHandler(e) {
-    const id = e.target.id;
-    const filtertype = e.target.dataset.filtertype;
-    e.persist();
-    authStore.currentRole = authStore.currentRole === id ? '' : id;
-    this.setState(state => ({ [filtertype]: id }));
-  }
-
-  componentDidMount() {
-    this.setState(state => ({
-      activeState: '/' + window.location.pathname.split('/')[1]
-    }));
   }
 
   render() {
@@ -63,7 +40,7 @@ class Header extends React.Component {
                 href="https://martin-roth-initiative.de"
                 target="_blank"
                 title="Info"
-              className="navLink pv2 h-100">
+                className="navLink pv2 h-100">
                 <div className="flex items-center">
                   <i className={`fa fa-info mb2`} />
                   <span className="dn db-l">Info</span>
@@ -71,25 +48,20 @@ class Header extends React.Component {
               </a>
               {authStore.token !== '' ? (
                 <div className="flex">
-                  {this.state.userLinks.map(({ label, Icon, path }, key) => (
-                    <Link
-                      key={key}
-                      to={path}
-                      title={label}
-                      id={label.toLowerCase().replace(' ', '')}
-                      data-path={path}
-                      className={`navLink pv2 h-100 ${
-                        window.location.pathname.split('/')[1] ===
-                        path.split('/')[1]
+                  <Link
+                    to="/dashboard"
+                    title="Dashboard"
+                    className={`navLink pv2 h-100
+                      ${
+                        window.location.pathname.indexOf('dashboard') !== -1
                           ? 'active'
                           : ''
                       }`}>
-                      <div className="flex items-center">
-                        <i className={`fa fa-${Icon} mb2`} />
-                        <span className=" dn db-l">{label}</span>
-                      </div>
-                    </Link>
-                  ))}
+                    <div className="flex items-center">
+                      <i className="fa fa-tachometer-alt mb2" />
+                      <span className="dn db-l">Dashboard</span>
+                    </div>
+                  </Link>
                   <Link
                     to="#"
                     title="Logout"

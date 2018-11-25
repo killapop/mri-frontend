@@ -187,7 +187,6 @@ class Application extends React.Component {
           break;
         case 'radio':
           if (element.checked) {
-            console.log('CHECKED');
             element.style.fontWeight = 'bold';
           } else {
             element.style.opacity = 0;
