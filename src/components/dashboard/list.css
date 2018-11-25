@@ -101,3 +101,13 @@
   color: #66a;
   text-decoration: none;
 }
+
+.user-list > div {
+  border-right: 1px solid #ddd;
+}
+
+.user-list > div span {
+  display: block;
+  padding: 10px 0;
+  font-weight: bold;
+}

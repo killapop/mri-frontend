@@ -46,44 +46,48 @@ class UserList extends React.Component {
         </h1>
         <div>
           {_.size(listData) > 0 ? (
-            <div className="list flex flex-column">
+            <div className="user-list flex flex-column">
               {_.map(listData, (application, idx) => (
-                <div
-                  key={application.id}
-                  className="list-item flex flex-column w-100">
-                  <div className="row flex w-100 justify-between">
+                <div key={application.id} className="flex flex-column w-100">
+                  <div className="row flex w-100 justify-between list-item">
                     <div className="id">
                       <Link to={`/applications/${application.id}`}>
                         ID{`:  `}
-                        {application.id} {`  `}
-                        <i className="fa fa-external-link-alt" />
+                        <span>
+                          {application.id} {`  `}
+                          <i className="fa fa-external-link-alt" />
+                        </span>
                       </Link>
                     </div>
-                    <div>state: {application.state}</div>
+                    <div>
+                      state: <span>{application.state}</span>
+                    </div>
                     <div>
                       Created{`: `}
-                      {moment(
-                        application.history[_.size(application.history) - 1]
-                          .created_at
-                      ).format('D-MMM-YYYY')}
-                      {` `}
+                      <span>
+                        {moment(
+                          application.history[_.size(application.history) - 1]
+                            .created_at
+                        ).format('D-MMM-YYYY')}
+                      </span>
                     </div>
                     <div>
                       Updated{`: `}
-                      {moment(application.history[0].created_at).format(
-                        'D-MMM-YYYY'
-                      )}
-                      {` `}
+                      <span>
+                        {moment(application.history[0].created_at).format(
+                          'D-MMM-YYYY'
+                        )}
+                      </span>
                     </div>
                     <div>
                       Comments{`: `}
-                      {_.size(application.comments)}
-                      {` `}
+                      <span>{_.size(application.comments)}</span>
                     </div>
                     <div>
                       Processing status{`: `}
-                      {application.bundled ? 'under process' : 'pre-process'}
-                      {` `}
+                      <span>
+                        {application.bundle ? 'under process' : 'pre-process'}
+                      </span>
                     </div>
                   </div>
                 </div>

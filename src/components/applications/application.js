@@ -286,7 +286,6 @@ class Application extends React.Component {
       this.timeoutHandler();
       return <Redirect to="/" />;
     }
-    console.log(form);
     const sidebarTop = '100';
     const sidebarComponent = () => {
       switch (currentTab) {
@@ -329,12 +328,12 @@ class Application extends React.Component {
 
             <div>
               {form.bundle &&
-                authStore.user.roles.indexOf('mri-staff') !== -1 ? (
-                  <span>
-                    Bundle ID:{' '}
-                    <b>
-                      <Link to={`/bundles/${form.bundle}`}>{form.bundle}</Link>
-                    </b>
+              authStore.user.roles.indexOf('mri-staff') !== -1 ? (
+                <span>
+                  Bundle ID:{' '}
+                  <b>
+                    <Link to={`/bundles/${form.bundle}`}>{form.bundle}</Link>
+                  </b>
                 </span>
               ) : (
                 <b>Not bundled yet.</b>
