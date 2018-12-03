@@ -53,3 +53,7 @@
 .associate-application button {
   margin-left: 5px;
 }
+
+.action > * {
+  pointer-events: none;
+}

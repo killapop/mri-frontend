@@ -104,7 +104,6 @@ class Bundle extends React.Component {
 
   async updateBundle(e) {
     e.persist();
-
     const type = e.target.dataset.type;
     const body = { type: type };
     let successMessage = '';
@@ -251,19 +250,19 @@ class Bundle extends React.Component {
                       type="button"
                       data-type={
                         states[
-                          _.findIndex(
+                        _.findIndex(
                             states,
                             state => bundle.state === state.label
-                          ) + 1
+                        ) + 1
                         ].action
                       }
                       onClick={this.updateBundle}>
                       {
                         states[
-                          _.findIndex(
+                        _.findIndex(
                             states,
                             state => bundle.state === state.label
-                          ) + 1
+                        ) + 1
                         ].label
                       }
                     </button>
@@ -342,7 +341,7 @@ class Bundle extends React.Component {
                       id={application.id}
                       data-type="dissociate"
                       onClick={e => this.updateBundle(e)}
-                      className="pointer action mr3">
+                    className="pointer action mr3">
                       <i className="fa fa-trash red" />
                     </div>
                     <Link
