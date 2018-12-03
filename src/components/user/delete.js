@@ -4,7 +4,6 @@ import { view } from 'react-easy-state';
 import SmallBox from '../common/smallBox';
 import { authStore } from '../../lib/store';
 import { apiCall } from '../../lib/api-calls';
-import _ from 'lodash';
 import { add as addMessage } from '../../lib/message';
 
 class DeleteUser extends React.Component {
