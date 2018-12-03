@@ -39,7 +39,7 @@ class UserList extends React.Component {
   render() {
     const { listData } = this.state;
     return (
-      <div className="lists w-80-l pt0 center pa4 flex flex-column">
+      <div className="lists pa4 flex flex-column">
         <h1>
           My Applications {` `}
           <span className="list-size">{_.size(listData) || 0}</span>

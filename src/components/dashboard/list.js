@@ -140,7 +140,7 @@ class FacilitatorList extends React.Component {
           </div>
         ) : (
           <div>
-            <div className="lists w-80-l center pa4 flex flex-column">
+            <div className="lists flex flex-column">
               <div className="flex justify-between">
                 <h1>
                   {list.title} {` `}

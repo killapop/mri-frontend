@@ -40,28 +40,21 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    if (authStore.token === '') {
+      return <Redirect to="/" />;
+    }
     const list = authStore.activeList;
     return (
-      <div>
-        {authStore.token !== '' ? (
-          <div>
-            <div className=" w-80-ns center pa4">
-              <div className="title pb0 flex justify-start">
-                Dashboard
-                <div className="meta">Logged in as: {authStore.user.email}</div>
-                <Link
-                  className="meta"
-                  to={`/users/password/${authStore.user.email}`}>
-                  <i className="fa fa-key" />Change password
-                </Link>
-              </div>
-              {this.isStaff() ? <Badges /> : ''}
-            </div>
-            {this.isStaff() ? <FacilitatorList list={list} /> : <UserList />}
-          </div>
-        ) : (
-          <Redirect to="/" />
-        )}
+      <div className=" w-80-ns center pa4">
+        <div className="title pb0 flex justify-start">
+          Dashboard
+          <div className="meta">Logged in as: {authStore.user.email}</div>
+          <Link className="meta" to={`/users/password/${authStore.user.email}`}>
+            <i className="fa fa-key" />Change password
+          </Link>
+        </div>
+        {this.isStaff() ? <Badges /> : ''}
+        {this.isStaff() ? <FacilitatorList list={list} /> : <UserList />}
       </div>
     );
   }
