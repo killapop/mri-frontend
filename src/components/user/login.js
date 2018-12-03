@@ -61,6 +61,7 @@ class Login extends React.Component {
           onError={this.errors}
           formData={this.state.formData}
           showErrorList={true}
+          autocomplete="off"
           method="POST">
           <div className="form-actions form-group flex justify-end">
             <button type="submit">

@@ -11,7 +11,7 @@ export const login = {
         title: 'Email',
         placeholder: 'Email address'
       },
-      password: { type: 'string', title: 'Password' }
+      password: { type: 'string', title: 'Password', minLength: 12 }
     }
   },
   uiSchema: {
@@ -21,7 +21,7 @@ export const login = {
       'ui:help': 'Please enter a valid email address'
     },
     password: {
-      'ui:widget': 'password'
+      'ui:widget': 'password',
     }
   }
 };
@@ -70,7 +70,7 @@ export const change = {
     }
   },
   uiSchema: {
-    pass1: { 'ui:widget': 'password' },
+    pass1: { 'ui:widget': 'password', 'ui:autofocus': true },
     pass2: { 'ui:widget': 'password' }
   }
 };
