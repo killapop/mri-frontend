@@ -73,11 +73,12 @@ button.upload[type="submit"] {
   box-shadow: 1px 1px 4px #0002;
   padding: 10px 10px 5px 10px;
   margin-bottom: 20px;
+  position: relative;
 }
 
 .comment .text {
   color: #666;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   white-space: pre-wrap;
 }
 
@@ -91,6 +92,28 @@ button.upload[type="submit"] {
   background-color: #fffd;
   align-self: flex-end;
   margin-right: 10px;
+}
+
+.comment .delete {
+  color: #a66;
+  background-color: #ccc;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 2px #3331;
+}
+
+.comment .delete:hover {
+  color: var(--white);
+  background-color: var(--red);
+  box-shadow: 2px 2px 2px #0001;
 }
 
 .empty {
