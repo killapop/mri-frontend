@@ -240,7 +240,6 @@ class Application extends React.Component {
     const {
       form,
       account,
-      attachments,
       schema,
       uiSchema,
       containerSticky,
@@ -260,13 +259,7 @@ class Application extends React.Component {
         case "comments":
           return <Comments entityType="applications" entityID={form.id} />;
         case "attachments":
-          return (
-            <Attachments
-              attachments={attachments}
-              formId={form.id}
-              uploadFiles={this.uploadFiles}
-            />
-          );
+          return <Attachments entityType="applications" />;
         default:
           return <History history={history} />;
       }
