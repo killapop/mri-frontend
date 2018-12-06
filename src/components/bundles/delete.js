@@ -35,7 +35,7 @@ class DeleteApplication extends React.Component {
   async delete() {
     await apiCall(
       "DELETE",
-      "/applications/" + this.props.match.params.id,
+      "/bundles/" + this.props.match.params.id,
       "",
       true
     )
