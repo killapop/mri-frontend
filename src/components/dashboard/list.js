@@ -111,8 +111,9 @@ class FacilitatorList extends React.Component {
             {_.map(actionButtons[path], (b, i) => (
               <span key={i}>
                 {(path === "applications" && row.row.state !== "created") ||
-                (path === "activations" && row.row.isValid) ||
-                path === "users" ||
+                  (path === "applications" && b.label === "delete") ||
+                  (path === "activations" && row.row.isValid) ||
+                  path === "users" ||
                 path === "bundles" ? (
                   <i
                     key={i}
