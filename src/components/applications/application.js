@@ -211,7 +211,6 @@ class Application extends React.Component {
 
     const elements = document.getElementsByClassName("tmpDisplay");
     _.forEach(elements, element => {
-      console.log(element.parentNode);
       element.parentNode.removeChild(element.previousSibling);
     });
     doc.save(fileName);
