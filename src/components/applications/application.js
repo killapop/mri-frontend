@@ -153,7 +153,12 @@ class Application extends React.Component {
   async exportPDF(ev) {
     ev.persist();
     const fileName = this.props.match.params.id + ".pdf";
-    const doc = new jsPDF("p", "mm", "a4");
+    const doc = new jsPDF("p", "pt", "a4");
+    const elementHandler = {
+      "#ignorePDF": function(element, renderer) {
+        return true;
+      }
+    };
     const printElement = document.getElementById("application-form");
     _.forEach(printElement.elements, (element, idx) => {
       switch (element.type) {
@@ -188,15 +193,27 @@ class Application extends React.Component {
             element.style.opacity = 0;
           }
           break;
+        // case "textarea":
+        //   element.insertAdjacentHTML(
+        //     "afterend",
+        //     '<div class="tmpDisplay" style="border: 1px solid #3331; padding: 10px; max-width: 7in">' +
+        //       element.value +
+        //       "</div>"
+        //   );
+        //   break;
         default:
       }
     });
-    doc.fromHTML(printElement);
-    const elements = document.getElementsByClassName("tmpDisplay");
-    while (elements.length > 0) {
-      elements[0].parentNode.removeChild(elements[0]);
-    }
+    doc.fromHTML(printElement, 25, 40, {
+      width: 550,
+      elementHandlers: elementHandler
+    });
 
+    const elements = document.getElementsByClassName("tmpDisplay");
+    _.forEach(elements, element => {
+      console.log(element.parentNode);
+      element.parentNode.removeChild(element.previousSibling);
+    });
     doc.save(fileName);
   }
 
