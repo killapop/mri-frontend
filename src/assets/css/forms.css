@@ -1,4 +1,4 @@
-@import url('./bootstrap-forms.min.css');
+@import url("./bootstrap-forms.min.css");
 
 form.rjsf fieldset {
   padding: 0;
@@ -22,11 +22,16 @@ form.rjsf .col-fieldset-2 > fieldset > .form-group:last-of-type {
   margin-left: 40px;
 }
 
-.applications form.rjsf > .form-group > fieldset > .form-group:nth-of-type(odd) {
+.applications
+  form.rjsf
+  > .form-group
+  > fieldset
+  > .form-group:nth-of-type(odd) {
   background-color: var(--white);
   border: 1px solid var(--very-ver-light);
   border-width: 1px 0;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1) inset, 0 -1px 5px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1) inset,
+    0 -1px 5px rgba(0, 0, 0, 0.1) inset;
 }
 
 form > .form-group > fieldset > .form-group > fieldset > legend {
@@ -71,13 +76,11 @@ form.rjsf .col-fieldset-2 > fieldset legend {
   font-weight: bold;
 }
 
-
 form .field-description {
   color: #aa6;
   font-style: italic;
   margin: 3px 0 5px 3px;
   font-size: 0.8em;
-
 }
 
 .form-actions {
@@ -123,6 +126,11 @@ input,
 textarea,
 select {
   transition: all ease 0.2s;
+}
+
+.checkbox-description > .checkbox {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .sidebar .sidebar-content {
@@ -214,28 +222,28 @@ button:active {
   margin-right: 1.5em;
 }
 
-input#submitLockcheckbox[type=checkbox] {
+input#submitLockcheckbox[type="checkbox"] {
   display: none;
 }
 
-input#submitLockcheckbox[type=checkbox] + label {
+input#submitLockcheckbox[type="checkbox"] + label {
   color: #999;
   cursor: pointer;
   font-size: 0.9em;
 }
 
-input#submitLockcheckbox[type=checkbox] + label i.fa {
+input#submitLockcheckbox[type="checkbox"] + label i.fa {
   margin-left: 0.5em;
   font-size: 1.5em;
 }
 
-input#submitLockcheckbox[type=checkbox]:hover + label i.fa,
-input#submitLockcheckbox[type=checkbox]:checked + label i.fa {
+input#submitLockcheckbox[type="checkbox"]:hover + label i.fa,
+input#submitLockcheckbox[type="checkbox"]:checked + label i.fa {
   color: var(--primary-color);
 }
 
-input#submitLockcheckbox[type=checkbox]:hover + label,
-input#submitLockcheckbox[type=checkbox]:checked + label {
+input#submitLockcheckbox[type="checkbox"]:hover + label,
+input#submitLockcheckbox[type="checkbox"]:checked + label {
   color: var(--white);
 }
 
