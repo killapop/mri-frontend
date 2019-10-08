@@ -2,16 +2,15 @@
   font-family: PTSansNarrowRegular, sans-serif;
   font-size: 0.35em;
   font-weight: 100;
-  align-self: flex-end;
-  margin: 0 0 7px 10px;
   color: #666;
+  margin: 10px 0;
   text-decoration: none;
 }
 
 a.meta {
   color: #66a;
-  margin-left: 20px;
   text-shadow: 1px 1px 2px #0001;
+  margin-top: 5px;
 }
 
 a.meta i.fa {
@@ -69,4 +68,14 @@ a.meta i.fa {
   font-weight: 100;
   font-family: PTSansNarrowRegular, sans-serif;
   letter-spacing: 0.11em;
+}
+
+@media screen and (min-width: 60em) {
+  .meta {
+    align-self: flex-end;
+    margin: 0 0 7px 10px;
+  }
+  a.meta {
+    margin-left: 20px;
+  }
 }

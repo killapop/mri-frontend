@@ -1,4 +1,4 @@
-@import url('~react-table/react-table.css');
+@import url("~react-table/react-table.css");
 
 .ReactTable {
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
@@ -83,6 +83,7 @@
 }
 
 .list-item {
+  padding: 20px 10px;
   color: #666;
   font-size: 0.9em;
   border: 1px solid #ddd;
@@ -94,7 +95,13 @@
 }
 
 .list-item > div {
-  padding: 20px;
+  padding: 0 0 10px;
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.list-item > div > a {
+  display: flex;
 }
 
 .list-item a {
@@ -102,12 +109,33 @@
   text-decoration: none;
 }
 
-.user-list > div {
-  border-right: 1px solid #ddd;
+.user-list {
+  margin-bottom: 10px;
+}
+
+.user-list:last-of-type {
+  margin-bottom: 60px;
 }
 
 .user-list > div span {
   display: block;
-  padding: 10px 0;
+  padding: 0 0 0 10px;
   font-weight: bold;
+}
+
+@media screen and (min-width: 60em) {
+  .list-item > div {
+    padding: 20px;
+    margin-bottom: 0;
+    display: block;
+  }
+  .user-list {
+    margin: 0;
+  }
+  .user-list > div {
+    border-right: 1px solid #ddd;
+  }
+  .user-list > div span {
+    padding: 10px 0;
+  }
 }

@@ -20,7 +20,7 @@ body {
 }
 
 .main {
-  margin-top: 40px;
+  margin: 80px auto 40px;
 }
 
 .shadow-light {
@@ -32,7 +32,7 @@ body {
 }
 
 .small-box {
-  max-width: 400px;
+  max-width: 420px;
 }
 
 .fa-15x {
@@ -59,12 +59,12 @@ body {
   border-color: var(--primary-color);
 }
 
-.section:nth-of-type(2n+2) {
+.section:nth-of-type(2n + 2) {
   background-color: var(--white);
 }
 
 @media screen and (min-width: 60em) {
   .main {
-    margin-top: 60px;
+    margin: 60px auto;
   }
 }

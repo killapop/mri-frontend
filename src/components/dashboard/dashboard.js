@@ -1,13 +1,13 @@
 /* eslint no-unused-expresions: 0 */
-import React from 'react';
-import { Redirect, Link } from 'react-router-dom';
-import _ from 'lodash';
-import Badges from './badges';
-import FacilitatorList from './list';
-import UserList from './userList';
-import { authStore } from '../../lib/store';
-import { view } from 'react-easy-state';
-import './dashboard.css';
+import React from "react";
+import { Redirect, Link } from "react-router-dom";
+import _ from "lodash";
+import Badges from "./badges";
+import FacilitatorList from "./list";
+import UserList from "./userList";
+import { authStore } from "../../lib/store";
+import { view } from "react-easy-state";
+import "./dashboard.css";
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class Dashboard extends React.Component {
   }
 
   isStaff() {
-    return _.includes(authStore.user.roles, 'mri-staff');
+    return _.includes(authStore.user.roles, "mri-staff");
   }
 
   badgeChangeHandler(e) {
@@ -36,24 +36,25 @@ class Dashboard extends React.Component {
   }
 
   sluggify(s) {
-    return s.replace(' ', '').toLowerCase();
+    return s.replace(" ", "").toLowerCase();
   }
 
   render() {
-    if (authStore.token === '') {
+    if (authStore.token === "") {
       return <Redirect to="/" />;
     }
     const list = authStore.activeList;
     return (
-      <div className=" w-80-ns center pa4">
-        <div className="title pb0 flex justify-start">
+      <div className="w-90 w-80-l center pa4-ns p3">
+        <div className="title pb0 flex justify-start flex-column flex-row-l">
           Dashboard
           <div className="meta">Logged in as: {authStore.user.email}</div>
           <Link className="meta" to={`/users/password/${authStore.user.email}`}>
-            <i className="fa fa-key" />Change password
+            <i className="fa fa-key" />
+            Change password
           </Link>
         </div>
-        {this.isStaff() ? <Badges /> : ''}
+        {this.isStaff() ? <Badges /> : ""}
         {this.isStaff() ? <FacilitatorList list={list} /> : <UserList />}
       </div>
     );

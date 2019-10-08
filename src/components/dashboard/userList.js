@@ -1,11 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import _ from 'lodash';
-import moment from 'moment';
-import { authStore } from '../../lib/store';
-import { apiCall } from '../../lib/api-calls';
-import './list.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import _ from "lodash";
+import moment from "moment";
+import { authStore } from "../../lib/store";
+import { apiCall } from "../../lib/api-calls";
+import "./list.css";
 
 class UserList extends React.Component {
   constructor(props) {
@@ -13,8 +13,8 @@ class UserList extends React.Component {
     this.getApplications = this.getApplications.bind(this);
     this.state = {
       actionButtons: [
-        { icon: 'edit', label: 'edit' },
-        { icon: 'trash', label: 'delete' }
+        { icon: "edit", label: "edit" },
+        { icon: "trash", label: "delete" }
       ],
       listData: []
     };
@@ -25,9 +25,9 @@ class UserList extends React.Component {
   }
 
   getApplications() {
-    apiCall('GET', '/applications', '', true).then(data => {
+    apiCall("GET", "/applications", "", true).then(data => {
       if (data === 401) {
-        authStore.token = '';
+        authStore.token = "";
         authStore.user = {};
       }
       this.setState(state => ({
@@ -39,7 +39,7 @@ class UserList extends React.Component {
   render() {
     const { listData } = this.state;
     return (
-      <div className="lists pa4 flex flex-column">
+      <div className="lists flex flex-column">
         <h1>
           My Applications {` `}
           <span className="list-size">{_.size(listData) || 0}</span>
@@ -49,7 +49,7 @@ class UserList extends React.Component {
             <div className="user-list flex flex-column">
               {_.map(listData, (application, idx) => (
                 <div key={application.id} className="flex flex-column w-100">
-                  <div className="row flex w-100 justify-between list-item">
+                  <div className="row flex flex-column flex-row-l w-100 justify-between list-item">
                     <div className="id">
                       <Link to={`/applications/${application.id}`}>
                         ID{`:  `}
@@ -68,14 +68,14 @@ class UserList extends React.Component {
                         {moment(
                           application.history[_.size(application.history) - 1]
                             .created_at
-                        ).format('D-MMM-YYYY')}
+                        ).format("D-MMM-YYYY")}
                       </span>
                     </div>
                     <div>
                       Updated{`: `}
                       <span>
                         {moment(application.history[0].created_at).format(
-                          'D-MMM-YYYY'
+                          "D-MMM-YYYY"
                         )}
                       </span>
                     </div>
@@ -86,7 +86,7 @@ class UserList extends React.Component {
                     <div>
                       Processing status{`: `}
                       <span>
-                        {application.bundle ? 'under process' : 'pre-process'}
+                        {application.bundle ? "under process" : "pre-process"}
                       </span>
                     </div>
                   </div>
