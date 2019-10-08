@@ -1,5 +1,9 @@
 @import url("./bootstrap-forms.min.css");
 
+.applications {
+  margin-top: -40px;
+}
+
 form.rjsf fieldset {
   padding: 0;
 }
@@ -58,7 +62,7 @@ form > .form-group > fieldset > .form-group > fieldset > legend {
 
 .formContainer .title,
 .formContainer #root__title {
-  margin-left: 200px;
+  margin: 20px 10px;
 }
 
 form.rjsf .col-fieldset-2 > fieldset legend,
@@ -84,11 +88,6 @@ form .field-description {
 }
 
 .form-actions {
-  /* position: fixed; */
-  /* left: 0; */
-  /* bottom: 0; */
-  /* background-color: #333; */
-  /* padding: 0.5em; */
   width: 100%;
   display: flex;
   margin-bottom: 0;
@@ -134,6 +133,14 @@ input,
 textarea,
 select {
   transition: all ease 0.2s;
+}
+
+input[type="date"].form-control,
+input[type="time"].form-control,
+input[type="datetime-local"].form-control,
+input[type="month"].form-control {
+  line-height: initial;
+  padding: inherit;
 }
 
 .checkbox-description > .checkbox {
@@ -284,27 +291,29 @@ form.disabled p.field-description {
 }
 
 .bundle-meta {
-  font-size: 1.5em;
-  margin-bottom: 20px;
+  /* font-size: 1.5em; */
+  /* margin-bottom: 20px; */
   border: 1px solid #ddd;
   border-width: 5px 0;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
 }
 
 .bundle-meta > div {
-  width: calc(100% / 2);
-  padding: 10px;
-  display: flex;
-  flex-flow: column;
-  border-right: 1px solid #ddda;
+  /* width: calc(100% / 2); */
+  /* padding: 10px; */
+  /* display: flex; */
+  /* flex-flow: column; */
+  /* border-right: 1px solid #ddda; */
   font-family: PTSansNarrowRegular, sans-serif;
   color: #666;
+  margin: 5px 0 0 0;
   text-transform: uppercase;
 }
 
 .bundle-meta > div b {
-  padding: 10px 0;
-  display: block;
+  /* padding: 10px 0; */
+  display: inline;
+  margin-left: 10px;
   text-transform: none;
   font-family: PTSansRegular, sans-serif;
   color: #333;
@@ -313,5 +322,42 @@ form.disabled p.field-description {
 @media screen and (min-width: 60em) {
   .form-actions {
     /* padding-right: 2.25em; */
+  }
+
+  .formContainer #root__title {
+    margin-left: 200px;
+  }
+
+  .applications {
+    margin-top: 0px;
+  }
+
+  .bundle-meta {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-width: 5px 0;
+    justify-content: space-evenly;
+  }
+
+  .bundle-meta > div {
+    width: calc(100% / 2);
+    padding: 10px;
+    display: flex;
+    flex-flow: column;
+    border-right: 1px solid #ddda;
+    font-family: PTSansNarrowRegular, sans-serif;
+    color: #666;
+    text-transform: uppercase;
+    margin: auto;
+  }
+
+  .bundle-meta > div b {
+    padding: 10px 0;
+    display: block;
+    margin-left: 0;
+    text-transform: none;
+    font-family: PTSansRegular, sans-serif;
+    color: #333;
   }
 }

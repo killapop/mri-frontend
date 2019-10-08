@@ -292,7 +292,7 @@ class Application extends React.Component {
           className="formContainer w-70-l"
           ref={e => (this.formDiv = e)}
         >
-          <div className="bundle-meta flex">
+          <div className="bundle-meta flex flex-column flex-row-l">
             <div>
               Applicant: <b>{account.email}</b>
             </div>

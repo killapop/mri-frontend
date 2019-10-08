@@ -5,10 +5,8 @@
 }
 
 .bundle-meta > div {
-  width: calc(100% / 3);
-  padding: 10px;
-  display: flex;
-  flex-flow: column;
+  /* width: calc(100% / 3); */
+  padding: 5px;
   border-right: 1px solid #ddda;
   font-family: PTSansNarrowRegular, sans-serif;
   color: #666;
@@ -56,4 +54,33 @@
 
 .action > * {
   pointer-events: none;
+}
+
+@media screen and (min-width: 60em) {
+  .bundle-meta {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-width: 5px 0;
+    justify-content: space-evenly;
+  }
+
+  .bundle-meta > div {
+    width: calc(100% / 3);
+    padding: 10px;
+    display: flex;
+    flex-flow: column;
+    border-right: 1px solid #ddda;
+    font-family: PTSansNarrowRegular, sans-serif;
+    color: #666;
+    text-transform: uppercase;
+  }
+
+  .bundle-meta > div b {
+    padding: 10px 0;
+    display: block;
+    text-transform: none;
+    font-family: PTSansRegular, sans-serif;
+    color: #333;
+  }
 }
