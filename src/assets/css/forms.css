@@ -148,31 +148,55 @@ input[type="month"].form-control {
   flex-direction: column-reverse;
 }
 
-.sidebar .sidebar-content {
-  transition: all ease 0.4s;
-  overflow-y: auto;
-  height: calc(100vh - 50px);
-  padding: 10px;
-  box-shadow: 1px 0 2px #0003 inset;
-  padding-bottom: 100px;
+.sidebar {
+  position: fixed;
+  width: 95vw;
+  z-index: 99;
+  background-color: white;
+  transition: transform ease 0.5s;
 }
 
-.sidebar .sidebar-content.sticky {
-  margin-top: 50px;
-  background-color: var(--white);
-  border-left: 1px solid var(--light-silver);
+.sidebar-toggle {
+  padding: 4px 10px;
+  transition: transform ease 0.5s;
+  margin-left: -32px;
+  border-radius: 40% 0 0 40%;
+  width: 33px;
+  height: 40px;
+  font-size: 1.3em;
+  background: var(--yellow);
+  color: #0009;
+  display: flex !important;
+  justify-content: space-around;
+  align-items: center;
+  text-shadow: 1px 1px 3px #0001;
+  border: 2px solid #0002;
+  border-right-width: 0;
+  box-shadow: -1px 1px 2px #0003;
+  cursor: pointer;
+}
+
+.sidebar .sidebar-content {
+  transition: all ease 0.4s;
+  padding: 10px 0 10px 10px;
+  box-shadow: 1px 0 2px #0003 inset;
+  padding-bottom: 100px;
+  margin-top: -60px;
 }
 
 .sidebar .sidebar-tabs.tabs {
-  position: fixed;
-  margin: -10px 10px 0 -10px;
+  position: sticky;
+  margin: -10px 0 0 -9px;
   width: 100%;
   box-shadow: 1px 2px 2px #0001;
   background-color: white;
 }
 
 .sidebar .sidebar-lists {
-  margin-top: 30px;
+  margin-top: 10px;
+  overflow-y: auto;
+  height: calc(100vh - 50px);
+  padding-bottom: 100px;
 }
 
 .sidebar .tab {
@@ -291,19 +315,11 @@ form.disabled p.field-description {
 }
 
 .bundle-meta {
-  /* font-size: 1.5em; */
-  /* margin-bottom: 20px; */
   border: 1px solid #ddd;
   border-width: 5px 0;
-  /* justify-content: space-evenly; */
 }
 
 .bundle-meta > div {
-  /* width: calc(100% / 2); */
-  /* padding: 10px; */
-  /* display: flex; */
-  /* flex-flow: column; */
-  /* border-right: 1px solid #ddda; */
   font-family: PTSansNarrowRegular, sans-serif;
   color: #666;
   margin: 5px 0 0 0;
@@ -311,7 +327,6 @@ form.disabled p.field-description {
 }
 
 .bundle-meta > div b {
-  /* padding: 10px 0; */
   display: inline;
   margin-left: 10px;
   text-transform: none;
@@ -321,7 +336,6 @@ form.disabled p.field-description {
 
 @media screen and (min-width: 60em) {
   .form-actions {
-    /* padding-right: 2.25em; */
   }
 
   .formContainer #root__title {
@@ -359,5 +373,16 @@ form.disabled p.field-description {
     text-transform: none;
     font-family: PTSansRegular, sans-serif;
     color: #333;
+  }
+
+  .sidebar {
+    max-width: 30% !important;
+    transform: none !important;
+    z-index: auto;
+    right: 0;
+  }
+
+  .sidebar-toggle {
+    display: none !important;
   }
 }

@@ -26,6 +26,7 @@ class Application extends React.Component {
     this.finalizeForm = this.finalizeForm.bind(this);
     this.saveAndExit = this.saveAndExit.bind(this);
     this.exportPDF = this.exportPDF.bind(this);
+    this.toggleSidebar = this.toggleSidebar.bind(this);
     this.state = {
       form: {},
       bundle: "",
@@ -41,6 +42,7 @@ class Application extends React.Component {
       close: false,
       containerSticky: false,
       currentTab: "attachments",
+      isSidebarOpen: false,
       tabs: [
         { title: "history", icon: "clipboard-list" },
         { title: "comments", icon: "comments" },
@@ -257,6 +259,10 @@ class Application extends React.Component {
 
   refreshSessionHandler() {}
 
+  toggleSidebar(e) {
+    this.setState({ isSidebarOpen: !this.state.isSidebarOpen });
+    console.log(e);
+  }
   render() {
     const {
       form,
@@ -268,13 +274,13 @@ class Application extends React.Component {
       history,
       currentTab,
       noValidate,
-      disabled
+      disabled,
+      isSidebarOpen
     } = this.state;
     if (authStore.token === "") {
       this.timeoutHandler();
       return <Redirect to="/" />;
     }
-    const sidebarTop = "100";
     const sidebarComponent = () => {
       switch (currentTab) {
         case "comments":
@@ -393,32 +399,37 @@ class Application extends React.Component {
             </div>
           </Form>
         </div>
-        <div className="sidebar w-30-l relative">
-          <Sticky topOffset={100}>
-            {({ style, isSticky, distanceFromTop = { sidebarTop } }) => (
-              <div style={style}>
-                <div className={`sidebar-content ${isSticky ? "sticky" : ""}`}>
-                  {" "}
-                  <div className="sidebar-tabs tabs flex justify-between">
-                    {tabs.map((tab, idx) => (
-                      <div
-                        id={tab.title}
-                        onClick={e => this.tabHandler(e)}
-                        key={idx}
-                        className={`tab tab-${tab.title} ${
-                          currentTab === tab.title ? "active" : ""
-                        }`}
-                      >
-                        <i className={`fa fa-${tab.icon}`} />
-                        {tab.title}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="sidebar-lists">{sidebarComponent()}</div>
+        <div
+          className="sidebar"
+          style={{
+            transform: `translateX(${isSidebarOpen ? "10vw" : "100vw"})`
+          }}
+        >
+          <div
+            className={`sidebar-toggle dn-l fa fa-angle-double-${
+              isSidebarOpen ? "right" : "left"
+            }`}
+            onClick={e => this.toggleSidebar(e)}
+          />
+          <div className={`sidebar-content`}>
+            {" "}
+            <div className="sidebar-tabs tabs flex justify-between">
+              {tabs.map((tab, idx) => (
+                <div
+                  id={tab.title}
+                  onClick={e => this.tabHandler(e)}
+                  key={idx}
+                  className={`tab tab-${tab.title} ${
+                    currentTab === tab.title ? "active" : ""
+                  }`}
+                >
+                  <i className={`fa fa-${tab.icon}`} />
+                  {tab.title}
                 </div>
-              </div>
-            )}
-          </Sticky>
+              ))}
+            </div>
+            <div className="sidebar-lists">{sidebarComponent()}</div>
+          </div>
         </div>
       </div>
     );
