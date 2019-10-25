@@ -163,6 +163,11 @@ class Application extends React.Component {
     _.forEach(printElement.elements, (element, idx) => {
       switch (element.type) {
         case "text":
+        case "number":
+        case "email":
+        case "tel":
+        case "date":
+        case "url":
           element.insertAdjacentHTML(
             "afterend",
             '<div class="tmpDisplay" style="border: 1px solid #3331; padding: 10px;">' +
