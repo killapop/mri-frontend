@@ -1,14 +1,14 @@
 /* eslint no-unused-vars: 0 */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import _ from 'lodash';
-import { view } from 'react-easy-state';
-import logo from '../../assets/images/logo.svg';
-import Clock from '../common/clock';
-import { messages, authStore } from '../../lib/store';
-import { add as addMessage } from '../../lib/message';
-import './Header.css';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import _ from "lodash";
+import { view } from "react-easy-state";
+import logo from "../../assets/images/logo.svg";
+import Clock from "../common/clock";
+import { messages, authStore } from "../../lib/store";
+import { add as addMessage } from "../../lib/message";
+import "./Header.css";
 
 class Header extends React.Component {
   constructor(props) {
@@ -18,8 +18,9 @@ class Header extends React.Component {
 
   logout() {
     authStore.isLoggedIn = false;
-    authStore.token = '';
-    addMessage('info', 'Logged out');
+    authStore.token = "";
+    addMessage("info", "Logged out");
+    window.sessionStorage.removeItem("accessToken");
   }
 
   render() {
@@ -28,8 +29,9 @@ class Header extends React.Component {
       <div>
         <div
           className={`header ${
-            sticky ? 'sticky' : ''
-          } ph2 w-100 flex justify-between`}>
+            sticky ? "sticky" : ""
+          } ph2 w-100 flex justify-between`}
+        >
           <Link to="/" className="logo pa2">
             <img src={logo} alt="Martin Roth-Initiative" />
           </Link>
@@ -40,23 +42,25 @@ class Header extends React.Component {
                 href="https://martin-roth-initiative.de"
                 target="_blank"
                 title="Info"
-                className="navLink pv2 h-100">
+                className="navLink pv2 h-100"
+              >
                 <div className="flex items-center">
                   <i className={`fa fa-info mb2`} />
                   <span className="dn db-l">Info</span>
                 </div>
               </a>
-              {authStore.token !== '' ? (
+              {authStore.token !== "" ? (
                 <div className="flex">
                   <Link
                     to="/dashboard"
                     title="Dashboard"
                     className={`navLink pv2 h-100
                       ${
-                        window.location.pathname.indexOf('dashboard') !== -1
-                          ? 'active'
-                          : ''
-                      }`}>
+                        window.location.pathname.indexOf("dashboard") !== -1
+                          ? "active"
+                          : ""
+                      }`}
+                  >
                     <div className="flex items-center">
                       <i className="fa fa-tachometer-alt mb2" />
                       <span className="dn db-l">Dashboard</span>
@@ -66,7 +70,8 @@ class Header extends React.Component {
                     to="#"
                     title="Logout"
                     className="navLink pv2 h-100"
-                    onClick={this.logout}>
+                    onClick={this.logout}
+                  >
                     <div className="flex items-center">
                       <i className="fa fa-sign-out-alt mb2" />
                       <span className="dn db-l">Logout</span>
@@ -74,7 +79,7 @@ class Header extends React.Component {
                   </Link>
                 </div>
               ) : (
-                ''
+                ""
               )}
             </div>
           </nav>

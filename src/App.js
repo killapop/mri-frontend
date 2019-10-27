@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import { view } from "react-easy-state";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { authStore } from "./lib/store.js";
 import { StickyContainer, Sticky } from "react-sticky";
-import { authStore, messages } from "./lib/store.js";
+import jwt from "jsonwebtoken";
 import Header from "./components/header/Header.js";
 import Layout from "./components/common/layout";
 import Messages from "./components/common/messages";
@@ -15,28 +15,27 @@ import "./App.css";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.loggedIn = this.loggedIn.bind(this);
+    const auth_token = window.sessionStorage.accessToken;
+    if (auth_token) {
+      authStore.token = auth_token;
+      authStore.user = jwt.decode(auth_token);
+    }
     this.leavePage = this.leavePage.bind(this);
   }
 
   componentDidMount() {
-    window.addEventListener("beforeunload", this.leavePage);
+    // window.addEventListener("beforeunload", this.leavePage);
   }
 
   componentWillUnmount() {
-    window.removelistener("beforeunload", this.leavePage);
+    // window.removelistener("beforeunload", this.leavePage);
   }
 
   leavePage(e) {
     const leaveMessage =
       "You are about to leave the MRI application platform. Please make sure to save your work and log out before leaving";
-    // e.cancelable = false;
     e.returnValue = leaveMessage;
     return leaveMessage;
-  }
-
-  loggedIn() {
-    return authStore.isLoggedIn;
   }
 
   render() {
@@ -52,22 +51,8 @@ class App extends Component {
               )}
             </Sticky>
             <Layout>
-              {messages.messages.length > 0 ? (
-                <Messages messages={messages.messages} />
-              ) : (
-                ""
-              )}
-              <Route
-                exact
-                path="/"
-                render={() =>
-                  authStore.isLoggedIn ? (
-                    <Dashboard />
-                  ) : (
-                    <Redirect to="/users/login" />
-                  )
-                }
-              />
+              <Messages />
+              <Route exact path="/" component={UserIndex} />
               <Route path="/dashboard" component={Dashboard} />
               <Route path="/users" component={UserIndex} />
               <Route path="/applications" component={FormsIndex} />
@@ -80,4 +65,4 @@ class App extends Component {
   }
 }
 
-export default view(App);
+export default App;

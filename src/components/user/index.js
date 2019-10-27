@@ -1,15 +1,15 @@
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import { view } from 'react-easy-state';
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
+import { view } from "react-easy-state";
 
-import Login from './login';
-import ChangePassword from './changePassword';
-import CreateUser from './create';
-import ActivateUser from './activate';
-import InvalidateActivation from './invalidate';
-import DeleteUser from './delete';
+import Login from "./login";
+import ChangePassword from "./changePassword";
+import CreateUser from "./create";
+import ActivateUser from "./activate";
+import InvalidateActivation from "./invalidate";
+import DeleteUser from "./delete";
 
-import '../../assets/css/forms.css';
+import "../../assets/css/forms.css";
 
 class UserIndex extends React.Component {
   render() {

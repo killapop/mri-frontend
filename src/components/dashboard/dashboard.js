@@ -41,7 +41,7 @@ class Dashboard extends React.Component {
 
   render() {
     if (authStore.token === "") {
-      return <Redirect to="/" />;
+      return <Redirect to="/users/login" />;
     }
     const list = authStore.activeList;
     return (
