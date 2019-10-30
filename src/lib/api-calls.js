@@ -19,17 +19,19 @@ const getAuth = (method, path, body) => {
       } else {
         authStore.token = "";
         authStore.user = {};
+        window.sessionStorage.removeItem("accessToken");
         addMessage("danger", "Your session has timed out. Please log in again");
       }
     })
     .then(result => {
       return result.data;
     })
-    .catch(err => console.log(err));
+    .catch((err, res) => console.log(res));
 };
 
-const apiCall = (method, path, body, withAuth, contentType = "json") => {
+const apiCall = (m, path, body, withAuth, contentType = "json") => {
   let headers;
+  const method = m || "GET";
   switch (contentType) {
     case "json":
       headers = { "Content-Type": "application/json" };
@@ -84,6 +86,9 @@ const apiCall = (method, path, body, withAuth, contentType = "json") => {
         "danger",
         "There was a problem connecting to the server. Please try again after some time or contact us info@mri-application.de"
       );
+      authStore.token = "";
+      authStore.user = {};
+      window.sessionStorage.removeItem("accessToken");
     });
 };
 

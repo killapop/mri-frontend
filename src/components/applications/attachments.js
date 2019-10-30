@@ -153,7 +153,7 @@ class Attachments extends React.Component {
           </div>
         </form>
         <div className="">
-          {attachments.length > 0 ? (
+          {attachments ? (
             <div>
               {attachments.map((item, idx) => (
                 <div key={idx} className="attachment relative history-item">

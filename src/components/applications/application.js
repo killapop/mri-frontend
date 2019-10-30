@@ -3,7 +3,7 @@ import { Redirect, Link } from "react-router-dom";
 import Form from "react-jsonschema-form";
 import jsPDF from "jspdf";
 import _ from "lodash";
-import { Sticky } from "react-sticky";
+// import { Sticky } from "react-sticky";
 import { authStore } from "../../lib/store";
 import { view } from "react-easy-state";
 import Clock from "../../components/common/clock";
@@ -27,6 +27,7 @@ class Application extends React.Component {
     this.saveAndExit = this.saveAndExit.bind(this);
     this.exportPDF = this.exportPDF.bind(this);
     this.toggleSidebar = this.toggleSidebar.bind(this);
+    this.toggleFormButtons = this.toggleFormButtons.bind(this);
     this.state = {
       form: {},
       bundle: "",
@@ -43,6 +44,7 @@ class Application extends React.Component {
       containerSticky: false,
       currentTab: "attachments",
       isSidebarOpen: false,
+      isFormButtonsOpen: false,
       tabs: [
         { title: "history", icon: "clipboard-list" },
         { title: "comments", icon: "comments" },
@@ -261,8 +263,13 @@ class Application extends React.Component {
 
   toggleSidebar(e) {
     this.setState({ isSidebarOpen: !this.state.isSidebarOpen });
+  }
+
+  toggleFormButtons(e) {
+    this.setState({ isFormButtonsOpen: !this.state.isFormButtonsOpen });
     console.log(e);
   }
+
   render() {
     const {
       form,
@@ -275,7 +282,8 @@ class Application extends React.Component {
       currentTab,
       noValidate,
       disabled,
-      isSidebarOpen
+      isSidebarOpen,
+      isFormButtonsOpen
     } = this.state;
     if (authStore.token === "") {
       this.timeoutHandler();
@@ -340,7 +348,23 @@ class Application extends React.Component {
           >
             <div className="form-actions form-group flex justify-between">
               <Clock />
-              <div className="flex items-center">
+              <div className="dn-l form-actions-toggle">
+                <span
+                  className="fa fa-cog white z-999"
+                  onClick={e => this.toggleFormButtons(e)}
+                />
+              </div>
+              <div
+                className="flex items-center toggle-buttons"
+                style={{
+                  position: "fixed",
+                  botton: "0",
+                  flexFlow: "column",
+                  transform: `translateY(${
+                    isFormButtonsOpen ? "0vh" : "200vh"
+                  })`
+                }}
+              >
                 <button
                   className="pdf-export"
                   onClick={e => this.exportPDF(e)}
