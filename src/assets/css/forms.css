@@ -102,6 +102,12 @@ form .field-description {
   padding: 0.5em;
 }
 
+.form-actions-toggle {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .form-control {
   border-radius: 0;
   background-color: var(--very-very-light);
@@ -174,6 +180,11 @@ input[type="month"].form-control {
   border-right-width: 0;
   box-shadow: -1px 1px 2px #0003;
   cursor: pointer;
+}
+
+.sidebar-toggle:hover {
+  width: 40px;
+  margin-left: -40px;
 }
 
 .sidebar .sidebar-content {

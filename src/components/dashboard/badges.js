@@ -1,29 +1,29 @@
-import React from 'react';
-import _ from 'lodash';
-import { view } from 'react-easy-state';
-import Badge from './badge';
+import React from "react";
+import _ from "lodash";
+import { view } from "react-easy-state";
+import Badge from "./badge";
 
 class Badges extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       badges: [
-        { title: 'Activations', icon: 'user-check' },
+        { title: "Activations", icon: "user-check" },
         {
-          title: 'Users',
-          icon: 'users'
+          title: "Users",
+          icon: "users"
         },
         {
-          title: 'Project proposals',
-          icon: 'project-diagram'
+          title: "Project proposals",
+          icon: "project-diagram"
         },
         {
-          title: 'Personal statements',
-          icon: 'id-card-alt'
+          title: "Personal statements",
+          icon: "id-card-alt"
         },
         {
-          title: 'Bundles',
-          icon: 'cubes'
+          title: "Bundles",
+          icon: "cubes"
         }
       ]
     };

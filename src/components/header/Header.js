@@ -20,7 +20,7 @@ class Header extends React.Component {
     authStore.isLoggedIn = false;
     authStore.token = "";
     addMessage("info", "Logged out");
-    window.sessionStorage.removeItem("accessToken");
+    window.sessionStorage.clear();
   }
 
   render() {

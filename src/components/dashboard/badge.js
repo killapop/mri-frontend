@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { camelCase } from 'lodash';
-import { view } from 'react-easy-state';
-import { authStore } from '../../lib/store';
+import React from "react";
+import PropTypes from "prop-types";
+import { camelCase } from "lodash";
+import { view } from "react-easy-state";
+import { authStore } from "../../lib/store";
 
 class Badge extends React.Component {
   constructor(props) {
@@ -14,6 +14,8 @@ class Badge extends React.Component {
     const dataset = e.target.dataset;
     authStore.activeList.title = dataset.title;
     authStore.activeList.slug = dataset.slug;
+    window.sessionStorage.activeTitle = dataset.title;
+    window.sessionStorage.activeList = dataset.slug;
   }
 
   render() {
@@ -22,14 +24,15 @@ class Badge extends React.Component {
     return (
       <div
         onClick={this.setActiveBadge}
-        className={`badge flex flex-column justify-center items-center  pointer relative bg-light-gray ${
-          authStore.activeList.slug === slug ? 'active' : ''
+        className={`badge flex flex-column justify-center items-center  pointer relative ${
+          authStore.activeList.slug === slug ? "active" : ""
         }`}
         data-slug={slug}
         data-title={badge.title}
-        id={slug}>
-        <i className={`fa fa-${badge.icon} fa-2x mb3`} />
-        <div className="badge-title f6 ttu t-shadow-light b">{badge.title}</div>
+        id={slug}
+      >
+        <i className={`fa fa-${badge.icon} mb3`} />
+        <div className="badge-title f6 ttu t-shadow-light">{badge.title}</div>
       </div>
     );
   }

@@ -33,6 +33,13 @@ class Login extends React.Component {
         this.setState(() => ({ loggedIn: true }));
         addMessage("success", "Logged in");
         window.sessionStorage.accessToken = data.token;
+        window.sessionStorage.activeTitle = authStore.activeList.title;
+        window.sessionStorage.activeList = authStore.activeList.slug;
+        const mri = {
+          accessToken: data.token,
+          activeList: authStore.activeList
+        };
+        window.sessionStorage.mri = mri;
       } else {
         addMessage(
           "danger",

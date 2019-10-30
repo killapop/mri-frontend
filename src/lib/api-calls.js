@@ -19,7 +19,7 @@ const getAuth = (method, path, body) => {
       } else {
         authStore.token = "";
         authStore.user = {};
-        window.sessionStorage.removeItem("accessToken");
+        window.sessionStorage.clear();
         addMessage("danger", "Your session has timed out. Please log in again");
       }
     })
@@ -66,7 +66,7 @@ const apiCall = (m, path, body, withAuth, contentType = "json") => {
       } else if (response.status === 401) {
         authStore.token = "";
         authStore.user = {};
-        window.sessionStorage.removeItem("accessToken");
+        window.sessionStorage.clear();
       } else {
         addMessage(
           "danger",
@@ -88,7 +88,7 @@ const apiCall = (m, path, body, withAuth, contentType = "json") => {
       );
       authStore.token = "";
       authStore.user = {};
-      window.sessionStorage.removeItem("accessToken");
+      window.sessionStorage.removeItem("mri");
     });
 };
 

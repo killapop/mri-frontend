@@ -61,7 +61,7 @@ class FacilitatorList extends React.Component {
           if (data === 401) {
             authStore.token = "";
             authStore.user = {};
-            window.sessionStorage.removeItem("accessToken");
+            window.sessionStorage.clear();
           }
           this.setState(state => ({
             [k]:
