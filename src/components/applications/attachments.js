@@ -20,12 +20,15 @@ class Attachments extends React.Component {
     this.state = {
       attachments: [],
       fileContents: "",
-      fileName: ""
+      fileName: "",
+      attachmentToDelete: null,
+      isConfirmOpen: false
     };
     this.fetchAttachments = this.fetchAttachments.bind(this);
     this.deleteAttachment = this.deleteAttachment.bind(this);
     this.uploadAttachment = this.uploadAttachment.bind(this);
     this.downloadFile = this.downloadFile.bind(this);
+    this.toggleConfirm = this.toggleConfirm.bind(this);
   }
 
   async componentDidMount() {
@@ -66,6 +69,7 @@ class Attachments extends React.Component {
         if (data === 204) {
           this.fetchAttachments();
           addMessage("success", "Attachment deleted");
+          this.setState({ isConfirmOpen: false, attachmentToDelete: null });
         }
       })
       .catch(err => {
@@ -135,10 +139,44 @@ class Attachments extends React.Component {
       });
   }
 
+  toggleConfirm(e) {
+    this.setState({
+      isConfirmOpen: !this.state.isConfirmOpen,
+      attachmentToDelete: e.target.dataset.filename
+    });
+  }
+
   render() {
-    const { attachments } = this.state;
+    const { attachments, isConfirmOpen, attachmentToDelete } = this.state;
     return (
       <div className="comments-panel pv3">
+        {isConfirmOpen ? (
+          <div className="confirm">
+            <div className="confirm-background"></div>
+            <div className="confirm-content">
+              <div className="confirm-text">
+                <p>
+                  <i className="left fa fa-2x fa-info-circle mr4" />
+                  You are about a delete an attachment. This step cannot be
+                  reversed. Please proceed with caution!
+                </p>
+              </div>
+              <div className="confirm-actions">
+                <button className="text" onClick={e => this.toggleConfirm(e)}>
+                  Cancel
+                </button>
+                <button
+                  onClick={e => this.deleteAttachment(e)}
+                  data-filename={attachmentToDelete}
+                >
+                  <i className="fa fa-trash" /> Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
         <form
           encType="multipart/form-data"
           className="comments-form"
@@ -166,7 +204,7 @@ class Attachments extends React.Component {
                   {item.fileName}
                   {authStore.user.roles.indexOf("mri-staff") !== -1 ? (
                     <i
-                      onClick={e => this.deleteAttachment(e)}
+                      onClick={e => this.toggleConfirm(e)}
                       data-filename={item.fileName}
                       className="delete fa fa-trash right"
                       title="Delete attachment"

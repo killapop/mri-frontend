@@ -11,11 +11,14 @@ class Comments extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      comments: []
+      comments: [],
+      isConfirmOpen: false,
+      commentToDelete: null
     };
     this.fetchComments = this.fetchComments.bind(this);
     this.submitComment = this.submitComment.bind(this);
     this.deleteComment = this.deleteComment.bind(this);
+    this.toggleConfirm = this.toggleConfirm.bind(this);
   }
 
   async componentDidMount() {
@@ -71,6 +74,7 @@ class Comments extends React.Component {
         if (data === 204) {
           this.fetchComments();
           addMessage("success", "Comment deleted");
+          this.setState({ isConfirmOpen: false, commentToDelete: null });
         }
       })
       .catch(err => {
@@ -79,11 +83,45 @@ class Comments extends React.Component {
       });
   }
 
+  toggleConfirm(e) {
+    this.setState({
+      isConfirmOpen: !this.state.isConfirmOpen,
+      commentToDelete: e.target.dataset.id
+    });
+  }
+
   render() {
-    const { comments } = this.state;
+    const { comments, isConfirmOpen, commentToDelete } = this.state;
     const sorted = orderBy(comments, "created_at", "desc");
     return (
       <div className="comments-panel">
+        {isConfirmOpen ? (
+          <div className="confirm">
+            <div className="confirm-background"></div>
+            <div className="confirm-content">
+              <div className="confirm-text">
+                <p>
+                  <i className="left fa fa-2x fa-info-circle mr4" />
+                  You are about a delete a comment. This step cannot be
+                  reversed. Please proceed with caution!
+                </p>
+              </div>
+              <div className="confirm-actions">
+                <button className="text" onClick={e => this.toggleConfirm(e)}>
+                  Cancel
+                </button>
+                <button
+                  onClick={e => this.deleteComment(e)}
+                  data-id={commentToDelete}
+                >
+                  <i className="fa fa-trash" /> Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
         <form className="comments-form" onSubmit={e => this.submitComment(e)}>
           <div className="flex items-end">
             <textarea
@@ -127,7 +165,7 @@ class Comments extends React.Component {
                       className="fa fa-times delete"
                       title="Delete"
                       data-id={comment.id}
-                      onClick={e => this.deleteComment(e)}
+                      onClick={e => this.toggleConfirm(e)}
                     />
                   ) : (
                     ""
