@@ -98,7 +98,7 @@ form .field-description {
   position: fixed;
   left: 0;
   bottom: 0;
-  background-color: #333;
+  background-color: var(--almost-black);
   padding: 0.5em;
 }
 
@@ -120,7 +120,7 @@ form .field-description {
   border-color: #f90a;
   border-width: 1px;
   box-shadow: 0 6px 2px -5px #0004;
-  color: #333;
+  color: var(--almost-black);
   background-color: white;
 }
 
@@ -268,9 +268,26 @@ button:hover {
 button:active {
   padding: 7px 23px;
 }
+/* .form-group button {
+  margin: 0 1.5em 0 0;
+} */
 
-.form-group button {
-  margin-right: 1.5em;
+.toggle-buttons {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 200px;
+  right: 10px;
+  align-items: flex-end;
+  flex-flow: column nowrap;
+  transition: all ease 0.5s;
+  padding: 20px;
+  background-color: var(--almost-black);
+  bottom: 0;
+}
+
+.toggle-buttons button {
+  margin: 0 0 1.5em;
 }
 
 input#submitLockcheckbox[type="checkbox"] {
@@ -343,17 +360,30 @@ form.disabled p.field-description {
   margin-left: 10px;
   text-transform: none;
   font-family: PTSansRegular, sans-serif;
-  color: #333;
+  color: var(--almost-black);
 }
 
 @media screen and (min-width: 60em) {
-  .form-actions {
-  }
-
   .formContainer #root__title {
     margin-left: 200px;
   }
 
+  .toggle-buttons {
+    transform: unset !important;
+    position: unset !important;
+    width: auto !important;
+    right: unset !important;
+    transition: none !important;
+    padding: unset;
+    background-color: unset;
+    bottom: unset !important;
+    align-items: flex-end;
+    flex-flow: row;
+  }
+
+  .toggle-buttons button {
+    margin: 0 1.5em 0 0;
+  }
   .applications {
     margin-top: 0px;
   }
@@ -384,7 +414,7 @@ form.disabled p.field-description {
     margin-left: 0;
     text-transform: none;
     font-family: PTSansRegular, sans-serif;
-    color: #333;
+    color: var(--almost-black);
   }
 
   .sidebar {

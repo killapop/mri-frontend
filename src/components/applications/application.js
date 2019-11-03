@@ -262,12 +262,17 @@ class Application extends React.Component {
   refreshSessionHandler() {}
 
   toggleSidebar(e) {
-    this.setState({ isSidebarOpen: !this.state.isSidebarOpen });
+    this.setState({
+      isSidebarOpen: !this.state.isSidebarOpen,
+      isFormButtonsOpen: false
+    });
   }
 
   toggleFormButtons(e) {
-    this.setState({ isFormButtonsOpen: !this.state.isFormButtonsOpen });
-    console.log(e);
+    this.setState({
+      isSidebarOpen: false,
+      isFormButtonsOpen: !this.state.isFormButtonsOpen
+    });
   }
 
   render() {
@@ -348,22 +353,25 @@ class Application extends React.Component {
           >
             <div className="form-actions form-group flex justify-between">
               <Clock />
-              <div className="dn-l form-actions-toggle">
-                <span
-                  className="fa fa-cog white z-999"
-                  onClick={e => this.toggleFormButtons(e)}
-                />
-              </div>
+              <button
+                type="button"
+                className="dn-l form-actions-toggle"
+                onClick={e => this.toggleFormButtons(e)}
+              >
+                <i className="fa fa-cog white z-999" /> {`  `}
+                {isFormButtonsOpen ? "Cancel" : "Actions"}
+              </button>
               <div
-                className="flex items-center toggle-buttons"
-                style={{
-                  position: "fixed",
-                  botton: "0",
-                  flexFlow: "column",
-                  transform: `translateY(${
-                    isFormButtonsOpen ? "0vh" : "200vh"
-                  })`
-                }}
+                className="toggle-buttons"
+                style={
+                  isFormButtonsOpen
+                    ? {
+                        transform: "translateY(-44px)"
+                      }
+                    : {
+                        transform: "translateY(240px)"
+                      }
+                }
               >
                 <button
                   className="pdf-export"

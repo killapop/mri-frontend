@@ -11,6 +11,8 @@
   --info: #31d;
   --warning: #fa1;
   --danger: #d31;
+  --black: #000;
+  --almost-black: #333;
 }
 
 body {
