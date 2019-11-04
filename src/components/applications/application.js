@@ -87,7 +87,11 @@ class Application extends React.Component {
             appData.state === "locked")
       }));
     } catch (err) {
-      addMessage("danger", "Error retrieving data");
+      console.log(err);
+      addMessage(
+        "danger",
+        "There was a problem connecting to the server. Please try again after some time or contact us info@mri-application.de"
+      );
     }
   }
 
@@ -139,19 +143,29 @@ class Application extends React.Component {
       true
     )
       .then(data => {
-        this.setState(state => ({
-          form: data,
-          account: data.account,
-          history: data.history
-        }));
-        addMessage("success", message);
+        if (data === 500) {
+          addMessage(
+            "danger",
+            "There was a problem connecting to the server. Please try again after some time or contact us info@mri-application.de"
+          );
+        } else if (data) {
+          this.setState(state => ({
+            form: data,
+            account: data.account,
+            history: data.history
+          }));
+          addMessage("success", message);
+        }
       })
       .then(() => {
         if (this.state.close) {
           return this.props.history.push("/");
         }
       })
-      .catch(err => addMessage("danger", "Error retrieving data"));
+      .catch(err => {
+        console.log(err);
+        addMessage("danger", "Error retrieving data");
+      });
   }
 
   async exportPDF(ev) {
@@ -291,7 +305,7 @@ class Application extends React.Component {
       isFormButtonsOpen
     } = this.state;
     if (authStore.token === "") {
-      this.timeoutHandler();
+      // this.timeoutHandler();
       return <Redirect to="/" />;
     }
     const sidebarComponent = () => {

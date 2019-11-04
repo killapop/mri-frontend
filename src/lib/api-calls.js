@@ -17,16 +17,16 @@ const getAuth = (method, path, body) => {
       if (response.status !== 401) {
         return response.json();
       } else {
+        addMessage("danger", "Your session has timed out. Please log in again");
         authStore.token = "";
         authStore.user = {};
         window.sessionStorage.clear();
-        addMessage("danger", "Your session has timed out. Please log in again");
       }
     })
     .then(result => {
       return result.data;
     })
-    .catch((err, res) => console.log(res));
+    .catch(err => console.log(err));
 };
 
 const apiCall = (m, path, body, withAuth, contentType = "json") => {
@@ -55,11 +55,13 @@ const apiCall = (m, path, body, withAuth, contentType = "json") => {
   }
   return fetch(baseURL + path, opts)
     .then(response => {
-      if (response.status === 204 || response.status === 404) {
+      if (
+        response.status === 204 ||
+        response.status === 404 ||
+        response.status === 500
+      ) {
         return { data: response.status };
-      }
-
-      if (withAuth && response.status !== 401) {
+      } else if (withAuth && response.status !== 401) {
         return response.json();
       } else if (response.status === 200) {
         return { data: response.status };
@@ -67,6 +69,10 @@ const apiCall = (m, path, body, withAuth, contentType = "json") => {
         authStore.token = "";
         authStore.user = {};
         window.sessionStorage.clear();
+        addMessage(
+          "danger",
+          "Your session has timed out. Please log in again."
+        );
       } else {
         addMessage(
           "danger",
@@ -81,14 +87,13 @@ const apiCall = (m, path, body, withAuth, contentType = "json") => {
       return result.data;
     })
     .catch(err => {
-      console.log(err);
       addMessage(
         "danger",
         "There was a problem connecting to the server. Please try again after some time or contact us info@mri-application.de"
       );
       authStore.token = "";
       authStore.user = {};
-      window.sessionStorage.removeItem("mri");
+      window.sessionStorage.clear();
     });
 };
 
