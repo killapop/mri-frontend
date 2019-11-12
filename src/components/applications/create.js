@@ -1,12 +1,12 @@
-import React from 'react';
-import { Redirect, Link } from 'react-router-dom';
-import { view } from 'react-easy-state';
-import Reactahead from 'reactahead';
-import _ from 'lodash';
-import SmallBox from '../common/smallBox';
-import { authStore } from '../../lib/store';
-import { apiCall } from '../../lib/api-calls';
-import { add as addMessage } from '../../lib/message';
+import React from "react";
+import { Redirect, Link } from "react-router-dom";
+import { view } from "react-easy-state";
+import Reactahead from "reactahead";
+import _ from "lodash";
+import SmallBox from "../common/smallBox";
+import { authStore } from "../../lib/store";
+import { apiCall } from "../../lib/api-calls";
+import { add as addMessage } from "../../lib/message";
 
 class CreateForm extends React.Component {
   constructor(props) {
@@ -14,9 +14,9 @@ class CreateForm extends React.Component {
     this.state = {
       created: false,
       users: [],
-      selectedUser: '',
-      role: '',
-      formType: '',
+      selectedUser: "",
+      role: "",
+      formType: "",
       programLine: 1
     };
     this.change = this.change.bind(this);
@@ -30,23 +30,23 @@ class CreateForm extends React.Component {
   }
 
   change(o, i) {
-    document.getElementsByClassName('reactahead-input')[0].innerText = o;
+    document.getElementsByClassName("reactahead-input")[0].innerText = o;
     this.setState(state => ({ selectedUser: o }));
     this.my_reactahead.clearInput();
   }
 
   async componentDidMount() {
-    const template = this.props.match.params.template === 'projectProposals';
+    const template = this.props.match.params.template === "projectProposals";
     this.setState(state => ({
-      role: template ? 'organization' : 'beneficiary',
-      formType: template ? 'Project Proposal' : 'Personal Statement'
+      role: template ? "organization" : "beneficiary",
+      formType: template ? "Project Proposal" : "Personal Statement"
     }));
-    await apiCall('GET', '/users', '', true)
+    await apiCall("GET", "/users", "", true)
       .then(users => {
         if (users) {
           const urs = _.map(
             _.filter(users, user => _.includes(user.roles, this.state.role)),
-            'email'
+            "email"
           );
           this.setState(state => ({ users: urs }));
         }
@@ -56,25 +56,26 @@ class CreateForm extends React.Component {
 
   async create(e) {
     const formName =
-      this.props.match.params.template + '-' + this.state.programLine + '.json';
+      this.props.match.params.template + "-" + this.state.programLine + ".json";
     if (this.state.selectedUser) {
       await apiCall(
-        'POST',
-        '/applications',
+        "POST",
+        "/applications",
         JSON.stringify({
           email: this.state.selectedUser,
-          form: formName
+          form: formName,
+          facilitator: authStore.user.email || ""
         }),
         true
       ).then(data => {
         if (data === 204) {
           this.setState(state => ({ created: true }));
         } else {
-          addMessage('danger', 'Error: There was an error creating the form');
+          addMessage("danger", "Error: There was an error creating the form");
         }
       });
     } else {
-      addMessage('warning', `Please choose the ${this.state.role}`);
+      addMessage("warning", `Please choose the ${this.state.role}`);
     }
   }
 
@@ -88,7 +89,7 @@ class CreateForm extends React.Component {
       programLine
     } = this.state;
 
-    if (authStore.token === '') {
+    if (authStore.token === "") {
       return <Redirect to="/" />;
     }
     return (
@@ -113,7 +114,8 @@ class CreateForm extends React.Component {
                   <div className="form-group field field-string">
                     <p
                       id="root_email__description"
-                      className="field-description">
+                      className="field-description"
+                    >
                       Enter the email address of the of the {role}
                     </p>
                     <Reactahead
@@ -142,7 +144,8 @@ class CreateForm extends React.Component {
                                 />
                                 <label
                                   className="mh3"
-                                  htmlFor={`programLine${e}`}>
+                                  htmlFor={`programLine${e}`}
+                                >
                                   Program Line {e}
                                 </label>
                               </span>
@@ -151,7 +154,7 @@ class CreateForm extends React.Component {
                         </fieldset>
                       </div>
                     ) : (
-                      ''
+                      ""
                     )}
                     <div />
                   </div>
@@ -161,7 +164,8 @@ class CreateForm extends React.Component {
               </div>
               <div className="form-actions form-group flex justify-end">
                 <button type="submit" onClick={e => this.create(e)}>
-                  Create form<i className="fa fa-plus-circle ml2" />
+                  Create form
+                  <i className="fa fa-plus-circle ml2" />
                 </button>
               </div>
             </div>
