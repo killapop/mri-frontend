@@ -106,34 +106,37 @@ class FacilitatorList extends React.Component {
       accessor: customIDs(),
       filterable: false,
       sortable: false,
-      Cell: row => (
-        <div>
-          <div id={row.row[customIDs()]} className="actions">
-            {_.map(actionButtons[path], (b, i) => (
-              <span key={i}>
-                {path === "applications" ||
-                (path === "applications" && b.label === "delete") ||
-                (path === "activations" && row.row.isValid) ||
-                path === "users" ||
-                path === "bundles" ? (
-                  <i
-                    key={i}
-                    data-action={b.label}
-                    data-type={path === "activations" ? "users" : path}
-                    data-id={row.row[customIDs()]}
-                    data-data={row.row}
-                    className={`fa fa-${b.icon} action pointer`}
-                    onClick={e => this.clickHandler(e)}
-                    title={b.label}
-                  />
-                ) : (
-                  ""
-                )}
-              </span>
-            ))}
+      Cell: row => {
+        console.log(row);
+        return (
+          <div>
+            <div id={row.row[customIDs()]} className="actions">
+              {_.map(actionButtons[path], (b, i) => (
+                <span key={i}>
+                  {path === "applications" ||
+                  (path === "applications" && b.label === "delete") ||
+                  (path === "activations" && row.row.isValid) ||
+                  path === "users" ||
+                  path === "bundles" ? (
+                    <i
+                      key={i}
+                      data-action={b.label}
+                      data-type={path === "activations" ? "users" : path}
+                      data-id={row.row[customIDs()]}
+                      data-data={row.row}
+                      className={`fa fa-${b.icon} action pointer`}
+                      onClick={e => this.clickHandler(e)}
+                      title={b.label}
+                    />
+                  ) : (
+                    ""
+                  )}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-      )
+        );
+      }
     };
 
     const newSchema = _.concat(listSchema[path], addActions);

@@ -24,6 +24,7 @@ class Application extends React.Component {
     this.uploadFiles = this.uploadFiles.bind(this);
     this.saveForm = this.saveForm.bind(this);
     this.finalizeForm = this.finalizeForm.bind(this);
+    this.unfinalizeForm = this.unfinalizeForm.bind(this);
     this.saveAndExit = this.saveAndExit.bind(this);
     this.exportPDF = this.exportPDF.bind(this);
     this.toggleSidebar = this.toggleSidebar.bind(this);
@@ -41,6 +42,7 @@ class Application extends React.Component {
       noValidate: true,
       forms: {},
       close: false,
+      unfinalize: false,
       containerSticky: false,
       currentTab: "attachments",
       isSidebarOpen: false,
@@ -115,6 +117,14 @@ class Application extends React.Component {
     await this.form.current.onSubmit(ev);
   }
 
+  async unfinalizeForm(ev) {
+    this.setState(state => ({
+      unfinalize: true,
+      close: true
+    }));
+    await this.form.current.onSubmit(ev);
+  }
+
   async saveAndExit(ev) {
     await this.form.current.onSubmit(ev);
     this.setState(state => ({ close: true }));
@@ -130,6 +140,9 @@ class Application extends React.Component {
     if (this.state.type === "lock") {
       body = { type: this.state.type };
       message = "The form has been locked and no further editing is allowed";
+    } else if (this.state.unfinalize) {
+      body = { type: "unfinalize" };
+      message = "The form has been unfinalized and is editable";
     } else {
       body = { type: this.state.locked ? "submit" : "save", formData };
       message = this.state.locked
@@ -397,7 +410,14 @@ class Application extends React.Component {
                 {form.state === "finalized" &&
                 authStore.user.roles.indexOf("mri-staff") !== -1 ? (
                   <div>
-                    {" "}
+                    <button
+                      className="unfinalize"
+                      type="button"
+                      onClick={this.unfinalizeForm}
+                    >
+                      Unfinalize
+                      <i className="fa fa-undo ml2" />
+                    </button>{" "}
                     <button
                       className="lock"
                       type="button"
