@@ -29,8 +29,9 @@ const getAuth = (method, path, body) => {
     .catch(err => console.log(err));
 };
 
-const apiCall = (m, path, body, withAuth, contentType = "json") => {
+const apiCall = (m, path, body, withAuth, c) => {
   let headers;
+  const contentType = c ? c : "json";
   const method = m || "GET";
   switch (contentType) {
     case "json":
@@ -38,6 +39,9 @@ const apiCall = (m, path, body, withAuth, contentType = "json") => {
       break;
     case "pdf":
       headers = { "Content-Type": "application/pdf" };
+      break;
+    case "csv":
+      headers = { "Content-Type": "application/json" };
       break;
     case "form":
       headers = {};
@@ -61,6 +65,10 @@ const apiCall = (m, path, body, withAuth, contentType = "json") => {
         response.status === 500
       ) {
         return { data: response.status };
+      } else if (c === "csv" && response.status === 200) {
+        return response.text().then(body => {
+          return { data: body };
+        });
       } else if (withAuth && response.status !== 401) {
         return response.json();
       } else if (response.status === 200) {

@@ -2,6 +2,7 @@ import React from "react";
 import _ from "lodash";
 import PropTypes from "prop-types";
 import ReactTable from "react-table";
+import selectTableHOC from "react-table/lib/hoc/selectTable";
 import { Link, Redirect, withRouter } from "react-router-dom";
 import { view } from "react-easy-state";
 import { authStore } from "../../lib/store";
@@ -9,6 +10,8 @@ import { listSchema } from "../../data/lists";
 import { apiCall } from "../../lib/api-calls.js";
 
 import "./list.css";
+
+const SelectTable = selectTableHOC(ReactTable);
 
 class FacilitatorList extends React.Component {
   state = {
@@ -32,11 +35,21 @@ class FacilitatorList extends React.Component {
     applications: [],
     projectProposals: [],
     personalStatements: [],
-    bundles: []
+    bundles: [],
+    selectAll: false,
+    selection: [],
+    filtered: [],
+    filteredSize: 0
   };
 
   async componentDidMount() {
     await this._getLists();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.list.slug === this.props.slug) {
+      this.setState({ selection: [] });
+    }
   }
 
   _getLists() {
@@ -68,7 +81,8 @@ class FacilitatorList extends React.Component {
               k === "personalStatements" || k === "projectProposals"
                 ? _.filter(data, r => _.startsWith(r.form, k))
                 : data,
-            loaded: true
+            loaded: true,
+            selection: []
           }));
         });
       }
@@ -85,8 +99,69 @@ class FacilitatorList extends React.Component {
     this.setState(state => ({ redirect: pathname }));
   }
 
+  async export2Csv(e) {
+    e.preventDefault();
+    const path = `/${
+      ["personalStatements", "projectProposals"].includes(this.props.list.slug)
+        ? "applications"
+        : this.props.list.slug
+    }/csv`;
+    const body = JSON.stringify({ ids: this.state.selection });
+    await apiCall("POST", path, body, true, "csv").then(data => {
+      const element = document.createElement("a");
+      const filename = `mri-${new Date()
+        .toLocaleDateString("de-DE")
+        .replace(/\./g, "")}`;
+      element.setAttribute(
+        "href",
+        "data:text/plain;charset=utf-8," + encodeURIComponent(data)
+      );
+      element.setAttribute("download", `${filename}.csv`);
+      element.style.display = "none";
+      document.body.appendChild(element);
+      element.click();
+      document.body.removeChild(element);
+    });
+  }
+
+  toggleAll() {
+    const selectAll = !this.state.selectAll;
+    if (selectAll) {
+      this.setState({
+        selectAll,
+        selection: _.map(
+          this.resultsTable.wrappedInstance.getResolvedState().sortedData,
+          "id"
+        )
+      });
+    } else {
+      this.setState({ selectAll, selection: [] });
+    }
+  }
+
+  toggleSelection(key, shift, row) {
+    const s = this.state.selection;
+    if (_.includes(s, key)) {
+      _.pull(s, key);
+    } else {
+      s.push(key);
+    }
+    const selectAll =
+      s.length ===
+      (this.state.filteredSize === 0
+        ? this.state[this.props.list.slug]
+        : this.state.filteredSize);
+    this.setState({ selection: s, selectAll });
+  }
+
   render() {
-    const { loaded, actionButtons, redirect } = this.state;
+    const {
+      loaded,
+      actionButtons,
+      redirect,
+      selectAll,
+      selection
+    } = this.state;
     const { list } = this.props;
     const path =
       list.slug === "personalStatements" || list.slug === "projectProposals"
@@ -107,7 +182,6 @@ class FacilitatorList extends React.Component {
       filterable: false,
       sortable: false,
       Cell: row => {
-        console.log(row);
         return (
           <div>
             <div id={row.row[customIDs()]} className="actions">
@@ -161,24 +235,38 @@ class FacilitatorList extends React.Component {
                     {_.size(this.state[list.slug]) || 0}
                   </span>
                 </h1>
-                {list.slug !== "activations" ? (
-                  <Link
-                    to={`/${path}/create${
-                      list.slug === "projectProposals" ||
-                      list.slug === "personalStatements"
-                        ? "/" + list.slug
-                        : ""
-                    }`}
-                    className="create pointer right ttu f6 b self-end pv2 ph3 white bg-primary-color mb2 ba b--very-ver-light link"
-                  >
-                    <i className="fa fa-plus-circle" /> Create
-                  </Link>
-                ) : (
-                  ""
-                )}
+                <div className="flex justify-end items-end">
+                  {!["users", "activations"].includes(list.slug) ? (
+                    <button
+                      className="csv pointer right ttu f6 b self-end pv2 ph3 gray bg-light-gray mb2 mr2 ba b--silver link"
+                      type="button"
+                      onClick={e => this.export2Csv(e)}
+                    >
+                      Export
+                      <i className="fa fa-table ml2" />
+                    </button>
+                  ) : (
+                    ""
+                  )}
+                  {list.slug !== "activations" ? (
+                    <Link
+                      to={`/${path}/create${
+                        list.slug === "projectProposals" ||
+                        list.slug === "personalStatements"
+                          ? "/" + list.slug
+                          : ""
+                      }`}
+                      className="create pointer right ttu f6 b self-end pv2 ph3 white bg-primary-color mb2 ba b--very-ver-light link"
+                    >
+                      <i className="fa fa-plus-circle" /> Create
+                    </Link>
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
               {_.size(this.state[list.slug]) > 0 ? (
-                <ReactTable
+                <SelectTable
                   data={this.state[list.slug]}
                   columns={newSchema}
                   filterable={true}
@@ -189,6 +277,17 @@ class FacilitatorList extends React.Component {
                       .toLowerCase()
                       .indexOf(filter.value.toLowerCase()) >= 0
                   }
+                  keyField="id"
+                  isSelected={key => _.includes(selection, key)}
+                  selectAll={selectAll}
+                  toggleAll={() => this.toggleAll()}
+                  toggleSelection={(key, shift, row) =>
+                    this.toggleSelection(key, shift, row)
+                  }
+                  selectType="checkbox"
+                  ref={r => {
+                    this.resultsTable = r;
+                  }}
                 />
               ) : (
                 <div className="text-center mt4 bt b--very-ver-light f4 pt3">
