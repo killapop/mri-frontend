@@ -92,6 +92,13 @@ class Application extends React.Component {
         true
       );
       const formData = await apiCall("GET", "/forms/" + appData.form, "", true);
+      if (authStore.user.roles.indexOf("mri-staff") !== -1) {
+        _.merge(formData.template.schema, {
+          title: `${formData.template.schema.title} ${
+            formData.id.indexOf("-1.json") !== -1 ? "PL1" : "PL2"
+          }`
+        });
+      }
       this.setState(state => ({
         form: appData,
         account: appData.account,

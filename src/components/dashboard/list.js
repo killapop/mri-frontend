@@ -218,7 +218,6 @@ class FacilitatorList extends React.Component {
     if (authStore.token === "") {
       return <Redirect to="/" />;
     }
-    console.log(this.state);
     return (
       <div>
         {redirect ? <Redirect to={redirect} /> : ""}
