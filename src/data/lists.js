@@ -205,6 +205,12 @@ export const listSchema = {
         )
       },
       {
+        accessor: "history[0].created_at",
+        Header: "Last updated",
+        filterable: false,
+        Cell: row => <React.Fragment>{formatDate(row.value)}</React.Fragment>
+      },
+      {
         accessor: "bundle",
         Header: "Bundled",
         Cell: row => (
