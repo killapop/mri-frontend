@@ -3,7 +3,6 @@ import { Redirect, Link } from "react-router-dom";
 import Form from "react-jsonschema-form";
 import jsPDF from "jspdf";
 import _ from "lodash";
-// import { Sticky } from "react-sticky";
 import { authStore } from "../../lib/store";
 import { view } from "react-easy-state";
 import Clock from "../../components/common/clock";
@@ -29,6 +28,7 @@ class Application extends React.Component {
     this.exportPDF = this.exportPDF.bind(this);
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.toggleFormButtons = this.toggleFormButtons.bind(this);
+    this.renderTextareas = this.renderTextareas.bind(this);
     this.state = {
       form: {},
       bundle: "",
@@ -47,6 +47,7 @@ class Application extends React.Component {
       currentTab: "attachments",
       isSidebarOpen: false,
       isFormButtonsOpen: false,
+      formKey: Math.random(),
       tabs: [
         { title: "history", icon: "clipboard-list" },
         { title: "comments", icon: "comments" },
@@ -57,7 +58,23 @@ class Application extends React.Component {
   }
 
   async componentDidMount() {
-    this.fetchData();
+    await this.fetchData().then(() => this.renderTextareas());
+  }
+
+  renderTextareas() {
+    if (this.state.disabled) {
+      const elements = document.getElementsByTagName("TEXTAREA");
+      if (!elements) {
+        return false;
+      } else {
+        _.forEach(elements, element => {
+          element.removeAttribute("disabled");
+          element.setAttribute("readonly", true);
+          element.setAttribute("tabindex", "-1");
+          element.classList.add("b");
+        });
+      }
+    }
   }
 
   async fetchData() {
@@ -183,6 +200,8 @@ class Application extends React.Component {
 
   async exportPDF(ev) {
     ev.persist();
+    const textareas = document.getElementsByTagName("TEXTAREA");
+    _.forEach(textareas, t => (t.style.display = "initial"));
     const fileName = this.props.match.params.id + ".pdf";
     const doc = new jsPDF("p", "pt", "a4");
     const elementHandler = {
@@ -216,10 +235,12 @@ class Application extends React.Component {
           break;
         case "checkbox":
           element.insertAdjacentHTML(
-            "afterbegin",
-            '<span style="font-size:1.2em; font-weight: bold; margin-right: 20px;">' +
+            "afterend",
+            '<div class="tmpDisplay" style=" display:inline-block; font-size:1.2em; font-weight: bold; margin-right: 20px; color: ' +
+              (element.checked ? "green" : "red") +
+              ';">' +
               (element.checked ? "YES" : "NO") +
-              "</span>"
+              "</div>"
           );
           break;
         case "radio":
@@ -232,23 +253,21 @@ class Application extends React.Component {
         // case "textarea":
         //   element.insertAdjacentHTML(
         //     "afterend",
-        //     '<div class="tmpDisplay" style="border: 1px solid #3331; padding: 10px; max-width: 7in">' +
-        //       element.value +
+        //     '<div class="tmpDisplay" style="border: 1px solid #3331; padding: 10px;">' +
+        //       element.innerHTML.replace(/\r?\n/g, "<br/>") +
         //       "</div>"
         //   );
         //   break;
         default:
       }
     });
-    doc.fromHTML(printElement, 25, 40, {
+
+    doc.fromHTML(printElement, 40, 40, {
       width: 550,
       elementHandlers: elementHandler
     });
 
-    const elements = document.getElementsByClassName("tmpDisplay");
-    _.forEach(elements, element => {
-      element.parentNode.removeChild(element.previousSibling);
-    });
+    this.setState({ formKey: Math.random() });
     doc.save(fileName);
   }
 
@@ -315,7 +334,8 @@ class Application extends React.Component {
       noValidate,
       disabled,
       isSidebarOpen,
-      isFormButtonsOpen
+      isFormButtonsOpen,
+      formKey
     } = this.state;
     if (authStore.token === "") {
       // this.timeoutHandler();
@@ -367,6 +387,7 @@ class Application extends React.Component {
           </div>
           <Form
             id="application-form"
+            key={formKey}
             className={`${disabled ? "disabled" : ""} rjsf`}
             disabled={disabled}
             ref={this.form}
