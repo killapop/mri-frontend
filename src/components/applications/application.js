@@ -86,7 +86,7 @@ class Application extends React.Component {
         disabled:
           authStore.user.roles.indexOf("mri-staff") !== -1 ||
           (authStore.user.roles.indexOf("mri-staff") === -1 &&
-            appData.state === "locked")
+            ["finalized", "locked"].includes(appData.state))
       }));
     } catch (err) {
       console.log(err);
