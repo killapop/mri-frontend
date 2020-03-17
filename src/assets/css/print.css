@@ -1,4 +1,12 @@
 @media print {
+  * {
+    overflow-y: visible;
+  }
+
+  .flex {
+    display: block;
+  }
+
   .z-999,
   .sidebar,
   .form-actions {
@@ -7,6 +15,11 @@
 
   #application-form > .form-group > fieldset > .form-group > fieldset {
     page-break-after: always;
+  }
+
+  .form-group {
+    border: 0 !important;
+    box-shadow: unset !important;
   }
 
   #application-form .title,
@@ -19,5 +32,15 @@
   label,
   textarea {
     page-break-inside: avoid;
+  }
+
+  .tmpDisplay {
+    display: block;
+    user-select: all;
+  }
+
+  textarea,
+  textarea[readonly] {
+    display: none;
   }
 }

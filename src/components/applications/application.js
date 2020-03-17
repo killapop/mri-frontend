@@ -68,10 +68,18 @@ class Application extends React.Component {
         return false;
       } else {
         _.forEach(elements, element => {
+          element.style.height = `${element.scrollHeight}px`;
           element.removeAttribute("disabled");
           element.setAttribute("readonly", true);
           element.setAttribute("tabindex", "-1");
           element.classList.add("b");
+          element.classList.add("dn");
+          element.insertAdjacentHTML(
+            "afterend",
+            "<p class='tmpDisplay b pa1 ba b--black-10'>" +
+              element.innerHTML.replace(/\r?\n/g, "<br/>") +
+              "</p>"
+          );
         });
       }
     }
@@ -206,76 +214,88 @@ class Application extends React.Component {
   }
 
   async exportPDF(ev) {
-    ev.persist();
-    const textareas = document.getElementsByTagName("TEXTAREA");
-    _.forEach(textareas, t => (t.style.display = "initial"));
-    const fileName = this.props.match.params.id + ".pdf";
-    const doc = new jsPDF("p", "pt", "a4");
-    const elementHandler = {
-      "#ignorePDF": function(element, renderer) {
-        return true;
-      }
-    };
-    const printElement = document.getElementById("application-form");
-    _.forEach(printElement.elements, (element, idx) => {
-      switch (element.type) {
-        case "text":
-        case "number":
-        case "email":
-        case "tel":
-        case "date":
-        case "url":
-          element.insertAdjacentHTML(
-            "afterend",
-            '<div class="tmpDisplay" style="border: 1px solid #3331; padding: 10px;">' +
-              element.value +
-              "</div>"
-          );
-          break;
-        case "select-one":
-          element.insertAdjacentHTML(
-            "afterend",
-            '<div class="tmpDisplay" style="border: 1px solid #3331; padding: 10px;">' +
-              element.selectedOptions[0].text +
-              "</div>"
-          );
-          break;
-        case "checkbox":
-          element.insertAdjacentHTML(
-            "afterend",
-            '<div class="tmpDisplay" style=" display:inline-block; font-size:1.2em; font-weight: bold; margin-right: 20px; color: ' +
-              (element.checked ? "green" : "red") +
-              ';">' +
-              (element.checked ? "YES" : "NO") +
-              "</div>"
-          );
-          break;
-        case "radio":
-          if (element.checked) {
-            element.style.fontWeight = "bold";
-          } else {
-            element.style.opacity = 0;
-          }
-          break;
-        // case "textarea":
-        //   element.insertAdjacentHTML(
-        //     "afterend",
-        //     '<div class="tmpDisplay" style="border: 1px solid #3331; padding: 10px;">' +
-        //       element.innerHTML.replace(/\r?\n/g, "<br/>") +
-        //       "</div>"
-        //   );
-        //   break;
-        default:
-      }
-    });
-
-    doc.fromHTML(printElement, 40, 40, {
-      width: 550,
-      elementHandlers: elementHandler
-    });
-
-    this.setState({ formKey: Math.random() });
-    doc.save(fileName);
+    // ev.persist();
+    // const textareas = document.getElementsByTagName("TEXTAREA");
+    // // window.onbeforeprint = ev => {
+    // //   _.forEach(textareas, t => {
+    // //     t.insertAdjacentHTML(
+    // //       "afterend",
+    // //       "<p class='tmpDisplay'>" +
+    // //         t.innerHTML.replace(/\r?\n/g, "<br/>") +
+    // //         "</p>"
+    // //     );
+    // //     t.style.display = "none";
+    // //   });
+    // // };
+    // _.forEach(textareas, t => (t.style.display = "initial"));
+    // const fileName = this.props.match.params.id + ".pdf";
+    // const doc = new jsPDF("p", "pt", "a4");
+    // const elementHandler = {
+    //   "#ignorePDF": function(element, renderer) {
+    //     return true;
+    //   }
+    // };
+    // const printElement = document.getElementById("application-form");
+    // _.forEach(printElement.elements, (element, idx) => {
+    //   switch (element.type) {
+    //     case "text":
+    //     case "number":
+    //     case "email":
+    //     case "tel":
+    //     case "date":
+    //     case "url":
+    //       element.insertAdjacentHTML(
+    //         "afterend",
+    //         '<div class="tmpDisplay" style="border: 1px solid #3331; padding: 10px;">' +
+    //           element.value +
+    //           "</div>"
+    //       );
+    //       break;
+    //     case "select-one":
+    //       element.insertAdjacentHTML(
+    //         "afterend",
+    //         '<div class="tmpDisplay" style="border: 1px solid #3331; padding: 10px;">' +
+    //           element.selectedOptions[0].text +
+    //           "</div>"
+    //       );
+    //       break;
+    //     case "checkbox":
+    //       element.insertAdjacentHTML(
+    //         "afterend",
+    //         '<div class="tmpDisplay" style=" display:inline-block; font-size:1.2em; font-weight: bold; margin-right: 20px; color: ' +
+    //           (element.checked ? "green" : "red") +
+    //           ';">' +
+    //           (element.checked ? "YES" : "NO") +
+    //           "</div>"
+    //       );
+    //       break;
+    //     case "radio":
+    //       if (element.checked) {
+    //         element.style.fontWeight = "bold";
+    //       } else {
+    //         element.style.opacity = 0;
+    //       }
+    //       break;
+    //     // case "textarea":
+    //     //   element.insertAdjacentHTML(
+    //     //     "afterend",
+    //     //     '<div class="tmpDisplay" style="border: 1px solid #3331; padding: 10px;">' +
+    //     //       element.innerHTML.replace(/\r?\n/g, "<br/>") +
+    //     //       "</div>"
+    //     //   );
+    //     //   break;
+    //     default:
+    //   }
+    // });
+    //
+    // doc.fromHTML(printElement, 40, 40, {
+    //   width: 550,
+    //   elementHandlers: elementHandler
+    // });
+    //
+    // this.setState({ formKey: Math.random() });
+    // doc.save(fileName);
+    window.print();
   }
 
   async uploadFiles(body) {
