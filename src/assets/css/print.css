@@ -71,6 +71,26 @@
     padding: 0 0 0 5px;
     display: flex;
     align-items: flex-start;
+    width: 100%;
+  }
+
+  #application-form
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset,
+  #application-form
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset {
+    width: 100%;
   }
 
   #application-form
@@ -111,7 +131,7 @@
     font-size: 1em;
     display: block;
     user-select: text;
-    width: fit-available;
+    width: 100%;
   }
 
   #application-form
