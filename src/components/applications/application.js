@@ -64,6 +64,7 @@ class Application extends React.Component {
   renderTextareas() {
     if (this.state.disabled) {
       const elements = document.getElementsByTagName("TEXTAREA");
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
       if (!elements) {
         return false;
       } else {
@@ -80,6 +81,24 @@ class Application extends React.Component {
               element.innerHTML.replace(/\r?\n/g, "<br/>") +
               "</p>"
           );
+          element.parentNode.classList.add("tmpDisplay-container");
+        });
+      }
+      if (!checkboxes) {
+        return false;
+      } else {
+        _.forEach(checkboxes, checkbox => {
+          checkbox.insertAdjacentHTML(
+            "beforebegin",
+            `<span class='fa fa-${
+              checkbox.checked ? "check-square green" : "square red"
+            }'></span>`
+          );
+          checkbox.parentNode.classList.add("pl0", "flex", "items-start");
+          checkbox.parentNode.style.paddingLeft = "0";
+          checkbox.nextSibling.classList.add("ml2");
+          checkbox.classList.add("dn");
+          console.log(checkbox.checked);
         });
       }
     }

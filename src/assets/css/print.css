@@ -13,8 +13,127 @@
     display: none;
   }
 
+  form > .form-group > fieldset > .form-group > fieldset > legend {
+    margin-bottom: 10px;
+  }
+
+  #application-form > .form-group > fieldset > .form-group {
+    padding: 10px;
+  }
+
+  form
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > legend {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    border-bottom: 1px solid #0002;
+  }
   #application-form > .form-group > fieldset > .form-group > fieldset {
     page-break-after: always;
+  }
+
+  #application-form
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset {
+    padding: 0 0 0 5px;
+    margin: 0 0 0 5px;
+    border-left: 1px solid #0002;
+  }
+
+  #application-form
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group,
+  #application-form
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group {
+    padding: 0 0 0 5px;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  #application-form
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
+    > label {
+    flex-basis: 1;
+    min-width: fit-content;
+    padding: 5px 5px 5px 0;
+  }
+
+  #application-form
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
+    select,
+  #application-form
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
+    input {
+    margin: 0 0 0 5px;
+    padding: 0;
+    height: auto;
+    font-size: 1em;
+    display: block;
+    user-select: text;
+    width: fit-available;
+  }
+
+  #application-form
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
+    > label
+    ~ div,
+  #application-form
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
+    p {
+    display: none;
   }
 
   .form-group {
@@ -35,8 +154,16 @@
   }
 
   .tmpDisplay {
+    /* display: block; */
+    margin: 0;
+    width: 100%;
+    height: fit-content;
+    border-width: 1px 0 0 0;
+  }
+
+  .tmpDisplay-container {
+    flex-flow: column;
     display: block;
-    user-select: all;
   }
 
   textarea,
