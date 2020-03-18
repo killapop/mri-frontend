@@ -65,6 +65,10 @@ class Application extends React.Component {
     if (this.state.disabled) {
       const elements = document.getElementsByTagName("TEXTAREA");
       const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      const inputs = document.querySelectorAll(
+        "input:not([type='checkbox']), select",
+        !""
+      );
       if (!elements) {
         return false;
       } else {
@@ -98,7 +102,22 @@ class Application extends React.Component {
           checkbox.parentNode.style.paddingLeft = "0";
           checkbox.nextSibling.classList.add("ml2");
           checkbox.classList.add("dn");
-          console.log(checkbox.checked);
+        });
+      }
+
+      if (!inputs) {
+        return false;
+      } else {
+        _.forEach(inputs, input => {
+          input.insertAdjacentHTML(
+            "afterend",
+            `<span class='tmpDisplay'>${
+              input.tagName === "SELECT"
+                ? input.selectedOptions[0].label
+                : input.value
+            }</span>`
+          );
+          input.style.display = "none";
         });
       }
     }

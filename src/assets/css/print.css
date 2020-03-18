@@ -70,7 +70,7 @@
     > .form-group {
     padding: 0 0 0 5px;
     display: flex;
-    align-items: flex-start;
+    align-items: baseline;
     width: 100%;
   }
 
@@ -107,6 +107,11 @@
     padding: 5px 5px 5px 0;
   }
 
+  form.rjsf .col-fieldset-2 > fieldset legend,
+  form label {
+    white-space: nowrap;
+  }
+
   #application-form
     > .form-group
     > fieldset
@@ -129,7 +134,8 @@
     padding: 0;
     height: auto;
     font-size: 1em;
-    display: block;
+    display: unset;
+    word-wrap: break-word;
     user-select: text;
     width: 100%;
   }
@@ -181,9 +187,20 @@
     border-width: 1px 0 0 0;
   }
 
+  span.tmpDisplay {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 2px 0 0 15px;
+  }
+
   .tmpDisplay-container {
     flex-flow: column;
     display: block;
+  }
+
+  .field-description {
+    color: #0007;
+    font-size: 0.9em;
   }
 
   textarea,
