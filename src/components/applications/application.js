@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect, Link } from "react-router-dom";
 import Form from "react-jsonschema-form";
-import jsPDF from "jspdf";
+// import jsPDF from "jspdf";
 import _ from "lodash";
 import { authStore } from "../../lib/store";
 import { view } from "react-easy-state";
@@ -62,6 +62,27 @@ class Application extends React.Component {
   }
 
   renderTextareas() {
+    const descriptions = document.querySelectorAll(".field-description");
+    console.log(descriptions);
+    if (!descriptions) {
+      return false;
+    } else {
+      _.forEach(descriptions, description => {
+        const text = description.innerHTML;
+        console.log(text);
+        const exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/gi;
+        const text1 = text
+          ? text.replace(exp, "<a target='_blank' href='$1'>$1</a>")
+          : "";
+        console.log(text1);
+        // const exp2 = /(^|[^/])(www\.[\S]+(\b|$))/gim;
+        description.innerHTML = text1;
+        // document.getElementById("converted_url").innerHTML = text1
+        //   ? text1.replace(exp2, '$1<a target="_blank" href="http://$2">$2</a>')
+        //   : "";
+      });
+    }
+
     if (this.state.disabled) {
       const elements = document.getElementsByTagName("TEXTAREA");
       const checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -69,6 +90,7 @@ class Application extends React.Component {
         "input:not([type='checkbox']), select",
         !""
       );
+
       if (!elements) {
         return false;
       } else {
