@@ -87,6 +87,13 @@ form .field-description {
   font-size: 0.8em;
 }
 
+form #root_scholarship__description.field-description {
+  color: #000a;
+  font-size: 1em;
+  font-style: normal;
+  margin-bottom: 35px;
+}
+
 .form-actions {
   width: 100%;
   display: flex;

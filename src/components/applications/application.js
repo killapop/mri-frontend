@@ -69,17 +69,29 @@ class Application extends React.Component {
     } else {
       _.forEach(descriptions, description => {
         const text = description.innerHTML;
-        console.log(text);
         const exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/gi;
         const text1 = text
-          ? text.replace(exp, "<a target='_blank' href='$1'>$1</a>")
+          ? text
+              .replace(exp, "<a target='_blank' href='$1'>$1</a>")
+              .replace("&lt;p&gt;", "<p>")
+              .replace("&lt;/p&gt;", "</p>")
           : "";
-        console.log(text1);
-        // const exp2 = /(^|[^/])(www\.[\S]+(\b|$))/gim;
         description.innerHTML = text1;
-        // document.getElementById("converted_url").innerHTML = text1
-        //   ? text1.replace(exp2, '$1<a target="_blank" href="http://$2">$2</a>')
-        //   : "";
+      });
+    }
+    const labels = document.querySelectorAll("label span");
+    if (!labels) {
+      return false;
+    } else {
+      _.forEach(labels, label => {
+        const text = label.innerHTML;
+        const text1 = text
+          ? text
+              .replace("&lt;a", "<a")
+              .replace("&gt;", ">")
+              .replace("&lt;/a&gt;", "</a>")
+          : "";
+        label.innerHTML = text1;
       });
     }
 
