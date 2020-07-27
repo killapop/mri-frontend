@@ -63,7 +63,6 @@ class Application extends React.Component {
 
   renderTextareas() {
     const descriptions = document.querySelectorAll(".field-description");
-    console.log(descriptions);
     if (!descriptions) {
       return false;
     } else {
