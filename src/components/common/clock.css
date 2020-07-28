@@ -33,6 +33,95 @@
   display: none;
 }
 
+.reset-notice {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.reset-notice .overlay {
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000;
+  background-color: #0009;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.reset-notice .overlay .reset-content {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+  color: #0009;
+  border-radius: 4px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.reset-notice * {
+  color: #0009;
+  font-weight: 200;
+}
+
+.reset-notice h4 {
+  margin-bottom: 0;
+}
+
+.reset-notice .hint {
+  background-color: #0001;
+  padding: 10px 20px;
+  margin: 10px 0;
+  font-size: 0.8em;
+  color: #0006;
+}
+
+.reset-actions {
+  margin-top: 40px;
+  align-items: flex-end;
+}
+
+.reset-actions button {
+  padding: 0;
+  background: none;
+  margin-right: 20px;
+  font-size: 0.8em;
+  text-decoration: underline;
+  color: var(--yellow);
+  font-weight: 100;
+  text-shadow: none;
+}
+
+.reset-actions button:active {
+  padding: 0;
+}
+
+.reset-action {
+  position: relative;
+  display: flex;
+  font-size: 0.8em;
+  cursor: pointer;
+  border-radius: 2px;
+  background-color: var(--yellow);
+  max-width: fit-content;
+  padding: 4px 10px;
+  align-items: center;
+}
+.reset-action span {
+  color: var(--white);
+}
+
+.reset-notice .reset {
+  margin: 0;
+}
+
+.reset-notice .reset:before {
+  position: relative;
+  margin: 0 5px 0 0;
+}
+
 @media screen and (min-width: 60em) {
   .clock-title {
     display: block;
