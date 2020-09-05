@@ -1,6 +1,6 @@
 import React from "react";
 import _ from "lodash";
-import { view } from "react-easy-state";
+import { view } from '@risingstack/react-easy-state';
 import Badge from "./badge";
 
 class Badges extends React.Component {

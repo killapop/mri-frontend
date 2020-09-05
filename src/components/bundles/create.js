@@ -1,13 +1,13 @@
-import React from 'react';
-import { Redirect } from 'react-router-dom';
-import { view } from 'react-easy-state';
-import _ from 'lodash';
-import ReactTable from 'react-table';
-import { authStore } from '../../lib/store';
-import { apiCall } from '../../lib/api-calls';
-import { add as addMessage } from '../../lib/message';
+import React from "react";
+import { Redirect } from "react-router-dom";
+import { view } from "@risingstack/react-easy-state";
+import _ from "lodash";
+import ReactTable from "react-table";
+import { authStore } from "../../lib/store";
+import { apiCall } from "../../lib/api-calls";
+import { add as addMessage } from "../../lib/message";
 
-import './create.css';
+import "./create.css";
 
 class CreateForm extends React.Component {
   constructor(props) {
@@ -19,33 +19,35 @@ class CreateForm extends React.Component {
       selected: [],
       schema: [
         {
-          accessor: 'id',
-          Header: 'Id'
+          accessor: "id",
+          Header: "Id",
         },
         {
-          accessor: 'account.email',
-          Header: 'Applicant'
+          accessor: "account.email",
+          Header: "Applicant",
         },
         {
-          accessor: 'form',
-          Header: 'Type',
-          Cell: row => this.getType(row.row.form)
+          accessor: "form",
+          Header: "Type",
+          Cell: (row) => this.getType(row.row.form),
         },
         {
-          Header: 'Actions',
-          accessor: 'id',
+          Header: "Actions",
+          accessor: "id",
           filterable: false,
           sortable: false,
-          Cell: row => (
+          Cell: (row) => (
             <div
               id={row.value}
               onClick={this.select}
-              className="center pointer">
-              <i className="mr2 fa fa-folder-plus fa-15x green" />select
+              className="center pointer"
+            >
+              <i className="mr2 fa fa-folder-plus fa-15x green" />
+              select
             </div>
-          )
-        }
-      ]
+          ),
+        },
+      ],
     };
     this.select = this.select.bind(this);
     this.deselect = this.deselect.bind(this);
@@ -55,68 +57,69 @@ class CreateForm extends React.Component {
   select(ev) {
     ev.persist();
     const { listed, selected } = this.state;
-    this.setState(state => ({
+    this.setState((state) => ({
       listed: _.without(listed, ev.target.id),
-      selected: _.concat(selected, ev.target.id)
+      selected: _.concat(selected, ev.target.id),
     }));
   }
 
   deselect(ev) {
     ev.persist();
     const { listed, selected } = this.state;
-    this.setState(state => ({
+    this.setState((state) => ({
       listed: _.concat(listed, ev.target.id),
-      selected: _.without(selected, ev.target.id)
+      selected: _.without(selected, ev.target.id),
     }));
   }
 
   async componentDidMount() {
-    await apiCall('GET', '/applications', '', true)
-      .then(applications => {
+    await apiCall("GET", "/applications", "", true)
+      .then((applications) => {
         if (applications) {
           const all = _.filter(
             applications,
-            application => application.state === 'locked' && !application.bundle
+            (application) =>
+              application.state === "locked" && !application.bundle
           );
-          this.setState(state => ({ all, listed: _.map(all, 'id') }));
+          this.setState((state) => ({ all, listed: _.map(all, "id") }));
         }
       })
-      .catch(err => this.setState(state => ({ all: [] })));
+      .catch((err) => this.setState((state) => ({ all: [] })));
   }
 
   async create(e) {
     e.persist();
     await apiCall(
-      'POST',
-      '/bundles',
+      "POST",
+      "/bundles",
       JSON.stringify({
         case_worker: authStore.user.email,
-        applications: this.state.selected
+        applications: this.state.selected,
       }),
       true
     )
-      .then(data => {
-        this.setState(state => ({ created: true }));
-        addMessage('success', 'New bundle created');
+      .then((data) => {
+        this.setState((state) => ({ created: true }));
+        addMessage("success", "New bundle created");
       })
-      .catch(err => {
+      .catch((err) => {
         addMessage(
-          'danger',
-          'There was an error creating the bundle. Please try again after some time'
+          "danger",
+          "There was an error creating the bundle. Please try again after some time"
         );
       });
   }
 
   getType(form) {
     switch (_.trim(form)) {
-      case 'personalStatements-1.json':
-        return 'Personal Statement PL 1';
-      case 'personalStatements-2.json':
-        return 'Personal Statement PL 2';
-      case 'projectProposals-1.json':
-        return 'Project Proposal PL 1';
+      case "personalStatements-1.json":
+        return "Personal Statement PL 1";
+      case "personalStatements-2.json":
+        return "Personal Statement PL 2";
+      case "projectProposals-1.json":
+        return "Project Proposal PL 1";
       default:
-        return 'Project Proposal PL 2';
+        return "Project Proposal PL 2";
     }
   }
 
@@ -126,14 +129,14 @@ class CreateForm extends React.Component {
       sApplications = [];
     _.forEach(
       listed,
-      li => (lApplications[li] = _.find(all, a => a.id === li))
+      (li) => (lApplications[li] = _.find(all, (a) => a.id === li))
     );
     _.forEach(
       selected,
-      li => (sApplications[li] = _.find(all, a => a.id === li))
+      (li) => (sApplications[li] = _.find(all, (a) => a.id === li))
     );
 
-    if (authStore.token === '' || created) {
+    if (authStore.token === "" || created) {
       return <Redirect to="/" />;
     }
     return (
@@ -161,7 +164,8 @@ class CreateForm extends React.Component {
                   </div>
                   <div className="id">
                     <div id={item} onClick={this.deselect} className="pointer">
-                      <i className="mr2 fa fa-trash red" />deselect
+                      <i className="mr2 fa fa-trash red" />
+                      deselect
                     </div>
                   </div>
                 </div>
@@ -197,13 +201,13 @@ class CreateForm extends React.Component {
         </div>
         {selected.length > 0 ? (
           <div className="form-actions form-group flex justify-end">
-            <button type="button" onClick={e => this.create(e)}>
+            <button type="button" onClick={(e) => this.create(e)}>
               Create bundle
               <i className="fa fa-cubes ml2" />
             </button>
           </div>
         ) : (
-          ''
+          ""
         )}
       </div>
     );

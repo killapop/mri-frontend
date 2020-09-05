@@ -1,7 +1,7 @@
 import React from "react";
 // import PropTypes from "prop-types";
 import Message from "./message";
-import { view } from "react-easy-state";
+import { view } from '@risingstack/react-easy-state';
 import { messages } from "../../lib/store.js";
 
 import "./messages.css";

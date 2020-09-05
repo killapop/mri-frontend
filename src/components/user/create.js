@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from 'react-jsonschema-form';
 import { Redirect } from 'react-router-dom';
-import { view } from 'react-easy-state';
+import { view } from '@risingstack/react-easy-state';
 import SmallBox from '../common/smallBox';
 import { authStore } from '../../lib/store';
 import { apiCall } from '../../lib/api-calls';

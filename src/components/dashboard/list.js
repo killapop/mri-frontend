@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import ReactTable from "react-table";
 import selectTableHOC from "react-table/lib/hoc/selectTable";
 import { Link, Redirect, withRouter } from "react-router-dom";
-import { view } from "react-easy-state";
+import { view } from '@risingstack/react-easy-state';
 import { authStore } from "../../lib/store";
 import { listSchema } from "../../data/lists";
 import { apiCall } from "../../lib/api-calls.js";

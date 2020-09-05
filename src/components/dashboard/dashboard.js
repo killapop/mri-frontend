@@ -1,4 +1,3 @@
-/* eslint no-unused-expresions: 0 */
 import React from "react";
 import { Redirect, Link } from "react-router-dom";
 import _ from "lodash";
@@ -6,7 +5,7 @@ import Badges from "./badges";
 import FacilitatorList from "./list";
 import UserList from "./userList";
 import { authStore } from "../../lib/store";
-import { view } from "react-easy-state";
+import { view } from '@risingstack/react-easy-state';
 import "./dashboard.css";
 
 class Dashboard extends React.Component {
@@ -20,8 +19,8 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     if (authStore.currentRole) {
-      this.setState(state => ({
-        activeBadge: this.isStaff()
+      this.setState((state) => ({
+        activeBadge: this.isStaff(),
       }));
     }
   }
@@ -32,7 +31,7 @@ class Dashboard extends React.Component {
 
   badgeChangeHandler(e) {
     e.persist();
-    this.setState(state => ({ activeBadge: e.target.id }));
+    this.setState((state) => ({ activeBadge: e.target.id }));
   }
 
   sluggify(s) {
