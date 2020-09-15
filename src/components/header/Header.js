@@ -3,7 +3,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import _ from "lodash";
-import { view } from '@risingstack/react-easy-state';
+import { withTranslation } from "react-i18next";
+import { languages } from "../../lib/translations";
+import { view } from "@risingstack/react-easy-state";
 import logo from "../../assets/images/logo.svg";
 import Clock from "../common/clock";
 import { messages, authStore } from "../../lib/store";
@@ -24,7 +26,7 @@ class Header extends React.Component {
   }
 
   render() {
-    const { sticky } = this.props;
+    const { sticky, t, i18n } = this.props;
     return (
       <div>
         <div
@@ -46,7 +48,7 @@ class Header extends React.Component {
               >
                 <div className="flex items-center">
                   <i className={`fa fa-info mb2`} />
-                  <span className="dn db-l">Info</span>
+                  <span className="dn db-l">{t("navbar_info")}</span>
                 </div>
               </a>
               {authStore.token !== "" ? (
@@ -82,6 +84,18 @@ class Header extends React.Component {
                 ""
               )}
             </div>
+
+            <select
+              className="languages"
+              onChange={(e) => i18n.changeLanguage(e.target.value)}
+              defaultValue={i18n.language}
+            >
+              {_.map(languages, (lang, idx) => (
+                <option className="language" key={idx} value={lang.code}>
+                  {lang.title}
+                </option>
+              ))}
+            </select>
           </nav>
         </div>
       </div>
@@ -90,7 +104,7 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-  sticky: PropTypes.bool
+  sticky: PropTypes.bool,
 };
 
-export default Header;
+export default withTranslation()(Header);

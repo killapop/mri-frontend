@@ -1,40 +1,38 @@
-/* eslint-disable react/react-in-jsx-scope */
-
 import moment from "moment";
 import _ from "lodash";
 import React from "react";
 
-const formatDate = date => moment(date).format("DD.MM.YYYY");
+const formatDate = (date) => moment(date).format("DD.MM.YYYY");
 
 export const listSchema = {
   activations: {
     columns: [
       {
         accessor: "email",
-        Header: "Email"
+        Header: "Email",
       },
       {
         accessor: "token",
-        Header: "Token"
+        Header: "Token",
       },
       {
         accessor: "password",
-        Header: "Password"
+        Header: "Password",
       },
       {
         accessor: "createAt",
         Header: "Created at",
-        Cell: row => formatDate(row.value)
+        Cell: (row) => formatDate(row.value),
       },
       {
         accessor: "expiresAt",
         Header: "Expires at",
-        Cell: row => formatDate(row.value)
+        Cell: (row) => formatDate(row.value),
       },
       {
         accessor: "isValid",
         Header: "Valid",
-        Cell: row => (
+        Cell: (row) => (
           <span style={{ color: row.value ? "#3a6" : "#a33" }}>
             <i
               className={`mr2 fa fa-15x fa-${row.value ? "check" : "times"}`}
@@ -51,7 +49,7 @@ export const listSchema = {
         },
         Filter: ({ filter, onChange }) => (
           <select
-            onChange={event => onChange(event.target.value)}
+            onChange={(event) => onChange(event.target.value)}
             style={{ width: "100%" }}
             value={filter ? filter.value : "all"}
           >
@@ -59,12 +57,12 @@ export const listSchema = {
             <option value="true">Valid</option>
             <option value="false">Not Valid</option>
           </select>
-        )
+        ),
       },
       {
         accessor: "isActive",
         Header: "Active",
-        Cell: row => (
+        Cell: (row) => (
           <span style={{ color: row.value ? "#3a6" : "#a33" }}>
             <i
               className={`mr2 fa fa-15x fa-${row.value ? "check" : "times"}`}
@@ -81,7 +79,7 @@ export const listSchema = {
         },
         Filter: ({ filter, onChange }) => (
           <select
-            onChange={event => onChange(event.target.value)}
+            onChange={(event) => onChange(event.target.value)}
             style={{ width: "100%" }}
             value={filter ? filter.value : "all"}
           >
@@ -89,24 +87,24 @@ export const listSchema = {
             <option value="true">Active</option>
             <option value="false">Inactive</option>
           </select>
-        )
-      }
-    ]
+        ),
+      },
+    ],
   },
   users: {
     columns: [
       {
         accessor: "email",
-        Header: "Email"
+        Header: "Email",
       },
       {
         accessor: "name",
-        Header: "Name"
+        Header: "Name",
       },
       {
         accessor: "roles",
         Header: "Roles",
-        Cell: row => (
+        Cell: (row) => (
           <div>
             {_.map(row.value, (role, key) => {
               return (
@@ -131,7 +129,7 @@ export const listSchema = {
         },
         Filter: ({ filter, onChange }) => (
           <select
-            onChange={event => onChange(event.target.value)}
+            onChange={(event) => onChange(event.target.value)}
             style={{ width: "100%" }}
             value={filter ? filter.value : "all"}
           >
@@ -140,28 +138,24 @@ export const listSchema = {
             <option value="organization">organization</option>
             <option value="beneficiary">beneficiary</option>
           </select>
-        )
-      }
-    ]
+        ),
+      },
+    ],
   },
   applications: {
     columns: [
       {
         accessor: "id",
-        Header: "Application ID"
+        Header: "Application ID",
       },
       {
         accessor: "account.email",
-        Header: "Applicant"
+        Header: "Applicant",
       },
       {
         accessor: "form",
         Header: "Program line",
-        Cell: row =>
-          row.row.form
-            .split("-")
-            .pop()
-            .charAt(0),
+        Cell: (row) => row.row.form.split("-").pop().charAt(0),
         filterMethod: (filter, row) => {
           if (filter.value === "all") {
             return row;
@@ -171,7 +165,7 @@ export const listSchema = {
         },
         Filter: ({ filter, onChange }) => (
           <select
-            onChange={event => onChange(event.target.value)}
+            onChange={(event) => onChange(event.target.value)}
             style={{ width: "100%" }}
             value={filter ? filter.value : "all"}
           >
@@ -179,7 +173,7 @@ export const listSchema = {
             <option value="1">Program line 1</option>
             <option value="2">Program line 2</option>
           </select>
-        )
+        ),
       },
       {
         accessor: "state",
@@ -193,7 +187,7 @@ export const listSchema = {
         },
         Filter: ({ filter, onChange }) => (
           <select
-            onChange={event => onChange(event.target.value)}
+            onChange={(event) => onChange(event.target.value)}
             style={{ width: "100%" }}
             value={filter ? filter.value : "all"}
           >
@@ -202,18 +196,18 @@ export const listSchema = {
             <option value="finalized">Finalized</option>
             <option value="locked">Locked</option>
           </select>
-        )
+        ),
       },
       {
         accessor: "history[0].created_at",
         Header: "Last updated",
         filterable: false,
-        Cell: row => <React.Fragment>{formatDate(row.value)}</React.Fragment>
+        Cell: (row) => <React.Fragment>{formatDate(row.value)}</React.Fragment>,
       },
       {
         accessor: "bundle",
         Header: "Bundled",
-        Cell: row => (
+        Cell: (row) => (
           <span style={{ color: row.value ? "#3a6" : "#a33" }}>
             <i
               className={`mr2 fa fa-15x fa-${row.value ? "check" : "times"}`}
@@ -232,7 +226,7 @@ export const listSchema = {
         },
         Filter: ({ filter, onChange }) => (
           <select
-            onChange={event => onChange(event.target.value)}
+            onChange={(event) => onChange(event.target.value)}
             style={{ width: "100%" }}
             value={filter ? filter.value : "all"}
           >
@@ -240,24 +234,24 @@ export const listSchema = {
             <option value="true">Bundled</option>
             <option value="false">Not bundled</option>
           </select>
-        )
-      }
-    ]
+        ),
+      },
+    ],
   },
   bundles: {
     columns: [
       {
         accessor: "id",
-        Header: "Bundle ID"
+        Header: "Bundle ID",
       },
       {
         accessor: "case_worker.name",
-        Header: "MRI contact"
+        Header: "MRI contact",
       },
       {
         accessor: "applications",
         Header: "Applicants",
-        Cell: row => (
+        Cell: (row) => (
           <div className="flex flex-wrap">
             {_.map(row.row.applications, (applicant, key) => {
               return (
@@ -277,33 +271,33 @@ export const listSchema = {
               filter.value
             ) !== -1
           );
-        }
+        },
       },
       {
         accessor: "created_at",
         Header: "Created",
-        Cell: row => formatDate(row.value)
+        Cell: (row) => formatDate(row.value),
       },
       {
         accessor: "state",
-        Header: "Status"
-      }
-    ]
+        Header: "Status",
+      },
+    ],
   },
   userList: {
     columns: [
       {
         accessor: "created_on",
-        Header: "Created"
+        Header: "Created",
       },
       {
         accessor: "updated_on",
-        Header: "Updated"
+        Header: "Updated",
       },
       {
         accessor: "state",
-        Header: "Status"
-      }
-    ]
-  }
+        Header: "Status",
+      },
+    ],
+  },
 };
