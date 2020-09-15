@@ -13,10 +13,12 @@ i18n
     resources,
     lng: "es",
     fallbackLng: "en",
+    preload: ["en", "fr", "es"],
+    ns: ["translation", "form"],
+    defaultNS: ["translation"],
     debug: true,
     interpolation: {
       escapeValue: false,
     },
   });
-
 export default i18n;
