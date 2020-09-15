@@ -85,6 +85,40 @@
   pointer-events: none;
 }
 
+.language-picker {
+}
+
+.languages {
+  right: 0;
+}
+
+.languages .language {
+  display: none;
+  order: 2;
+  padding: 6px 10px 6px 30px;
+  opacity: 0.3;
+  background-repeat: no-repeat;
+  background-position: center left;
+  background-size: 20px auto;
+  margin-right: 5px;
+}
+
+.languages .language.active,
+.languages .language:hover {
+  text-decoration: underline;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.languages .language.active {
+  display: block;
+  order: 1;
+}
+
+.languages:hover .language {
+  display: block;
+}
+
 @media screen and (min-width: 60em) {
   .logo {
     opacity: 1;

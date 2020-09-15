@@ -38,7 +38,7 @@ class Header extends React.Component {
             <img src={logo} alt="Martin Roth-Initiative" />
           </Link>
           <nav className="ttu flex justify-between mt3">
-            <div className="userNav flex justify-start h-100 items-start">
+            <div className="userNav flex justify-start h-100 items-start mr5">
               <a
                 rel="noopener noreferrer"
                 href="https://martin-roth-initiative.de"
@@ -84,18 +84,24 @@ class Header extends React.Component {
                 ""
               )}
             </div>
-
-            <select
-              className="languages"
-              onChange={(e) => i18n.changeLanguage(e.target.value)}
-              defaultValue={i18n.language}
-            >
-              {_.map(languages, (lang, idx) => (
-                <option className="language" key={idx} value={lang.code}>
-                  {lang.title}
-                </option>
-              ))}
-            </select>
+            <div className="language-picker relative">
+              <div className="languages absolute flex flex-column">
+                {_.map(languages, (lang, idx) => (
+                  <div
+                    className={`language ${
+                      lang.code === i18n.language ? "active" : ""
+                    }`}
+                    key={idx}
+                    onClick={(e) => i18n.changeLanguage(lang.code)}
+                    style={{
+                      backgroundImage: `url(/${lang.code}.svg)`,
+                    }}
+                  >
+                    {lang.code}
+                  </div>
+                ))}
+              </div>
+            </div>
           </nav>
         </div>
       </div>
