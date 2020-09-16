@@ -20,9 +20,9 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     if (authStore.currentRole) {
-      this.setState((state) => ({
+      this.setState({
         activeBadge: this.isStaff(),
-      }));
+      });
     }
   }
 
@@ -32,7 +32,7 @@ class Dashboard extends React.Component {
 
   badgeChangeHandler(e) {
     e.persist();
-    this.setState((state) => ({ activeBadge: e.target.id }));
+    this.setState({ activeBadge: e.target.id });
   }
 
   sluggify(s) {
@@ -48,7 +48,7 @@ class Dashboard extends React.Component {
     return (
       <div className="w-90 w-80-l center pa4-ns p3">
         <div className="title pb0 flex justify-start flex-column flex-row-l">
-          {t("dashboard")}
+          {t("navbar_dashboard")}
           <div className="meta">
             {t("dashboard_logged_in_as", { who: authStore.user.email })}
           </div>

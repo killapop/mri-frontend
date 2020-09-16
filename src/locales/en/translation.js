@@ -56,6 +56,15 @@ export const translation = {
   forgot_email_help: "Enter the email address you are registered with",
   // Forgot password end
 
+  // Clock widget
+  clock_time_remaining: "Time remaining",
+  clock_refresh_alt: "Refresh session",
+  clock_resetNotice_title:
+    "Your session will soon expire. Please refresh your session to continue filling in the form without losing any data.",
+  clock_resetNotice_help:
+    "Please remember to frequently save and continue while filling in the form",
+  clock_refresh_button: "Refresh your session now",
+  // Clock widget end
   // Messages
   message_logged_in_success: "Logged in",
   message_logged_out_success: "Logged out",
@@ -70,6 +79,10 @@ export const translation = {
     "There was an error while changing your password. Please try again later",
   message_deleted_confirmation: "User account for {{who}} has been deleted",
   message_deleted_error: "There was an error deleting the account.",
+  message_refresh_confirmation: "Your session has been refreshed",
+  message_refresh_warning:
+    "Your session will expire soon. Please click the refresh button at the clock to refresh it.",
+
   // Messages end
   // Errors
   error_matching_passwords: "Passwords do not match",

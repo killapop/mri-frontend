@@ -1,31 +1,31 @@
 import React from "react";
+import { withTranslation } from "react-i18next";
+import i18n from "../../i18n.js";
 import { authStore } from "../../lib/store";
 import { apiCall } from "../../lib/api-calls";
 import { add as addMessage } from "../../lib/message";
 import "./clock.css";
 
 function ResetNotice(props) {
+  console.log(props);
+  const { t } = this.props;
   return (
     <div className="reset-notice b-black">
       <div className="overlay">
         <div className="reset-content">
-          <h4>
-            Your session will soon expire. Please refresh your session to
-            continue filling in the form without losing any data.
-          </h4>
-          <div className="hint">
-            Please remember to frequently save and continue while filling in the
-            form
-          </div>
+          <h4>{t("clock_resetNotice_title")}</h4>
+          <div className="hint">{t("clock_resetNotice_help")}</div>
           <div className="reset-actions flex justify-end">
-            <button onClick={props.closeResetNotice}>Cancel</button>
+            <button onClick={props.closeResetNotice}>
+              {t("common_cancel")}
+            </button>
             <div className="reset-action" onClick={props.resetSession}>
               <i
                 className="reset fa fa-sync"
-                alt="Refresh session"
-                title="Refresh session"
+                alt={t("clock_refresh_alt")}
+                title={t("clock_refresh_alt")}
               />{" "}
-              <span>Refresh your session now</span>
+              <span>{t("clock_refresh_button")}</span>
             </div>
           </div>
         </div>
@@ -61,22 +61,19 @@ class Clock extends React.Component {
     await apiCall("POST", "/users/refresh", "", true)
       .then((data) => {
         window.clearInterval(this.clockTimer);
-        this.setState((state) => ({
+        this.setState({
           timer: 3600,
           showResetNotice: false,
           canCancel: true,
-        }));
+        });
         authStore.token = data.token;
         if (type !== "new") {
-          addMessage("success", "Your session has been reset");
+          addMessage("success", i18n.t("message_refresh_confirmation"));
         }
         this.startClock();
       })
       .catch((err) => {
-        addMessage(
-          "warning",
-          "Your session will expire soon. Please click the refresh button at the clock to refresh it."
-        );
+        addMessage("warning", i18n.t("message_refresh_error"));
         console.log(err);
       });
   }
@@ -100,13 +97,12 @@ class Clock extends React.Component {
       bgColor = "rgba(" + r + ", " + g + ", " + b + ", 0.8)";
 
       c--;
-      this.setState((state) => ({
+      this.setState({
         timer: c,
         bgColor,
-      }));
+      });
 
       if (c < 600) {
-        console.log(`${c} seconds remaining`);
         if (this.state.canCancel) {
           this.setState({ showResetNotice: true });
         }
@@ -124,23 +120,25 @@ class Clock extends React.Component {
 
   render() {
     const { timer, showResetNotice } = this.state;
+    const { t } = this.props;
     return (
       <div className="clock">
         {showResetNotice ? (
           <ResetNotice
+            t={t}
             resetSession={this.resetSession}
             closeResetNotice={this.closeResetNotice}
           />
         ) : (
           ""
         )}
-        <div className="clock-title">time remaining</div>
+        <div className="clock-title">{t("clock_time_remaining")}</div>
         <div className="clock-timer">
           {new Date(timer * 1000).toISOString().substr(14, 5)}
           <i
             className="reset fa fa-sync pointer"
-            alt="Refresh session"
-            title="Refresh session"
+            alt={t("clock_refresh_alt")}
+            title={t("clock_refresh_alt")}
             onClick={this.resetSession}
           />
         </div>
@@ -151,4 +149,4 @@ class Clock extends React.Component {
 
 Clock.propTypes = {};
 
-export default Clock;
+export default withTranslation()(Clock);
