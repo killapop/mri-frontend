@@ -65,7 +65,7 @@ class Header extends React.Component {
                   >
                     <div className="flex items-center">
                       <i className="fa fa-tachometer-alt mb2" />
-                      <span className="dn db-l">Dashboard</span>
+                      <span className="dn db-l">{t("dashboard")}</span>
                     </div>
                   </Link>
                   <Link
@@ -76,7 +76,7 @@ class Header extends React.Component {
                   >
                     <div className="flex items-center">
                       <i className="fa fa-sign-out-alt mb2" />
-                      <span className="dn db-l">Logout</span>
+                      <span className="dn db-l">{t("logout")}</span>
                     </div>
                   </Link>
                 </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import _ from "lodash";
+import { withTranslation } from "react-i18next";
 import moment from "moment";
 import { authStore } from "../../lib/store";
 import { apiCall } from "../../lib/api-calls";
@@ -14,9 +15,9 @@ class UserList extends React.Component {
     this.state = {
       actionButtons: [
         { icon: "edit", label: "edit" },
-        { icon: "trash", label: "delete" }
+        { icon: "trash", label: "delete" },
       ],
-      listData: []
+      listData: [],
     };
   }
 
@@ -25,19 +26,20 @@ class UserList extends React.Component {
   }
 
   getApplications() {
-    apiCall("GET", "/applications", "", true).then(data => {
+    apiCall("GET", "/applications", "", true).then((data) => {
       if (data === 401) {
         authStore.token = "";
         authStore.user = {};
       }
-      this.setState(state => ({
-        listData: data
-      }));
+      this.setState({
+        listData: data,
+      });
     });
   }
 
   render() {
     const { listData } = this.state;
+    const { t } = this.props;
     return (
       <div className="lists flex flex-column">
         <h1>
@@ -47,7 +49,7 @@ class UserList extends React.Component {
         <div>
           {_.size(listData) > 0 ? (
             <div className="user-list flex flex-column">
-              {_.map(listData, (application, idx) => (
+              {_.map(listData, (application) => (
                 <div key={application.id} className="flex flex-column w-100">
                   <div className="row flex flex-column flex-row-l w-100 justify-between list-item">
                     <div className="id">
@@ -94,7 +96,7 @@ class UserList extends React.Component {
               ))}
             </div>
           ) : (
-            <div className="f5 ttu gray">No Applications found.</div>
+            <div className="f5 ttu gray">{t("dashboard_no_applications")}.</div>
           )}
         </div>
       </div>
@@ -103,7 +105,7 @@ class UserList extends React.Component {
 }
 
 UserList.propTypes = {
-  list: PropTypes.object
+  list: PropTypes.object,
 };
 
-export default UserList;
+export default withTranslation()(UserList);

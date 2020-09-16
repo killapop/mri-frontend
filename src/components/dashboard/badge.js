@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { camelCase } from "lodash";
-import { view } from '@risingstack/react-easy-state';
+import { view } from "@risingstack/react-easy-state";
 import { authStore } from "../../lib/store";
 
 class Badge extends React.Component {
@@ -20,16 +20,15 @@ class Badge extends React.Component {
 
   render() {
     const { badge } = this.props;
-    const slug = camelCase(badge.title);
     return (
       <div
         onClick={this.setActiveBadge}
         className={`badge flex flex-column justify-center items-center  pointer relative ${
-          authStore.activeList.slug === slug ? "active" : ""
+          authStore.activeList.slug === badge.slug ? "active" : ""
         }`}
-        data-slug={slug}
+        data-slug={badge.slug}
         data-title={badge.title}
-        id={slug}
+        id={badge.slug}
       >
         <i className={`fa fa-${badge.icon} mb3`} />
         <div className="badge-title f6 ttu t-shadow-light">{badge.title}</div>
@@ -39,7 +38,7 @@ class Badge extends React.Component {
 }
 
 Badge.propTypes = {
-  badge: PropTypes.object.isRequired
+  badge: PropTypes.object.isRequired,
 };
 
 export default view(Badge);
