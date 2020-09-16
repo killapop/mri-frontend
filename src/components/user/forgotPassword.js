@@ -1,23 +1,26 @@
-import React from 'react';
-import Form from 'react-jsonschema-form';
-import SmallBox from '../common/smallBox';
-import { Redirect } from 'react-router-dom';
-import { authStore } from '../../lib/store';
-import { forgot } from '../../schema/user';
+import React from "react";
+import Form from "react-jsonschema-form";
+import SmallBox from "../common/smallBox";
+import { Redirect } from "react-router-dom";
+import { withTranslate } from "react-i18next";
+import { authStore } from "../../lib/store";
+import { forgot } from "../../schema/user";
 
-import '../../assets/css/forms.css';
+import "../../assets/css/forms.css";
 
 class ForgotPassword extends React.Component {
   render() {
+    const { t } = this.props;
+    const forgotForm = forgot(t);
     return (
       <SmallBox>
         {authStore.isLoggedIn ? (
           <Redirect to="/" />
         ) : (
-          <Form schema={forgot.schema} uiSchema={forgot.uiSchema}>
+          <Form schema={forgotForm.schema} uiSchema={forgotForm.uiSchema}>
             <div className="form-actions form-group flex justify-end">
               <button type="submit">
-                {forgot.schema.submitButton}
+                {forgotForm.schema.submitButton}
                 <i className="fa fa-key ml2" />
               </button>
             </div>
@@ -28,4 +31,4 @@ class ForgotPassword extends React.Component {
   }
 }
 
-export default ForgotPassword;
+export default withTranslate()(ForgotPassword);

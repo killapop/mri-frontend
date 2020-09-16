@@ -1,5 +1,7 @@
 export const translation = {
   navbar_info: "Information",
+  navbar_logout: "Se déconnecter",
+  navbar_dashboard: "tableau de bord",
   login_button: "Entrer",
   login_title: "Entrer",
   login_email: "Email FR",
@@ -9,8 +11,6 @@ export const translation = {
   cancel_button: "Annuler",
   logged_in_success: "Logged in FR",
   logged_out_success: "Logged out FR",
-  logout: "Se déconnecter",
-  dashboard: "tableau de bord",
   dashboard_logged_in_as: "connecté en tant que {{who}}",
   dashboard_change_password: "changer le mot de passe",
   dashboard_badge_activations: "Activations",

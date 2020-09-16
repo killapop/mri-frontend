@@ -55,7 +55,8 @@ class Login extends React.Component {
   }
 
   render() {
-    const loginForm = login(i18n);
+    const { t } = this.props;
+    const loginForm = login(t);
     const { loggedIn } = this.state;
     if (loggedIn === true) {
       return <Redirect to="/dashboard" />;

@@ -11,9 +11,9 @@ const getAuth = (method, path, body) => {
   return fetch(baseURL + path, {
     method,
     headers: { "Content-Type": "application/json" },
-    body
+    body,
   })
-    .then(response => {
+    .then((response) => {
       if (response.status !== 401) {
         return response.json();
       } else {
@@ -23,10 +23,10 @@ const getAuth = (method, path, body) => {
         window.sessionStorage.clear();
       }
     })
-    .then(result => {
+    .then((result) => {
       return result.data;
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
 const apiCall = (m, path, body, withAuth, c) => {
@@ -58,7 +58,7 @@ const apiCall = (m, path, body, withAuth, c) => {
     Object.assign(opts.headers, { Authorization: "Bearer " + authStore.token });
   }
   return fetch(baseURL + path, opts)
-    .then(response => {
+    .then((response) => {
       if (
         response.status === 204 ||
         response.status === 404 ||
@@ -66,7 +66,7 @@ const apiCall = (m, path, body, withAuth, c) => {
       ) {
         return { data: response.status };
       } else if (c === "csv" && response.status === 200) {
-        return response.text().then(body => {
+        return response.text().then((body) => {
           return { data: body };
         });
       } else if (withAuth && response.status !== 401) {
@@ -91,10 +91,11 @@ const apiCall = (m, path, body, withAuth, c) => {
         return { data: response.status.json() };
       }
     })
-    .then(result => {
+    .then((result) => {
       return result.data;
     })
-    .catch(err => {
+    .catch((err) => {
+      console.log(err);
       addMessage(
         "danger",
         "There was a problem connecting to the server. Please try again after some time or contact us info@mri-application.de"

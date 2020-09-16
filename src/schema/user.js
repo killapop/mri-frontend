@@ -1,22 +1,22 @@
 // import i18n from "../i18n";
 
-export const login = (i18n) => {
+export const login = (t) => {
   return {
     schema: {
-      title: i18n.t("login_title"),
+      title: t("login_title"),
       type: "object",
       required: ["email", "password"],
-      submitButton: i18n.t("login_button"),
-      cancelButton: i18n.t("cancel_button"),
+      submitButton: t("login_button"),
+      cancelButton: t("common_cancel"),
       properties: {
         email: {
           type: "string",
-          title: i18n.t("login_email"),
-          placeholder: i18n.t("login_email_placeholder"),
+          title: t("common_email"),
+          placeholder: t("login_email_placeholder"),
         },
         password: {
           type: "string",
-          title: i18n.t("login_password"),
+          title: t("login_password"),
           minLength: 12,
         },
       },
@@ -25,7 +25,7 @@ export const login = (i18n) => {
       email: {
         "ui:widget": "email",
         "ui:autofocus": true,
-        "ui:help": i18n.t("login_email_help"),
+        "ui:help": t("login_email_help"),
       },
       password: {
         "ui:widget": "password",
@@ -34,127 +34,135 @@ export const login = (i18n) => {
   };
 };
 
-export const forgot = {
-  schema: {
-    title: "Forgot your password",
-    type: "object",
-    required: ["email"],
-    submitButton: "Reset my password",
-    cancelButton: "Cancel",
-    properties: {
+export const forgot = (t) => {
+  return {
+    schema: {
+      title: t("forgot_title"),
+      type: "object",
+      required: ["email"],
+      submitButton: t("forgot_button"),
+      cancelButton: t("common_cancel"),
+      properties: {
+        email: {
+          type: "string",
+          title: t("common_email"),
+          placeholder: t("login_email_placeholder"),
+        },
+      },
+    },
+    uiSchema: {
       email: {
-        type: "string",
-        title: "Email",
-        placeholder: "Email address",
+        "ui:widget": "email",
+        "ui:autofocus": true,
+        "ui:help": t("forgot_email_help"),
       },
     },
-  },
-  uiSchema: {
-    email: {
-      "ui:widget": "email",
-      "ui:autofocus": true,
-      "ui:help": "Please enter your email address",
-    },
-  },
+  };
 };
 
-export const change = {
-  schema: {
-    title: "Change your password",
-    type: "object",
-    submitButton: "Change password",
-    cancelButton: "Cancel",
-    properties: {
-      pass1: {
-        type: "string",
-        title: "Enter new password",
-        minLength: 12,
-      },
-      pass2: {
-        type: "string",
-        title: "Confirm password",
-        minLength: 12,
+export const change = (t) => {
+  return {
+    schema: {
+      title: t("change_title"),
+      type: "object",
+      submitButton: t("change_button"),
+      cancelButton: t("common_cancel"),
+      properties: {
+        pass1: {
+          type: "string",
+          title: t("change_new_password"),
+          minLength: 12,
+        },
+        pass2: {
+          type: "string",
+          title: t("activate_confirm_password"),
+          minLength: 12,
+        },
       },
     },
-  },
-  uiSchema: {
-    pass1: { "ui:widget": "password", "ui:autofocus": true },
-    pass2: { "ui:widget": "password" },
-  },
+    uiSchema: {
+      pass1: { "ui:widget": "password", "ui:autofocus": true },
+      pass2: { "ui:widget": "password" },
+    },
+  };
 };
 
-export const create = {
-  schema: {
-    title: "Create user",
-    type: "object",
-    required: ["email"],
-    submitButton: "Create user",
-    cancelButton: "Cancel",
-    properties: {
+export const create = (t) => {
+  return {
+    schema: {
+      title: t("create_user_title"),
+      type: "object",
+      required: ["email"],
+      submitButton: t("create_user_title"),
+      cancelButton: t("common_cancel"),
+      properties: {
+        email: {
+          type: "string",
+          title: t("common_email"),
+        },
+        isStaff: {
+          type: "boolean",
+          title: t("create_role_facilitator"),
+        },
+        isBeneficiary: {
+          type: "boolean",
+          title: t("create_role_beneficiary"),
+        },
+        isHost: {
+          type: "boolean",
+          title: t("create_role_organization"),
+        },
+      },
+    },
+    uiSchema: {
       email: {
-        type: "string",
-        title: "Email",
-      },
-      isStaff: {
-        type: "boolean",
-        title: "Facilitator",
-      },
-      isBeneficiary: {
-        type: "boolean",
-        title: "Beneficiary",
-      },
-      isHost: {
-        type: "boolean",
-        title: "Organization",
+        "ui:widget": "email",
+        "ui:autofocus": true,
       },
     },
-  },
-  uiSchema: {
-    email: {
-      "ui:widget": "email",
-      "ui:autofocus": true,
-    },
-  },
+  };
 };
 
-export const activate = {
-  schema: {
-    title: "Activate account",
-    type: "object",
-    required: ["password", "name", "pass1", "pass2"],
-    submitButton: "Activate my account",
-    cancelButton: "Cancel",
-    properties: {
+export const activate = (t) => {
+  return {
+    schema: {
+      title: t("activate_title"),
+      type: "object",
+      required: ["password", "name", "pass1", "pass2"],
+      submitButton: t("activate_button"),
+      cancelButton: t("common_cancel"),
+      properties: {
+        password: {
+          type: "string",
+          title: t("activate_activation_password"),
+        },
+        name: {
+          type: "string",
+          title: t("activate_name"),
+        },
+        pass1: {
+          type: "string",
+          title: t("activate_preferred_password"),
+          minLength: 12,
+        },
+        pass2: {
+          type: "string",
+          title: t("activate_confirm_password"),
+          minLength: 12,
+        },
+      },
+    },
+    uiSchema: {
       password: {
-        type: "string",
-        title: "Activation password",
-      },
-      name: {
-        type: "string",
-        title: "Name",
+        "ui:widget": "password",
+        "ui:autofocus": true,
       },
       pass1: {
-        type: "string",
-        title: "Preferred password",
-        minLength: 12,
+        "ui:widget": "password",
       },
       pass2: {
-        type: "string",
-        title: "Confirm password",
-        minLength: 12,
+        "ui:widget": "password",
       },
     },
-  },
-  uiSchema: {
-    password: {
-      "ui:widget": "password",
-      "ui:autofocus": true,
-    },
-    pass1: {
-      "ui:widget": "password",
-    },
-    pass2: {
-      "ui:widget": "password",
-    },
-  },
+  };
 };

@@ -1,45 +1,53 @@
-import React from 'react';
-import Form from 'react-jsonschema-form';
-import { Redirect } from 'react-router-dom';
-import { view } from '@risingstack/react-easy-state';
-import SmallBox from '../common/smallBox';
-import { authStore } from '../../lib/store';
-import { apiCall } from '../../lib/api-calls';
-import { add as addMessage } from '../../lib/message';
+import React from "react";
+import Form from "react-jsonschema-form";
+import { Redirect } from "react-router-dom";
+import { view } from "@risingstack/react-easy-state";
+import SmallBox from "../common/smallBox";
+import { withTranslation } from "react-i18next";
+import i18n from "../../i18n.js";
+import { authStore } from "../../lib/store";
+import { apiCall } from "../../lib/api-calls";
+import { add as addMessage } from "../../lib/message";
 
-import { create } from '../../schema/user';
+import { create } from "../../schema/user";
 
 class CreateUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       created: false,
-      user: ''
+      user: "",
     };
     this.create = this.create.bind(this);
   }
 
   async create({ formData }) {
-    await apiCall('POST', '/activations', JSON.stringify(formData), true)
-      .then(result => {
+    await apiCall("POST", "/activations", JSON.stringify(formData), true)
+      .then((result) => {
         if (result) {
-          this.setState(state => ({
+          this.setState({
             user: result,
-            created: true
-          }));
-          addMessage('success', `Created a user account for ${formData.email}`);
+            created: true,
+          });
+          addMessage(
+            "success",
+            i18n.t("message_user_created", { who: formData.email })
+          );
         }
       })
-      .catch(err => {
+      .catch((err) => {
+        console.log(err);
         addMessage(
-          'danger',
-          `There was an error creating an account for ${formData.email}`
+          "danger",
+          i18n.t("message_user_not_created", { who: formData.email })
         );
       });
   }
 
   render() {
-    if (authStore.token === '') {
+    const { t } = this.props;
+    const createForm = create(t);
+    if (authStore.token === "") {
       return <Redirect to="/" />;
     }
     return (
@@ -47,32 +55,31 @@ class CreateUser extends React.Component {
         <div>
           {this.state.created ? (
             <div className="pv4 ph3">
-              <div className="title">Account created</div>
+              <div className="title">{t("created_title")}</div>
               <div className="f4 mb4">
-                A new activation has been created for {this.state.user.email}.
+                {t("created_activation", { who: this.state.user.email })}
               </div>
               <div className="mb3">
                 <label>URL: </label>
                 <p>
-                  {`${window.location.origin}/users/activate/${
-                    this.state.user.token
-                  }`}
+                  {`${window.location.origin}/users/activate/${this.state.user.token}`}
                 </p>
               </div>
               <div>
-                <label>password: </label>
+                <label>{t("login_password")}: </label>
                 <p>{this.state.user.password}</p>
               </div>
             </div>
           ) : (
             <Form
-              schema={create.schema}
-              uiSchema={create.uiSchema}
+              schema={createForm.schema}
+              uiSchema={createForm.uiSchema}
               onSubmit={this.create}
-              method="POST">
+              method="POST"
+            >
               <div className="form-actions form-group flex justify-end">
                 <button type="submit">
-                  {create.schema.submitButton}
+                  {createForm.schema.submitButton}
                   <i className="fa fa-user-plus ml2" />
                 </button>
               </div>
@@ -83,4 +90,4 @@ class CreateUser extends React.Component {
     );
   }
 }
-export default view(CreateUser);
+export default withTranslation()(view(CreateUser));
