@@ -4,7 +4,10 @@ import Form from "react-jsonschema-form";
 // import jsPDF from "jspdf";
 import _ from "lodash";
 import { authStore } from "../../lib/store";
-import { view } from '@risingstack/react-easy-state';
+import { view } from "@risingstack/react-easy-state";
+import { withTranslation } from "react-i18next";
+import i18n from "../../i18n.js";
+import { allForms } from "../../schema/forms.js";
 import Clock from "../../components/common/clock";
 import { apiCall } from "../../lib/api-calls";
 import { add as addMessage } from "../../lib/message";
@@ -48,11 +51,6 @@ class Application extends React.Component {
       isSidebarOpen: false,
       isFormButtonsOpen: false,
       formKey: Math.random(),
-      tabs: [
-        { title: "history", icon: "clipboard-list" },
-        { title: "comments", icon: "comments" },
-        { title: "attachments", icon: "paperclip" }
-      ]
     };
     this.form = React.createRef();
   }
@@ -66,7 +64,7 @@ class Application extends React.Component {
     if (!descriptions) {
       return false;
     } else {
-      _.forEach(descriptions, description => {
+      _.forEach(descriptions, (description) => {
         const text = description.innerHTML;
         const exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/gi;
         const text1 = text
@@ -82,7 +80,7 @@ class Application extends React.Component {
     if (!labels) {
       return false;
     } else {
-      _.forEach(labels, label => {
+      _.forEach(labels, (label) => {
         const text = label.innerHTML;
         const text1 = text
           ? text
@@ -105,7 +103,7 @@ class Application extends React.Component {
       if (!elements) {
         return false;
       } else {
-        _.forEach(elements, element => {
+        _.forEach(elements, (element) => {
           element.style.height = `${element.scrollHeight}px`;
           element.removeAttribute("disabled");
           element.setAttribute("readonly", true);
@@ -124,7 +122,7 @@ class Application extends React.Component {
       if (!checkboxes) {
         return false;
       } else {
-        _.forEach(checkboxes, checkbox => {
+        _.forEach(checkboxes, (checkbox) => {
           checkbox.insertAdjacentHTML(
             "beforebegin",
             `<span class='fa fa-${
@@ -141,7 +139,7 @@ class Application extends React.Component {
       if (!inputs) {
         return false;
       } else {
-        _.forEach(inputs, input => {
+        _.forEach(inputs, (input) => {
           input.insertAdjacentHTML(
             "afterend",
             `<span class='tmpDisplay'>${
@@ -170,15 +168,18 @@ class Application extends React.Component {
         "",
         true
       );
-      const formData = await apiCall("GET", "/forms/" + appData.form, "", true);
+      // const formData = await apiCall("GET", "/forms/" + appData.form, "", true);
+      const formData = _.merge({
+        template: allForms[appData.form.split(".")[0].replace("-", "_")],
+      });
       if (authStore.user.roles.indexOf("mri-staff") !== -1) {
         _.merge(formData.template.schema, {
           title: `${formData.template.schema.title} ${
-            formData.id.indexOf("-1.json") !== -1 ? "PL1" : "PL2"
-          }`
+            appData.form.indexOf("-1.json") !== -1 ? "PL1" : "PL2"
+          }`,
         });
       }
-      this.setState(state => ({
+      this.setState({
         form: appData,
         account: appData.account,
         type: "",
@@ -189,8 +190,8 @@ class Application extends React.Component {
         disabled:
           authStore.user.roles.indexOf("mri-staff") !== -1 ||
           (authStore.user.roles.indexOf("mri-staff") === -1 &&
-            ["finalized", "locked"].includes(appData.state))
-      }));
+            ["finalized", "locked"].includes(appData.state)),
+      });
     } catch (err) {
       console.log(err);
       addMessage(
@@ -201,36 +202,36 @@ class Application extends React.Component {
   }
 
   async lockHandler(ev) {
-    this.setState(state => ({
-      type: "lock"
-    }));
+    this.setState({
+      type: "lock",
+    });
     await this.form.current.onSubmit(ev);
   }
 
   tabHandler(e) {
     e.persist();
-    this.setState(state => ({ currentTab: e.target.id }));
+    this.setState({ currentTab: e.target.id });
   }
 
   async finalizeForm(ev) {
-    this.setState(state => ({
+    this.setState({
       locked: true,
-      close: true
-    }));
+      close: true,
+    });
     await this.form.current.onSubmit(ev);
   }
 
   async unfinalizeForm(ev) {
-    this.setState(state => ({
+    this.setState({
       unfinalize: true,
-      close: true
-    }));
+      close: true,
+    });
     await this.form.current.onSubmit(ev);
   }
 
   async saveAndExit(ev) {
     await this.form.current.onSubmit(ev);
-    this.setState(state => ({ close: true }));
+    this.setState({ close: true });
   }
 
   async saveForm(ev) {
@@ -258,18 +259,18 @@ class Application extends React.Component {
       JSON.stringify(body),
       true
     )
-      .then(data => {
+      .then((data) => {
         if (data === 500) {
           addMessage(
             "danger",
             "There was a problem connecting to the server. Please try again after some time or contact us info@mri-application.de"
           );
         } else if (data) {
-          this.setState(state => ({
+          this.setState({
             form: data,
             account: data.account,
-            history: data.history
-          }));
+            history: data.history,
+          });
           addMessage("success", message);
         }
       })
@@ -278,7 +279,7 @@ class Application extends React.Component {
           return this.props.history.push("/");
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         addMessage("danger", "Error retrieving data");
       });
@@ -377,22 +378,22 @@ class Application extends React.Component {
       true,
       "form"
     )
-      .then(data => {
+      .then((data) => {
         if (data === 204) {
           return apiCall(
             "GET",
             "/applications/" + this.props.match.params.id + "/attachments",
             "",
             true
-          ).then(attachments => {
-            this.setState(state => ({
-              attachments
-            }));
+          ).then((attachments) => {
+            this.setState({
+              attachments,
+            });
             addMessage("success", "File uploaded");
           });
         }
       })
-      .catch(err => addMessage("danger", "Error uploading the file"));
+      .catch((err) => addMessage("danger", "Error uploading the file"));
   }
 
   errors({ errors }) {
@@ -408,14 +409,14 @@ class Application extends React.Component {
   toggleSidebar(e) {
     this.setState({
       isSidebarOpen: !this.state.isSidebarOpen,
-      isFormButtonsOpen: false
+      isFormButtonsOpen: false,
     });
   }
 
   toggleFormButtons(e) {
     this.setState({
       isSidebarOpen: false,
-      isFormButtonsOpen: !this.state.isFormButtonsOpen
+      isFormButtonsOpen: !this.state.isFormButtonsOpen,
     });
   }
 
@@ -426,15 +427,35 @@ class Application extends React.Component {
       schema,
       uiSchema,
       containerSticky,
-      tabs,
       history,
       currentTab,
       noValidate,
       disabled,
       isSidebarOpen,
       isFormButtonsOpen,
-      formKey
+      formKey,
     } = this.state;
+
+    const { t } = this.props;
+
+    const tabs = [
+      {
+        title: "history",
+        label: t("application_tab_history"),
+        icon: "clipboard-list",
+      },
+      {
+        title: "comments",
+        label: t("application_tab_comments"),
+        icon: "comments",
+      },
+      {
+        title: "attachments",
+        label: t("application_tab_attachments"),
+        icon: "paperclip",
+      },
+    ];
+
     if (authStore.token === "") {
       // this.timeoutHandler();
       return <Redirect to="/" />;
@@ -459,27 +480,27 @@ class Application extends React.Component {
         <div
           id="formContainer"
           className="formContainer w-70-l"
-          ref={e => (this.formDiv = e)}
+          ref={(e) => (this.formDiv = e)}
         >
           <div className="bundle-meta flex flex-column flex-row-l">
             <div>
-              Applicant: <b>{account.email}</b>
+              {t("application_meta_applicant")}: <b>{account.email}</b>
             </div>
             <div>
-              Form ID: <b>{form.id}</b>
+              {t("application_meta_formId")}: <b>{form.id}</b>
             </div>
 
             <div>
               {form.bundle &&
               authStore.user.roles.indexOf("mri-staff") !== -1 ? (
                 <span>
-                  Bundle ID:{" "}
+                  {t("application_meta_bundleId")}:{" "}
                   <b>
                     <Link to={`/bundles/${form.bundle}`}>{form.bundle}</Link>
                   </b>
                 </span>
               ) : (
-                <b>Not bundled yet.</b>
+                <b>{t("application_meta_not_bundled")}</b>
               )}
             </div>
           </div>
@@ -502,29 +523,32 @@ class Application extends React.Component {
               <button
                 type="button"
                 className="dn-l form-actions-toggle"
-                onClick={e => this.toggleFormButtons(e)}
+                onClick={(e) => this.toggleFormButtons(e)}
               >
                 <i className="fa fa-cog white z-999" /> {`  `}
-                {isFormButtonsOpen ? "Cancel" : "Actions"}
+                {isFormButtonsOpen
+                  ? t("common_cancel")
+                  : t("application_formActions_actions")}
               </button>
               <div
                 className="toggle-buttons"
                 style={
                   isFormButtonsOpen
                     ? {
-                        transform: "translateY(-44px)"
+                        transform: "translateY(-44px)",
                       }
                     : {
-                        transform: "translateY(240px)"
+                        transform: "translateY(240px)",
                       }
                 }
               >
                 <button
                   className="pdf-export"
-                  onClick={e => this.exportPDF(e)}
+                  onClick={(e) => this.exportPDF(e)}
                   type="button"
                 >
-                  Print to PDF <i className="fa fa-file-pdf ml2" />
+                  {t("application_formActions_pdf")}{" "}
+                  <i className="fa fa-file-pdf ml2" />
                 </button>
                 {form.state === "finalized" &&
                 authStore.user.roles.indexOf("mri-staff") !== -1 ? (
@@ -534,7 +558,7 @@ class Application extends React.Component {
                       type="button"
                       onClick={this.unfinalizeForm}
                     >
-                      Unfinalize
+                      {t("application_formActions_unfinalize")}
                       <i className="fa fa-undo ml2" />
                     </button>{" "}
                     <button
@@ -542,7 +566,8 @@ class Application extends React.Component {
                       type="button"
                       onClick={this.lockHandler}
                     >
-                      Lock
+                      {t("application_formActions_lock")}
+
                       <i className="fa fa-lock ml2" />
                     </button>
                   </div>
@@ -558,7 +583,7 @@ class Application extends React.Component {
                         type="button"
                         onClick={this.finalizeForm}
                       >
-                        Finalize
+                        {t("application_formActions_finalize")}
                         <i className="fa fa-check ml2" />
                       </button>
                     ) : (
@@ -569,11 +594,11 @@ class Application extends React.Component {
                       data-type="save"
                       onClick={this.saveAndExit}
                     >
-                      Save and close
+                      {t("application_formActions_close")}
                       <i className="fa fa-exit-alt ml2" />
                     </button>
                     <button type="submit" data-type="save">
-                      Save and continue
+                      {t("application_formActions_continue")}
                       <i className="fa fa-save ml2" />
                     </button>
                   </div>
@@ -587,14 +612,14 @@ class Application extends React.Component {
         <div
           className="sidebar"
           style={{
-            transform: `translateX(${isSidebarOpen ? "10vw" : "100vw"})`
+            transform: `translateX(${isSidebarOpen ? "10vw" : "100vw"})`,
           }}
         >
           <div
             className={`sidebar-toggle dn-l fa fa-angle-double-${
               isSidebarOpen ? "right" : "left"
             }`}
-            onClick={e => this.toggleSidebar(e)}
+            onClick={(e) => this.toggleSidebar(e)}
           />
           <div className={`sidebar-content`}>
             {" "}
@@ -602,14 +627,14 @@ class Application extends React.Component {
               {tabs.map((tab, idx) => (
                 <div
                   id={tab.title}
-                  onClick={e => this.tabHandler(e)}
+                  onClick={(e) => this.tabHandler(e)}
                   key={idx}
                   className={`tab tab-${tab.title} ${
                     currentTab === tab.title ? "active" : ""
                   }`}
                 >
                   <i className={`fa fa-${tab.icon}`} />
-                  {tab.title}
+                  {tab.label}
                 </div>
               ))}
             </div>
@@ -621,4 +646,4 @@ class Application extends React.Component {
   }
 }
 
-export default view(Application);
+export default withTranslation()(view(Application));

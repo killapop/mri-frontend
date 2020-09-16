@@ -65,6 +65,23 @@ export const translation = {
     "Please remember to frequently save and continue while filling in the form",
   clock_refresh_button: "Refresh your session now",
   // Clock widget end
+
+  // Application Form elements
+  application_tab_history: "history",
+  application_tab_comments: "comments",
+  application_tab_attachments: "attachments",
+  application_meta_applicant: "Applicant",
+  application_meta_formId: "Form ID",
+  application_meta_bundleId: "Bundle ID",
+  application_meta_not_bundled: "Not bundled yet",
+  application_formActions_actions: "Actions",
+  application_formActions_pdf: "Print to PDF",
+  application_formActions_unfinalize: "Unfinalize",
+  application_formActions_finalize: "Finalize",
+  application_formActions_lock: "Lock",
+  application_formActions_close: "Save and Close",
+  application_formActions_continue: "Save and Continue",
+  // Application Form elements end
   // Messages
   message_logged_in_success: "Logged in",
   message_logged_out_success: "Logged out",
