@@ -37,8 +37,30 @@ class Header extends React.Component {
           <Link to="/" className="logo pa2">
             <img src={logo} alt="Martin Roth-Initiative" />
           </Link>
+          <div className="language-picker">
+            <div className="languages flex flex-column absolute">
+              {_.map(languages, (lang, idx) => (
+                <div
+                  className={`language ${
+                    lang.code === i18n.language.split("-")[0] ? "active" : ""
+                  }`}
+                  key={idx}
+                  onClick={() =>
+                    i18n.changeLanguage(lang.code).then(() => {
+                      window.sessionStorage.lng = lang.code;
+                    })
+                  }
+                  style={{
+                    backgroundImage: `url(/${lang.code}.svg)`,
+                  }}
+                >
+                  {lang.code}
+                </div>
+              ))}
+            </div>
+          </div>
           <nav className="ttu flex justify-between mt3">
-            <div className="userNav flex justify-start h-100 items-start mr5">
+            <div className="userNav flex justify-start h-100 items-start">
               <a
                 rel="noopener noreferrer"
                 href="https://martin-roth-initiative.de"
@@ -84,28 +106,6 @@ class Header extends React.Component {
                 ""
               )}
             </div>
-            <div className="language-picker relative">
-              <div className="languages absolute flex flex-column">
-                {_.map(languages, (lang, idx) => (
-                  <div
-                    className={`language ${
-                      lang.code === i18n.language.split("-")[0] ? "active" : ""
-                    }`}
-                    key={idx}
-                    onClick={() =>
-                      i18n
-                        .changeLanguage(lang.code)
-                        .then(() => (window.sessionStorage.lng = lang.code))
-                    }
-                    style={{
-                      backgroundImage: `url(/${lang.code}.svg)`,
-                    }}
-                  >
-                    {lang.code}
-                  </div>
-                ))}
-              </div>
-            </div>
           </nav>
         </div>
       </div>
@@ -116,6 +116,7 @@ class Header extends React.Component {
 Header.propTypes = {
   sticky: PropTypes.bool,
   i18n: PropTypes.any,
+  t: PropTypes.any,
 };
 
 export default withTranslation()(Header);
