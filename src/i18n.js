@@ -11,7 +11,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: "fr",
+    fallbackLng: "en",
     preload: ["en", "es", "fr"],
     debug: true,
     ns: ["translation", "form"],
