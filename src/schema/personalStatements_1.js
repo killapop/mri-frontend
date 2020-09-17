@@ -544,11 +544,6 @@ export const personalStatements_1 = {
             title:
               "You hereby confirm that you do not have permanent access to a safe third country (e.g. by virtue of dual citizenship or for other reasons).",
           },
-          other_1: {
-            type: "boolean",
-            title:
-              "You hereby confirm that you do not have permanent access to a safe third country (e.g. by virtue of dual citizenship or for other reasons).",
-          },
           other_2: {
             type: "boolean",
             title:
