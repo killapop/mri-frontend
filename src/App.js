@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { authStore } from "./lib/store.js";
 import { StickyContainer, Sticky } from "react-sticky";
 import jwt from "jsonwebtoken";
-import { withTranslation } from "react-i18next";
 import Header from "./components/header/Header.js";
 import Layout from "./components/common/layout";
 import Messages from "./components/common/messages";
@@ -66,4 +65,4 @@ class App extends Component {
   }
 }
 
-export default withTranslation()(App);
+export default App;

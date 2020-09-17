@@ -6,8 +6,8 @@ import _ from "lodash";
 import { authStore } from "../../lib/store";
 import { view } from "@risingstack/react-easy-state";
 import { withTranslation } from "react-i18next";
-import i18n from "../../i18n.js";
 import { allForms } from "../../schema/forms.js";
+import i18n from "../../i18n.js";
 import Clock from "../../components/common/clock";
 import { apiCall } from "../../lib/api-calls";
 import { add as addMessage } from "../../lib/message";
@@ -33,6 +33,7 @@ class Application extends React.Component {
     this.toggleFormButtons = this.toggleFormButtons.bind(this);
     this.renderTextareas = this.renderTextareas.bind(this);
     this.state = {
+      loaded: false,
       form: {},
       bundle: "",
       account: {},
@@ -56,7 +57,10 @@ class Application extends React.Component {
   }
 
   async componentDidMount() {
-    await this.fetchData().then(() => this.renderTextareas());
+    await this.fetchData().then(() => {
+      this.setState({ loaded: true });
+      this.renderTextareas();
+    });
   }
 
   renderTextareas() {
@@ -169,24 +173,25 @@ class Application extends React.Component {
         true
       );
       // const formData = await apiCall("GET", "/forms/" + appData.form, "", true);
-      const formData = _.merge({
-        template: allForms[appData.form.split(".")[0].replace("-", "_")],
-      });
-      if (authStore.user.roles.indexOf("mri-staff") !== -1) {
-        _.merge(formData.template.schema, {
-          title: `${formData.template.schema.title} ${
-            appData.form.indexOf("-1.json") !== -1 ? "PL1" : "PL2"
-          }`,
-        });
-      }
+      // console.log(allForms[appData.form.split(".")[0].replace("-", "_")]);
+      // const formData = _.merge({
+      //   template: allForms[appData.form.split(".")[0].replace("-", "_")],
+      // });
+      // if (authStore.user.roles.indexOf("mri-staff") !== -1) {
+      //   _.merge(formData.template.schema, {
+      //     title: `${formData.template.schema.title} ${
+      //       appData.form.indexOf("-1.json") !== -1 ? "PL1" : "PL2"
+      //     }`,
+      //   });
+      // }
       this.setState({
         form: appData,
         account: appData.account,
         type: "",
         history: appData.history,
         attachments: attachmentData === 404 ? [] : attachmentData,
-        schema: formData.template.schema,
-        uiSchema: formData.template.uiSchema,
+        // schema: formData.template.schema,
+        // uiSchema: formData.template.uiSchema,
         disabled:
           authStore.user.roles.indexOf("mri-staff") !== -1 ||
           (authStore.user.roles.indexOf("mri-staff") === -1 &&
@@ -422,10 +427,9 @@ class Application extends React.Component {
 
   render() {
     const {
+      loaded,
       form,
       account,
-      schema,
-      uiSchema,
       containerSticky,
       history,
       currentTab,
@@ -437,6 +441,24 @@ class Application extends React.Component {
     } = this.state;
 
     const { t } = this.props;
+    let formData = {};
+    if (_.size(form) > 0) {
+      const formToFetch = allForms[form.form.split(".")[0].replace("-", "_")](
+        t
+      );
+      console.log(formToFetch);
+      _.merge(formData, {
+        template: formToFetch,
+      });
+      if (authStore.user.roles.indexOf("mri-staff") !== -1) {
+        _.merge(formData.template.schema, {
+          title: `${formData.template.schema.title} ${
+            form.form.indexOf("-1.json") !== -1 ? "PL1" : "PL2"
+          }`,
+        });
+      }
+      console.log(formData);
+    }
 
     const tabs = [
       {
@@ -472,178 +494,186 @@ class Application extends React.Component {
     };
 
     return (
-      <div
-        className={`applications flex flex-wrap ${
-          containerSticky ? "is-sticky" : ""
-        }`}
-      >
-        <div
-          id="formContainer"
-          className="formContainer w-70-l"
-          ref={(e) => (this.formDiv = e)}
-        >
-          <div className="bundle-meta flex flex-column flex-row-l">
-            <div>
-              {t("application_meta_applicant")}: <b>{account.email}</b>
-            </div>
-            <div>
-              {t("application_meta_formId")}: <b>{form.id}</b>
-            </div>
-
-            <div>
-              {form.bundle &&
-              authStore.user.roles.indexOf("mri-staff") !== -1 ? (
-                <span>
-                  {t("application_meta_bundleId")}:{" "}
-                  <b>
-                    <Link to={`/bundles/${form.bundle}`}>{form.bundle}</Link>
-                  </b>
-                </span>
-              ) : (
-                <b>{t("application_meta_not_bundled")}</b>
-              )}
-            </div>
-          </div>
-          <Form
-            id="application-form"
-            key={formKey}
-            className={`${disabled ? "disabled" : ""} rjsf`}
-            disabled={disabled}
-            ref={this.form}
-            schema={schema}
-            uiSchema={uiSchema}
-            onError={this.errors}
-            formData={form.formData}
-            noValidate={noValidate}
-            noHtml5Validate={noValidate}
-            onSubmit={this.formSubmitHandler}
+      <>
+        {loaded ? (
+          <div
+            className={`applications flex flex-wrap ${
+              containerSticky ? "is-sticky" : ""
+            }`}
           >
-            <div className="form-actions form-group flex justify-between">
-              <Clock />
-              <button
-                type="button"
-                className="dn-l form-actions-toggle"
-                onClick={(e) => this.toggleFormButtons(e)}
-              >
-                <i className="fa fa-cog white z-999" /> {`  `}
-                {isFormButtonsOpen
-                  ? t("common_cancel")
-                  : t("application_formActions_actions")}
-              </button>
-              <div
-                className="toggle-buttons"
-                style={
-                  isFormButtonsOpen
-                    ? {
-                        transform: "translateY(-44px)",
-                      }
-                    : {
-                        transform: "translateY(240px)",
-                      }
-                }
-              >
-                <button
-                  className="pdf-export"
-                  onClick={(e) => this.exportPDF(e)}
-                  type="button"
-                >
-                  {t("application_formActions_pdf")}{" "}
-                  <i className="fa fa-file-pdf ml2" />
-                </button>
-                {form.state === "finalized" &&
-                authStore.user.roles.indexOf("mri-staff") !== -1 ? (
-                  <div>
-                    <button
-                      className="unfinalize"
-                      type="button"
-                      onClick={this.unfinalizeForm}
-                    >
-                      {t("application_formActions_unfinalize")}
-                      <i className="fa fa-undo ml2" />
-                    </button>{" "}
-                    <button
-                      className="lock"
-                      type="button"
-                      onClick={this.lockHandler}
-                    >
-                      {t("application_formActions_lock")}
+            <div
+              id="formContainer"
+              className="formContainer w-70-l"
+              ref={(e) => (this.formDiv = e)}
+            >
+              <div className="bundle-meta flex flex-column flex-row-l">
+                <div>
+                  {t("application_meta_applicant")}: <b>{account.email}</b>
+                </div>
+                <div>
+                  {t("application_meta_formId")}: <b>{form.id}</b>
+                </div>
 
-                      <i className="fa fa-lock ml2" />
+                <div>
+                  {form.bundle &&
+                  authStore.user.roles.indexOf("mri-staff") !== -1 ? (
+                    <span>
+                      {t("application_meta_bundleId")}:{" "}
+                      <b>
+                        <Link to={`/bundles/${form.bundle}`}>
+                          {form.bundle}
+                        </Link>
+                      </b>
+                    </span>
+                  ) : (
+                    <b>{t("application_meta_not_bundled")}</b>
+                  )}
+                </div>
+              </div>
+              <Form
+                id="application-form"
+                key={formKey}
+                className={`${disabled ? "disabled" : ""} rjsf`}
+                disabled={disabled}
+                ref={this.form}
+                schema={formData.template.schema}
+                uiSchema={formData.template.uiSchema}
+                onError={this.errors}
+                formData={form.formData}
+                noValidate={noValidate}
+                noHtml5Validate={noValidate}
+                onSubmit={this.formSubmitHandler}
+              >
+                <div className="form-actions form-group flex justify-between">
+                  <Clock />
+                  <button
+                    type="button"
+                    className="dn-l form-actions-toggle"
+                    onClick={(e) => this.toggleFormButtons(e)}
+                  >
+                    <i className="fa fa-cog white z-999" /> {`  `}
+                    {isFormButtonsOpen
+                      ? t("common_cancel")
+                      : t("application_formActions_actions")}
+                  </button>
+                  <div
+                    className="toggle-buttons"
+                    style={
+                      isFormButtonsOpen
+                        ? {
+                            transform: "translateY(-44px)",
+                          }
+                        : {
+                            transform: "translateY(240px)",
+                          }
+                    }
+                  >
+                    <button
+                      className="pdf-export"
+                      onClick={(e) => this.exportPDF(e)}
+                      type="button"
+                    >
+                      {t("application_formActions_pdf")}{" "}
+                      <i className="fa fa-file-pdf ml2" />
                     </button>
-                  </div>
-                ) : (
-                  ""
-                )}
-                {form.state !== "locked" &&
-                authStore.user.roles.indexOf("mri-staff") === -1 ? (
-                  <div>
-                    {form.state !== "finalized" ? (
-                      <button
-                        className="finalize"
-                        type="button"
-                        onClick={this.finalizeForm}
-                      >
-                        {t("application_formActions_finalize")}
-                        <i className="fa fa-check ml2" />
-                      </button>
+                    {form.state === "finalized" &&
+                    authStore.user.roles.indexOf("mri-staff") !== -1 ? (
+                      <div>
+                        <button
+                          className="unfinalize"
+                          type="button"
+                          onClick={this.unfinalizeForm}
+                        >
+                          {t("application_formActions_unfinalize")}
+                          <i className="fa fa-undo ml2" />
+                        </button>{" "}
+                        <button
+                          className="lock"
+                          type="button"
+                          onClick={this.lockHandler}
+                        >
+                          {t("application_formActions_lock")}
+
+                          <i className="fa fa-lock ml2" />
+                        </button>
+                      </div>
                     ) : (
                       ""
                     )}
-                    <button
-                      type="button"
-                      data-type="save"
-                      onClick={this.saveAndExit}
-                    >
-                      {t("application_formActions_close")}
-                      <i className="fa fa-exit-alt ml2" />
-                    </button>
-                    <button type="submit" data-type="save">
-                      {t("application_formActions_continue")}
-                      <i className="fa fa-save ml2" />
-                    </button>
+                    {form.state !== "locked" &&
+                    authStore.user.roles.indexOf("mri-staff") === -1 ? (
+                      <div>
+                        {form.state !== "finalized" ? (
+                          <button
+                            className="finalize"
+                            type="button"
+                            onClick={this.finalizeForm}
+                          >
+                            {t("application_formActions_finalize")}
+                            <i className="fa fa-check ml2" />
+                          </button>
+                        ) : (
+                          ""
+                        )}
+                        <button
+                          type="button"
+                          data-type="save"
+                          onClick={this.saveAndExit}
+                        >
+                          {t("application_formActions_close")}
+                          <i className="fa fa-exit-alt ml2" />
+                        </button>
+                        <button type="submit" data-type="save">
+                          {t("application_formActions_continue")}
+                          <i className="fa fa-save ml2" />
+                        </button>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                   </div>
-                ) : (
-                  ""
-                )}
+                </div>
+              </Form>
+            </div>
+            <div
+              className="sidebar"
+              style={{
+                transform: `translateX(${isSidebarOpen ? "10vw" : "100vw"})`,
+              }}
+            >
+              <div
+                className={`sidebar-toggle dn-l fa fa-angle-double-${
+                  isSidebarOpen ? "right" : "left"
+                }`}
+                onClick={(e) => this.toggleSidebar(e)}
+              />
+              <div className={`sidebar-content`}>
+                {" "}
+                <div className="sidebar-tabs tabs flex justify-between">
+                  {tabs.map((tab, idx) => (
+                    <div
+                      id={tab.title}
+                      onClick={(e) => this.tabHandler(e)}
+                      key={idx}
+                      className={`tab tab-${tab.title} ${
+                        currentTab === tab.title ? "active" : ""
+                      }`}
+                    >
+                      <i className={`fa fa-${tab.icon}`} />
+                      {tab.label}
+                    </div>
+                  ))}
+                </div>
+                <div className="sidebar-lists">{sidebarComponent()}</div>
               </div>
             </div>
-          </Form>
-        </div>
-        <div
-          className="sidebar"
-          style={{
-            transform: `translateX(${isSidebarOpen ? "10vw" : "100vw"})`,
-          }}
-        >
-          <div
-            className={`sidebar-toggle dn-l fa fa-angle-double-${
-              isSidebarOpen ? "right" : "left"
-            }`}
-            onClick={(e) => this.toggleSidebar(e)}
-          />
-          <div className={`sidebar-content`}>
-            {" "}
-            <div className="sidebar-tabs tabs flex justify-between">
-              {tabs.map((tab, idx) => (
-                <div
-                  id={tab.title}
-                  onClick={(e) => this.tabHandler(e)}
-                  key={idx}
-                  className={`tab tab-${tab.title} ${
-                    currentTab === tab.title ? "active" : ""
-                  }`}
-                >
-                  <i className={`fa fa-${tab.icon}`} />
-                  {tab.label}
-                </div>
-              ))}
-            </div>
-            <div className="sidebar-lists">{sidebarComponent()}</div>
           </div>
-        </div>
-      </div>
+        ) : (
+          ""
+        )}
+      </>
     );
   }
 }
 
-export default withTranslation()(view(Application));
+export default withTranslation(["translation", "form"])(view(Application));

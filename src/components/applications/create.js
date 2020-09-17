@@ -1,8 +1,10 @@
 import React from "react";
 import { Redirect, Link } from "react-router-dom";
-import { view } from '@risingstack/react-easy-state';
+import { view } from "@risingstack/react-easy-state";
 import Reactahead from "reactahead";
 import _ from "lodash";
+import { withTranslation } from "react-i18next";
+import i18n from "../../i18n.js";
 import SmallBox from "../common/smallBox";
 import { authStore } from "../../lib/store";
 import { apiCall } from "../../lib/api-calls";
@@ -17,7 +19,7 @@ class CreateForm extends React.Component {
       selectedUser: "",
       role: "",
       formType: "",
-      programLine: 1
+      programLine: 1,
     };
     this.change = this.change.bind(this);
     this.create = this.create.bind(this);
@@ -26,35 +28,38 @@ class CreateForm extends React.Component {
 
   radioChange(e) {
     e.persist();
-    this.setState(state => ({ programLine: parseInt(e.target.value, 10) }));
+    this.setState({ programLine: parseInt(e.target.value, 10) });
   }
 
-  change(o, i) {
+  change(o) {
     document.getElementsByClassName("reactahead-input")[0].innerText = o;
-    this.setState(state => ({ selectedUser: o }));
+    this.setState({ selectedUser: o });
     this.my_reactahead.clearInput();
   }
 
   async componentDidMount() {
     const template = this.props.match.params.template === "projectProposals";
-    this.setState(state => ({
+    this.setState({
       role: template ? "organization" : "beneficiary",
-      formType: template ? "Project Proposal" : "Personal Statement"
-    }));
+      formType: template ? "Project Proposal" : "Personal Statement",
+    });
     await apiCall("GET", "/users", "", true)
-      .then(users => {
+      .then((users) => {
         if (users) {
           const urs = _.map(
-            _.filter(users, user => _.includes(user.roles, this.state.role)),
+            _.filter(users, (user) => _.includes(user.roles, this.state.role)),
             "email"
           );
-          this.setState(state => ({ users: urs }));
+          this.setState({ users: urs });
         }
       })
-      .catch(err => this.setState(state => ({ users: [] })));
+      .catch((err) => {
+        console.log(err);
+        this.setState({ users: [] });
+      });
   }
 
-  async create(e) {
+  async create() {
     const formName =
       this.props.match.params.template + "-" + this.state.programLine + ".json";
     if (this.state.selectedUser) {
@@ -64,12 +69,12 @@ class CreateForm extends React.Component {
         JSON.stringify({
           email: this.state.selectedUser,
           form: formName,
-          facilitator: authStore.user.email || ""
+          facilitator: authStore.user.email || "",
         }),
         true
-      ).then(data => {
+      ).then((data) => {
         if (data === 204) {
-          this.setState(state => ({ created: true }));
+          this.setState({ created: true });
         } else {
           addMessage("danger", "Error: There was an error creating the form");
         }
@@ -86,8 +91,10 @@ class CreateForm extends React.Component {
       selectedUser,
       users,
       formType,
-      programLine
+      programLine,
     } = this.state;
+
+    const { t } = this.props;
 
     if (authStore.token === "") {
       return <Redirect to="/" />;
@@ -119,7 +126,7 @@ class CreateForm extends React.Component {
                       Enter the email address of the of the {role}
                     </p>
                     <Reactahead
-                      api={api => (this.my_reactahead = api)}
+                      api={(api) => (this.my_reactahead = api)}
                       noResultMsg="Found no users that match your search"
                       suggestions={users}
                       onSubmit={this.change}
@@ -139,7 +146,7 @@ class CreateForm extends React.Component {
                                   name="programeLine"
                                   value={e}
                                   id={`programLine${e}`}
-                                  onChange={el => this.radioChange(el)}
+                                  onChange={(el) => this.radioChange(el)}
                                   checked={programLine === e}
                                 />
                                 <label
@@ -163,7 +170,7 @@ class CreateForm extends React.Component {
                 <div />
               </div>
               <div className="form-actions form-group flex justify-end">
-                <button type="submit" onClick={e => this.create(e)}>
+                <button type="submit" onClick={(e) => this.create(e)}>
                   Create form
                   <i className="fa fa-plus-circle ml2" />
                 </button>
@@ -176,4 +183,4 @@ class CreateForm extends React.Component {
   }
 }
 
-export default view(CreateForm);
+export default withTranslation()(view(CreateForm));

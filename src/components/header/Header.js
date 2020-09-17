@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import _ from "lodash";
 import { withTranslation } from "react-i18next";
-import { languages } from "../../lib/translations";
+import { languages } from "../../locales/translations";
 import { view } from "@risingstack/react-easy-state";
 import logo from "../../assets/images/logo.svg";
 import Clock from "../common/clock";
@@ -89,10 +89,14 @@ class Header extends React.Component {
                 {_.map(languages, (lang, idx) => (
                   <div
                     className={`language ${
-                      lang.code === i18n.language ? "active" : ""
+                      lang.code === i18n.language.split("-")[0] ? "active" : ""
                     }`}
                     key={idx}
-                    onClick={(e) => i18n.changeLanguage(lang.code)}
+                    onClick={() =>
+                      i18n
+                        .changeLanguage(lang.code)
+                        .then(() => (window.sessionStorage.lng = lang.code))
+                    }
                     style={{
                       backgroundImage: `url(/${lang.code}.svg)`,
                     }}
@@ -111,6 +115,7 @@ class Header extends React.Component {
 
 Header.propTypes = {
   sticky: PropTypes.bool,
+  i18n: PropTypes.any,
 };
 
 export default withTranslation()(Header);

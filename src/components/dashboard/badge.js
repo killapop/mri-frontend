@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { camelCase } from "lodash";
 import { view } from "@risingstack/react-easy-state";
 import { authStore } from "../../lib/store";
 

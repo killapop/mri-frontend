@@ -1,22 +1,21 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
-import Backend from "i18next-http-backend";
+// import Backend from "i18next-http-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
-import { resources } from "./lib/translations.js";
+import { resources } from "./locales/translations.js";
 
 i18n
-  .use(Backend)
   .use(LanguageDetector)
+  // .use(Backend)
   .use(initReactI18next)
   .init({
     resources,
-    lng: "es",
-    fallbackLng: "en",
-    preload: ["en", "fr", "es"],
-    ns: ["translation", "form"],
-    defaultNS: ["translation"],
+    fallbackLng: "fr",
+    preload: ["en", "es", "fr"],
     debug: true,
+    ns: ["translation", "form"],
+    defaultNS: "translation",
     interpolation: {
       escapeValue: false,
     },
