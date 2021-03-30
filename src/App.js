@@ -27,7 +27,7 @@ class App extends Component {
     // window.addEventListener("beforeunload", this.leavePage);
   }
 
-  componentWillUnmount() {
+  UNSAFE_componentWillUnmount() {
     // window.removelistener("beforeunload", this.leavePage);
   }
 

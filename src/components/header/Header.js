@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import _ from "lodash";
-import { view } from "react-easy-state";
+import { view } from "@risingstack/react-easy-state";
 import logo from "../../assets/images/logo.svg";
 import Clock from "../common/clock";
 import { messages, authStore } from "../../lib/store";

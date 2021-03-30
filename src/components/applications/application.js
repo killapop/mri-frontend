@@ -4,7 +4,7 @@ import Form from "react-jsonschema-form";
 // import jsPDF from "jspdf";
 import _ from "lodash";
 import { authStore } from "../../lib/store";
-import { view } from "react-easy-state";
+import { view } from "@risingstack/react-easy-state";
 import Clock from "../../components/common/clock";
 import { apiCall } from "../../lib/api-calls";
 import { add as addMessage } from "../../lib/message";

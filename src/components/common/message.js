@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import _ from 'lodash';
-import { view } from 'react-easy-state';
-import { messages } from '../../lib/store';
+import React from "react";
+import PropTypes from "prop-types";
+import _ from "lodash";
+import { view } from "@risingstack/react-easy-state";
+import { messages } from "../../lib/store";
 
 class Message extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      alive: true
+      alive: true,
     };
     this.dismiss = this.dismiss.bind(this);
   }
@@ -17,7 +17,7 @@ class Message extends React.Component {
     this.timeOut();
   }
 
-  componentWillUnmount() {
+  UNSAFE_componentWillUnmount() {
     this.endTimeOut();
   }
 
@@ -34,10 +34,10 @@ class Message extends React.Component {
   }
 
   dismiss(e) {
-    this.setState(state => ({ alive: false }));
+    this.setState((state) => ({ alive: false }));
     _.remove(
       messages.messages,
-      m => m.id === (e ? e.target.parentNode.id : this.props.message.id)
+      (m) => m.id === (e ? e.target.parentNode.id : this.props.message.id)
     );
   }
 
@@ -51,7 +51,7 @@ class Message extends React.Component {
             {message}
           </li>
         ) : (
-          ''
+          ""
         )}
       </div>
     );
@@ -59,7 +59,7 @@ class Message extends React.Component {
 }
 
 Message.propTypes = {
-  message: PropTypes.object
+  message: PropTypes.object,
 };
 
 export default view(Message);

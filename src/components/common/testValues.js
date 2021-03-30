@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-import { view } from 'react-easy-state';
+import { view } from '@risingstack/react-easy-state';
 import { authStore } from '../../lib/store';
 
 class TestValues extends React.Component {

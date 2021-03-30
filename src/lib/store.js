@@ -1,4 +1,4 @@
-import { store } from 'react-easy-state';
+import { store } from '@risingstack/react-easy-state';
 
 const authStore = store({
   token: '',

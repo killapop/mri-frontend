@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { view } from "react-easy-state";
+import { view } from '@risingstack/react-easy-state';
 
 import Login from "./login";
 import ChangePassword from "./changePassword";

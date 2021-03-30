@@ -53,7 +53,7 @@ class Clock extends React.Component {
     this.startClock();
   }
 
-  componentWillUnmount() {
+  UNSAFE_componentWillUnmount() {
     window.clearInterval(this.clockTimer);
   }
 
