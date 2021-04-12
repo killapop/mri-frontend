@@ -1,4 +1,4 @@
-/* eslint no-unused-expresions: 0 */
+/* eslint:disable no-unused-expresions */
 import React from "react";
 import { Redirect, Link } from "react-router-dom";
 import _ from "lodash";

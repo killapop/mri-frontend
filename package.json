@@ -34,5 +34,8 @@
     "Edge > 14",
     "Firefox > 63",
     "Chrome > 46"
-  ]
+  ],
+  "peerDependencies": {
+    "react-refresh": "^0.10.0"
+  }
 }

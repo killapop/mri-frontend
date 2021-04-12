@@ -35,53 +35,77 @@ class Header extends React.Component {
           <Link to="/" className="logo pa2">
             <img src={logo} alt="Martin Roth-Initiative" />
           </Link>
-          <nav className="ttu flex justify-between mt3">
-            <div className="userNav flex justify-start h-100 items-start">
-              <a
-                rel="noopener noreferrer"
-                href="https://martin-roth-initiative.de"
-                target="_blank"
-                title="Info"
-                className="navLink pv2 h-100"
-              >
-                <div className="flex items-center">
-                  <i className={`fa fa-info mb2`} />
-                  <span className="dn db-l">Info</span>
-                </div>
+          <nav className="ttu userNav flex justify-between mt3">
+            <div className="info-link flex">
+              <a className="flex flex-column items-center h-100 pv2">
+                <i className={`fa fa-info mb2`} />
+                <span className="dn db-l">Info</span>
               </a>
-              {authStore.token !== "" ? (
-                <div className="flex">
-                  <Link
-                    to="/dashboard"
-                    title="Dashboard"
-                    className={`navLink pv2 h-100
+
+              <ul className="flex flex-column list">
+                <li>
+                  <a
+                    rel="noopener noreferrer"
+                    href="https://martin-roth-initiative.de"
+                    target="_blank"
+                    title="Info"
+                    className="navLink h-100"
+                  >
+                    MRI website
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="link black pr5 b"
+                    href="https://martin-roth-initiative.de/en/imprint"
+                    target="_blank"
+                  >
+                    Imprint
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="link black pr3 b"
+                    href="https://martin-roth-initiative.de/en/privacy"
+                    target="_blank"
+                  >
+                    Privacy
+                  </a>
+                </li>
+              </ul>
+            </div>
+            {authStore.token !== "" ? (
+              <div className="flex">
+                <Link
+                  to="/dashboard"
+                  title="Dashboard"
+                  className={`navLink pv2 h-100
                       ${
                         window.location.pathname.indexOf("dashboard") !== -1
                           ? "active"
                           : ""
                       }`}
-                  >
-                    <div className="flex items-center">
-                      <i className="fa fa-tachometer-alt mb2" />
-                      <span className="dn db-l">Dashboard</span>
-                    </div>
-                  </Link>
-                  <Link
-                    to="#"
-                    title="Logout"
-                    className="navLink pv2 h-100"
-                    onClick={this.logout}
-                  >
-                    <div className="flex items-center">
-                      <i className="fa fa-sign-out-alt mb2" />
-                      <span className="dn db-l">Logout</span>
-                    </div>
-                  </Link>
-                </div>
-              ) : (
-                ""
-              )}
-            </div>
+                >
+                  <div className="flex items-center">
+                    <i className="fa fa-tachometer-alt mb2" />
+                    <span className="dn db-l">Dashboard</span>
+                  </div>
+                </Link>
+                <Link
+                  to="#"
+                  title="Logout"
+                  className="navLink pv2 h-100"
+                  onClick={this.logout}
+                >
+                  <div className="flex items-center">
+                    <i className="fa fa-sign-out-alt mb2" />
+                    <span className="dn db-l">Logout</span>
+                  </div>
+                </Link>
+              </div>
+            ) : (
+              ""
+            )}
           </nav>
         </div>
       </div>
@@ -90,7 +114,7 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-  sticky: PropTypes.bool
+  sticky: PropTypes.bool,
 };
 
 export default Header;
