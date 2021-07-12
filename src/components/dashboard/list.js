@@ -4,9 +4,10 @@ import PropTypes from "prop-types";
 import ReactTable from "react-table";
 import selectTableHOC from "react-table/lib/hoc/selectTable";
 import { Link, Redirect, withRouter } from "react-router-dom";
+import { withTranslation } from "react-i18next";
 import { view } from "@risingstack/react-easy-state";
 import { authStore } from "../../lib/store";
-import { listSchema } from "../../data/lists";
+import { listSchemas } from "../../data/lists";
 import { apiCall } from "../../lib/api-calls.js";
 
 import "./list.css";
@@ -15,21 +16,6 @@ const SelectTable = selectTableHOC(ReactTable);
 
 class FacilitatorList extends React.Component {
   state = {
-    actionButtons: {
-      activations: [{ icon: "ban", label: "invalidate" }],
-      users: [
-        { icon: "trash", label: "delete" },
-        { icon: "key", label: "password" },
-      ],
-      applications: [
-        { icon: "eye", label: "view" },
-        { icon: "trash", label: "delete" },
-      ],
-      bundles: [
-        { icon: "eye", label: "view" },
-        { icon: "trash", label: "delete" },
-      ],
-    },
     activations: [],
     users: [],
     applications: [],
@@ -155,14 +141,8 @@ class FacilitatorList extends React.Component {
   }
 
   render() {
-    const {
-      loaded,
-      actionButtons,
-      redirect,
-      selectAll,
-      selection,
-    } = this.state;
-    const { list } = this.props;
+    const { loaded, redirect, selectAll, selection } = this.state;
+    const { list, t } = this.props;
     const path =
       list.slug === "personalStatements" || list.slug === "projectProposals"
         ? "applications"
@@ -176,8 +156,53 @@ class FacilitatorList extends React.Component {
         return "id";
       }
     };
+    const actionButtons = {
+      activations: [
+        {
+          icon: "ban",
+          label: "invalidate",
+          title: t("dashboard_actionButtons_invalidate"),
+        },
+      ],
+      users: [
+        {
+          icon: "trash",
+          label: "delete",
+          title: t("dashboard_actionButtons_delete"),
+        },
+        {
+          icon: "key",
+          label: "password",
+          title: t("dashboard_actionButtons_password"),
+        },
+      ],
+      applications: [
+        {
+          icon: "eye",
+          label: "view",
+          title: t("dashboard_actionButtons_view"),
+        },
+        {
+          icon: "trash",
+          label: "delete",
+          title: t("dashboard_actionButtons_delete"),
+        },
+      ],
+      bundles: [
+        {
+          icon: "eye",
+          label: "view",
+          title: t("dashboard_actionButtons_view"),
+        },
+        {
+          icon: "trash",
+          label: "delete",
+          title: t("dashboard_actionButtons_delete"),
+        },
+      ],
+    };
     const addActions = {
-      Header: "Actions",
+      Header: t("dashboard_column_actions"),
       accessor: customIDs(),
       filterable: false,
       sortable: false,
@@ -200,7 +225,7 @@ class FacilitatorList extends React.Component {
                       data-data={row.row}
                       className={`fa fa-${b.icon} action pointer`}
                       onClick={(e) => this.clickHandler(e)}
-                      title={b.label}
+                      title={b.title}
                     />
                   ) : (
                     ""
@@ -213,6 +238,7 @@ class FacilitatorList extends React.Component {
       },
     };
 
+    const listSchema = listSchemas(t);
     const newSchema = _.concat(listSchema[path], addActions);
 
     if (authStore.token === "") {
@@ -223,7 +249,7 @@ class FacilitatorList extends React.Component {
         {redirect ? <Redirect to={redirect} /> : ""}
         {loaded === null ? (
           <div className="center">
-            <h1>LOADING</h1>
+            <h1>t('dashboard_loading')</h1>
           </div>
         ) : (
           <div>
@@ -242,7 +268,7 @@ class FacilitatorList extends React.Component {
                       type="button"
                       onClick={(e) => this.export2Csv(e)}
                     >
-                      Export
+                      {t("dashboard_button_export")}
                       <i className="fa fa-table ml2" />
                     </button>
                   ) : (
@@ -258,7 +284,8 @@ class FacilitatorList extends React.Component {
                       }`}
                       className="create pointer right ttu f6 b self-end pv2 ph3 white bg-primary-color mb2 ba b--very-ver-light link"
                     >
-                      <i className="fa fa-plus-circle" /> Create
+                      <i className="fa fa-plus-circle" />
+                      {t("dashboard_button_create")}
                     </Link>
                   ) : (
                     ""
@@ -291,7 +318,7 @@ class FacilitatorList extends React.Component {
                 />
               ) : (
                 <div className="text-center mt4 bt b--very-ver-light f4 pt3">
-                  No {path} found
+                  {t("dashboard_no_found")}
                 </div>
               )}
             </div>
@@ -306,4 +333,4 @@ FacilitatorList.propTypes = {
   list: PropTypes.object,
 };
 
-export default withRouter(view(FacilitatorList));
+export default withRouter(withTranslation()(view(FacilitatorList)));

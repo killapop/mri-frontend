@@ -1,16 +1,17 @@
-import { store } from '@risingstack/react-easy-state';
+import { store } from "@risingstack/react-easy-state";
 
 const authStore = store({
-  token: '',
+  token: "",
   user: {},
   activeList: {
-    title: 'Users',
-    slug: 'users'
-  }
+    title: "Users",
+    slug: "users",
+  },
+  language: "",
 });
 
 const messages = store({
-  messages: []
+  messages: [],
 });
 
 export { authStore, messages };

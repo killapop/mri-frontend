@@ -1,54 +1,60 @@
-import React from 'react';
-import { Redirect, Link } from 'react-router-dom';
-import { view } from '@risingstack/react-easy-state';
-import SmallBox from '../common/smallBox';
-import { authStore } from '../../lib/store';
-import { apiCall } from '../../lib/api-calls';
-import { add as addMessage } from '../../lib/message';
+import React from "react";
+import { Redirect, Link } from "react-router-dom";
+import { view } from "@risingstack/react-easy-state";
+import SmallBox from "../common/smallBox";
+import i18n from "../../i18n.js";
+import { withTranslation } from "react-i18next";
+import { authStore } from "../../lib/store";
+import { apiCall } from "../../lib/api-calls";
+import { add as addMessage } from "../../lib/message";
 
 class DeleteUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       applications: null,
-      deleted: false
+      deleted: false,
     };
     this.delete = this.delete.bind(this);
   }
 
   async componentDidMount() {
-    const applications = await apiCall('GET', '/applications', '', true);
-    this.setState(state => ({
+    const applications = await apiCall("GET", "/applications", "", true);
+    this.setState({
       applications: applications.filter(
-        application =>
+        (application) =>
           application.account.email === this.props.match.params.email
-      ).length
-    }));
+      ).length,
+    });
     console.log(this.state.applications);
   }
 
   async delete() {
-    await apiCall('DELETE', '/users/' + this.props.match.params.email, '', true)
-      .then(statusCode => {
+    await apiCall("DELETE", "/users/" + this.props.match.params.email, "", true)
+      .then((statusCode) => {
         if (statusCode === 204) {
-          this.setState(state => ({
-            deleted: true
-          }));
+          this.setState({
+            deleted: true,
+          });
           addMessage(
-            'success',
-            `User account for ${this.props.match.params.email} has been deleted`
+            "success",
+            i18n.t("message_deleted_confirmation", {
+              who: this.props.match.params.email,
+            })
           );
         } else {
-          addMessage('danger', 'There was an error deleting the account.');
+          addMessage("danger", i18n.t("message_deleted_error"));
         }
       })
-      .catch(err => {
-        addMessage('danger', 'There was an error deleting the account.');
+      .catch((err) => {
+        console.log(err);
+        addMessage("danger", i18n.t("message_deleted_error"));
       });
   }
 
   render() {
-    if (authStore.token === '' || this.state.deleted) {
+    const { t } = this.props;
+    if (authStore.token === "" || this.state.deleted) {
       return <Redirect to="/" />;
     }
     return (
@@ -56,31 +62,31 @@ class DeleteUser extends React.Component {
         {this.state.applications ? (
           <div>
             <h3>
-              The user {this.props.match.params.email} has{' '}
-              {this.state.applications} application forms and cannot be deleted.
+              {t("delete_user_count", {
+                who: this.props.match.params.email,
+                how_many: this.state.applications,
+              })}
             </h3>
           </div>
         ) : (
           <div>
             <h3>
-              Are you sure you want to delete the account for user -{' '}
-              {this.props.match.params.email}
+              {t("delete_user_confirm_message", {
+                who: this.props.match.params.email,
+              })}
             </h3>
-            <h3 className="red">
-              {' '}
-              Please note: This step cannot be reversed so proceed with caution.
-            </h3>
+            <h3 className="red">{t("delete_user_warning")}</h3>
             <input
               className="form-control"
               type="button"
-              value="Yes. I am sure!"
+              value={t("delete_user_confirm_button")}
               onClick={this.delete}
             />
           </div>
         )}
-        <Link to="/dashboard">Cancel and return to the dashboard</Link>
+        <Link to="/dashboard">{t("common_cancel_return")}</Link>
       </SmallBox>
     );
   }
 }
-export default view(DeleteUser);
+export default withTranslation()(view(DeleteUser));

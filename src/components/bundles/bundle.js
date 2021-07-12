@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect, Link } from "react-router-dom";
 import { Sticky } from "react-sticky";
-import { view } from "@risingstack/react-easy-state";
+import { view } from '@risingstack/react-easy-state';
 import Reactahead from "reactahead";
 import moment from "moment";
 import _ from "lodash";

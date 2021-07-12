@@ -1,13 +1,12 @@
-/* eslint:disable no-unused-expresions */
 import React from "react";
 import { Redirect, Link } from "react-router-dom";
 import _ from "lodash";
-import { view } from "@risingstack/react-easy-state";
+import { withTranslation } from "react-i18next";
 import Badges from "./badges";
 import FacilitatorList from "./list";
 import UserList from "./userList";
 import { authStore } from "../../lib/store";
-
+import { view } from "@risingstack/react-easy-state";
 import "./dashboard.css";
 
 class Dashboard extends React.Component {
@@ -21,9 +20,9 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     if (authStore.currentRole) {
-      this.setState((state) => ({
+      this.setState({
         activeBadge: this.isStaff(),
-      }));
+      });
     }
   }
 
@@ -33,7 +32,7 @@ class Dashboard extends React.Component {
 
   badgeChangeHandler(e) {
     e.persist();
-    this.setState((state) => ({ activeBadge: e.target.id }));
+    this.setState({ activeBadge: e.target.id });
   }
 
   sluggify(s) {
@@ -41,6 +40,7 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    const { t } = this.props;
     if (authStore.token === "") {
       return <Redirect to="/users/login" />;
     }
@@ -48,11 +48,13 @@ class Dashboard extends React.Component {
     return (
       <div className="w-90 w-80-l center pa4-ns p3">
         <div className="title pb0 flex justify-start flex-column flex-row-l">
-          Dashboard
-          <div className="meta">Logged in as: {authStore.user.email}</div>
+          {t("navbar_dashboard")}
+          <div className="meta">
+            {t("dashboard_logged_in_as", { who: authStore.user.email })}
+          </div>
           <Link className="meta" to={`/users/password/${authStore.user.email}`}>
             <i className="fa fa-key" />
-            Change password
+            {t("dashboard_change_password")}
           </Link>
         </div>
         {this.isStaff() ? <Badges /> : ""}
@@ -62,4 +64,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default view(Dashboard);
+export default withTranslation()(view(Dashboard));

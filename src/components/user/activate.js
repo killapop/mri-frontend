@@ -1,17 +1,19 @@
-import React from 'react';
-import Form from 'react-jsonschema-form';
-import SmallBox from '../common/smallBox';
-import { apiCall } from '../../lib/api-calls';
-import { add as addMessage } from '../../lib/message';
+import React from "react";
+import Form from "react-jsonschema-form";
+import { withTranslation } from "react-i18next";
+import i18n from "../../i18n.js";
+import SmallBox from "../common/smallBox";
+import { apiCall } from "../../lib/api-calls";
+import { add as addMessage } from "../../lib/message";
 
-import { activate } from '../../schema/user';
+import { activate } from "../../schema/user";
 
 class ActivateUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       activated: false,
-      user: ''
+      user: "",
     };
     this.activate = this.activate.bind(this);
     this.validate = this.validate.bind(this);
@@ -19,7 +21,7 @@ class ActivateUser extends React.Component {
 
   validate(formData, errors) {
     if (formData.pass1 !== formData.pass2) {
-      errors.pass2.addError("Passwords don't match");
+      errors.pass2.addError(i18n.t("error_matching_passwords"));
     }
     return errors;
   }
@@ -29,53 +31,54 @@ class ActivateUser extends React.Component {
       password: formData.password,
       account: {
         name: formData.name,
-        password: formData.pass1
-      }
+        password: formData.pass1,
+      },
     };
 
     await apiCall(
-      'POST',
-      '/activations/' + this.props.match.params.token,
+      "POST",
+      "/activations/" + this.props.match.params.token,
       JSON.stringify(body),
       false
     )
-      .then(result => {
+      .then((result) => {
         if (result === 204) {
-          this.setState(state => ({
-            activated: true
-          }));
-          addMessage('success', 'Activation successful');
+          this.setState({
+            activated: true,
+          });
+          addMessage("success", i18n.t("message_activation_successful"));
         }
       })
-      .catch(err => {
-        addMessage(
-          'warning',
-          'Something went wrong while activating this account. Please ensure the data you entered is correct'
-        );
+      .catch((err) => {
+        console.log(err);
+        addMessage("warning", i18n.t("message_error_activation"));
       });
   }
 
   render() {
+    const { t } = this.props;
+    const activateForm = activate(t);
     return (
       <SmallBox>
         {this.state.activated ? (
           <div>
-            <h1>Activated!</h1>
+            <h1>{t("activated_title")}!</h1>
             <div className="f4">
-              Your account has been activated.
-              <a href="/">login now</a>
+              {t("activated_confirmation")}.
+              <a href="/">{t("activated_login")}</a>
             </div>
           </div>
         ) : (
           <Form
-            schema={activate.schema}
-            uiSchema={activate.uiSchema}
+            schema={activateForm.schema}
+            uiSchema={activateForm.uiSchema}
             onSubmit={this.activate}
             validate={this.validate}
-            method="POST">
+            method="POST"
+          >
             <div className="form-actions form-group flex justify-end">
               <button type="submit">
-                {activate.schema.submitButton}
+                {activateForm.schema.submitButton}
                 <i className="fa fa-user-plus ml2" />
               </button>
             </div>
@@ -85,4 +88,4 @@ class ActivateUser extends React.Component {
     );
   }
 }
-export default ActivateUser;
+export default withTranslation()(ActivateUser);
