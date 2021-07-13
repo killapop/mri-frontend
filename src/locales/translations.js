@@ -4,6 +4,8 @@ import { translation as es_translation } from "./es/translation.js";
 import { form as es_form } from "./es/form.js";
 import { translation as fr_translation } from "./fr/translation.js";
 import { form as fr_form } from "./fr/form.js";
+import { translation as de_translation } from "./de/translation.js";
+import { form as de_form } from "./de/form.js";
 
 export const languages = [
   {
@@ -24,6 +26,12 @@ export const languages = [
     rtl: false,
     icon: "",
   },
+  {
+    code: "de",
+    title: "Deutsch",
+    rtl: false,
+    icon: "",
+  },
 ];
 
 export const resources = {
@@ -38,5 +46,9 @@ export const resources = {
   es: {
     translation: es_translation,
     form: es_form,
+  },
+  de: {
+    translation: de_translation,
+    form: de_form,
   },
 };
