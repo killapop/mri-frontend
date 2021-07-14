@@ -446,7 +446,6 @@ class Application extends React.Component {
       const formToFetch = allForms[form.form.split(".")[0].replace("-", "_")](
         t
       );
-      console.log(formToFetch);
       _.merge(formData, {
         template: formToFetch,
       });
@@ -457,7 +456,6 @@ class Application extends React.Component {
           }`,
         });
       }
-      console.log(formData);
     }
 
     const tabs = [
@@ -492,6 +490,17 @@ class Application extends React.Component {
           return <History history={history} />;
       }
     };
+
+    const HTMLDescriptionField = (props) => {
+      return (
+        <div
+          id={props.id}
+          className="field-description"
+          dangerouslySetInnerHTML={{ __html: props.description }}
+        ></div>
+      );
+    };
+    const customFields = { DescriptionField: HTMLDescriptionField };
 
     return (
       <>
@@ -543,6 +552,7 @@ class Application extends React.Component {
                 noValidate={noValidate}
                 noHtml5Validate={noValidate}
                 onSubmit={this.formSubmitHandler}
+                fields={customFields}
               >
                 <div className="form-actions form-group flex justify-between">
                   <Clock />
