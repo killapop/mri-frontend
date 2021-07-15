@@ -64,6 +64,33 @@ body {
 .section:nth-of-type(2n + 2) {
   background-color: var(--white);
 }
+.array-item {
+  display: flex;
+  width: 100%;
+}
+.array-item .col-xs-9 {
+  flex-grow: 1;
+}
+.array-item .col-xs-3 {
+  display: flex;
+  align-items: flex-start;
+}
+
+i.glyphicon {
+  display: none;
+}
+.btn-add::after {
+  content: "Add +";
+}
+.array-item-move-up::after {
+  content: "Move Up";
+}
+.array-item-move-down::after {
+  content: "Move Down";
+}
+.array-item-remove::after {
+  content: "Remove x";
+}
 
 @media screen and (min-width: 60em) {
   .main {

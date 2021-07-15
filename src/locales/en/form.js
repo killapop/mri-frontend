@@ -290,4 +290,89 @@ export const form = {
     "If you are entitled to deduct input tax in accordance with § 15 of the Value Added Tax Act, only net prices without VAT may be budgeted.",
   PP_1_applicant_deduct_title:
     "If so, do you use this option to deduct input tax?",
+
+  // Project description
+  PP_1_project_title: "3. Project description",
+  PP_1_project_scholar_title: "Information on the scholarship holder",
+  PP_1_project_family_title:
+    "Family members traveling with the scholarship holder",
+  PP_1_project_family_description:
+    "If family members plan to travel with the scholarship holder, please provide the following information.",
+  PP_1_project_spouse_title: "Spouse",
+  PP_1_project_children_title: "Children (<18 years)",
+  PP_1_project_children_name: "Last name, First name",
+  PP_1_project_children_age: "Age",
+  PP_1_project_description_title:
+    "Please describe your project using the prompts below. Please note that good project planning should, above all, be needs-oriented, goal-oriented, sustainable and coherent.",
+  PP_1_project_current_situation_title: "3.1. Current situation",
+  PP_1_project_current_situation_description:
+    "Please describe how you know the artist/cultural worker and explain why you would like to support/work with him or her. Explain how the contact came about and describe your relationship. Please refer to the potential scholarship holder’s artistic/cultural work (and the relevance it has) and, as far as possible, the concrete needs (e.g. due to the current risk) of the potential scholarship holder.",
+  PP_1_project_goals_title: "3.2. Project goals",
+  PP_1_project_relocation_title:
+    "3.2.1. Organisation of the temporary relocation",
+  PP_1_project_relocation_description:
+    "A mandatory goal of the project is to ensure that the scholarship holder is temporarily out of the risk context and safe. The measures and output indicators listed below must therefore be implemented/achieved as a result of the project. Please explain in the field below how you are planning to implement those measures and any experience you may already have in this regard.<br/><br/>Please explain how you are planning to implement the above-mentioned measures and any experience you may already have in this regard.",
+  PP_1_project_continuation_title:
+    "3.2.2. Continuation of the artistic/cultural work and professional development",
+  PP_1_project_continuation_description:
+    "Please define an individual project goal (to be achieved during the scholarship period) with regard to the continuation of the artistic/cultural work and professional development of the potential scholarship holder. Derive concrete activities (please use bullet points and provide a time schedule) and specify success indicators (qualitative and/or quantitative indicators support measurement and reporting of the project goals).<br/><br/><b>Please note:</b> Please indicate which activities you are budgeting for in the financial plan. Activities which are not funded through this project must be indicated and explained.",
+  PP_1_project_continuation_goals_title: "Goal(s)",
+  PP_1_project_continuation_activities_title: "Activities",
+  PP_1_project_continuation_success_title: "Success indicators",
+  PP_1_project_after_title: "3.2.3 After the scholarship/exit strategy",
+  PP_1_project_after_description:
+    "Please define a realistic goal (or goals) for time after the scholarship period (exit strategy). Derive concrete activities (please use bullet points, incl. time schedule) and specify success indicators to reach the goal(s) (qualitative and/or quantitative indicators support measurement and reporting of the project goals). <br/><br/><b>Please note:</b> Please flag measures you are budgeting for in the financial plan. Measures which are not funded through this project must be indicated and explained.",
+  PP_1_project_after_goals_title: "Goal(s)",
+  PP_1_project_after_activities_title: "Activities",
+  PP_1_project_after_success_title: "Success indicators",
+  PP_1_project_impact_title: "3.3. Impact",
+  PP_1_project_impact_description:
+    "Please describe to what extent a positive societal impact (in the scholarship holder's home or host country) can be expected as a result of the project?",
+  PP_1_project_fit_title: "3.4. Professional fit",
+  PP_1_project_fit_description:
+    "To what extent is your organisation able to support the continuation of the artistic/cultural work of the scholarship holder (e.g. professional expertise, integration into the organisation, mentoring schemes, work spaces, networks, further financing opportunities for artistic/cultural productions/projects).",
+  PP_1_project_support_title: "3.5. Personal support and integration",
+  PP_1_project_support_description:
+    "How do you plan to ensure ongoing integration of the scholarship holder in their new place of residence. How will you provide relevant support for them during the project period? Address specific needs (e.g. psychosocial support), if possible.",
+  PP_1_project_security_title: "3.6. Security",
+  PP_1_project_security_description:
+    "What security policies do you follow; what security measures do you already implement or plan to implement (e.g. secure communication, data security, confidentiality)? ",
+  PP_1_project_risks_title: "3.7. Risks",
+  PP_1_project_risks_description:
+    "What risks or other negative unintended impacts could influence the project goals? How can these risks be minimised or mitigated? If applicable, also name possible positive unintended impacts. (Please note that this is primarily about the non-implementation of measures or non-achievement of goals/indicators).",
+
+  // Expenditure and Financing plan
+  PP_1_expenditure_title: "4. Expenditure and financing plan",
+  PP_1_expenditure_description:
+    "The expenditure and financing plan presents a detailed statement of the income and expenditure used to achieve the purpose of the grant. Only the form provided should be used for this purpose. Own or third-party funds and third-party grants are to be presented numerically and will be considered binding. The Martin Roth-Initiative will decide the eligibility of the budgeted expenses on a case-by-case basis.<br/><br/>Each budgeted activity as well as any other budgeted expenditures are checked for necessity, economic efficiency, thrift and proportionality. The MRI requires sufficient breakdown and explanation of budgeted figures.<br/><br/>If the total expenditures of the applicant organisation are predominantly financed by grants or subsidies from the public sector, the applicant organisation may not include in the budget personnel with a higher salary than that of comparable federal civil servants (Prohibition against Unwarranted Financial Enrichment / Besserstellungsverbot). Higher salaries and additional benefits outside of those stipulated in the Federal Civil Service Pay Scale (Tarifvertrag für den öffentlichen Dienst/TVöD) may not be granted.",
+
+  // Declaration
+  PP_1_declaration_title: "5. Declaration by the applicant organisation",
+  PP_1_declaration_1:
+    "The applicant organisation hereby commits to assume the legal requirements of the scholarship - in particular with regard to the scholarship holder’s visa process - in due time, responsibly, and in close consultation with MRI. The applicant organisation also commits to handle residence and labour law matters in a responsible manner.",
+  PP_1_declaration_2:
+    "The applicant organisation hereby commits to acting in accordance with and in consideration of the interests of the scholarship holder and ensuring the confidentiality of their employees. All press and publicity activities must be closely coordinated with the scholarship holder and the Martin Roth-Initiative prior to being carried out.",
+  PP_1_declaration_3:
+    "The applicant organisation hereby confirms that the project has not yet started or has not yet been carried out.",
+  PP_1_declaration_4:
+    "The applicant organisation hereby guarantees the appropriate use of funds provided by the MRI.",
+  PP_1_declaration_5:
+    "The applicant organisation commits to immediately contacting the Martin Roth-Initiative in the case of unexpected events, foreseeable risks or arising concerns related to the project. ",
+  PP_1_declaration_6:
+    "The applicant organisation hereby confirms that it does not question Israel's right to exist, nor does/will the applicant organisation or this project call for the boycott of Israel in any way, nor will the applicant organisation and/or the project actively support the BDS movement. Funding from the Federal Foreign Office does not permit support for organisations and projects that question Israel's right to exist, call for a boycott of Israel, or carry out activities in support of the BDS movement. This refers to the resolution of the German Bundestag (https://www.bundestag.de/dokumente/textarchiv/2019/kw20-de-bds-642892)",
+  PP_1_declaration_7:
+    "You hereby confirm that you and the persons indicated by you have duly received and noted the privacy information (https://martin-roth-initiative.de/en/application#pid-112) and dagree with the intended use of data as described.",
+  PP_1_declaration_8: "",
+  PP_1_declaration_documents_title:
+    "The following documents are attached to the application",
+  PP_1_declaration_documents_1:
+    "Personal statement (if not already available to the MRI).",
+  PP_1_declaration_documents_2: "Expenditure and financing plan (mandatory)",
+  PP_1_declaration_documents_3: "Proof of registration (mandatory)",
+  PP_1_declaration_documents_4:
+    "Articles of incorporation /rules of procedure (if available, otherwise mission statement)",
+  PP_1_declaration_documents_5:
+    "Annual or financial reports for the last three years (mandatory)",
+  PP_1_declaration_additional_information:
+    "Is there anything else you would like to tell us? Please use this field",
 };

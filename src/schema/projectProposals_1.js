@@ -438,7 +438,6 @@ export const projectProposals_1 = (t) => {
             deduct: {
               type: "string",
               title: t("form:PP_1_applicant_deduct_title"),
-              description: t("form:PP_1_applicant_deduct_description"),
               enum: [1, 0],
               enumNames: [t("form:common_yes"), t("form:common_no")],
             },
@@ -448,217 +447,240 @@ export const projectProposals_1 = (t) => {
             },
           },
         },
-        scholarship_holder: {
+        project_description: {
           type: "object",
-          title: "3. Information on the scholarship holder",
+          title: t("form:PP_1_project_title"),
           properties: {
-            title_name_function: {
-              $ref: "#/definitions/title_name_function",
+            scholarship_holder: {
+              type: "object",
+              title: t("form:PP_1_project_scholar_title"),
+              properties: {
+                title_name_function: {
+                  $ref: "#/definitions/title_name_function",
+                },
+                signal: {
+                  type: "string",
+                  title: t("form:common_signal"),
+                },
+                protonmail: {
+                  type: "string",
+                  title: t("form:common_protonmail"),
+                },
+              },
             },
-            known_from: {
-              type: "string",
-              title: "Woher kennen Sie den*die Stipendiat*in?",
-              maxLength: 500,
+            family: {
+              type: "object",
+              title: t("form:PP_1_project_family_title"),
+              description: t("form:PP_1_project_family_description"),
+              properties: {
+                spouse: {
+                  type: "object",
+                  title: t("form:PP_1_project_spouse_title"),
+                  properties: {
+                    first_name: {
+                      type: "string",
+                      title: t("form:common_first_name"),
+                    },
+                    last_name: {
+                      type: "string",
+                      title: t("form:common_last_name"),
+                    },
+                    telephone: {
+                      type: "string",
+                      title: t("form:common_telephone"),
+                    },
+                    email: { type: "string", title: t("form:common_email") },
+                  },
+                },
+                children: {
+                  title: t("form:PP_1_project_children_title"),
+                  type: "array",
+                  items: {
+                    type: "object",
+                    properties: {
+                      name: {
+                        type: "string",
+                        title: t("form:PP_1_project_children_name"),
+                      },
+                      age: {
+                        type: "number",
+                        format: "updown",
+                        title: t("form:PP_1_project_children_age"),
+                      },
+                    },
+                  },
+                },
+              },
             },
-            relevance: {
-              type: "string",
-              title:
-                "Begründen Sie bitte, warum Sie mit der Stipendiatin*dem Stipendiaten zusammenarbeiten möchten? Bitte gehen Sie dabei auf das künstlerische/kulturelle Schaffen (und die Relevanz dieses Schaffens) der Person ein und warum die Zusammenarbeit einen Mehrwert für Ihre Institution und/oder die kulturelle Szene, in der Sie tätig sind, bedeutet.",
-              maxLength: 2000,
+            full_description: {
+              type: "object",
+              title: t("form:PP_1_project_description_title"),
+              properties: {
+                current_situation: {
+                  type: "string",
+                  title: t("form:PP_1_project_current_situation_title"),
+                  description: t(
+                    "form:PP_1_project_current_situation_description"
+                  ),
+                },
+                project_goals: {
+                  type: "object",
+                  title: t("form:PP_1_project_goals_title"),
+                  properties: {
+                    relocation: {
+                      type: "string",
+                      title: t("form:PP_1_project_relocation_title"),
+                      description: t(
+                        "form:PP_1_project_relocation_description"
+                      ),
+                    },
+                    continuation: {
+                      type: "object",
+                      title: t("form:PP_1_project_continuation_title"),
+                      description: t(
+                        "form:PP_1_project_continuation_description"
+                      ),
+                      properties: {
+                        goals: {
+                          type: "string",
+                          title: t(
+                            "form:PP_1_project_continuation_goals_title"
+                          ),
+                        },
+                        activities: {
+                          type: "string",
+                          title: t(
+                            "form:PP_1_project_continuation_activities_title"
+                          ),
+                        },
+                        success: {
+                          type: "string",
+                          title: t(
+                            "form:PP_1_project_continuation_success_title"
+                          ),
+                        },
+                      },
+                    },
+                    after: {
+                      type: "object",
+                      title: t("form:PP_1_project_after_title"),
+                      description: t("form:PP_1_project_after_description"),
+                      properties: {
+                        goals: {
+                          type: "string",
+                          title: t("form:PP_1_project_after_goals_title"),
+                        },
+                        activities: {
+                          type: "string",
+                          title: t("form:PP_1_project_after_activities_title"),
+                        },
+                        success: {
+                          type: "string",
+                          title: t("form:PP_1_project_after_success_title"),
+                        },
+                      },
+                    },
+                    impact: {
+                      type: "string",
+                      title: t("form:PP_1_project_impact_title"),
+                      description: t("form:PP_1_project_impact_description"),
+                    },
+                    fit: {
+                      type: "string",
+                      title: t("form:PP_1_project_fit_title"),
+                      description: t("form:PP_1_project_fit_description"),
+                    },
+                    support: {
+                      type: "string",
+                      title: t("form:PP_1_project_support_title"),
+                      description: t("form:PP_1_project_support_description"),
+                    },
+                    security: {
+                      type: "string",
+                      title: t("form:PP_1_project_security_title"),
+                      description: t("form:PP_1_project_security_description"),
+                    },
+                    risks: {
+                      type: "string",
+                      title: t("form:PP_1_project_risks_title"),
+                      description: t("form:PP_1_project_risks_description"),
+                    },
+                  },
+                },
+              },
             },
           },
         },
-        background_information: {
+        expenditure: {
           type: "object",
-          title:
-            "4. HINTERGRUNDINFORMATIONEN ZUR ANTRAGSTELLENDEN ORGANISATION UND ZU PARTNERORGANISATIONEN",
-          properties: {
-            brief_description: {
-              type: "string",
-              title: "4.1. Kurzbeschreibung",
-              format: "textarea",
-              maxLength: 2500,
-              description:
-                "Bitte stellen Sie Ihre Organisation und Ihre Partnerorganisation(en) dar (Tätigkeitsfelder, bisherige Aktivitäten und deren Finanzierung/Projektförderung, Struktur und Personal)",
-            },
-            use_of_funds: {
-              type: "string",
-              title: "4.2. Mittelverwendung und Abrechnung",
-              format: "textarea",
-              maxLength: 500,
-              description:
-                "Wie gewährleisten Sie die ordnungsgemäße Verwendung und Abrechnung der beantragten Förderung (BHO, Buchhaltung, 4-Augen Prinzip etc.)?",
-            },
-          },
+          title: t("form:PP_1_expenditure_title"),
+          description: t("form:PP_1_expenditure_description"),
+          properties: {},
         },
-        project_planning: {
+        declaration: {
           type: "object",
-          title: "5. PROJEKTPLANUNG",
-          description:
-            "Bitte stellen Sie das geplante Vorhaben vor und verdeutlichen Sie, wie genau die Stipendiatin*der Stipendiat Ihre Institution eingebunden werden soll. Gehen Sie bitte auch kurz auf die Rolle möglicher Partnerorganisationen ein.",
+          title: t("form:PP_1_declaration_title"),
           properties: {
-            project_goal: {
-              type: "string",
-              title: "5.1. Projektziel",
-              format: "textarea",
-              maxLength: 500,
-              description:
-                "Beschreiben Sie das konkrete Ziel, das mit dem Projekt erreicht werden soll.",
-            },
-            measures_and_activities: {
-              type: "string",
-              title: "5.2. Maßnahmen und Aktivitäten",
-              format: "textarea",
-              maxLength: 2500,
-              description:
-                "Welche konkreten Projektmaßnahmen sollen durchgeführt werden, um das Ziel zu erreichen (inkl. jeweiliger Schritte, Weichenstellungen, Meilensteine)?",
-            },
-            indicators: {
-              type: "string",
-              title: "5.3. Indikatoren",
-              format: "textarea",
-              maxLength: 1500,
-              description:
-                "Anhand welcher Kriterien soll der Erfolg dieses Projektes belegt/gemessen werden?",
-            },
-            impact: {
-              type: "string",
-              title: "5.4. Wirkung",
-              format: "textarea",
-              maxLength: 1000,
-              description:
-                "Bitte beschreiben Sie, welche nachhaltige Wirkung Sie mit dem Projekt erzielen möchten.",
-            },
-            risks_side_effects: {
-              type: "string",
-              title: "5.5. Risiken/Nebeneffekte",
-              format: "textarea",
-              maxLength: 1000,
-              description:
-                "Welche Risiken und unerwünschten Nebeneffekte können Projektziel und Wirkungen beeinträchtigen? Wie können diese Risiken minimiert werden? Benennen Sie ggf. auch mögliche positive Nebeneffekte.",
-            },
-          },
-        },
-        protection_support_concept: {
-          type: "object",
-          title: "6. SCHUTZ- UND BEGLEITKONZEPT FÜR STIPENDIAT*INNEN",
-          description:
-            "Bitte stellen Sie das Konzept Ihrer Institution für Betreuung, Sicherheit, Rückkehr/Integration, etc. dar. Beschreiben Sie ggf. die Rolle und den Mehrwert Ihrer Partnerorganisationen, sofern Sie dies nicht bereits unter Projektplanung aufgeführt haben.",
-          properties: {
-            supervision_support: {
-              type: "string",
-              title: "6.1. Betreuung und Unterstützung",
-              format: "textarea",
-              maxLength: 2000,
-              description:
-                "Wie gewährleisten Sie die fortlaufende Betreuung während der Projektlaufzeit? Nehmen Sie ggf. Bezug zu spezifischen Unterstützungsbedarfen.",
-            },
-            integration: {
-              type: "string",
-              title: "6.2. Integration in die Gastinstitution",
-              format: "textarea",
-              maxLength: 2000,
-              description:
-                "Bitte beschreiben Sie, inwiefern der*die Stipendiat*in über das Potenzial verfügt, sich in den Betrieb der Gastinstitution zu integrieren.",
-            },
-            couselling_oppotunities: {
-              type: "string",
-              title:
-                "6.3. Beratungsangebote im Bereich der beruflichen Orientierung",
-              format: "textarea",
-              maxLength: 2000,
-              description:
-                "Welche Beratungsangebote stellt Ihre Einrichtung der*dem Stipendiatin*en im Hinblick auf die weitere berufliche Orientierung (innerhalb oder außerhalb des Kulturbetriebs) für die Zeit nach Ablauf des Stipendiums zur Verfügung? (Wenn bereits unter Projektplanung, genügt ein Verweis)",
-            },
-            period_after: {
-              type: "string",
-              title: "6.4. Zeit nach Ablauf der Förderung",
-              format: "textarea",
-              maxLength: 1500,
-              description:
-                "Welche Möglichkeiten sehen Sie, der*dem Stipendiatin*en Orientierung für die Zeit nach Ablauf der Förderung zu geben?",
-            },
-            safety_measures: {
-              type: "string",
-              title: "6.5.1 Sicherheit",
-              format: "textarea",
-              maxLength: 2000,
-              description:
-                "Welche grundlegenden Sicherheitsmaßnahmen (etwa sichere Kommunikation, Datensicherheit, Vertraulichkeit etc.) planen Sie umzusetzen?",
-            },
-            safety_protocols: {
-              type: "string",
-              title: "6.5.2 Sicherheitsprotkollen",
-              format: "textarea",
-              maxLength: 1500,
-              description:
-                "Haben Sie bereits erste Schritte zur Erarbeitung von Sicherheitsprotokollen unternommen? Wenn ja, welche?",
-            },
-            integrations: {
-              type: "string",
-              title: "6.6. Integration in Deutschland",
-              format: "textarea",
-              maxLength: 2000,
-              description:
-                "Bitte beschreiben Sie Ideen, Ziele und Maßnahmen, die zu einer gelungenen Integration der*des Stipendiatin*en in Deutschland beitragen sollen.",
-            },
-            return: {
-              type: "string",
-              title: "6.7. Rückkehr ins Heimatland",
-              format: "textarea",
-              maxLength: 2000,
-              description:
-                "Bitte beschreiben Sie ggf. Ideen, Ziele und Maßnahmen, die eine sichere Rückkehr ins Heimatland mit nachhaltiger Zukunftsperspektive unterstützen sollen.",
-            },
-            public_relations: {
-              type: "string",
-              title: "6.8. Öffentlichkeitsarbeit",
-              format: "textarea",
-              maxLength: 2000,
-              description:
-                "Es ist möglich, dass es zu widerstrebenden Interessen mit Blick auf einerseits Schutzbedürfnis von Stipendiat*innen und andererseits Bedürfnis nach Öffentlichkeitsarbeit kommt. Wie gehen Sie mit einer solchen Situation um? Wie berücksichtigen Sie die Interessen von Stipendiat*innen?",
-            },
-          },
-        },
-        other: {
-          type: "object",
-          title: "7. SONSTIGES",
-          properties: {
-            other_1: {
+            declaration_1: {
               type: "boolean",
-              title:
-                "Die antragstellende Institution verpflichtet sich hiermit, sich im Vorfeld des Aufenthalts rechtzeitig und verantwortlich um die Erfüllung der aufenthaltsrechtlichen Voraussetzungen für den Aufenthalt zu kümmern sowie Sorge und Verantwortung für arbeitsrechtliche Belange zu tragen.",
+              title: t("form:PP_1_declaration_1"),
             },
-            other_2: {
+            declaration_2: {
               type: "boolean",
-              title:
-                "Die antragstellende Institution verpflichtet sich hiermit, immer in Absprache und unter Berücksichtigung der Interessen der Stipendiat*innen zu handeln sowie die Vertraulichkeit ihrer Mitarbeitenden zu gewährleisten. Alle Maßnahmen der Presse- und Öffentlichkeitsarbeit müssen im Vorfeld eng mit den Stipendiat*innen und der Martin Roth-Initiative abgesprochen werden.",
+              title: t("form:PP_1_declaration_2"),
             },
-            other_3: {
+            declaration_3: {
               type: "boolean",
-              title:
-                "Das Projekt wurde noch nicht begonnen oder bereits durchgeführt",
+              title: t("form:PP_1_declaration_3"),
             },
-            other_4: {
+            declaration_4: {
               type: "boolean",
-              title:
-                "Eine zweckentsprechende Verwendung der Mittel wird garantiert.",
+              title: t("form:PP_1_declaration_4"),
             },
-            other_5: {
+            declaration_5: {
               type: "boolean",
-              title:
-                "Die Gastinstitution verpflichtet sich, stets gemäß den Interessen der gefährdeten Kulturschaffenden zu handeln. Im Falle unerwarteter Ereignisse, absehbaren Risiken oder auftretender Zweifel verpflichtet sich die Gastinstitution, unverzüglich die Martin Roth-Initiative zu kontaktieren.",
+              title: t("form:PP_1_declaration_5"),
             },
-            other_6: {
+            declaration_6: {
               type: "boolean",
-              title:
-                "Hiermit bestätigen Sie, dass Sie und die von Ihnen angegebenen Personen die Datenschutzhinweise zur Kenntnis genommen haben und mit den beschriebenen Nutzungszwecken einverstanden sind.",
+              title: t("form:PP_1_declaration_6"),
             },
-            other_7: {
+            declaration_7: {
+              type: "boolean",
+              title: t("form:PP_1_declaration_7"),
+            },
+            declaration_documents: {
+              type: "object",
+              title: t("form:PP_1_declaration_documents_title"),
+              properties: {
+                declaration_documents_1: {
+                  type: "boolean",
+                  title: t("form:PP_1_declaration_documents_1"),
+                },
+                declaration_documents_2: {
+                  type: "boolean",
+                  title: t("form:PP_1_declaration_documents_2"),
+                },
+                declaration_documents_3: {
+                  type: "boolean",
+                  title: t("form:PP_1_declaration_documents_3"),
+                },
+                declaration_documents_4: {
+                  type: "boolean",
+                  title: t("form:PP_1_declaration_documents_4"),
+                },
+                declaration_documents_5: {
+                  type: "boolean",
+                  title: t("form:PP_1_declaration_documents_5"),
+                },
+              },
+            },
+            additional_information: {
               type: "string",
-              title:
-                "Möchten Sie uns noch etwas mitteilen? Nutzen Sie hierfür bitte dieses Feld:",
               format: "textarea",
+              maxLength: 3000,
+              rows: 4,
+              title: t("form:PP_1_declaration_additional_information"),
             },
           },
         },
@@ -760,6 +782,104 @@ export const projectProposals_1 = (t) => {
           person_title: {
             "ui:widget": "select",
             "ui:placeholder": "Select one",
+          },
+        },
+      },
+      project_description: {
+        family: {
+          children: {
+            "ui:options": {
+              orderable: false,
+            },
+            items: {
+              classNames: "col-fieldset-2",
+            },
+          },
+        },
+        full_description: {
+          current_situation: {
+            "ui:widget": "textarea",
+            "ui:options": {
+              rows: 4,
+            },
+          },
+          project_goals: {
+            relocation: {
+              "ui:widget": "textarea",
+              "ui:options": {
+                rows: 4,
+              },
+            },
+            continuation: {
+              goals: {
+                "ui:widget": "textarea",
+                "ui:options": {
+                  rows: 4,
+                },
+              },
+              activities: {
+                "ui:widget": "textarea",
+                "ui:options": {
+                  rows: 4,
+                },
+              },
+              success: {
+                "ui:widget": "textarea",
+                "ui:options": {
+                  rows: 4,
+                },
+              },
+            },
+            after: {
+              goals: {
+                "ui:widget": "textarea",
+                "ui:options": {
+                  rows: 4,
+                },
+              },
+              activities: {
+                "ui:widget": "textarea",
+                "ui:options": {
+                  rows: 4,
+                },
+              },
+              success: {
+                "ui:widget": "textarea",
+                "ui:options": {
+                  rows: 4,
+                },
+              },
+            },
+            impact: {
+              "ui:widget": "textarea",
+              "ui:options": {
+                rows: 4,
+              },
+            },
+            fit: {
+              "ui:widget": "textarea",
+              "ui:options": {
+                rows: 4,
+              },
+            },
+            support: {
+              "ui:widget": "textarea",
+              "ui:options": {
+                rows: 4,
+              },
+            },
+            security: {
+              "ui:widget": "textarea",
+              "ui:options": {
+                rows: 4,
+              },
+            },
+            risks: {
+              "ui:widget": "textarea",
+              "ui:options": {
+                rows: 4,
+              },
+            },
           },
         },
       },
