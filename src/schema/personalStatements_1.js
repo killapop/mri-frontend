@@ -1,209 +1,290 @@
 export const personalStatements_1 = (t) => {
   return {
     schema: {
-      title: t("form:personal_statement_1_title"),
+      title: t("form:PS_1_title"),
       type: "object",
-      submitButton: "Submit statement",
-      saveButton: "Save",
+      submitButton: t("form:common_submit"),
+      saveButton: t("form:common_save_close"),
       properties: {
         personal_background: {
-          title: "1. PERSONAL BACKGROUNDs",
+          title: t("form:PS_1_personal_background_title"),
           type: "object",
           properties: {
             personal_data: {
               type: "object",
-              title: "1.1. Personal data",
+              title: t("form:PS_1_personal_background_personal_data_title"),
               properties: {
                 title: {
                   type: "string",
-                  title: "Title",
+                  title: t("form:common_title_title"),
                   enum: [1, 2, 3],
-                  enumNames: ["No choice", "Mr.", "Mrs."],
+                  enumNames: [
+                    t("form:common_title_choice_1"),
+                    t("form:common_title_choice_2"),
+                    t("form:common_title_choice_3"),
+                  ],
                 },
                 academic_title: {
                   type: "string",
-                  title: "Academic title",
+                  title: t("form:common_academic_title"),
                 },
                 first_name: {
                   type: "string",
-                  title: "First name",
+                  title: t("form:common_first_name"),
                 },
                 last_name: {
                   type: "string",
-                  title: "Last name",
+                  title: t("form:common_last_name"),
                 },
                 date_of_birth: {
                   type: "string",
                   format: "date",
-                  title: "Date of birth",
+                  title: t("form:common_date_of_birth"),
                 },
                 place_of_birth: {
                   type: "string",
-                  title: "Place of birth",
+                  title: t("form:PS_1_personal_background_place_of_birth"),
                 },
                 nationaity: {
                   type: "string",
-                  title: "Nationality/ ies",
+                  title: t("form:PS_1_personal_background_citizenship"),
+                },
+                residency: {
+                  type: "string",
+                  title: t("form:PS_1_personal_background_residency"),
+                },
+                passport: {
+                  type: "object",
+                  title: "",
+                  properties: {
+                    passport_passport: {
+                      type: "string",
+                      title: t("form:PS_1_personal_background_passport"),
+                      enum: [1, 0],
+                      enumNames: [t("form:common_yes"), t("form:common_no")],
+                    },
+                  },
+                  dependencies: {
+                    passport_passport: {
+                      oneOf: [
+                        {
+                          properties: {
+                            passport_passport: {
+                              enum: [0],
+                            },
+                          },
+                        },
+                        {
+                          properties: {
+                            passport_passport: {
+                              enum: [1],
+                            },
+                            passport_validity: {
+                              type: "string",
+                              format: "date",
+                              title: t(
+                                "form:PS_1_personal_background_passport_validity"
+                              ),
+                            },
+                          },
+                        },
+                      ],
+                    },
+                  },
+                },
+                current_location: {
+                  type: "string",
+                  title: t("form:PS_1_personal_background_current_location"),
+                },
+                current_location_away: {
+                  type: "string",
+                  title: t(
+                    "form:PS_1_personal_background_current_location_away"
+                  ),
+                },
+                residence_status: {
+                  type: "string",
+                  title: t("form:PS_1_personal_background_residence_status"),
+                  description: t(
+                    "form:PS_1_personal_background_residence_status_description"
+                  ),
                 },
               },
             },
             contact: {
               type: "object",
-              title: "1.2. Contact",
+              title: t("form:PS_1_personal_background_contact_title"),
+              description: t(
+                "form:PS_1_personal_background_contact_description"
+              ),
               properties: {
-                address: {
-                  type: "string",
-                  title: "Address",
-                },
-                postal_code: {
-                  type: "string",
-                  title: "Postal code",
-                },
-                city: {
-                  type: "string",
-                  title: "City",
-                },
-                country: {
-                  type: "string",
-                  title: "Country",
-                },
-                residence_status: {
-                  type: "string",
-                  title: "Residence status",
-                  description:
-                    "(citizen, temporary residence permit until …, tourist visa, etc.)",
-                },
                 email: {
                   type: "string",
                   format: "email",
-                  title: "Email",
+                  title: t("form:common_email"),
+                },
+                protonmail: {
+                  type: "string",
+                  title: t("form:common_protonmail"),
                 },
                 telephone: {
                   type: "string",
-                  title: "Telephone",
+                  title: t("form:common_telephone"),
                 },
-                signal: { type: "string", title: "Signal" },
-                wire: { type: "string", title: "Wire" },
-                protonmail: { type: "string", title: "Protonmail" },
-                alternative_address: {
+                signal: { type: "string", title: t("form:common_signal") },
+                wire: { type: "string", title: t("form:common_wire") },
+                other: {
                   type: "string",
-                  title: "Alternative address",
-                  description:
-                    "Where are you currently located and since when have you been there (if not at the address stated above - country, city, institution if applicable)?",
+                  title: t("form:common_contact_other"),
                 },
               },
             },
             emergency_contact: {
               type: "object",
-              title: "1.3. Emergency contact",
+              title: t("form:PS_1_personal_background_emergency_contact_title"),
+              description: t(
+                "form:PS_1_personal_background_emergency_contact_description"
+              ),
               properties: {
                 title: {
                   type: "string",
-                  title: "Title",
+                  title: t("form:common_title_title"),
                   enum: [1, 2, 3],
-                  enumNames: ["No choice", "Mr.", "Mrs."],
+                  enumNames: [
+                    t("form:common_title_choice_1"),
+                    t("form:common_title_choice_2"),
+                    t("form:common_title_choice_3"),
+                  ],
                 },
                 academic_title: {
                   type: "string",
-                  title: "Academic title",
+                  title: t("form:common_academic_title"),
                 },
                 first_name: {
                   type: "string",
-                  title: "First name",
+                  title: t("form:common_first_name"),
                 },
                 last_name: {
                   type: "string",
-                  title: "Last name",
+                  title: t("form:common_last_name"),
                 },
                 country_of_residence: {
                   type: "string",
-                  title: "Country of residence",
+                  title: t("form:common_country"),
                 },
                 email: {
                   type: "string",
-                  title: "Email",
                   format: "email",
+                  title: t("form:common_email"),
                 },
-                telephone_0: {
+                telephone: {
                   type: "string",
-                  title: "Telephone number",
+                  title: t("form:common_telephone"),
                 },
-                telephone_1: {
+                others: {
                   type: "string",
-                  title: "Alternative Telephone numbers",
+                  title: t(
+                    "form:PS_1_personal_background_emergency_contact_others"
+                  ),
                 },
                 languages: {
                   type: "string",
-                  title: "Language(s) of communication",
+                  title: t("form:common_languages_title"),
+                  description: t(
+                    "form:PS_1_personal_background_emergency_languages_description"
+                  ),
                 },
                 relationship: {
                   type: "string",
-                  title: "Relationship",
-                  description: "What is your relationship with this person",
+                  title: t(
+                    "form:PS_1_personal_background_emergency_relationship_title"
+                  ),
+                  description: t(
+                    "form:PS_1_personal_background_emergency_relationship_description"
+                  ),
                 },
               },
             },
             qualification: {
               type: "object",
-              title: "1.4. Academic or professional education",
+              title: t("form:PS_1_personal_background_education_title"),
+              description: t(
+                "form:PS_1_personal_background_education_description"
+              ),
               properties: {
                 institution_0: {
                   type: "object",
-                  title: "Institution 1",
+                  title: `${t(
+                    "form:PS_1_personal_background_education_institution"
+                  )} 1`,
                   properties: {
                     institution: {
                       type: "string",
-                      title: "Institution/Employer/School",
+                      title: t(
+                        "form:PS_1_personal_background_education_institution_title"
+                      ),
                     },
                     duration: {
                       type: "object",
-                      title: "Duration",
+                      title: t(
+                        "form:PS_1_personal_background_education_institution_duration"
+                      ),
                       properties: {
                         from: {
                           type: "string",
                           format: "date",
-                          title: "From",
+                          title: t("form:common_from"),
                         },
                         to: {
                           type: "string",
                           format: "date",
-                          title: "To",
+                          title: t("form:common_to"),
                         },
                       },
                     },
                     degree: {
                       type: "string",
-                      title: "Degree",
+                      title: t(
+                        "form:PS_1_personal_background_education_institution_degree"
+                      ),
                     },
                   },
                 },
                 institution_1: {
                   type: "object",
-                  title: "Institution 2",
+                  title: `${t(
+                    "form:PS_1_personal_background_education_institution"
+                  )} 2`,
                   properties: {
                     institution: {
                       type: "string",
-                      title: "Institution/Employer/School",
+                      title: t(
+                        "form:PS_1_personal_background_education_institution_title"
+                      ),
                     },
                     duration: {
                       type: "object",
-                      title: "Duration",
+                      title: t(
+                        "form:PS_1_personal_background_education_institution_duration"
+                      ),
                       properties: {
                         from: {
                           type: "string",
                           format: "date",
-                          title: "From",
+                          title: t("form:common_from"),
                         },
                         to: {
                           type: "string",
                           format: "date",
-                          title: "To",
+                          title: t("form:common_to"),
                         },
                       },
                     },
                     degree: {
                       type: "string",
-                      title: "Degree",
+                      title: t(
+                        "form:PS_1_personal_background_education_institution_degree"
+                      ),
                     },
                   },
                 },
@@ -211,36 +292,44 @@ export const personalStatements_1 = (t) => {
             },
             career: {
               type: "object",
-              title: "1.5. Professional career",
-              description:
-                "What is your current profession / What were the last professions you worked in?",
+              title: t("form:PS_1_personal_background_career_title"),
+              description: t(
+                "form:PS_1_personal_background_career_description"
+              ),
               properties: {
                 postion_0: {
                   type: "object",
-                  title: "Position 1",
+                  title: `${t(
+                    "form:PS_1_personal_background_career_position"
+                  )} 1`,
                   properties: {
                     position: {
                       type: "string",
-                      title: "Profession/ Position",
+                      title: t(
+                        "form:PS_1_personal_background_career_position_profession"
+                      ),
                     },
                     institution: {
                       type: "string",
-                      title: "Employer/ self-employed",
+                      title: t(
+                        "form:PS_1_personal_background_career_position_employer"
+                      ),
                     },
                     duration: {
                       type: "object",
-                      title:
-                        "During which period did you work in this profession?",
+                      title: t(
+                        "form:PS_1_personal_background_career_position_duration"
+                      ),
                       properties: {
                         from: {
                           type: "string",
                           format: "date",
-                          title: "From",
+                          title: t("form:common_from"),
                         },
                         to: {
                           type: "string",
                           format: "date",
-                          title: "Until",
+                          title: t("form:common_to"),
                         },
                       },
                     },
@@ -248,30 +337,37 @@ export const personalStatements_1 = (t) => {
                 },
                 postion_1: {
                   type: "object",
-                  title: "Position 2",
+                  title: `${t(
+                    "form:PS_1_personal_background_career_position"
+                  )} 2`,
                   properties: {
                     position: {
                       type: "string",
-                      title: "Profession/ Position",
+                      title: t(
+                        "form:PS_1_personal_background_career_position_profession"
+                      ),
                     },
                     institution: {
                       type: "string",
-                      title: "Employer/ self-employed",
+                      title: t(
+                        "form:PS_1_personal_background_career_position_employer"
+                      ),
                     },
                     duration: {
                       type: "object",
-                      title:
-                        "During which period did you work in this profession?",
+                      title: t(
+                        "form:PS_1_personal_background_career_position_duration"
+                      ),
                       properties: {
                         from: {
                           type: "string",
                           format: "date",
-                          title: "From",
+                          title: t("form:common_from"),
                         },
                         to: {
                           type: "string",
                           format: "date",
-                          title: "Until",
+                          title: t("form:common_to"),
                         },
                       },
                     },
@@ -281,147 +377,224 @@ export const personalStatements_1 = (t) => {
             },
             languages: {
               type: "object",
-              title: "1.5. Language skills",
-              description:
-                "list languages for each ability separated by commas",
+              title: t("form:PS_1_personal_background_languages"),
+              description: t(
+                "form:PS_1_personal_background_languages_description"
+              ),
               properties: {
-                read: { type: "string", title: "Read" },
-                write: { type: "string", title: "Write" },
-                understand: { type: "string", title: "Understand" },
-                speak: { type: "string", title: "Speak" },
-              },
-            },
-          },
-        },
-        host_institution: {
-          type: "object",
-          title: "2. Host Institution",
-          properties: {
-            contact_details: {
-              type: "object",
-              title: "2.1. Contact details",
-              properties: {
-                name: { type: "string", title: "Name of Institution" },
-                address: {
+                read: {
                   type: "string",
-                  title: "Street and house number",
+                  title: t("form:PS_1_personal_background_languages_read"),
                 },
-                postal_code: { type: "string", title: "Postal code" },
-                city: { type: "string", title: "City" },
-                country: { type: "string", title: "Country" },
-                email: { type: "string", title: "Email" },
-                telephone: { type: "string", title: "Telephone" },
-                contact_person: {
-                  type: "object",
-                  title: "Contact person",
-                  properties: {
-                    surname: {
-                      type: "string",
-                      title: "Surname",
-                    },
-                    first_name: {
-                      type: "string",
-                      title: "First name",
-                    },
-                    email: {
-                      type: "string",
-                      format: "email",
-                      title: "E-mail",
-                    },
-                    telephone: {
-                      type: "string",
-                      title: "Telephone",
-                    },
-                  },
+                write: {
+                  type: "string",
+                  title: t("form:PS_1_personal_background_languages_write"),
+                },
+                understand: {
+                  type: "string",
+                  title: t(
+                    "form:PS_1_personal_background_languages_understand"
+                  ),
+                },
+                speak: {
+                  type: "string",
+                  title: t("form:PS_1_personal_background_languages_speak"),
                 },
               },
-            },
-            connection_to_host: {
-              type: "string",
-              title: "2.4. Connection to host institution",
-              description:
-                "Where did you learn about the host institution? Why would you like to collaborate with the host institution? (Max 500 characters)",
-              maxLength: 500,
             },
           },
         },
         artistic_work: {
           type: "object",
-          title: "3. ARTISTIC/CULTURAL WORK",
+          title: t("form:PS_1_artistic_title"),
           properties: {
             genre: {
               type: "string",
-              title: "3.1. Artistic/cultural genre",
-              description:
-                "Please state the artistic/cultural genre you work in",
+              title: t("form:PS_1_artistic_genre"),
+              description: t("form:PS_1_artistic_genre_description"),
               maxLength: 1500,
             },
             description: {
               type: "string",
-              title: "3.2. Description of artistic/cultural work",
-              description:
-                "Please describe your artistic/cultural work.  Please state since when you have been undertaking your artistic/cultural work.",
+              title: t("form:PS_1_artistic_description"),
+              description: t("form:PS_1_artistic_description_description"),
               maxLength: 2000,
             },
             milestones: {
               type: "string",
-              title: "3.3. Professional milestones",
-              description:
-                "Please describe the most important professional milestones in your career from your point of view.",
+              title: t("form:PS_1_artistic_milestones"),
+              description: t("form:PS_1_artistic_milestones_description"),
+              maxLength: 1000,
+            },
+            further_information: {
+              type: "string",
+              title: t("form:PS_1_artistic_further_information"),
+              description: t(
+                "form:PS_1_artistic_further_information_description"
+              ),
               maxLength: 1000,
             },
           },
         },
         existing_risk: {
           type: "object",
-          title: "4. Existing risk",
+          title: t("form:PS_1_risk"),
           properties: {
             description: {
               type: "string",
-              title: "4.1. Description of the security situation",
-              description:
-                "The Martin Roth initiative supports artists who are at risk, who face threats, are under surveillance and/or are being persecuted by state and/or non-state actors because of their work or due to other circumstances. <p>Please describe your individual security situation and be as specific as possible, listing incidents and dates. </p>Please also give more general information about the political situation in your country if you feel this is important for context.",
+              title: t("form:PS_1_risk_description_title"),
+              description: t("form:PS_1_risk_description_description"),
               maxLength: 2500,
             },
             references: {
               type: "string",
-              title: "4.2. References to the security situation",
-              description:
-                "Please attach references to your personal statement supporting your security concerns (e.g. articles, links, police reports, comments on the context of the threat)",
+              title: t("form:PS_1_risk_references_title"),
+              description: t("form:PS_1_risk_references_description"),
               maxLength: 1000,
             },
             public_relations: {
               type: "string",
-              title: "4.3. Public relations",
-              description:
-                "To what extent would it be possible for you to appear in public, publish work or to make any other public appearance within the scope of the scholarship? <p>Is it possible for you to appear publicly as a fellow of the Martin Roth Initiative? </p> Give details of the security-related implications for you and your relatives.",
+              title: t("form:PS_1_risk_pr_title"),
+              description: t("form:PS_1_risk_pr_description"),
               maxLength: 1000,
+            },
+            referees: {
+              type: "object",
+              title: t("form:PS_1_risk_referees_title"),
+              description: t("form:PS_1_risk_referees_description"),
+              properties: {
+                reference_1: {
+                  type: "object",
+                  title: `${t("form:common_reference")} 1`,
+                  properties: {
+                    name: {
+                      type: "string",
+                      title: t("form:common_full_name"),
+                    },
+                    position: {
+                      type: "string",
+                      title: t("form:common_position"),
+                    },
+                    institution: {
+                      type: "string",
+                      title: t("form:common_institution"),
+                    },
+                    email: {
+                      type: "string",
+                      format: "email",
+                      title: t("form:common_email"),
+                    },
+                    protonmail: {
+                      type: "string",
+                      title: t("form:common_protonmail"),
+                    },
+                    telephone: {
+                      type: "string",
+                      title: t("form:common_telephone"),
+                    },
+                    signal: {
+                      type: "string",
+                      title: t("form:common_signal"),
+                    },
+                    wire: {
+                      type: "string",
+                      title: t("form:common_wire"),
+                    },
+                    languages: {
+                      type: "string",
+                      title: t("form:common_languages_title"),
+                    },
+                  },
+                },
+                reference_2: {
+                  type: "object",
+                  title: `${t("form:common_reference")} 2`,
+                  properties: {
+                    name: {
+                      type: "string",
+                      title: t("form:common_full_name"),
+                    },
+                    position: {
+                      type: "string",
+                      title: t("form:common_position"),
+                    },
+                    institution: {
+                      type: "string",
+                      title: t("form:common_institution"),
+                    },
+                    email: {
+                      type: "string",
+                      format: "email",
+                      title: t("form:common_email"),
+                    },
+                    protonmail: {
+                      type: "string",
+                      title: t("form:common_protonmail"),
+                    },
+                    telephone: {
+                      type: "string",
+                      title: t("form:common_telephone"),
+                    },
+                    signal: {
+                      type: "string",
+                      title: t("form:common_signal"),
+                    },
+                    wire: {
+                      type: "string",
+                      title: t("form:common_wire"),
+                    },
+                    languages: {
+                      type: "string",
+                      title: t("form:common_languages_title"),
+                    },
+                  },
+                },
+              },
             },
           },
         },
-        scholarship_period: {
+        host_institution: {
           type: "object",
-          title: "5. PERIOD DURING/ FOLLOWING THE SCHOLARSHIP",
+          title: t("form:PS_1_host_title"),
           properties: {
-            artistic_goal: {
+            name: { type: "string", title: t("form:PS_1_host_name") },
+            contat_person: {
               type: "string",
-              title: "5.1. Professional/artistic goal",
-              description:
-                "What are your expectations for this scholarship at a professional/artistic level? To what extent can your professional and/or artistic work benefit from the scholarship and the collaboration with the host institution?",
+              title: t("form:PS_1_host_contact_person"),
+            },
+            artistic_work: {
+              type: "string",
+              title: t("form:PS_1_host_work_title"),
+              description: t("form:PS_1_host_work_description"),
+              maxLength: 2000,
+            },
+            fit: {
+              type: "string",
+              title: t("form:PS_1_host_fit_title"),
+              description: t("form:PS_1_host_fit_description"),
+              maxLength: 2000,
+            },
+          },
+        },
+        after_scholarship: {
+          type: "object",
+          title: t("form:PS_1_after_title"),
+          description: t("form:PS_1_after_description"),
+          properties: {
+            return: {
+              type: "string",
+              title: t("form:PS_1_after_return_title"),
               maxLength: 1000,
             },
-            integration: {
+            exit_strategy: {
               type: "string",
-              title: "5.2. Integration",
-              description:
-                "In your opinion, which measures would contribute to a successful integration in Germany?",
+              title: t("form:PS_1_after_exit_strategy_title"),
+              description: t("form:PS_1_after_exit_strategy_description"),
               maxLength: 1000,
             },
             after: {
               type: "string",
-              title: "5.3. After the scholarship / return",
-              description:
-                "What could help you to resume / continue your work in your home country?",
+              title: t("form:PS_1_after_after_title"),
               maxLength: 2000,
             },
           },
@@ -444,128 +617,47 @@ export const personalStatements_1 = (t) => {
                 "Do you require special support due to health and wellbeing issues, disabilities or for other reasons?",
               maxLength: 500,
             },
-            references: {
-              type: "object",
-              title: "6.3. Referees",
-              description:
-                "Please list two referees who know you, your work and the dangerous situation you are in well. <br/>Please ensure that all of your referees agree to providing their personal data and that they also receive the enclosed data protection information.<br/>The referees you enter cannot be members of the host organisation and must speak either English, French, Spanish or German",
-              properties: {
-                reference_1: {
-                  type: "object",
-                  title: "Reference 1",
-                  properties: {
-                    name: {
-                      type: "string",
-                      title: "Name",
-                    },
-                    position: {
-                      type: "string",
-                      title: "position",
-                    },
-                    institution: {
-                      type: "string",
-                      title: "Institution",
-                    },
-                    email: {
-                      type: "string",
-                      title: "Email",
-                      format: "email",
-                    },
-                    telephone: {
-                      type: "string",
-                      title: "Telephone",
-                    },
-                    languages: {
-                      type: "string",
-                      title: "Language(s) of communication",
-                    },
-                  },
-                },
-                reference_2: {
-                  type: "object",
-                  title: "Reference 2",
-                  properties: {
-                    name: {
-                      type: "string",
-                      title: "Name",
-                    },
-                    position: {
-                      type: "string",
-                      title: "position",
-                    },
-                    institution: {
-                      type: "string",
-                      title: "Institution",
-                    },
-                    email: {
-                      type: "string",
-                      title: "Email",
-                      format: "email",
-                    },
-                    telephone: {
-                      type: "string",
-                      title: "Telephone",
-                    },
-                    languages: {
-                      type: "string",
-                      title: "Language(s) of communication",
-                    },
-                  },
-                },
-              },
-            },
-            additional_information: {
-              type: "string",
-              title: "Additional information",
-              description:
-                "You have the possibility to add, respectively attach references to this application in the form of project links, project documentation, press releases and media reports on your work, etc. List your attachments and references here:",
-              maxLength: 500,
-            },
             funding_contact: {
               type: "string",
-              title: "6.4. Contact with other funding programmes",
+              title: "6.3. Contact with other funding programmes",
               description:
                 "Have you already contacted other relocation or shelter programmes? If so, which organisations have you contacted?",
               maxLength: 1000,
             },
-            german_collaboration: {
-              type: "string",
-              title: "6.5. Collaboration with organisations from Germany",
-              description:
-                "Have you previously worked with organisations from or in Germany respectively and/or received scholarships? If so, please elaborate.",
-              maxLength: 1000,
-            },
             further_information: {
               type: "string",
-              title: "6.6. Further information",
+              title: "6.4. Further information",
               description:
                 "Is there anything else you would like to inform us about? Please use this field to do so",
               maxLength: 1000,
             },
             other_1: {
               type: "boolean",
-              title:
-                "You hereby confirm that you do not have permanent access to a safe third country (e.g. by virtue of dual citizenship or for other reasons).",
+              title: t("form:PS_1_others_1"),
             },
             other_2: {
               type: "boolean",
-              title:
-                "You hereby confirm that you hold a valid passport both before and during the period of the scholarship and that you are able to leave the country in which you are currently residing.",
+              title: t("form:PS_1_others_2"),
             },
             other_3: {
               type: "boolean",
-              title:
-                "You hereby assure that you will coordinate matters with your host institution prior to carrying out any activities that are relevant to the general public and, in general, all matters with regard to public relations",
+              title: t("form:PS_1_others_3"),
             },
             other_4: {
               type: "boolean",
-              title:
-                "You herewith confirm to agree to the processing of your data for working on your application and regarding other purposes listed in the information sheet on data protection.",
+              title: t("form:PS_1_others_4"),
             },
             other_5: {
               type: "boolean",
-              title:
-                "You herewith confirm that you and your listed referees and contacts have duly received and noted the details on privacy highlighted in the document <a href='https://martin-roth-initiative.de/en/application#pid-112' target='_blank'>“Information on data protection and processing of your personal data according to GDPR”</a> and that you and your referees and contacts agree to the outlined intended use.",
+              title: t("form:PS_1_others_5"),
+            },
+            other_6: {
+              type: "boolean",
+              title: t("form:PS_1_others_6"),
+            },
+            other_7: {
+              type: "boolean",
+              title: t("form:PS_1_others_7"),
             },
           },
         },
@@ -576,20 +668,27 @@ export const personalStatements_1 = (t) => {
         personal_data: {
           date_of_birth: {},
           nationaity: {
-            "ui:help": "Specify contries separated by commas",
+            "ui:help": t("form:PS_1_personal_background_citizenship_help"),
+          },
+          residency: {
+            "ui:widget": "textarea",
+            "ui:options": { rows: 4 },
+          },
+          passport: {
+            passport_passport: {
+              "ui:widget": "radio",
+            },
+          },
+          current_location_away: {
+            "ui:widget": "textarea",
+            "ui:options": { rows: 4 },
           },
         },
         contact: {
-          address: {
+          other: {
             "ui:widget": "textarea",
             "ui:options": {
               rows: 4,
-            },
-            alternative_address: {
-              "ui:widget": "textarea",
-              "ui:options": {
-                rows: 4,
-              },
             },
           },
         },
@@ -621,6 +720,12 @@ export const personalStatements_1 = (t) => {
             rows: 4,
           },
         },
+        further_information: {
+          "ui:widget": "textarea",
+          "ui:options": {
+            rows: 4,
+          },
+        },
       },
       existing_risk: {
         description: {
@@ -642,14 +747,28 @@ export const personalStatements_1 = (t) => {
           },
         },
       },
-      scholarship_period: {
-        artistic_goal: {
+      host_institution: {
+        artistic_work: {
           "ui:widget": "textarea",
           "ui:options": {
             rows: 4,
           },
         },
-        integration: {
+        fit: {
+          "ui:widget": "textarea",
+          "ui:options": {
+            rows: 4,
+          },
+        },
+      },
+      after_scholarship: {
+        return: {
+          "ui:widget": "textarea",
+          "ui:options": {
+            rows: 4,
+          },
+        },
+        exit_strategy: {
           "ui:widget": "textarea",
           "ui:options": {
             rows: 4,
