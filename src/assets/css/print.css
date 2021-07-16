@@ -207,4 +207,10 @@
   textarea[readonly] {
     display: none;
   }
+  .btn-add::after,
+  .array-item-move-up::after,
+  .array-item-move-down::after,
+  .array-item-remove::after {
+    display: none;
+  }
 }

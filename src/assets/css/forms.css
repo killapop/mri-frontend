@@ -49,6 +49,17 @@ form > .form-group > fieldset > .form-group > fieldset > legend {
   text-transform: uppercase;
 }
 
+form > .form-group > fieldset fieldset fieldset legend {
+  text-transform: uppercase;
+  color: #000e;
+  font-weight: bold;
+  font-size: 1em;
+  padding-top: 10px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #0001;
+  padding-bottom: 5px;
+}
+
 .title,
 #root__title {
   font-family: "PTSansNarrowRegular", sans-serif;
@@ -62,15 +73,20 @@ form > .form-group > fieldset > .form-group > fieldset > legend {
 
 .formContainer .title,
 .formContainer #root__title {
-  margin: 20px 10px;
+  margin: 20px auto 0 20px;
 }
 
+.formContainer #root__description {
+  margin: 0 auto 20px 20px;
+  font-size: 1.2em;
+  font-style: normal;
+}
 form.rjsf .col-fieldset-2 > fieldset legend,
 form label {
   color: #000a;
   margin-bottom: 0;
   font-weight: 500;
-  font-family: "PTSansNarrowRegular", "PTSansRegular", sans-serif;
+  font-family: "PTSansNarrowBold", "PTSansRegular", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 1em;
@@ -81,9 +97,9 @@ form.rjsf .col-fieldset-2 > fieldset legend {
 }
 
 form .field-description {
-  color: #aa6;
+  color: #66a;
   font-style: italic;
-  margin: 3px 0 5px 3px;
+  margin: 5px 0 10px 0;
   font-size: 0.8em;
 }
 
@@ -297,6 +313,20 @@ button:active {
   margin: 0 0 1.5em;
 }
 
+.checkbox label,
+.checkbox-inline,
+.radio label,
+.radio-inline {
+  font-family: "PTSansRegular";
+  padding-left: 20px;
+  cursor: pointer;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-transform: initial;
+  font-size: 0.9em;
+  letter-spacing: 0em;
+}
+
 input#submitLockcheckbox[type="checkbox"] {
   display: none;
 }
@@ -368,11 +398,12 @@ form.disabled p.field-description {
   text-transform: none;
   font-family: PTSansRegular, sans-serif;
   color: var(--almost-black);
+  font-size: 1.25vmin;
 }
 
 @media screen and (min-width: 60em) {
   .formContainer #root__title {
-    margin-left: 200px;
+    /* margin-left: 200px; */
   }
 
   .toggle-buttons {
@@ -432,6 +463,37 @@ form.disabled p.field-description {
   }
 
   .sidebar-toggle {
+    display: none !important;
+  }
+  .array-item {
+    display: flex;
+    width: 100%;
+  }
+  .array-item .col-xs-9 {
+    flex-grow: 1;
+  }
+  .array-item .col-xs-3 {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  i.glyphicon {
+    display: none;
+  }
+  .btn-add::after {
+    content: "Add +";
+  }
+  .array-item-move-up::after {
+    content: "Move Up";
+  }
+  .array-item-move-down::after {
+    content: "Move Down";
+  }
+  .array-item-remove::after {
+    content: "Remove x";
+  }
+
+  .datetime-reset-button {
     display: none !important;
   }
 }
