@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect, Link } from "react-router-dom";
-import Form from "@rjsf/core";
+import Form from "react-jsonschema-form";
 // import jsPDF from "jspdf";
 import _ from "lodash";
 import { authStore } from "../../lib/store";
