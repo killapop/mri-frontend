@@ -38,7 +38,7 @@
     page-break-after: always;
   }
 
-  #application-form
+  /* #application-form
     > .form-group
     > fieldset
     > .form-group
@@ -48,7 +48,7 @@
     padding: 0 0 0 5px;
     margin: 0 0 0 5px;
     border-left: 1px solid #0002;
-  }
+  } */
 
   #application-form
     > .form-group
@@ -107,11 +107,6 @@
     padding: 5px 5px 5px 0;
   }
 
-  form.rjsf .col-fieldset-2 > fieldset legend,
-  form label {
-    white-space: nowrap;
-  }
-
   #application-form
     > .form-group
     > fieldset
@@ -159,7 +154,29 @@
     > fieldset
     > .form-group
     p {
-    display: none;
+    /* display: none; */
+  }
+
+  form.rjsf .col-fieldset-2 > fieldset legend,
+  form label {
+    white-space: nowrap;
+  }
+
+  form.rjsf .col-fieldset-2 > fieldset {
+    display: flex;
+  }
+
+  form.rjsf .col-fieldset-2 > fieldset legend {
+    width: 100%;
+    flex-grow: 1;
+  }
+
+  form.rjsf .col-fieldset-2 > fieldset .form-group {
+    width: 45%;
+    display: flex;
+  }
+  form.rjsf .col-fieldset-2 > fieldset .form-group label {
+    padding-right: 10px;
   }
 
   .form-group {
@@ -175,7 +192,8 @@
   .form-control,
   legend,
   label,
-  textarea {
+  textarea,
+  p.tmpDisplay {
     page-break-inside: avoid;
   }
 
@@ -199,18 +217,23 @@
   }
 
   .field-description {
-    color: #0007;
+    color: #0002;
     font-size: 0.9em;
+    display: none;
+  }
+  label,
+  legend {
+    color: #000a;
   }
 
   textarea,
   textarea[readonly] {
     display: none;
   }
-  .btn-add::after,
-  .array-item-move-up::after,
-  .array-item-move-down::after,
-  .array-item-remove::after {
+  .btn-add,
+  .array-item-move-up,
+  .array-item-move-down,
+  .array-item-remove {
     display: none;
   }
 }

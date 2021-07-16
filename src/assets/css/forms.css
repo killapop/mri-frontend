@@ -313,20 +313,6 @@ button:active {
   margin: 0 0 1.5em;
 }
 
-.checkbox label,
-.checkbox-inline,
-.radio label,
-.radio-inline {
-  font-family: "PTSansRegular";
-  padding-left: 20px;
-  cursor: pointer;
-  margin-bottom: 0;
-  font-weight: normal;
-  text-transform: initial;
-  font-size: 0.9em;
-  letter-spacing: 0em;
-}
-
 input#submitLockcheckbox[type="checkbox"] {
   display: none;
 }
@@ -399,6 +385,26 @@ form.disabled p.field-description {
   font-family: PTSansRegular, sans-serif;
   color: var(--almost-black);
   font-size: 1.25vmin;
+}
+
+form.disabled label,
+form.disabled fieldset fieldset fieldset legend {
+  color: #0004;
+}
+
+.checkbox label,
+.checkbox-inline,
+.radio label,
+.radio-inline {
+  font-family: "PTSansRegular";
+  padding-left: 20px;
+  cursor: pointer;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-transform: initial;
+  font-size: 0.9em;
+  letter-spacing: 0em;
+  color: #000 !important;
 }
 
 @media screen and (min-width: 60em) {

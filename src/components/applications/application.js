@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect, Link } from "react-router-dom";
-import Form from "react-jsonschema-form";
+import Form from "@rjsf/core";
 // import jsPDF from "jspdf";
 import _ from "lodash";
 import { authStore } from "../../lib/store";
@@ -57,10 +57,13 @@ class Application extends React.Component {
   }
 
   async componentDidMount() {
-    await this.fetchData().then(() => {
-      this.setState({ loaded: true });
-      this.renderTextareas();
-    });
+    await this.fetchData()
+      .then(() => {
+        this.setState({ loaded: true });
+      })
+      .then(() => {
+        this.renderTextareas();
+      });
   }
 
   renderTextareas() {
@@ -95,19 +98,16 @@ class Application extends React.Component {
         label.innerHTML = text1;
       });
     }
-
     if (this.state.disabled) {
       const elements = document.getElementsByTagName("TEXTAREA");
       const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      const radios = document.querySelectorAll('input[type="radio"]');
       const inputs = document.querySelectorAll(
         "input:not([type='checkbox']), select",
         !""
       );
-
-      if (!elements) {
-        return false;
-      } else {
-        _.forEach(elements, (element) => {
+      if (elements.length) {
+        _.forEach(document.getElementsByTagName("TEXTAREA"), (element) => {
           element.style.height = `${element.scrollHeight}px`;
           element.removeAttribute("disabled");
           element.setAttribute("readonly", true);
@@ -122,6 +122,8 @@ class Application extends React.Component {
           );
           element.parentNode.classList.add("tmpDisplay-container");
         });
+      } else {
+        return false;
       }
       if (!checkboxes) {
         return false;
@@ -144,14 +146,25 @@ class Application extends React.Component {
         return false;
       } else {
         _.forEach(inputs, (input) => {
-          input.insertAdjacentHTML(
-            "afterend",
-            `<span class='tmpDisplay'>${
-              input.tagName === "SELECT"
-                ? input.selectedOptions[0].label
-                : input.value
-            }</span>`
-          );
+          if (input.type === "radio") {
+            if (input.value === "1" || input.value === "true") {
+              input.insertAdjacentHTML(
+                "beforebegin",
+                `<span class='pr2 fa fa-check-square green'></span>`
+              );
+            } else {
+              input.parentNode.parentNode.style.display = "none";
+            }
+          } else {
+            input.insertAdjacentHTML(
+              "afterend",
+              `<span class='tmpDisplay'>${
+                input.tagName === "SELECT"
+                  ? input.selectedOptions[0].label
+                  : input.value
+              }</span>`
+            );
+          }
           input.style.display = "none";
         });
       }
