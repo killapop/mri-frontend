@@ -105,6 +105,8 @@ export const translation = {
   error_matching_passwords: "Passwords do not match",
 
   // Errors end
+
+  // Dashboard strings
   dashboard_logged_in_as: "Logged in as {{who}}",
   dashboard_change_password: "Change password",
   dashboard_badge_activations: "Activations",
@@ -130,4 +132,5 @@ export const translation = {
   dashboard_columns_active: "Active",
   dashboard_valid: "Valid",
   dashboard_invalid: "Not Valid",
+  // Dasboard strings ends
 };
