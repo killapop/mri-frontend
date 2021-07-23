@@ -22,8 +22,16 @@ form.rjsf .col-fieldset-2 > fieldset > .form-group {
   width: 45%;
 }
 
+form.rjsf .col-fieldset-3 > fieldset > .form-group {
+  display: inline-block;
+  width: 30%;
+}
+
 form.rjsf .col-fieldset-2 > fieldset > .form-group:last-of-type {
   margin-left: 40px;
+}
+form.rjsf .col-fieldset-3 > fieldset > .form-group:nth-of-type(2n + 1) {
+  margin: 0 20px;
 }
 
 .applications
@@ -82,6 +90,7 @@ form > .form-group > fieldset fieldset fieldset legend {
   font-style: normal;
 }
 form.rjsf .col-fieldset-2 > fieldset legend,
+form.rjsf .col-fieldset-3 > fieldset legend,
 form label {
   color: #000a;
   margin-bottom: 0;
@@ -92,7 +101,8 @@ form label {
   font-size: 1em;
 }
 
-form.rjsf .col-fieldset-2 > fieldset legend {
+form.rjsf .col-fieldset-2 > fieldset legend,
+form.rjsf .col-fieldset-3 > fieldset legend {
   font-weight: bold;
 }
 

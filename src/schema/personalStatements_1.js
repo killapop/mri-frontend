@@ -2,6 +2,7 @@ export const personalStatements_1 = (t) => {
   return {
     schema: {
       title: t("form:PS_1_title"),
+      description: t("form:PS_1_description"),
       type: "object",
       submitButton: t("form:common_submit"),
       saveButton: t("form:common_save_close"),
@@ -17,11 +18,12 @@ export const personalStatements_1 = (t) => {
                 title: {
                   type: "string",
                   title: t("form:common_title_title"),
-                  enum: [1, 2, 3],
+                  enum: [1, 2, 3, 4],
                   enumNames: [
                     t("form:common_title_choice_1"),
                     t("form:common_title_choice_2"),
                     t("form:common_title_choice_3"),
+                    t("form:common_title_choice_4"),
                   ],
                 },
                 academic_title: {
@@ -55,7 +57,7 @@ export const personalStatements_1 = (t) => {
                 },
                 passport: {
                   type: "object",
-                  title: "",
+                  title: " ",
                   properties: {
                     passport_passport: {
                       type: "string",
@@ -63,32 +65,12 @@ export const personalStatements_1 = (t) => {
                       enum: [1, 0],
                       enumNames: [t("form:common_yes"), t("form:common_no")],
                     },
-                  },
-                  dependencies: {
-                    passport_passport: {
-                      oneOf: [
-                        {
-                          properties: {
-                            passport_passport: {
-                              enum: [0],
-                            },
-                          },
-                        },
-                        {
-                          properties: {
-                            passport_passport: {
-                              enum: [1],
-                            },
-                            passport_validity: {
-                              type: "string",
-                              format: "date",
-                              title: t(
-                                "form:PS_1_personal_background_passport_validity"
-                              ),
-                            },
-                          },
-                        },
-                      ],
+                    passport_validity: {
+                      type: "string",
+                      format: "date",
+                      title: t(
+                        "form:PS_1_personal_background_passport_validity"
+                      ),
                     },
                   },
                 },
@@ -149,11 +131,12 @@ export const personalStatements_1 = (t) => {
                 title: {
                   type: "string",
                   title: t("form:common_title_title"),
-                  enum: [1, 2, 3],
+                  enum: [1, 2, 3, 4],
                   enumNames: [
                     t("form:common_title_choice_1"),
                     t("form:common_title_choice_2"),
                     t("form:common_title_choice_3"),
+                    t("form:common_title_choice_4"),
                   ],
                 },
                 academic_title: {
@@ -601,34 +584,30 @@ export const personalStatements_1 = (t) => {
         },
         other: {
           type: "object",
-          title: "6. Other",
+          title: t("form:PS_1_other_title"),
           properties: {
             relatives: {
               type: "string",
-              title: "6.1. Relatives",
-              description:
-                "Are you planning to leave the country with relatives? If so, please enter the names of the relatives, their dates of birth as well as your relation to each person here. Please explain why the respective family member accompanying you appears to be necessary.",
+              title: t("form:PS_1_other_relatives_title"),
+              description: t("form:PS_1_other_relatives_description"),
               maxLength: 500,
             },
             special_support: {
               type: "string",
-              title: "6.2. Special support",
-              description:
-                "Do you require special support due to health and wellbeing issues, disabilities or for other reasons?",
+              title: t("form:PS_1_other_support_title"),
+              description: t("form:PS_1_other_support_description"),
               maxLength: 500,
             },
             funding_contact: {
               type: "string",
-              title: "6.3. Contact with other funding programmes",
-              description:
-                "Have you already contacted other relocation or shelter programmes? If so, which organisations have you contacted?",
+              title: t("form:PS_1_other_funding_contact_title"),
+              description: t("form:PS_1_other_funding_contact_description"),
               maxLength: 1000,
             },
             further_information: {
               type: "string",
-              title: "6.4. Further information",
-              description:
-                "Is there anything else you would like to inform us about? Please use this field to do so",
+              title: t("form:PS_1_other_further_title"),
+              description: t("form:PS_1_other_further_description"),
               maxLength: 1000,
             },
             other_1: {
@@ -658,6 +637,10 @@ export const personalStatements_1 = (t) => {
             other_7: {
               type: "boolean",
               title: t("form:PS_1_others_7"),
+            },
+            other_8: {
+              type: "boolean",
+              title: t("form:PS_1_others_8"),
             },
           },
         },

@@ -143,6 +143,25 @@
     > .form-group
     > fieldset
     > .form-group
+    input[type="checkbox"] {
+    margin: 0 0 0 5px;
+    padding: 0;
+    height: auto;
+    font-size: 1em;
+    display: unset;
+    word-wrap: break-word;
+    user-select: text;
+    width: 100%;
+  }
+
+  #application-form
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
+    > fieldset
+    > .form-group
     > label
     ~ div,
   #application-form
@@ -159,7 +178,7 @@
 
   form.rjsf .col-fieldset-2 > fieldset legend,
   form label {
-    white-space: nowrap;
+    /* white-space: nowrap; */
   }
 
   form.rjsf .col-fieldset-2 > fieldset {

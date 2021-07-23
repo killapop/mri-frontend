@@ -4,12 +4,14 @@ export const form = {
   common_title_choice_1: "No choice",
   common_title_choice_2: "Mr.",
   common_title_choice_3: "Mrs.",
+  common_title_choice_4: "MX",
   common_academic_title: "Academic title",
   common_first_name: "First name",
   common_last_name: "Last name",
   common_full_name: "Name",
   common_position: "Position",
   common_function: "Function",
+  common_profession: "Profession",
   common_institution: "Institution/ Organization",
   common_country: "Country of residence",
   common_date_of_birth: "Date of Birth",
@@ -31,7 +33,7 @@ export const form = {
   common_from: "From",
   common_to: "To",
   common_reference: "Reference",
-  common_address: "Adddress",
+  common_address: "Address",
   common_street: "Street",
   common_house: "House No.",
   common_pin: "Postal code",
@@ -48,6 +50,8 @@ export const form = {
 
   // Personal Statement Line 1
   PS_1_title: "Personal Statement",
+  PS_1_description:
+    "Dear applicant,<br><br/>Before you start filling in the personal statement, please carefully read the following general information about the scholarship programme of the Martin Roth-Initiative (MRI).<br><br/>You are applying for an MRI scholarship and temporary residency at a host cultural organisation in Germany. Please note that the maximum duration of the scholarship period is 12 months. In very exceptional cases, this period can be extended for up to another 12 months.<br><br/>Please note that, in addition to this personal statement, your potential host organisation is required to submit a duly completed application form. This application comprises a comprehensive project plan, including specific objectives and a budget for project activities, such as continuation of artistic/cultural work, professional trainings, language courses, psychosocial support etc. Please make sure that you are in close consultation with your potential host organisation about the project activities detailed in the form as well as the budget of the project.<br><br/>Due to the temporary nature of our programme, MRI’s assistance comes to an end once the scholarship period is over. It is therefore essential that you and your host organisation set a clear outlook in the personal statement/application form for the time after the scholarship period is over. Please provide a clear strategy for how you plan to use the time during the MRI scholarship period to prepare for future plans (exit strategy). MRI scholarship holders will receive support from the host organisation and the MRI to continue working on their exit strategy throughout the project period.Your main point of contact during the application period and, in case of approval, throughout the scholarship period will be the host organisation.<br><br/>Please note that within each scholarship period there are three mandatory meetings (at the beginning, middle and end of the stay) between scholarship holder, host organisation and the MRI.<br><br/>Please note that you must immediately inform the host organisation and the MRI if the data in your Personal Statement is no longer up to date. This is particularly important in reference to the details of your emergency contact person.<br><br/>Please note that there is no legal right to receive funding from the MRI. The MRI is only able to process complete applications. After a formal review of all submitted documents, an independent committee consisting of members of the art and cultural scene and representatives of civil society institutions will decide on the awarding of funding for applicant projects.<br><br/>Please take the time to answer the questions below thoroughly and do not hesitate to get in touch with us if you have any further questions.",
   PS_1_submit_button: "Submit statement",
   PS_1_save_button: "Save",
   PS_1_personal_background_title: "1. PERSONAL BACKGROUND",
@@ -64,7 +68,7 @@ export const form = {
   PS_1_personal_background_current_location:
     "Where is your current location? Please provide the city and country",
   PS_1_personal_background_current_location_away:
-    "If you are not in your home country, When you leave your home country and since when have you been in your current location?",
+    "If you are not in your home country, When did you leave your home country and since when have you been at your current location?",
   PS_1_personal_background_residence_status:
     "Please indicate your Visa/residence status in your current place of residence and when it will expire (if applicable)",
   PS_1_personal_background_residence_status_description:
@@ -73,12 +77,12 @@ export const form = {
   // contact section
   PS_1_personal_background_contact_title: "1.2. Contact",
   PS_1_personal_background_contact_description:
-    "How would you like to be contacted? MRI’s information on secure communication can help you with the decision making.",
+    "How would you like to be contacted? <a hef='https://martin-roth-initiative.de/en/application#pid-107' target='_blank'>MRI’s information on secure communication</a> can help you with the decision making.",
 
   // emergency contact section
   PS_1_personal_background_emergency_contact_title: "1.3. Emergency contact",
   PS_1_personal_background_emergency_contact_description:
-    "How would your emergency contact like to be contacted? MRI’s information on secure communication can help with the decision making. <br/> (Please ensure that all of your emergency contacts  agree to disclose their personal data and that they also have received the enclosed data protection information. Emergency contacts are informed during your residence, a.o. in case of disease or accidents or other unforeseen circumstances occurring. Please ensure that your potential host organisation always has the latest emergency contact details.)",
+    "How would your emergency contact like to be contacted? MRI’s information on secure communication can help with the decision making. <br/> (Please ensure that all of your emergency contacts  agree to disclose their <a href='https://martin-roth-initiative.de/en/application#pid-112' target='_blank'>personal data and that they also have received the enclosed data protection information</a>. Emergency contacts are informed during your residence, a.o. in case of disease or accidents or other unforeseen circumstances occurring. Please ensure that your potential host organisation always has the latest emergency contact details.)",
   PS_1_personal_background_emergency_contact_others: "Signal/ Wire/ Protonmail",
 
   PS_1_personal_background_emergency_languages_description:
@@ -124,7 +128,7 @@ export const form = {
     "Please state the artistic/cultural genre you work in",
   PS_1_artistic_description: "2.2. Description of artistic/cultural work",
   PS_1_artistic_description_description:
-    "2.2. Description of artistic/cultural work",
+    "Please describe your artistic/cultural work and specify since when you have been doing it.",
   PS_1_artistic_milestones: "2.3 Professional milestones",
   PS_1_artistic_milestones_description:
     "Please describe the most important professional milestones in your career from your point of view.",
@@ -203,17 +207,19 @@ export const form = {
   PS_1_others_6:
     "I hereby assure that I will coordinate matters with my host organisation prior to carrying out any activities that are relevant to the general public and, in general, all matters with regard to public relations.",
   PS_1_others_7:
-    "I herewith confirm that I and my listed referees and contacts have duly received and noted the details on privacy highlighted in the document `Information on data protection and processing of your personal data accroding GDPR` and that I and my referees and contacts agree to the outlined intended use.",
+    "I herewith confirm that I and my listed referees and contacts have duly received and noted the details on privacy highlighted in the document <a href='https://martin-roth-initiative.de/en/application#pid-112' target='_blank'>Information on data protection and processing of your personal data accroding GDPR</a> and that I and my referees and contacts agree to the outlined intended use.",
+  PS_1_others_8:
+    "I hereby consent to the processing of my personal data for the following purposes:- Receiving (by telephone/postal/digital) invitations and notifications about MRI-related events (also beyond the funding period).- Receiving (by telephone/written/digital) relevant information, e.g. on the Martin Roth-Initiative (also beyond the funding period)",
   // Personal Statement Line 1
 
   // Project Proposal Line 1
   // Project Overview
   PP_1_title: "Project Proposal",
-  PP_1_description: "For stipends to host organisations based in Germany",
+  PP_1_description: "For temporary stay in Germany",
   PP_1_overview: "1. Project Overview",
   PP_1_overview_title: "Project title",
   PP_1_overview_title_description:
-    "Please provide a short and clear project title. which ideally contains the name of your organisation.",
+    "Please provide a short and clear project title which ideally contains the name of your organisation.",
   PP_1_overview_place: "Project place(s)",
   PP_1_overview_place_description:
     "Where will the temporary relocation (residency) take place? This does not include business or networking trips.",
@@ -221,9 +227,14 @@ export const form = {
   PP_1_overview_period_description:
     "Please indicate the planned scholarship period. Please note that the scholarship period (and payment of the stipend) can only start with the beginning of the temporary residency in the host country. Please note that the maximum duration of the scholarship period is 12 months.",
   PP_1_overview_funding: "Requested funds (EUR)",
+  PP_1_overview_funding_period: "Planned funding period",
+  PP_1_overview_funding_period_description:
+    "Please note that project expenses will only be eligible if they occur within the funding period. It is therefore recommended to plan time for preparation and follow up measures in addition to the scholarship period. You may plan for a maximum of two months preparation time (for visa and travel preparations) and a maximum of one month follow-up time.",
+  PP_1_overview_funding: "Requested funds (EUR)",
   PP_1_overview_funding_description:
     "Please enter the total amount of MRI funds that you are applying for. The requested MRI funds represent the total budget minus own funds and third-party funds. <br/><br/>Please split the requested funds by calendar year. <br/><br/>Please note that approved funds for one calendar year may not be used in another calendar year.",
   PP_1_overview_funding_calendar_year: "Calendar year",
+  PP_1_overview_funding_calendar_total: "Total",
   PP_1_overview_funding_external: "Third party funds (EUR)",
   PP_1_overview_funding_external_description:
     "Please indicate whether third-party funds are available for this project and, if so, how much and from which sources. <br/><br/>If you do not yet know whether you will receive third-party funding for the project, please indicate where you have submitted or plan to submit an application for funding. If you receive additional funding, you must inform us. <br/><br/>Please only indicate liquid funds.<br/><br/>Please split the available funds by calendar year.",
@@ -333,7 +344,7 @@ export const form = {
     "To what extent is your organisation able to support the continuation of the artistic/cultural work of the scholarship holder (e.g. professional expertise, integration into the organisation, mentoring schemes, work spaces, networks, further financing opportunities for artistic/cultural productions/projects).",
   PP_1_project_support_title: "3.5. Personal support and integration",
   PP_1_project_support_description:
-    "How do you plan to ensure ongoing integration of the scholarship holder in their new place of residence. How will you provide relevant support for them during the project period? Address specific needs (e.g. psychosocial support), if possible.",
+    "How do you plan to ensure ongoing integration of the scholarship holder in their new place of residence? How will you provide relevant support for them during the project period? Address specific needs (e.g. psychosocial support), if possible.",
   PP_1_project_security_title: "3.6. Security",
   PP_1_project_security_description:
     "What security policies do you follow; what security measures do you already implement or plan to implement (e.g. secure communication, data security, confidentiality)? ",
@@ -361,8 +372,9 @@ export const form = {
   PP_1_declaration_6:
     "The applicant organisation hereby confirms that it does not question Israel's right to exist, nor does/will the applicant organisation or this project call for the boycott of Israel in any way, nor will the applicant organisation and/or the project actively support the BDS movement. Funding from the Federal Foreign Office does not permit support for organisations and projects that question Israel's right to exist, call for a boycott of Israel, or carry out activities in support of the BDS movement. This refers to the resolution of the German Bundestag (https://www.bundestag.de/dokumente/textarchiv/2019/kw20-de-bds-642892)",
   PP_1_declaration_7:
-    "You hereby confirm that you and the persons indicated by you have duly received and noted the privacy information (https://martin-roth-initiative.de/en/application#pid-112) and dagree with the intended use of data as described.",
-  PP_1_declaration_8: "",
+    "I herewith confirm that I and the persons/contacts indicated in this form have duly received and noted the details on privacy highlighted in the document <a href='https://martin-roth-initiative.de/en/application#pid-112' target='_blank'>Information on data protection and processing of your personal data in accordance with the General Data Protection Regulation (GDPR)</a> (required for processing the application)",
+  PP_1_declaration_8:
+    "I hereby consent to the processing of my personal data for the following purposes:- Receiving (by telephone/postal/digital) invitations and notifications about MRI-related events (also beyond the funding period).- Receiving (by telephone/written/digital) relevant information, e.g. on the Martin Roth-Initiative (also beyond the funding period)",
   PP_1_declaration_documents_title:
     "The following documents are attached to the application",
   PP_1_declaration_documents_1:
