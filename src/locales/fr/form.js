@@ -2,10 +2,10 @@ export const form = {
   common_cancel: "Annuler",
   common_printPDF: "Imprimer en PDF",
   PS_1_title: "Déclaration personnelle",
-  PS_1_submit_button: "Soumettre une déclaration",
+  PS_1_submit_button: "Soumettre la déclaration personnelle",
   PS_1_save_button: "Sauvez",
   common_institution: "Institution/ Organisation",
-  common_country: "Pays de résidence",
+  common_country: "Pays",
   common_date_of_birth: "Date de naissance",
   common_yes: "Oui",
   common_no: "Non",
@@ -32,24 +32,24 @@ export const form = {
   PP_1_overview_overall_description:
     "Si vous demandez un financement complet, cochez <b>oui</b>, car les coûts du projet seront couverts par le financement de l'IRM s'il est approuvé.",
   PS_1_after_return_title:
-    "5.1. De votre point de vue, quelle est la probabilité que vous puissiez retourner dans votre pays d'origine après la bourse MRI ?",
+    "5.1. De votre point de vue, quelle est la probabilité que vous puissiez retourner dans votre pays d'origine après la bourse de la MRI ?",
   PS_1_after_exit_strategy_title:
-    "5.2 Veuillez décrire vos premières idées pour une stratégie de sortie pour l'après-bourse.",
+    "5.2 Veuillez décrire vos premières idées pour une stratégie de sortie pour la période après la bourse.",
   PS_1_after_exit_strategy_description:
-    "Il peut s'agir d'une préparation au retour dans votre pays d'origine ou d'une perspective en Allemagne ou dans un autre pays. Vous développerez cette stratégie de sortie au cours de votre séjour.",
+    "Il peut s'agir d'une préparation au retour dans votre pays d'origine ou d'une perspective en Allemagne ou dans un autre pays. Vous développerez cette stratégie de sortie plus au cours de votre séjour.",
   PS_1_after_after_title:
     "5.3. S'il y a quelque chose qui pourrait vous aider à reprendre votre travail artistique/culturel dans votre pays d'origine, veuillez le préciser ici.",
   PS_1_other_title: "6. Autres",
   PS_1_personal_background_residency:
     "Avez-vous un accès légal pour vivre de façon permanente dans un autre pays ou un statut de résident dans un autre pays ? Veuillez expliquer.",
   PS_1_personal_background_passport:
-    "Avez-vous un passeport en cours de validité ?",
+    "Avez-vous un passeport valide ?",
   PS_1_personal_background_passport_validity:
-    "Si vous avez un passeport valide, quand expire-t-il ?",
+    "Si vous avez un passeport valide, quand expire-t-il (JJ/MM/AAAA) ?",
   PS_1_personal_background_current_location:
     "Où vous trouvez-vous actuellement ? Veuillez indiquer la ville et le pays",
   PS_1_personal_background_current_location_away:
-    "Si vous n'êtes pas dans votre pays d'origine, quand avez-vous quitté votre pays d'origine et depuis quand êtes-vous dans votre lieu actuel ?",
+    "Si vous n'êtes pas dans votre pays d'origine, quand avez-vous quitté votre pays d'origine et depuis quand êtes-vous dans votre localisation actuelle ?",
   PP_1_applicant_funds_use_description:
     "Comment allez-vous garantir la bonne utilisation et la comptabilité des fonds demandés ? Veuillez indiquer dans quelle mesure votre institution a déjà une expérience de la gestion de projets et de la gestion des fonds publics conformément au Code budgétaire fédéral (BHO). Comment votre organisation est-elle organisée sur le plan administratif (par exemple, comptabilité, structures du personnel, capacités) pour gérer les finances ? Veuillez décrire le système comptable avec lequel vous travaillez, si vous coopérez avec un bureau des impôts et si votre organisation est régulièrement soumise à des audits financiers externes.",
   PP_1_applicant_funding_title:
@@ -59,7 +59,7 @@ export const form = {
   PP_1_applicant_4eyes_title:
     "Pouvez-vous garantir le principe des 4 yeux (2 personnes doivent vérifier les documents du projet tels que les dépenses et les rapports) ?",
   PP_1_applicant_legal_reps_title:
-    "Veuillez énumérer toutes les personnes autorisées à représenter légalement votre organisation :",
+    "Veuillez énumérer toutes les personnes autorisées à représenter légalement votre organisation",
   PP_1_applicant_description_description:
     "Veuillez présenter brièvement votre organisation (domaines d'activité, activités et financements précédents, structure organisationnelle et personnel) et, le cas échéant, votre ou vos organisations partenaires pour ce projet.",
   PP_1_applicant_authorised_person_title:
@@ -75,7 +75,7 @@ export const form = {
     "Pendant quelle période avez-vous exercé cette profession ?",
   PS_1_personal_background_languages: "1.6. Compétences linguistiques",
   PS_1_personal_background_languages_description:
-    "Énumérez les langues pour chaque capacité en les séparant par des virgules et donnez un classement entre parenthèses (basique, conversationnel, courant ou natif).",
+    "Veuillez indiquer les langues pour chaque compétence en les séparant par des virgules et donnez une évaluation personelle entre parenthèses (basique, conversationnel, courant ou langue maternelle).",
   PS_1_personal_background_languages_read: "Lire",
   common_reference: "Référence",
   common_address: "Adresse",
@@ -87,7 +87,7 @@ export const form = {
   common_telephone: "Téléphone",
   common_office_telephone: "Téléphone du bureau",
   common_mobile: "Mobile",
-  PS_1_personal_background_languages_write: "Écrire à",
+  PS_1_personal_background_languages_write: "Écrire",
   PS_1_personal_background_languages_understand: "Comprendre",
   PS_1_personal_background_languages_speak: "Parler",
   PS_1_artistic_title: "2. Travail artistique/ culturel",
@@ -104,13 +104,13 @@ export const form = {
     "Rapports annuels ou financiers des trois dernières années (obligatoire)",
   PP_1_declaration_additional_information:
     "Y a-t-il autre chose que vous aimeriez nous dire ? Veuillez utiliser ce champ",
-  PS_1_risk_references_title: "3.2. Références à la situation sécuritaire",
+  PS_1_risk_references_title: "3.2. Références sur la situation de risque",
   PS_1_risk_references_description:
-    "Veuillez joindre à votre déclaration personnelle des références étayant vos préoccupations en matière de sécurité (par exemple, articles, liens, rapports de police, commentaires sur le contexte de la menace).",
+    "Veuillez joindre à votre déclaration personnelle des références soutenant vos inquiétudes en matière de sécurité (par exemple, articles, liens, rapports de police, commentaires sur le contexte de la menace).",
   PS_1_risk_pr_title: "3.3. Relations publiques",
   PS_1_risk_pr_description:
-    "Est-il possible pour vous d'apparaître publiquement en tant que membre de l'Initiative Martin Roth ? Veuillez également tenir compte des implications en matière de sécurité pour vous et vos proches, y compris en ce qui concerne votre retour éventuel.",
-  PS_1_risk_referees_title: "3.4. Arbitres",
+    "Serait-il possible pour vous d'apparaître publiquement en tant que boursier de l'Initiative Martin Roth ? Veuillez également tenir en compte des implications en matière de sécurité pour vous et vos proches, y compris en ce qui concerne votre retour potentiel.",
+  PS_1_risk_referees_title: "3.4. Personnes de référence",
   PP_1_declaration_documents_title:
     "Les documents suivants sont joints à la demande",
   PP_1_declaration_documents_1:
@@ -133,12 +133,12 @@ export const form = {
   PP_1_project_description_title:
     "Veuillez décrire votre projet à l'aide des questions ci-dessous. Veuillez noter qu'une bonne planification de projet doit, avant tout, être axée sur les besoins, les objectifs, la durabilité et la cohérence.",
   PP_1_project_current_situation_title: "3.1. La situation actuelle",
-  PS_1_personal_background_education_institution_degree: "Diplôme",
+  PS_1_personal_background_education_institution_degree: "Diplôme universitaire",
   PS_1_personal_background_career_title: "1.5. Carrière professionnelle",
   PS_1_personal_background_career_description:
-    "Quelle est votre profession actuelle / Quelles sont les dernières professions que vous avez exercées ?",
-  PS_1_personal_background_career_position: "Position",
-  PS_1_personal_background_career_position_profession: "Profession/ Position",
+    "Quelle est votre profession actuelle / Quelles sont les dernières professions que vous avez pratiquées ?",
+  PS_1_personal_background_career_position: "Poste",
+  PS_1_personal_background_career_position_profession: "Profession/ Poste",
   PP_1_applicant_legal_form_description:
     "Précisez la forme juridique de votre organisation (par exemple, e.V., gGmbH, etc.).",
   PP_1_applicant_registration_title: "Numéro d'enregistrement",
@@ -149,20 +149,20 @@ export const form = {
   PS_1_artistic_genre_description:
     "Veuillez indiquer le genre artistique/culturel dans lequel vous travaillez.",
   PS_1_artistic_description:
-    "2.2. Description de l'œuvre artistique/culturelle",
+    "2.2. Description de votre œuvre artistique/culturelle",
   PS_1_artistic_description_description:
     "2.2. Description de l'œuvre artistique/culturelle",
-  PS_1_artistic_milestones: "2.3 Les étapes de la vie professionnelle",
+  PS_1_artistic_milestones: "2.3 Étapes professionnelles",
   PS_1_artistic_milestones_description:
-    "Veuillez décrire les étapes professionnelles les plus importantes de votre carrière, de votre point de vue.",
+    "De votre point de vue, quels sont les moments clés de votre carrière professionelle?",
   PS_1_host_work_description:
-    "Que souhaitez-vous réaliser sur le plan artistique/professionnel pendant votre bourse MRI et votre séjour dans cette organisation d'accueil ? Veuillez indiquer des objectifs spécifiques et/ou des idées/plans de projet, le cas échéant.",
-  PS_1_host_fit_title: "4.4. Adéquation entre vous et l'institution d'accueil",
+    "Que souhaitez-vous réaliser sur le plan artistique/professionnel pendant votre bourse MRI et votre séjour dans cette organisation hôte ? Vous pourriez indiquer des objectifs spécifiques et/ou des idées/plans de projet.",
+  PS_1_host_fit_title: "4.4. Base de coopération entre vous et votre organisation hôte",
   PS_1_host_fit_description:
-    "Pourquoi pensez-vous que cette organisation hôte est bien adaptée à la collaboration envisagée ? Comment l'organisation hôte peut-elle vous soutenir dans votre travail artistique ? Veuillez également décrire comment vous vous connaissez et si vous avez déjà travaillé ensemble dans le passé.",
+    "Pourquoi pensez-vous que votre organisation hôte est bien adaptée à la collaboration envisagée ? Comment l'organisation hôte pourrait vous soutenir dans votre travail artistique ? Veuillez également décrire comment vous vous connaissez et si vous avez déjà travaillé ensemble dans le passé.",
   PS_1_after_title: "5. Après la bourse / Stratégie de sortie",
   PS_1_after_description:
-    "La bourse d'études avec l'IRM est d'une durée maximale de 12 mois. Dans des cas très exceptionnels, elles peuvent être prolongées jusqu'à 12 mois supplémentaires. Après cette période, le soutien de MRI prend fin. Étant donné la nature temporaire de la bourse, il est essentiel d'avoir un plan de ce que l'on fera après ce séjour MRI en Allemagne.",
+    "Les bourses de la MRI sont d'une durée maximale de 12 mois. Dans des cas très exceptionnels, elles peuvent être prolongées jusqu'à 12 mois supplémentaires. Après cette période, le soutien de MRI prend fin. Étant donné la nature temporaire de la bourse, il est essentiel d'avoir un plan de ce que vous feriez après le séjour MRI en Allemagne.",
   PP_1_project_security_title: "3.6. Sécurité",
   PP_1_project_security_description:
     "Quelles sont les politiques de sécurité que vous suivez ; quelles mesures de sécurité mettez-vous déjà en œuvre ou envisagez-vous de mettre en œuvre (par exemple, communication sécurisée, sécurité des données, confidentialité) ?",
@@ -171,26 +171,26 @@ export const form = {
     "Quels risques ou autres impacts négatifs non intentionnels pourraient influencer les objectifs du projet ? Comment ces risques peuvent-ils être minimisés ou atténués ? Le cas échéant, citez également les impacts positifs involontaires possibles. (Veuillez noter qu'il s'agit principalement de la non-application des mesures ou de la non-réalisation des objectifs/indicateurs).",
   PP_1_expenditure_title: "4. Dépenses et plan de financement",
   PS_1_risk_referees_description:
-    "Veuillez indiquer deux personnes de référence qui vous connaissent bien, ainsi que votre travail et la situation de sécurité dans laquelle vous vous trouvez. Veuillez vous assurer que les deux personnes de référence acceptent de fournir leurs données personnelles et qu'elles reçoivent les informations ci-jointes sur la protection des données. Les personnes de référence que vous désignez ne peuvent pas être membres de l'organisation hôte et doivent parler anglais, français, espagnol ou allemand. Comment les personnes de référence souhaitent-elles être contactées ? Les informations du MRI sur la communication sécurisée peuvent vous aider à prendre une décision.",
-  PS_1_host_title: "4. Poursuite du travail artistique/culturel",
+    "Veuillez indiquer deux personnes de référence qui vous connaissent bien, ainsi que votre travail et la situation de sécurité dans laquelle vous vous trouvez. Assurez-vous que les deux personnes de référence acceptent de fournir leurs données personnelles et qu'elles reçoivent les informations ci-jointes sur la protection des données. Les personnes de référence que vous nommerez ne peuvent pas être membres de l'organisation hôte et doivent parler anglais, français, espagnol ou allemand. Comment les personnes de référence souhaitent-elles être contactées ? Les informations du MRI sur la communication cryptée peuvent vous aider dans votre réflexion.",
+  PS_1_host_title: "4. La continuation du travail artistique/culturel",
   PS_1_host_name: "4.1. Nom de l'organisation hôte",
   PS_1_host_contact_person:
-    "4.2. Personne de contact dans l'organisation hôte (nom complet)",
-  PS_1_host_work_title: "4.3. Projet/œuvre artistique",
+    "4.2. Personne de contact à l'organisation hôte (nom et prénom)",
+  PS_1_host_work_title: "4.3. Projet artistique",
   common_first_name: "Prénom",
   common_last_name: "Nom de famille",
   common_full_name: "Nom",
   common_position: "Position",
   common_function: "Fonction",
   common_signal: "Signal",
-  common_wire: "Fil métallique",
+  common_wire: "wire",
   common_contact: "Contact",
   common_contact_other: "Autre",
   common_online_presence: "Présence en ligne",
   common_place: "Lieu",
   common_submit: "Soumettre",
-  common_finalize: "Finalisez",
-  common_save_close: "Enregistrer et fermer",
+  common_finalize: "Finaliser",
+  common_save_close: "Sauvegarder et fermer",
   common_save_continue: "Sauvegarder et continuer",
   PP_1_project_after_description:
     "Veuillez définir un (ou plusieurs) objectif(s) réaliste(s) pour la période suivant la bourse (stratégie de sortie). Déduisez des activités concrètes (veuillez utiliser des points, y compris le calendrier) et précisez les indicateurs de réussite pour atteindre le ou les objectifs (des indicateurs qualitatifs et/ou quantitatifs soutiennent la mesure et le rapport des objectifs du projet). <br/><br/><b>Veuillez noter:</b> Veuillez signaler les mesures que vous budgétez dans le plan financier. Les mesures qui ne sont pas financées par ce projet doivent être indiquées et expliquées.",
@@ -198,20 +198,20 @@ export const form = {
   PP_1_project_after_activities_title: "Activités",
   PP_1_project_after_success_title: "Indicateurs de réussite",
   PP_1_project_impact_title: "3.3. Impact",
-  PS_1_other_relatives_title: "6.1. Parents",
+  PS_1_other_relatives_title: "6.1. Relatives",
   PS_1_other_relatives_description:
-    "Avez-vous l'intention de quitter le pays avec des membres de votre famille (enfants de moins de 18 ans et conjoints) ? Si oui, veuillez indiquer ici les noms des membres de la famille, leurs dates de naissance ainsi que votre relation avec chaque personne. Veuillez expliquer pourquoi le membre de votre famille qui vous accompagne semble nécessaire.",
-  PS_1_other_support_title: "6.2. Support",
+    "Avez-vous l'intention de quitter le pays avec des membres de votre famille (conjoints, enfants de moins de 18 ans) ? Si oui, veuillez indiquer ici les noms des membres de votre famille, leurs dates de naissance ainsi que votre relation avec chaque personne. Veuillez expliquer pourquoi l'accompagnement du membre de votre famille semble nécessaire.",
+  PS_1_other_support_title: "6.2. Soutien",
   PS_1_other_support_description:
-    "Votre organisation d'accueil peut allouer un budget pour certaines mesures de soutien, comme un soutien psychosocial, des cours de langue ou des cours de formation professionnelle. Veuillez énumérer ici vos idées sur ce qui pourrait être utile et en discuter avec votre organisation d'accueil. Veuillez préciser pour chaque mesure pourquoi vous la jugez pertinente. Expliquez en particulier si vous avez besoin d'un soutien particulier pour des raisons de santé ou autres.",
+    "Votre organisation d'accueil peut allouer un budget pour certaines mesures de soutien dans la candidature, comme un soutien psychosocial, des cours de langue ou des cours de formation professionnelle. Veuillez énumérer ici vos idées sur ce qui pourrait vous être utile et discutez-en avec votre organisation hôte. Veuillez préciser pour chaque mesure pourquoi vous la considérez comme pertinente. Expliquez-le en particulier si vous avez besoin d'un soutien particulier pour des raisons de santé ou autres.",
   PS_1_other_funding_contact_title:
-    "6.3. Contact avec d'autres programmes de financement",
+    "6.3. Contact avec d'autres programmes de relocalisation/de bourses",
   PS_1_personal_background_emergency_contact_description:
-    "Comment votre contact d'urgence souhaite-t-il être contacté ? Les informations de l'IRM sur la communication sécurisée peuvent aider à la prise de décision. <br/> (Veuillez vous assurer que tous vos contacts d'urgence acceptent de divulguer leurs données personnelles et qu'ils ont également reçu les informations ci-jointes sur la protection des données. Les contacts d'urgence sont informés pendant votre séjour, notamment en cas de maladie, d'accident ou d'autres circonstances imprévues. Veuillez vous assurer que votre organisation d'accueil potentielle dispose toujours des dernières coordonnées d'urgence).",
+    "Comment votre contact d'urgence souhaite-t-il/elle être contacté(e) ? Les informations de la MRI sur la communication cryptée peuvent vous aider dans votre réflexion. <br/> (Veuillez-vous assurer que tous vos contacts d'urgence acceptent de partager leurs données personnelles et qu'ils ont également reçu les informations ci-jointes sur la protection des données. Les contacts d'urgence sont informés pendant votre séjour notamment en cas de maladie, d'accident ou d'autres circonstances imprévues. Veuillez vous assurer que votre organisation hôte potentielle dispose toujours des coordonnées d'urgence actuelles).",
   PS_1_personal_background_emergency_contact_others: "Signal/ Wire/ Protonmail",
   PS_1_personal_background_emergency_languages_description:
-    "Veillez à ce que votre contact d'urgence et une personne de votre organisation d'accueil aient une langue commune.",
-  PS_1_personal_background_emergency_relationship_title: "Relationship",
+    "Veuillez-vous assurer que votre contact d'urgence et une personne de votre organisation hôte potentielle aient une langue commune.",
+  PS_1_personal_background_emergency_relationship_title: "Relation",
   PS_1_personal_background_emergency_relationship_description:
     "Quelle est votre relation avec cette personne",
   PP_1_applicant_bookkeeping_title:
@@ -247,23 +247,23 @@ export const form = {
   PP_1_applicant_funds_use_title:
     "Déclaration sur l'utilisation appropriée des fonds",
   PS_1_other_funding_contact_description:
-    "Avez-vous déjà contacté d'autres programmes de relogement ou d'hébergement ? Si oui, quelles organisations avez-vous contactées ?",
+    "Avez-vous déjà contacté d'autres programmes de relocalisation/de bourses ? Si oui, quelles organisations avez-vous contactées ?",
   PS_1_other_further_title: "6.4. Informations complémentaires",
   PS_1_other_further_description:
-    "Y a-t-il autre chose dont vous aimeriez nous informer ? Veuillez utiliser ce champ pour le faire",
+    "Y a-t-il autre chose dont vous souhaitez nous informer ? Veuillez utiliser cet espace pour le faire",
   PS_1_others_1:
     "Je confirme par la présente que je suis conscient(e) que la bourse du MRI est accordée pour une période limitée et que le soutien du MRI prendra fin après cette période.",
   PS_1_others_2:
-    "Je confirme par la présente que j'ai été ou que je serai en contact étroit avec l'organisation d'accueil au sujet de la demande et que je suis au courant des mesures/activités et du budget du projet décrit dans la présente demande.",
+    "Je confirme par la présente que j'ai été / je serai en contact étroit avec l'organisation hôte au sujet de la candidature et que je suis conscient(e) des mesures/activités et du budget du projet exposé t dans la présente candidature.",
   PS_1_artistic_further_information:
-    "2.4 Informations complémentaires et liens",
+    "2.4 Informations complémentaires et liens vers des sites web",
   PS_1_artistic_further_information_description:
-    "Y a-t-il autre chose dont vous aimeriez nous informer ? Veuillez utiliser ce champ pour joindre des liens concernant votre travail artistique/culturel.",
+    "Vous pourriez ajouter des informations importantes de votre travail artistique ou culturels ainsi que des liens vers de sites web à l’espace suivant.",
   PS_1_risk: "3. Risque existant",
   PS_1_risk_description_title:
     "3.1. Description de la situation de risque individuelle",
   PS_1_risk_description_description:
-    "L'initiative Martin Roth soutient les artistes en danger, menacés, surveillés et/ou persécutés par des acteurs étatiques et/ou non étatiques en raison de leur travail ou d'autres circonstances. Veuillez décrire votre situation individuelle en matière de sécurité et être aussi précis que possible, en énumérant les incidents et les dates. N'hésitez pas à ajouter des informations plus générales sur la situation politique de votre pays si vous estimez que cela est pertinent/important.",
+    "L'initiative Martin Roth soutient des artistes qui sont en situation de risque, qui font l'objet de menaces, qui sont surveillé(e)s et/ou persécuté(e)s par des acteurs étatiques et/ou non étatiques en raison de leur travail ou d'autres circonstances. Veuillez décrire votre situation individuelle en matière de sécurité et soyez aussi précis(e) que possible, en énumérant des incidents et des dates. N'hésitez pas à ajouter des informations plus générales sur la situation politique de votre pays si vous les estimez pertinentes/importantes.",
   PP_1_project_current_situation_description:
     "Veuillez décrire comment vous connaissez l'artiste/travailleur culturel et expliquer pourquoi vous souhaitez le soutenir/travailler avec lui. Expliquez comment le contact s'est établi et décrivez votre relation. Veuillez faire référence au travail artistique/culturel du boursier potentiel (et à sa pertinence) et, dans la mesure du possible, à ses besoins concrets (par exemple, en raison du risque actuel).",
   PP_1_project_goals_title: "3.2. Objectifs du projet",
@@ -274,15 +274,15 @@ export const form = {
   PP_1_project_continuation_title:
     "3.2.2. Poursuite du travail artistique/culturel et du développement professionnel",
   PS_1_others_3:
-    "Je confirme avoir pris note de l'obligation d'informer mon organisation d'accueil et l'Initiative Martin Roth au cas où je prévoirais un retour dans mon pays d'origine/contexte de risque pendant la période de la bourse.",
+    "Je confirme  par la présente que j'ai bien noté l'obligation d'informer mon organisation hôte et l'Initiative Martin Roth au cas où je prévois un retour dans mon pays d'origine/contexte de risque pendant la période de la bourse.",
   PS_1_others_4:
-    "Je confirme par la présente que je ne dispose pas d'un accès permanent à un pays tiers sûr (par exemple en vertu de ma double nationalité ou pour d'autres raisons).",
+    "Je confirme par la présente que je n'ai pas d'accès permanent à un pays tiers sûr (par exemple en vertu de ma double nationalité ou pour d'autres raisons).",
   PS_1_others_5:
     "Je confirme par la présente que je suis en possession d'un passeport valide avant et pendant la période de la bourse et que je suis en mesure de quitter le pays dans lequel je réside actuellement.",
   PS_1_others_6:
-    "Je m'engage à me concerter avec mon organisation d'accueil avant d'entreprendre toute activité ayant un rapport avec le grand public et, en général, tout ce qui concerne les relations publiques.",
+    "Je vous assure que je me coordonnerai avec mon organisation hôte avant d'entreprendre toute activité en rapport avec le grand public et, en général, toute questions relatives aux relations publiques.",
   PS_1_others_7:
-    "Je confirme par la présente que j'ai dûment reçu et pris note, ainsi que mes références et contacts, des informations sur la protection de la vie privée figurant dans le document intitulé \"Informations sur la protection des données et le traitement de vos données personnelles conformément au GDPR\" et que j'accepte, ainsi que mes références et contacts, l'utilisation prévue décrite.",
+    "Vous confirmez par la présente que vous et les personnes et contacts que vous avez indiqués ont reçu et pris connaissance des informations sur la protection des données et le traitement de vos données personnelles conformément au DS-GVO (requis pour la demande/ en anglais).",
   PP_1_declaration_4:
     "L'organisation candidate garantit par la présente l'utilisation appropriée des fonds fournis par l'IRM.",
   PP_1_declaration_5:
@@ -290,7 +290,7 @@ export const form = {
   PP_1_declaration_6:
     "L'organisation candidate confirme par la présente qu'elle ne remet pas en question le droit à l'existence d'Israël, qu'elle n'appelle pas et n'appellera pas au boycott d'Israël de quelque manière que ce soit et qu'elle ne soutiendra pas activement le mouvement BDS. Le financement du ministère fédéral des Affaires étrangères ne permet pas de soutenir des organisations et des projets qui remettent en question le droit à l'existence d'Israël, appellent au boycott d'Israël ou mènent des activités de soutien au mouvement BDS. Ceci fait référence à la résolution du Bundestag allemand (https://www.bundestag.de/dokumente/textarchiv/2019/kw20-de-bds-642892)",
   PP_1_declaration_7:
-    "Vous confirmez par la présente que vous et les personnes que vous avez indiquées avez dûment reçu et pris note des informations sur la confidentialité (https://martin-roth-initiative.de/en/application#pid-112) et que vous êtes d'accord avec l'utilisation prévue des données telle que décrite.",
+    "Vous confirmez par la présente que vous et les personnes et contacts que vous avez indiqués ont reçu et pris connaissance des informations sur la protection des données et le traitement de vos données personnelles conformément au DS-GVO (requis pour la demande/ en anglais).",
   PP_1_declaration_8: "",
   PP_1_project_impact_description:
     "Veuillez décrire dans quelle mesure un impact sociétal positif (dans le pays d'origine ou le pays d'accueil du boursier) peut être attendu du projet ?",
@@ -304,23 +304,23 @@ export const form = {
     "Veuillez indiquer le statut de votre visa/résidence dans votre lieu de résidence actuel et sa date d'expiration (le cas échéant).",
   PS_1_personal_background_residence_status_description:
     "(citoyen, permis de séjour temporaire jusqu'au ..., visa touristique, etc.)",
-  PS_1_personal_background_contact_title: "1.2. Contact",
+  PS_1_personal_background_contact_title: "1.2. Vos coordonées",
   PS_1_personal_background_contact_description:
-    "Comment souhaitez-vous être contacté ? Les informations de l'IRM sur la communication sécurisée peuvent vous aider à prendre une décision.",
+    "Comment souhaitez-vous être contacté(e) ? Les informations de la MRI sur la communication cryptée peuvent vous aider dans votre réflexion.",
   PS_1_personal_background_emergency_contact_title:
     "1.3. Contact en cas d'urgence",
   PS_1_personal_background_education_title:
-    "1.4. Formation académique ou professionnelle",
+    "1.4. Formation universitaire ou professionnelle",
   PS_1_personal_background_education_description:
     "Quelle est votre formation professionnelle/universitaire ?",
   PS_1_personal_background_education_institution: "Institution",
   PS_1_personal_background_education_institution_title:
     "Institution/employeur/école",
   PS_1_personal_background_education_institution_duration: "Durée",
-  PS_1_personal_background_title: "1. CONTEXTE PERSONNEL",
-  PS_1_personal_background_personal_data_title: "1.1. Vos données personnelles",
+  PS_1_personal_background_title: "1. INFORMATIONS PERSONNELLES",
+  PS_1_personal_background_personal_data_title: "1.1. Données personnelles",
   PS_1_personal_background_place_of_birth: "Lieu de naissance",
-  PS_1_personal_background_citizenship: "Pays ou pays de citoyenneté",
+  PS_1_personal_background_citizenship: "Le(s) pays de citoyenneté",
   PS_1_personal_background_citizenship_help:
     "Indiquez les pays séparés par des virgules",
   common_title_title: "Titre",
@@ -328,7 +328,7 @@ export const form = {
   common_title_choice_2: "Monsieur.",
   common_title_choice_3: "Mme.",
   common_academic_title: "Titre académique",
-  common_social_media: "Médias sociaux",
+  common_social_media: "Reseaux sociaux",
   common_website: "Site web",
   common_languages_title: "Langue(s) de communication",
   common_from: "De",

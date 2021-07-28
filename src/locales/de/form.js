@@ -2,71 +2,71 @@ export const form = {
   common_email: "E-Mail",
   common_protonmail: "Protonmail",
   common_telephone: "Telefon",
-  common_office_telephone: "Bürotelefon",
+  common_office_telephone: "Tel. Büro",
   common_mobile: "Mobil",
   common_signal: "Signal",
-  common_wire: "Draht",
+  common_wire: "Wire",
   common_contact: "Kontakt",
   common_contact_other: "Andere",
   common_online_presence: "Online-Präsenz",
   PP_1_declaration_documents_5:
-    "Jahres- oder Finanzberichte der letzten drei Jahre (obligatorisch)",
+    "Jahres- bzw. Finanzberichte der letzten drei Jahre (verpflichtend)",
   PP_1_declaration_additional_information:
-    "Gibt es noch etwas, das Sie uns mitteilen möchten? Bitte nutzen Sie dieses Feld",
+    "Möchten Sie uns noch etwas mitteilen? Nutzen Sie hierfür bitte dieses Feld",
   PP_1_declaration_documents_title:
-    "Die folgenden Dokumente sind der Anwendung beigefügt",
+    "Dem Antrag sind folgende Dokumente beigefügt",
   PP_1_declaration_documents_1:
-    "Persönliches Statement (falls nicht bereits beim MRT vorhanden).",
+    "Personal Statement (falls es der MRI noch nicht vorliegt)",
   PP_1_declaration_documents_2:
-    "Ausgaben- und Finanzierungsplan (obligatorisch)",
-  PP_1_declaration_documents_3: "Registrierungsnachweis (obligatorisch)",
+    "Ausgaben- und Finanzierungsplan (verpflichtend)",
+  PP_1_declaration_documents_3: "Registrierungsnachweis (verpflichtend)",
   PP_1_declaration_documents_4:
-    "Satzung/Geschäftsordnung (falls vorhanden, sonst Leitbild)",
+    "Satzung/Geschäftsordnung (wenn vorhanden, ansonsten Mission Statement)",
   PS_1_personal_background_career_position_employer:
-    "Arbeitgeber/ Selbständiger",
+    "Arbeitgeber / Selbstständigkeit",
   PS_1_personal_background_career_position_duration:
-    "In welchem Zeitraum haben Sie in diesem Beruf gearbeitet?",
+    "In welchem Zeitraum haben Sie diese Tätigkeit ausgeführt?",
   PS_1_personal_background_languages: "1.6. Sprachkenntnisse",
   PS_1_personal_background_languages_description:
-    "listen Sie die Sprachen für jede Fähigkeit durch Kommata getrennt auf und geben Sie in Klammern eine Einstufung an (Grundkenntnisse, Konversation, fließend oder Muttersprache).",
-  PS_1_personal_background_languages_read: "Lesen Sie",
+    "Bitte listen Sie hier Ihre Sprachkenntnisse durch Kommas getrennt auf und geben Sie in Klammern eine Selbsteinschätzung (Grundkenntnisse, konversationssicher, fließend oder Muttersprache).",
+  PS_1_personal_background_languages_read: "Lesen",
   PP_1_overview_place: "Projektort(e)",
   PP_1_overview_place_description:
-    "Wo findet der vorübergehende Umzug (Wohnsitz) statt? Dies schließt keine Geschäfts- oder Netzwerkreisen ein.",
+    "Geben Sie hier die Hauptprojektorte (permanente Aufenthaltsorte) an, in denen das Projekt stattfindet. Dazu zählen keine kürzeren Dienst- oder Vernetzungsreisen.",
   PP_1_overview_period: "Geplanter Stipendienzeitraum",
   PP_1_overview_period_description:
-    "Bitte geben Sie den geplanten Stipendienzeitraum an. Bitte beachten Sie, dass der Stipendienzeitraum (und die Auszahlung des Stipendiums) erst mit dem Beginn des vorübergehenden Aufenthalts im Gastland beginnen kann. Bitte beachten Sie, dass die maximale Dauer der Stipendienlaufzeit 12 Monate beträgt.",
-  PP_1_overview_funding: "Angefragte Mittel (EUR)",
+    "Geben Sie bitte den geplanten Stipendien- bzw. Aufenthaltszeitraum hier ein. Bitte beachten Sie dabei, dass das Stipendium erst nach Einreise bezogen werden kann. Der Stipendienzeitraum darf maximal 12 Monate betragen.",
+  PP_1_overview_funding: "Antragssumme (EUR)",
   PS_1_personal_background_residency:
-    "Haben Sie einen legalen Zugang zu einem dauerhaften Aufenthalt in einem anderen Land oder einen Aufenthaltsstatus in einem anderen Land? Bitte erläutern Sie dies.",
-  PS_1_personal_background_passport: "Besitzen Sie einen gültigen Reisepass?",
+    "Haben sie eine rechtliche Möglichkeit, dauerhaft in einem anderen Land zu leben (z.b. durch eine doppelte Staatsangehörigkeit), oder eine Aufenthaltserlaubnis in einem anderen Land? Bitte erläutern Sie dies.",
+  PS_1_personal_background_passport: "Sind sie im Besitz eines gültigen Reisepasses?",
   PS_1_personal_background_passport_validity:
-    "Wenn Sie einen gültigen Reisepass haben, wann läuft er ab?",
+    "Wenn Sie einen gültigen Reisepass besitzen, wann läuft dieser ab?",
   PS_1_personal_background_current_location:
-    "Wo befindet sich Ihr aktueller Standort? Bitte geben Sie die Stadt und das Land an",
+    "Bitte geben Sie Ihren aktuellen Aufenthaltsort an (Stadt/Land)",
   PS_1_personal_background_current_location_away:
-    "Wenn Sie sich nicht in Ihrem Heimatland befinden, wann haben Sie Ihr Heimatland verlassen und seit wann sind Sie an Ihrem aktuellen Standort?",
-  common_social_media: "Soziale Medien",
+    "Wenn sie sich zur Zeit nicht in ihrem Heimatland befinden, wann haben sie ihr Heimatland verlassen und seit wann befinden sie sich an ihrem aktuellen Aufenthaltsort?",
+  common_social_media: "Social Media",
   common_website: "Website",
-  common_languages_title: "Sprache(n) der Kommunikation",
-  common_from: "Von",
-  common_to: "An",
+  common_languages_title: "Verständigungssprache",
+  common_from: "von",
+  common_to: "bis",
   PS_1_personal_background_residence_status:
-    "Bitte geben Sie Ihren Visum-/Aufenthaltsstatus an Ihrem aktuellen Wohnort an und wann er abläuft (falls zutreffend)",
+    "Wenn sie sich zur Zeit nicht in ihrem Heimatland befinden, bitte geben sie ihren Visums- bzw. Aufenthaltsstatus an ihrem aktuellen Aufenthaltsort an und ggf. wann dieser Status abläuft.",
   PS_1_personal_background_residence_status_description:
-    "(Staatsbürger, befristete Aufenthaltserlaubnis bis ..., Touristenvisum, etc.)",
+    "(Staatsbürgerschaft, befristete Aufenthaltserlaubnis bis ..., Touristenvisum, etc.)",
   PS_1_personal_background_contact_title: "1.2. Kontakt",
   PS_1_personal_background_contact_description:
-    "Wie möchten Sie kontaktiert werden? Die Informationen von MRI zur sicheren Kommunikation können Ihnen bei der Entscheidungsfindung helfen.",
+    "Auf welchem Weg möchten Sie kontaktiert werden? Die Informationen der MRI zur sicheren Kommunikation  können Ihnen bei der Entscheidungsfindung helfen",
   PS_1_personal_background_emergency_contact_title: "1.3. Notfallkontakt",
   common_reference: "Referenz",
   common_address: "Adresse",
   common_street: "Straße",
-  common_house: "Haus-Nr.",
-  common_pin: "Postleitzahl",
-  common_first_name: "Vornamen",
+  common_house: "Hausnr.",
+  common_pin: "PLZ",
+  common_first_name: "Vorname(n)",
   common_last_name: "Nachname",
-  common_full_name: "Name",
+  common_full_name: "Voller Name",
   common_position: "Position",
   common_function: "Funktion",
   common_place: "Ort",
@@ -76,33 +76,33 @@ export const form = {
   common_save_continue: "Speichern und fortfahren",
   PS_1_personal_background_title: "1. PERSÖNLICHER HINTERGRUND",
   PS_1_personal_background_personal_data_title: "1.1. Ihre persönlichen Daten",
-  PS_1_personal_background_place_of_birth: "Ort der Geburt",
+  PS_1_personal_background_place_of_birth: "Geburtsort",
   PS_1_personal_background_citizenship:
-    "Land oder Länder der Staatsbürgerschaft",
+    "Staatsangehörigkeit(en)",
   PS_1_personal_background_citizenship_help:
     "Geben Sie die Länder durch Kommata getrennt an",
-  PS_1_personal_background_languages_write: "Schreiben Sie",
-  PS_1_personal_background_languages_understand: "Verstehen Sie",
-  PS_1_personal_background_languages_speak: "Sprechen Sie",
-  PS_1_artistic_title: "2. Künstlerische/ kulturelle Arbeit",
+  PS_1_personal_background_languages_write: "Schreiben",
+  PS_1_personal_background_languages_understand: "Verstehen",
+  PS_1_personal_background_languages_speak: "Sprechen",
+  PS_1_artistic_title: "2. Künstlerische/kulturelle Arbeit",
   PS_1_artistic_genre: "2.1. Künstlerisches/kulturelles Genre",
   PP_1_project_after_description:
-    "Definieren Sie bitte ein realistisches Ziel (oder Ziele) für die Zeit nach der Stipendienlaufzeit (Exit-Strategie). Leiten Sie konkrete Aktivitäten ab (bitte Aufzählungspunkte verwenden, inkl. Zeitplan) und geben Sie Erfolgsindikatoren an, um das/die Ziel(e) zu erreichen (qualitative und/oder quantitative Indikatoren unterstützen die Messung und Berichterstattung der Projektziele). <br/><br/><b>Bitte beachten Sie:</b> Bitte kennzeichnen Sie Maßnahmen, die Sie im Finanzplan einplanen. Maßnahmen, die nicht über dieses Projekt finanziert werden, müssen angegeben und erläutert werden.",
+    "Formulieren Sie bitte zunächst ein realistisches Ziel, welches Anschlussszenario (oder Anschlussszenarien) nach dem Aufenthalt angestrebt werden. Leiten Sie daraus konkrete Maßnahmen (Bulletpoints, inkl. Zeitplan) ab, um das angegebene Ziel zu erreichen, und geben Sie anschließend Zielindikatoren an, anhand derer Sie den Projekterfolg messbar machen (qualitative oder quantitative) und nachweisen wollen. <br/><br/><b>Achtung:</b> Bitte kennzeichnen Sie die Maßnahmen, die Sie im Finanzierungsplan budgetieren. Sollten Sie Maßnahmen angeben, die anderweitig Weise finanziert werden, geben Sie bitte an, auf welche Weise dies geschehen soll.",
   PP_1_project_after_goals_title: "Ziel(e)",
-  PP_1_project_after_activities_title: "Aktivitäten",
+  PP_1_project_after_activities_title: "Maßnahmen/Aktivitäten",
   PP_1_project_after_success_title: "Erfolgsindikatoren",
-  PP_1_project_impact_title: "3.3. Auswirkung",
+  PP_1_project_impact_title: "3.3. 3.	Wirkung (gesellschaftlicher Beitrag):",
   common_cancel: "Abbrechen",
-  common_printPDF: "Drucken in PDF",
-  PS_1_title: "Persönliches Statement",
-  PS_1_submit_button: "Anweisung einreichen",
+  common_printPDF: "als PDF drucken",
+  PS_1_title: "Personal Statement",
+  PS_1_submit_button: "Personal Statement einreichen",
   PS_1_save_button: "Speichern",
   PS_1_artistic_genre_description:
     "Bitte geben Sie das künstlerische/kulturelle Genre an, in dem Sie arbeiten",
   PS_1_artistic_description:
     "2.2. Beschreibung der künstlerischen/kulturellen Arbeit",
   PS_1_artistic_description_description:
-    "2.2. Beschreibung der künstlerischen/kulturellen Arbeit",
+    "Bitte beschreiben Sie Ihre künstlerische/kulturelle Arbeit und geben Sie an, seit wann Sie diese ausüben.",
   PS_1_artistic_milestones: "2.3 Berufliche Meilensteine",
   PS_1_artistic_milestones_description:
     "Bitte beschreiben Sie die aus Ihrer Sicht wichtigsten beruflichen Meilensteine in Ihrer Karriere.",
@@ -112,233 +112,233 @@ export const form = {
   common_title_choice_3: "Frau",
   common_academic_title: "Akademischer Titel",
   PS_1_personal_background_education_title:
-    "1.4. Akademische oder berufliche Ausbildung",
+    "1.4. Akademische bzw. berufliche Ausbildung",
   PS_1_personal_background_education_description:
-    "Was ist Ihr beruflicher/akademischer Bildungshintergrund?",
+    "Was ist Ihr beruflicher bzw. akademischer Bildungshintergrund?",
   PS_1_personal_background_education_institution: "Einrichtung",
   PS_1_personal_background_education_institution_title:
     "Institution/Arbeitgeber/Schule",
   PS_1_personal_background_education_institution_duration: "Dauer",
-  PP_1_title: "Projektvorschlag",
+  PP_1_title: "Projektantrag",
   PP_1_description:
     "Für Stipendien an Gastorganisationen mit Sitz in Deutschland",
   PP_1_overview: "1. Projektübersicht",
   PP_1_overview_title: "Projekttitel",
   PP_1_overview_title_description:
-    "Bitte geben Sie einen kurzen und klaren Projekttitel an, der idealerweise den Namen Ihrer Organisation enthält.",
-  PS_1_personal_background_education_institution_degree: "Grad",
-  PS_1_personal_background_career_title: "1.5. Berufliche Karriere",
+    "Geben Sie einen möglichst kurzen und inhaltlich treffenden Projekttitel an, in dem idealerweise der Name ihrer Organisation enthalten ist.",
+  PS_1_personal_background_education_institution_degree: "Abschluss",
+  PS_1_personal_background_career_title: "1.5. Beruflicher Werdegang",
   PS_1_personal_background_career_description:
-    "Was ist Ihr aktueller Beruf / Was waren Ihre letzten Berufe?",
+    "Welchen Beruf üben Sie zur Zeit aus / In welchen Berufen waren Sie zuletzt tätig?",
   PS_1_personal_background_career_position: "Position",
-  PS_1_personal_background_career_position_profession: "Beruf/ Position",
+  PS_1_personal_background_career_position_profession: "Beruf/Position",
   PS_1_others_3:
-    "Ich bestätige hiermit, dass ich die Verpflichtung zur Kenntnis genommen habe, meine Gastorganisation und die Martin Roth Initiative zu informieren, falls ich während der Stipendienlaufzeit eine Reise zurück in mein Herkunftsland/Risikokontext plane.",
+    "HIERMIT BESTÄTIGE ICH, DASS ICH MEINE POTENTIELLE GASTORGANISATION UND DIE MARTIN ROTH-INITIATIVE INFORMIEREN WERDE, FALLS ICH WÄHREND DES STIPENDIUMS EINE RÜCKREISE IN MEIN HERKUNFTSLAND/MEINEN RISIKOKONTEXT PLANE.",
   PS_1_others_4:
-    "Ich bestätige hiermit, dass ich keinen dauerhaften Zugang zu einem sicheren Drittstaat habe (z.B. aufgrund einer doppelten Staatsbürgerschaft oder aus anderen Gründen).",
+    "ICH BESTÄTIGE HIERMIT, DASS ICH KEINEN DAUERHAFTEN ZUGANG ZU EINEM SICHEREN DRITTSTAAT HABE (Z.B. AUFGRUND EINER DOPPELTEN STAATSBÜRGERSCHAFT ODER AUS ANDEREN GRÜNDEN).",
   PS_1_others_5:
-    "Ich bestätige hiermit, dass ich sowohl vor als auch während der Stipendienlaufzeit im Besitz eines gültigen Reisepasses bin und dass ich in der Lage bin, das Land, in dem ich mich derzeit aufhalte, zu verlassen.",
+    "ICH BESTÄTIGE HIERMIT, DASS ICH SOWOHL VOR ALS AUCH WÄHREND DES STIPENDIUMS IM BESITZ EINES GÜLTIGEN REISEPASSES BIN UND DASS ICH IN DER LAGE BIN, DAS LAND, IN DEM ICH MICH DERZEIT AUFHALTE, ZU VERLASSEN.",
   PS_1_others_6:
-    "Ich versichere hiermit, dass ich mich vor der Durchführung von öffentlichkeitsrelevanten Aktivitäten und generell in allen Fragen der Öffentlichkeitsarbeit mit meiner Gastorganisation abstimmen werde.",
+    "ICH VERSICHERE HIERMIT, DASS ICH MICH VOR DER DURCHFÜHRUNG VON PR-AKTIVITÄTEN UND GENERELL IN ALLEN FRAGEN DER ÖFFENTLICHKEITSARBEIT MIT MEINER GASTORGANISATION ABSTIMMEN WERDE.",
   PS_1_others_7:
-    'Hiermit bestätige ich, dass ich und die von mir genannten Ansprechpartner die im Dokument "Informationen zum Datenschutz und zur Verarbeitung Ihrer personenbezogenen Daten gemäß GDPR" hervorgehobenen Details zum Datenschutz erhalten und zur Kenntnis genommen haben und dass ich und die von mir genannten Ansprechpartner mit dem dargestellten Verwendungszweck einverstanden sind.',
-  PS_1_risk_references_title: "3.2. Hinweise auf die Sicherheitslage",
+    'Hiermit bestätigen Sie, dass Sie und die von Ihnen angegebenen Personen und Kontakte die Datenschutzhinweise in den Informationen zum Datenschutz und zur Verarbeitung Ihrer personenbezogenen Daten gem. DS-GVO erhalten und zur Kenntnis genommen haben (erforderlich für die Antragstellung).',
+  PS_1_risk_references_title: "3.2. Referenzen zur Sicherheitslage",
   PS_1_risk_references_description:
-    "Bitte fügen Sie Ihrer persönlichen Erklärung Referenzen bei, die Ihre Sicherheitsbedenken belegen (z. B. Artikel, Links, Polizeiberichte, Kommentare zum Kontext der Bedrohung)",
+    "Bitte hängen Sie an Ihre persönliche Erklärung Referenzen an, die dazu geeignet sind, Ihre Sicherheitsbedenken zu belegen (beispielsweise Presseartikel, Links, Polizeiberichte, Kommentare zum Kontext der Bedrohung).",
   PS_1_risk_pr_title: "3.3. Öffentlichkeitsarbeit",
   PS_1_risk_pr_description:
-    "Ist es möglich, dass Sie als Stipendiat der Martin Roth Initiative öffentlich auftreten? Bitte bedenken Sie auch sicherheitsrelevante Implikationen für Sie und Ihre Angehörigen, auch im Hinblick auf Ihre mögliche Rückkehr.",
-  PS_1_risk_referees_title: "3.4. Schiedsrichter",
+    "Ist es möglich, dass Sie als Stipendiat:in der Martin Roth-Initiative öffentlich auftreten? Berücksichtigen Sie an dieser Stelle bitte auch sicherheitsrelevante Implikationen für Sie und Ihre Angehörigen, auch im Hinblick auf Ihre mögliche Rückkehr.",
+  PS_1_risk_referees_title: "3.4. Referenzpersonen",
   PS_1_personal_background_emergency_contact_description:
-    "Wie möchte Ihr Notfallkontakt kontaktiert werden? Die Informationen von MRI zur sicheren Kommunikation können bei der Entscheidungsfindung helfen. <br/> (Bitte stellen Sie sicher, dass alle Ihre Notfallkontakte mit der Weitergabe ihrer persönlichen Daten einverstanden sind und auch die beiliegende Datenschutzinformation erhalten haben. Die Notfallkontakte werden während Ihres Aufenthaltes informiert, u.a. für den Fall, dass Krankheiten, Unfälle oder andere unvorhergesehene Umstände eintreten. Bitte stellen Sie sicher, dass Ihre potenzielle Gastorganisation immer über die aktuellsten Notfallkontaktdaten verfügt).",
+    "Auf welchem Weg möchte Ihr Notfallkontakt kontaktiert werden? Die Informationen der MRI zur sicheren Kommunikation  können bei der Entscheidungsfindung helfen. <br/> (Bitte stellen Sie sicher, dass Ihr Notfallkontakt mit der Weitergabe der persönlichen Daten einverstanden ist und die beiliegende Datenschutzinformation erhalten hat. Notfallkontakte werden während Ihres Aufenthaltes z.B. im Fall von Krankheit oder bei unvorhergesehene Umständen kontaktiert. Bitte beachten Sie, dass Sie Änderungen dieser Daten immer auch Ihrer potentiellen Gastorganisation mitteilen).",
   PS_1_personal_background_emergency_contact_others:
-    "Signal/ Draht/ Protonmail",
+    "Signal/Wire/Protonmail",
   PS_1_personal_background_emergency_languages_description:
-    "Bitte stellen Sie sicher, dass sowohl Ihr Notfallkontakt als auch eine Person aus Ihrer Gastorganisation eine gemeinsame Sprache sprechen.",
-  PS_1_personal_background_emergency_relationship_title: "Beziehung",
+    "Bitte stellen Sie sicher, dass Ihr Notfallkontakt und eine Person Ihrer Gastorganisation eine gemeinsame Sprache sprechen.",
+  PS_1_personal_background_emergency_relationship_title: "Verhältnis",
   PS_1_personal_background_emergency_relationship_description:
-    "Wie ist Ihre Beziehung zu dieser Person",
+    "In welcher Beziehung stehen Sie zu dieser Person?",
   PP_1_project_continuation_description:
-    "Definieren Sie bitte ein individuelles Projektziel (das während der Stipendienlaufzeit erreicht werden soll) im Hinblick auf die Fortführung der künstlerischen/kulturellen Arbeit und die berufliche Entwicklung des potentiellen Stipendiaten. Leiten Sie konkrete Aktivitäten ab (bitte verwenden Sie Aufzählungspunkte und geben Sie einen Zeitplan an) und benennen Sie Erfolgsindikatoren (qualitative und/oder quantitative Indikatoren unterstützen die Messung und Berichterstattung der Projektziele).<br/><br/><b>Bitte beachten Sie:</b> Bitte geben Sie an, welche Aktivitäten Sie im Finanzplan einplanen. Aktivitäten, die nicht über dieses Projekt finanziert werden, müssen angegeben und erläutert werden.",
+    "Formulieren Sie bitte zunächst ein individuelles Projektziel, das während des Schutz- bzw. Schaffensaufenthalts im Sinne der Weiterarbeit bzw. beruflichen Entwicklung erreicht werden soll. Leiten Sie daraus konkrete Maßnahmen (Bulletpoints, inkl. Zeitplan) ab, um das angegebene Ziel zu erreichen, und geben Sie anschließend Zielindikatoren an, anhand derer Sie den Projekterfolg messbar machen (qualitative oder quantitative) und nachweisen wollen.<br/><br/><b>Achtung:</b> Bitte kennzeichnen Sie die Maßnahmen, die Sie im Finanzierungsplan budgetieren. Sollten Sie Maßnahmen angeben, die anderweitig Weise finanziert werden, geben Sie bitte an, auf welche Weise dies geschehen soll.",
   PP_1_project_continuation_goals_title: "Ziel(e)",
-  PP_1_project_continuation_activities_title: "Aktivitäten",
-  PP_1_project_continuation_success_title: "Erfolgsindikatoren",
-  PP_1_project_after_title: "3.2.3 Nach dem Stipendium/Ausstiegsstrategie",
-  common_institution: "Institution/ Organisation",
-  common_country: "Land des Wohnsitzes",
+  PP_1_project_continuation_activities_title: "Maßnahmen",
+  PP_1_project_continuation_success_title: "Indikatoren",
+  PP_1_project_after_title: "3.2.3 Anschlussszenarien/Exit-Strategie",
+  common_institution: "Institution/Organisation",
+  common_country: "Wohnhaft in (Land)",
   common_date_of_birth: "Geburtsdatum",
   common_yes: "Ja",
   common_no: "Nein",
   PS_1_risk_referees_description:
-    "Bitte führen Sie zwei Referenzpersonen auf, die Sie, Ihre Arbeit und Ihre Sicherheitssituation gut kennen. Bitte stellen Sie sicher, dass beide Referenzpersonen mit der Angabe ihrer persönlichen Daten einverstanden sind und die beiliegenden Datenschutzinformationen erhalten haben. Die von Ihnen genannten Referenzpersonen dürfen nicht Mitglieder der Gastorganisation sein und müssen entweder Englisch, Französisch, Spanisch oder Deutsch sprechen. Wie möchten Ihre Referenten kontaktiert werden? Die Informationen von MRI zur sicheren Kommunikation können bei der Entscheidungsfindung helfen.",
+    "Bitte nennen Sie zwei Referenzpersonen, die Sie, Ihre Arbeit und die Sicherheitslage, in der Sie sich befinden, gut kennen. Bitte vergewissern Sie sich, dass beide Referenzpersonen mit der Angabe ihrer persönlichen Daten einverstanden sind und die beiliegenden Datenschutzinformationen erhalten haben. Die von Ihnen genannten Referenzpersonen dürfen nicht Mitglied der potentiellen Gastorganisation sein und müssen entweder Englisch, Französisch, Spanisch oder Deutsch sprechen. Wie möchten Ihre Referenzkontakte kontaktiert werden? Die Informationen von MRI zur sicheren Kommunikation können bei der Entscheidungsfindung helfen.",
   PS_1_host_title: "4. Fortführung der künstlerischen/ kulturellen Arbeit",
-  PS_1_host_name: "4.1. Name der aufnehmenden Organisation",
+  PS_1_host_name: "4.1. Name der Gastorganisation",
   PS_1_host_contact_person:
-    "4.2. Kontaktperson bei der aufnehmenden Organisation (vollständiger Name)",
-  PS_1_host_work_title: "4.3. Künstlerisches Projekt/Werk",
-  PP_1_overview_further_explaination_title: "Weitere Erklärung (optional)",
+    "4.2. Voller Name der Kontaktperson bei der Gastorganisation",
+  PS_1_host_work_title: "4.3. Künstlerisches Projekt/künstlerische Arbeit",
+  PP_1_overview_further_explaination_title: "Weitergehende Erläuterung (optional)",
   PP_1_applicant_title:
-    "2. Informationen über die antragstellende Gasteinrichtung",
+    "2. Informationen zur antragstellenden Organisation",
   PP_1_applicant_name_title: "Name der Organisation",
   PP_1_applicant_name_description:
-    "Geben Sie den Namen Ihrer Organisation so ein, wie er in den offiziellen Registrierungsunterlagen erscheint.",
-  PP_1_applicant_legal_form_title: "Rechtsform/ amtliche Registrierung",
-  PP_1_project_title: "3. Projektbeschreibung",
-  PP_1_project_scholar_title: "Informationen über den Stipendiaten",
+    "Geben Sie den Namen ihrer Organisation an, wie er in der amtlichen Registrierung steht.",
+  PP_1_applicant_legal_form_title: "Rechtsform / amtliche Registrierung",
+  PP_1_project_title: "3. Projektdarstellung",
+  PP_1_project_scholar_title: "Informationen zum*zur Stipendiat*in",
   PP_1_project_family_title:
-    "Familienmitglieder, die mit dem Stipendiaten reisen",
+    "Mitausreisende Familienmitglieder",
   PP_1_project_family_description:
-    "Wenn Familienmitglieder planen, mit dem Stipendiaten zu reisen, geben Sie bitte die folgenden Informationen an.",
-  PP_1_project_spouse_title: "Ehepartner",
-  PP_1_applicant_scholar_title: "Direkter Ansprechpartner für den Stipendiaten",
+    "Im Falle einer Mitausreise von Familienmitgliedern geben Sie die Namen bitte hier an.",
+  PP_1_project_spouse_title: "Ehepartner*in",
+  PP_1_applicant_scholar_title: "Direkte Ansprechperson für den Stipendiaten*die Stipendiatin",
   PP_1_applicant_scholar_description:
-    "In vielen Fällen ist der Projektkoordinator auch der Hauptansprechpartner für den Stipendiaten. Wenn eine andere Person/Mitarbeiter der primäre Ansprechpartner sein wird, geben Sie bitte hier die zusätzlichen Kontaktdaten an.<br/>Wenn der direkte Ansprechpartner noch nicht feststeht, können Sie diese Informationen nachreichen.",
+    "In vielen Fällen ist die Projektkoordination auch die erste direkte Ansprechperson für die*den Stipendiat*in. Sollte dies in Ihrem Fall eine andere Person/Mitarbeiter*in übernehmen, bitten wir den Kontakt hier anzugeben.<br/>Wenn die Person noch nicht feststeht, können Sie dies hier vermerken und die Informationen nach Projektbeginn nachreichen.",
   PP_1_applicant_financial_title:
-    "Ansprechpartner für die Finanzberichterstattung",
+    "Ansprechperson für Finanzangelegenheiten",
   PP_1_applicant_financial_description:
-    "Bitte geben Sie hier die Person an, die für die Finanzberichterstattung des Projekts verantwortlich ist.",
+    "Bitten geben Sie hier die zuständige bzw. verantwortliche Person für Finanzangelegenheiten an.",
   PP_1_applicant_funds_use_title:
-    "Erklärung zur ordnungsgemäßen Mittelverwendung",
+    "Mittelverwendung und Abrechnung",
   PP_1_project_children_title: "Kinder (<18 Jahre)",
   PP_1_project_children_name: "Nachname, Vorname",
   PP_1_project_children_age: "Alter",
   PP_1_project_description_title:
-    "Bitte beschreiben Sie Ihr Projekt anhand der unten stehenden Aufforderungen. Bitte beachten Sie, dass eine gute Projektplanung vor allem bedarfsorientiert, zielgerichtet, nachhaltig und kohärent sein sollte.",
-  PP_1_project_current_situation_title: "3.1. Aktuelle Situation",
+    "Bitte stellen Sie anhand folgender Fragen das Projekt vor. Bitte beachten Sie dabei, dass ein gutes Projekt vor allem bedarfs- sowie zielorientiert, nachhaltig und in sich schlüssig sein sollte.",
+  PP_1_project_current_situation_title: "3.1. 1.	Ausgangslage",
   PS_1_artistic_further_information: "2.4 Weitere Informationen und Links",
   PS_1_artistic_further_information_description:
-    "Gibt es sonst noch etwas, worüber Sie uns informieren möchten? Bitte nutzen Sie dieses Feld, um Links zu Ihrer künstlerischen/kulturellen Arbeit anzuhängen",
-  PS_1_risk: "3. Bestehendes Risiko",
+    "Gibt es noch etwas, worüber Sie uns informieren möchten? Bitte nutzen Sie dieses Feld, um Links zu Ihrer künstlerischen/kulturellen Arbeit anzuhängen.",
+  PS_1_risk: "3. Gefährdungslage",
   PS_1_risk_description_title:
-    "3.1. Beschreibung der individuellen Risikosituation",
+    "3.1. Beschreibung der individuellen Gefährdung",
   PS_1_risk_description_description:
-    "Die Martin Roth Initiative unterstützt Künstlerinnen und Künstler, die wegen ihrer Arbeit oder aufgrund anderer Umstände gefährdet sind, bedroht, überwacht und/oder von staatlichen und/oder nichtstaatlichen Akteuren verfolgt werden. Bitte beschreiben Sie Ihre individuelle Sicherheitssituation so genau wie möglich und nennen Sie Vorfälle und Daten. Fügen Sie gerne weitere allgemeine Informationen zur politischen Situation in Ihrem Land hinzu, wenn Sie dies für relevant/wichtig halten.",
+    "Die Martin Roth-Initiative unterstützt Künstler*innen, die wegen ihrer Arbeit oder aufgrund anderer Umstände gefährdet sind, bedroht, überwacht und/oder von staatlichen und/oder nichtstaatlichen Akteuren verfolgt werden. Bitte beschreiben Sie Ihre individuelle Sicherheitssituation so konkret wie möglich und nennen Sie spezifische Vorfälle und Daten. Fügen Sie gerne weitere allgemeine Informationen über die politische Situation in Ihrem Land hinzu, wenn Sie dies für relevant halten.",
   PP_1_project_current_situation_description:
-    "Beschreiben Sie, woher Sie den Künstler/Kulturarbeiter kennen und erklären Sie, warum Sie ihn unterstützen/mit ihm arbeiten möchten. Erläutern Sie, wie der Kontakt zustande kam und beschreiben Sie Ihre Beziehung. Beziehen Sie sich bitte auf die künstlerische/kulturelle Arbeit des potenziellen Stipendiaten (und die Relevanz, die diese hat) und, soweit möglich, auf den konkreten Bedarf (z.B. aufgrund des aktuellen Risikos) des potenziellen Stipendiaten.",
+    "Bitte schildern Sie, woher Sie die*den Kulturschaffende*n kennen und begründen Sie bitte, warum Sie die Person unterstützen möchten. Erläutern Sie, wie der Kontakt zustande kam und in welchem Verhältnis Sie zueinanderstehen. Gehen Sie dabei so weit wie möglich auf das künstlerische/kulturelle Schaffen (und die Relevanz dieses Schaffens) sowie konkreten Bedarfe (bspw. aufgrund der Gefährdungslage) des*der Betroffenen ein.",
   PP_1_project_goals_title: "3.2. Projektziele",
   PP_1_project_relocation_title:
-    "3.2.1. Organisation der temporären Verlagerung",
+    "3.2.1. Organisation des Schutzaufenthalts",
   PP_1_project_relocation_description:
-    "Ein zwingendes Ziel des Projekts ist es, den Stipendiaten vorübergehend aus dem Risikokontext herauszunehmen und in Sicherheit zu bringen. Die unten aufgeführten Maßnahmen und Output-Indikatoren müssen daher als Ergebnis des Projekts umgesetzt/erreicht werden. Bitte erläutern Sie im nachfolgenden Feld, wie Sie diese Maßnahmen umzusetzen gedenken und welche Erfahrungen Sie diesbezüglich bereits haben.<br/><br/>Bitte erläutern Sie, wie Sie die oben genannten Maßnahmen umzusetzen gedenken und welche Erfahrungen Sie diesbezüglich bereits haben.",
+    "Das Projektziel >Stipendiat*in ist temporär außerhalb des Gefährdungskontexts und sicher< ist vorgegeben. Die untenstehenden Maßnahmen und Erfolgsindikatoren sind daher obligatorisch umzusetzen bzw. zu erreichen. Erläutern Sie bitte im untenstehenden Feld, ob bzw. wie Sie den Aufgaben nachkommen können bzw. wollen und welche Erfahrungen Sie dahingehend ggf. schon vorweisen können.",
   PP_1_project_continuation_title:
-    "3.2.2. Fortführung der künstlerischen/kulturellen Arbeit und berufliche Entwicklung",
+    "3.2.2. Künstlerische/kulturelle Weiterarbeit und berufliche Entwicklung",
   PP_1_applicant_funds_use_description:
-    "Wie werden Sie die ordnungsgemäße Verwendung und Abrechnung der beantragten Mittel sicherstellen? Bitte geben Sie an, inwieweit Ihre Einrichtung bereits Erfahrungen mit dem Projektmanagement und der Bewirtschaftung öffentlicher Mittel nach der Bundeshaushaltsordnung (BHO) hat. Wie ist Ihre Einrichtung administrativ aufgestellt (z.B. Buchhaltung, Personalstrukturen, Kapazitäten), um die Finanzen zu verwalten? Bitte beschreiben Sie, mit welchem Buchhaltungssystem Sie arbeiten, ob Sie mit einem Finanzamt kooperieren und ob Ihre Organisation regelmäßig einer externen Finanzprüfung unterzogen wird.",
+    "Wie gewährleisten Sie die ordnungsgemäße Verwendung und Abrechnung der beantragten Förderung? Bitte geben Sie hier an, ob bzw. in welchem Umfang Ihre Organisation bereits Erfahrung mit öffentlichen Zuwendungen und zuwendungsrechtlichen Bestimmungen gemäß der Bundeshaushaltsordnung (BHO) hat. Bitte gehen Sie hier auf die Struktur Ihrer Organisation ein in Hinblick auf Verwaltung/Buchhaltung (u.a.: Gibt es eine Person, die für die ordnungsgemäße Abrechnung des Projekts zuständig ist?). Gehen Sie gerne auch darauf ein, mit welchem Buchhaltungssystem Sie arbeiten, ob Sie mit einem Steuerbüro zusammenarbeiten und/oder regelmäßig externen Prüfungen unterliegen.",
   PP_1_applicant_funding_title:
-    "Wird Ihre Organisation überwiegend (>50%) durch öffentliche Mittel finanziert?",
+    "Werden die Gesamtausgaben Ihrer Organisation überwiegend (>50%) aus Zuschüssen oder Zuwendungen der öffentlichen Hand bestritten?",
   PP_1_applicant_funding_compliance_title:
-    "Wenn ja, hält Ihre Organisation das Verbot der ungerechtfertigten finanziellen Bereicherung (Besserstellungsverbot) ein",
+    "Falls ja, beachten Sie dabei das Besserstellungsverbot?",
   PP_1_applicant_4eyes_title:
-    "Können Sie das 4-Augen-Prinzip (2 Personen müssen Projektunterlagen wie Ausgaben und Berichte prüfen) sicherstellen?",
+    "Können Sie das 4-Augen-Prinzip sicherstellen?",
   PP_1_applicant_legal_reps_title:
-    "Bitte listen Sie alle Personen auf, die berechtigt sind, Ihre Organisation gesetzlich zu vertreten:",
+    "Bitte listen Sie die zeichnungsbefugten Personen auf",
   PP_1_declaration_4:
-    "Die antragstellende Organisation garantiert hiermit die ordnungsgemäße Verwendung der vom MRI bereitgestellten Mittel.",
+    "Eine zweckentsprechende Verwendung der Mittel wird garantiert.",
   PP_1_declaration_5:
-    "Die antragstellende Organisation verpflichtet sich, bei unerwarteten Ereignissen, vorhersehbaren Risiken oder auftretenden Bedenken im Zusammenhang mit dem Projekt unverzüglich Kontakt mit der Martin Roth-Initiative aufzunehmen.",
+    "Im Falle unerwarteter Ereignisse, absehbaren Risiken oder auftretender Zweifel verpflichtet sich die Gastorganisation, unverzüglich die Martin Roth-Initiative zu kontaktieren.",
   PP_1_declaration_6:
-    "Die antragstellende Organisation bestätigt hiermit, dass sie weder das Existenzrecht Israels in Frage stellt, noch die antragstellende Organisation oder dieses Projekt in irgendeiner Weise zum Boykott Israels aufruft/aufrufen wird, noch die antragstellende Organisation und/oder das Projekt die BDS-Bewegung aktiv unterstützen wird. Die Förderung durch das Auswärtige Amt erlaubt keine Unterstützung von Organisationen und Projekten, die das Existenzrecht Israels in Frage stellen, zum Boykott Israels aufrufen oder Aktivitäten zur Unterstützung der BDS-Bewegung durchführen. Dies bezieht sich auf den Beschluss des Deutschen Bundestages (https://www.bundestag.de/dokumente/textarchiv/2019/kw20-de-bds-642892)",
+    "Hiermit bestätigen Sie, dass Sie als antragstellende Organisation weder das Existenzrecht Israels in Frage stellen noch sie bzw. das zu fördernde Vorhaben in irgendeiner Weise zum Boykott Israels aufrufen oder die die BDS-Bewegung aktiv unterstützen soll bzw. wird. Die Förderung durch Mittel des Auswärtige Amts erlaubt keine Förderung von Gastorganisationen und Projekten, die das Existenzrecht Israels infrage stellen, zum Boykott Israels aufrufen oder Aktivitäten zur Unterstützung der BDS-Bewegung ausführen. Dies geht auf einen Beschluss des Deutschen Bundestages zurück. (https://www.bundestag.de/dokumente/textarchiv/2019/kw20-de-bds-642892)",
   PP_1_declaration_7:
-    "Sie bestätigen hiermit, dass Sie und die von Ihnen angegebenen Personen die Datenschutzhinweise (https://martin-roth-initiative.de/en/application#pid-112) ordnungsgemäß erhalten und zur Kenntnis genommen haben und mit der beschriebenen beabsichtigten Datenverwendung einverstanden sind.",
+    "Hiermit bestätigen Sie, dass Sie und die von Ihnen angegebenen Personen und Kontakte die Datenschutzhinweise in den Informationen zum Datenschutz und zur Verarbeitung Ihrer personenbezogenen Daten gem. DS-GVO erhalten und zur Kenntnis genommen haben (erforderlich für die Antragstellung).",
   PP_1_declaration_8: "",
   PP_1_project_impact_description:
-    "Bitte beschreiben Sie, inwieweit durch das Projekt eine positive gesellschaftliche Wirkung (im Heimat- oder Gastland des Stipendiaten) zu erwarten ist?",
-  PP_1_project_fit_title: "3.4. Professionelle Passform",
+    "Beschreiben Sie bitte, inwieweit eine positive (Rück-)Wirkung auf die Herkunfts-/Gastgesellschaft des*der Stipendiat*in zu rechnen ist.",
+  PP_1_project_fit_title: "3.4. Künstlerische/arbeitsrelevante Passung",
   PP_1_project_fit_description:
-    "Inwieweit ist Ihre Organisation in der Lage, die Weiterführung der künstlerischen/kulturellen Arbeit des Stipendiaten zu unterstützen (z.B. fachliche Expertise, Integration in die Organisation, Mentorenprogramme, Arbeitsräume, Netzwerke, weitere Finanzierungsmöglichkeiten für künstlerische/kulturelle Produktionen/Projekte).",
-  PP_1_project_support_title: "3.5. Persönliche Unterstützung und Integration",
+    "Inwieweit können Sie die künstlerische Weiterarbeit inhaltlich und strukturell unterstützen bzw. den*die Stipendiatin in Ihre Organisation integrieren? (Gehen Sie bspw. ein auf Expertisen, Mentoring-Angebote, Arbeitsplatz/-räumlichkeiten, Finanzierungsmöglichkeiten für künstlerische/kulturelle Produktionen/Projekte, Netzwerke, etc.).",
+  PP_1_project_support_title: "3.5. Betreuung und Integration",
   PP_1_project_support_description:
-    "Wie planen Sie die laufende Integration der Stipendiaten an ihrem neuen Wohnort. Wie werden Sie sie während der Projektlaufzeit entsprechend unterstützen? Gehen Sie, wenn möglich, auf spezifische Bedürfnisse ein (z. B. psychosoziale Unterstützung).",
+    "Wie gewährleisten Sie eine fortlaufende Integration am Projektort bzw. Betreuung während der Projektlaufzeit? Gehen Sie ggf. auf konkrete Bedarfe ein. (Ansprechperson/Koordination, Unterkunft, psychosoziale Unterstützung, anderweitige Maßnahmen, etc.)",
   PP_1_project_security_title: "3.6. Sicherheit",
   PP_1_project_security_description:
-    "Welche Sicherheitsrichtlinien verfolgen Sie; welche Sicherheitsmaßnahmen setzen Sie bereits um oder planen sie zu implementieren (z. B. sichere Kommunikation, Datensicherheit, Vertraulichkeit)?",
+    "Welche Sicherheitsvorschriften verfolgen Sie; welche Sicherheitsvorkehrungen setzen Sie bereits um bzw. planen Sie umzusetzen? (sichere Kommunikation, Datensicherheit, Vertraulichkeit, etc.)",
   PP_1_project_risks_title: "3.7. Risiken",
   PP_1_project_risks_description:
-    "Welche Risiken oder andere negative unbeabsichtigte Auswirkungen könnten die Projektziele beeinflussen? Wie können diese Risiken minimiert oder abgemildert werden? Nennen Sie ggf. auch mögliche positive unbeabsichtigte Wirkungen. (Bitte beachten Sie, dass es hier in erster Linie um die Nichtumsetzung von Maßnahmen oder das Nichterreichen von Zielen/Indikatoren geht).",
+    "Welche Risiken und unerwünschten Nebeneffekte können Projektziel und Wirkungen beeinträchtigen? Wie können diese Risiken minimiert werden bzw. mit Ihnen umgegangen werden? Benennen Sie ggf. auch mögliche positive Nebeneffekte. (Hierbei geht es in erster Linie um die Nichtumsetzung von Maßnahmen bzw. Nichterreichung von Zielen/Indikatoren)",
   PP_1_expenditure_title: "4. Ausgaben- und Finanzierungsplan",
   PP_1_applicant_description_description:
-    "Bitte stellen Sie Ihre Organisation kurz vor (Tätigkeitsfelder, bisherige Aktivitäten und Förderungen, Organisationsstruktur und Mitarbeiter) und ggf. Ihre Partnerorganisation(en) für dieses Projekt.",
+    "Bitte stellen Sie Ihre Organisation (Tätigkeitsfelder, bisherige Aktivitäten und deren Finanzierung/Projektförderung, Struktur und Personal) und Ihre Partnerorganisation(en) dar.",
   PP_1_applicant_authorised_person_title:
-    "Person, die berechtigt ist, die antragstellende Organisation im Rechtsverkehr zu vertreten",
+    "Rechtsgeschäftlichen Vertretung der antragstellenden Organisation",
   PP_1_applicant_authorised_person_description:
-    "Bitte geben Sie die Person(en) an, die befugt ist (sind), die Organisation gesetzlich zu vertreten und die Vertragspartei sein wird. Alle Personen, die berechtigt sind, die Organisation gesetzlich zu vertreten, müssen in den offiziellen Registrierungsunterlagen angegeben werden. Falls eine Vollmacht vorhanden ist, reichen Sie diese bitte in Kopie mit dem Antrag ein.",
+    "Hier muss die Person angegeben werden, die zeichnungsbefugt ist und als Vertragspartner*in in Erscheinung tritt. In der amtlichen Registrierung müssen alle zeichnungsbefugten Personen ersichtlich sein. Sollte eine Bevollmächtigung vorliegen, bitten wir diese dem Antrag beizufügen.",
   PP_1_applicant_coordinator_title:
-    "Projektkoordinator in der antragstellenden Organisation",
+    "Projektkoordinator*in der antragstellenden Organisation",
   PP_1_applicant_coordinator_description:
-    "Bitte benennen Sie die Person, die während der gesamten Projektlaufzeit Ansprechpartner für das MRT sein wird.  Wenn noch kein Projektkoordinator bestimmt wurde, können Sie diese Information nachreichen.",
+    "Hier muss die Person angegeben werden, die während des Projekts als erste Kontaktperson für die MRI in Erscheinung tritt.  Wenn die Person noch nicht feststeht, können Sie dies hier vermerken und die Informationen nach Projektbeginn nachreichen.",
   PS_1_host_work_description:
-    "Was möchten Sie während Ihres MRT-Stipendiums und des Aufenthalts an dieser Gasteinrichtung künstlerisch/beruflich erreichen? Bitte geben Sie ggf. konkrete Ziele und/oder Projektideen/-pläne an.",
-  PS_1_host_fit_title: "4.4. Passung zwischen Ihnen und der Gasteinrichtung",
+    "Was möchten Sie während Ihres MRI-Stipendiums und des Aufenthalts an dieser Gastorganisation künstlerisch bzw. beruflich erreichen? Bitte geben Sie ggf. konkrete Ziele und/oder Projektideen an.",
+  PS_1_host_fit_title: "4.4. Passung zwischen Ihnen und der Gastorganisation",
   PS_1_host_fit_description:
-    "Warum denken Sie, dass diese Gastorganisation gut für die geplante Zusammenarbeit geeignet ist? Wie kann die Gastorganisation Sie in Ihrer künstlerischen Arbeit unterstützen? Bitte beschreiben Sie auch, wie Sie sich gegenseitig kennen und ob Sie in der Vergangenheit bereits zusammengearbeitet haben.",
-  PS_1_after_title: "5. Nach dem Stipendium/ Ausstiegsstrategie",
+    "Warum glauben Sie, dass diese Gastorganisation für die angestrebte Zusammenarbeit gut geeignet ist? Wie kann die Gastorganisation Sie in Ihrer künstlerischen Arbeit unterstützen? Bitte beschreiben Sie auch, woher Sie sich kennen und ob Sie in der Vergangenheit bereits zusammengearbeitet haben.",
+  PS_1_after_title: "5. Nach dem Stipendium / Exit-strategie",
   PS_1_after_description:
-    "Das Stipendium mit MRT hat eine Laufzeit von bis zu 12 Monaten. In ganz besonderen Ausnahmefällen können sie um bis zu weitere 12 Monate verlängert werden. Nach dieser Zeit endet die Unterstützung von MRI. Aufgrund der Befristung des Stipendiums ist es wichtig, einen Plan zu haben, wie es nach diesem MRI-Aufenthalt in Deutschland weitergeht.",
+    "Das Stipendium der MRI hat eine Laufzeit von bis zu 12 Monaten. In besonderen Ausnahmefällen kann es um bis zu weiteren 12 Monate verlängert werden. Nach dem Stipendium endet die Unterstützung durch die MRI. Aufgrund dieser zeitlichen Befristung des Stipendiums ist ein Plan für die Zeit nach dem MRI-Aufenthalt in Deutschland sehr wichtig.",
   PP_1_applicant_bookkeeping_title:
-    "Können Sie für dieses Projekt ein separates Projektkonto (Buchhaltung) einrichten?",
+    "Ist die Führung eines separaten Projektkontos (Buchhaltung) möglich?",
   PP_1_applicant_bookkeeping_description:
-    "Diese Frage bezieht sich auf die Bezeichnung eines separaten Buchhaltungskontos, nicht eines separaten Bankkontos. Sie sind verpflichtet, für die Durchführung des Projekts ein separates Projektkonto in Ihrer Buchhaltung einzurichten. Auf dem separaten Konto müssen alle projektbezogenen Einnahmen (inkl. Eigen- und Fremdmittel) und Ausgaben, einschließlich der Zinserträge, ausgewiesen werden. Die Einrichtung eines separaten Buchhaltungskontos für das Projekt ist aus Gründen der Transparenz und Compliance notwendig.",
+    "Gemeint ist ein separates Buchhaltungskonto, kein separates Bankkonto. Sie sind angehalten, für die Abwicklung des Projekts ein gesondertes Projektkonto in der Buchführung einzurichten, auf dem alle Einnahmen (inkl. Eigenmittel sowie weitere Fördermittel) und Ausgaben im Zusammenhang mit der Durchführung des Projekts bis zu seinem Abschluss einschließlich erwirtschafteter Zinsen nachzuweisen sind. Die Einrichtung eines Projektkontos ist notwendig, um den Prozess der Verwendungsnachweisprüfung auf allen Ebenen transparent zu gestalten.",
   PP_1_applicant_VAT_title:
-    "Sind Sie zum Vorsteuerabzug nach § 15 des Umsatzsteuergesetzes berechtigt?",
+    "Sind Sie nach § 15 des Umsatzsteuergesetzes zum Vorsteuerabzug berechtigt?",
   PP_1_applicant_VAT_description:
-    "Wenn Sie nach § 15 des Umsatzsteuergesetzes zum Vorsteuerabzug berechtigt sind, dürfen nur Nettopreise ohne Umsatzsteuer budgetiert werden.",
+    "Wenn Sie die Möglichkeit zum Vorsteuerabzug nach §15 des Umsatzsteuergesetzes haben, dürfen nur die Entgelte (Nettopreise ohne Umsatzsteuer) berücksichtigt werden. Beachten Sie dies bei der Budgetierung im Finanzierungsplan.",
   PP_1_applicant_deduct_title:
-    "Wenn ja, nutzen Sie diese Option zum Vorsteuerabzug?",
+    "Wenn ja, nutzen Sie diese Möglichkeit zum Vorsteuerabzug?",
   PP_1_applicant_legal_form_description:
-    "Geben Sie die Rechtsform Ihrer Organisation an (z.B. e.V., gGmbH, etc.).",
-  PP_1_applicant_registration_title: "Registrierungsnummer",
-  PP_1_applicant_activities_title: "Bereich der Aktivitäten",
+    "Geben Sie die Rechtsform Ihrer Organisation an (bspw. e.V., gGmbH, etc.). ",
+  PP_1_applicant_registration_title: "Registernummer",
+  PP_1_applicant_activities_title: "Tätigkeitsfeld",
   PP_1_applicant_activities_description:
-    "Nennen Sie kurz das Haupttätigkeitsfeld Ihrer Organisation (z.B. darstellende Kunst, bildende Kunst, Musik, Literatur).",
-  PP_1_applicant_description_title: "Kurzbeschreibung Ihrer Organisation",
+    "Geben Sie knapp das Haupttätigkeitsfeld Ihrer Organisation an (bspw. Darstellende Kunst, Bildende Kunst, Musik, Literatur).",
+  PP_1_applicant_description_title: "Selbstdarstellung der antragstellenden Organisation",
   PP_1_overview_funding_description:
-    "Bitte geben Sie den Gesamtbetrag der beantragten MRT-Mittel an. Die beantragten MRT-Mittel stellen das Gesamtbudget abzüglich Eigenmittel und Drittmittel dar. <br/><br/>Bitte teilen Sie die beantragten Mittel nach Kalenderjahren auf. <br/><br/>Bitte beachten Sie, dass bewilligte Mittel für ein Kalenderjahr nicht in einem anderen Kalenderjahr verwendet werden dürfen.",
+    "Geben Sie die gesamte Antragssumme an, die Sie im Finanzierungsplan budgetiert haben. Die Antragssumme stellt die Gesamtausgaben abzüglich der Eigen- und den Drittmitteln dar. <br/><br/>Bei überjährigen Projekten geben Sie bitte die Antragsumme nach Kalenderjahren (KJ) getrennt an. <br/><br/>Bitte beachten Sie, dass bei überjährigen Projekten die Budgets der jeweiligen Kalenderjahre nicht gegenseitig deckungsfähig sind.",
   PP_1_overview_funding_calendar_year: "Kalenderjahr",
   PP_1_overview_funding_external: "Drittmittel (EUR)",
   PP_1_overview_funding_external_description:
-    "Bitte geben Sie an, ob für dieses Projekt Drittmittel zur Verfügung stehen und wenn ja, in welcher Höhe und aus welchen Quellen. <br/><br/>Wenn Sie noch nicht wissen, ob Sie Drittmittel für das Projekt erhalten werden, geben Sie bitte an, wo Sie einen Förderantrag gestellt haben bzw. stellen werden. Wenn Sie zusätzliche Fördermittel erhalten, müssen Sie uns darüber informieren. <br/><br/>Bitte geben Sie nur liquide Mittel an.<br/><br/>Bitte teilen Sie die verfügbaren Mittel nach Kalenderjahren auf.",
-  PP_1_overview_funding_own: "Eigenmittel / Eigenkapital (EUR)",
-  PS_1_other_relatives_title: "6.1. Angehörige",
+    "Geben Sie an, ob Sie Drittmittel für das Projekt zur Verfügung haben und wenn ja wie viel und von welchen Stellen (insbesondere Förderungen aus öffentlichen Mitteln).<br/><br/>Falls es zum Zeitpunkt der Antragsstellung noch keine Klarheit darüber gibt, ob Sie Drittmittel für das Projekt erhalten werden, geben Sie bitte an, ob und wo Sie einen Antrag auf Finanzierung eingereicht haben bzw. einreichen möchten. Sollten Sie weitere Mittel akquirieren, müssen Sie uns darüber informieren. Bei Eigen- und Drittmitteln können ausschließlich liquide Mittel geltend gemacht werden.<br/><br/>Bei überjährigen Projekten geben Sie bitte die Antragsumme nach Kalenderjahren (KJ) getrennt an. Bitte beachten Sie, dass bei überjährigen Projekten die Budgets der jeweiligen Kalenderjahre nicht gegenseitig deckungsfähig sind.",
+  PP_1_overview_funding_own: "Eigenmittel (EUR)",
+  PS_1_other_relatives_title: "6.1. Familienangehörige",
   PS_1_other_relatives_description:
-    "Planen Sie die Ausreise mit Angehörigen (Kinder unter 18 Jahren und Ehegatten)? Wenn ja, tragen Sie hier bitte die Namen der Angehörigen, deren Geburtsdaten sowie Ihr Verwandtschaftsverhältnis zur jeweiligen Person ein. Bitte erläutern Sie, warum die Mitnahme des jeweiligen Familienmitglieds notwendig erscheint.",
+    "Planen Sie, gemeinsam mit Familienangehörigen auszureisen (Kinder unter 18 Jahren und Ehegatt*in)? Wenn ja, geben Sie hier bitte die Namen der Verwandten, deren Geburtsdaten sowie Ihre Beziehung zu jeder Person an. Bitte begründen Sie, warum die Mitnahme des jeweiligen Familienangehörigen notwendig erscheint.",
   PS_1_other_support_title: "6.2. Unterstützung",
   PS_1_other_support_description:
-    "Ihre Aufnahmeorganisation kann ein Budget für bestimmte Unterstützungsmaßnahmen bereitstellen, z. B. für psychosoziale Betreuung, Sprachkurse oder berufliche Fortbildungen. Bitte listen Sie hier Ihre Ideen auf, was sinnvoll sein könnte und besprechen Sie diese mit Ihrer Aufnahmeorganisation. Bitte geben Sie für jede Maßnahme an, warum Sie sie für sinnvoll halten. Erläutern Sie insbesondere, wenn Sie aus gesundheitlichen oder anderen Gründen besondere Unterstützung benötigen sollten.",
-  PS_1_other_funding_contact_title: "6.3. Kontakt mit anderen Förderprogrammen",
+    "Ihre Gastorganisation kann ein Budget für bestimmte Unterstützungsmaßnahmen z. B. für psychosoziale Betreuung, Sprachkurse oder berufliche Fortbildungen. Bitte listen Sie hier Ihre Ideen auf, was sinnvoll sein könnte, und besprechen Sie diese mit Ihrer Gastorganisation. Bitte geben Sie für jede Maßnahme an, warum Sie sie für sinnvoll halten. Erläutern Sie insbesondere, wenn Sie besondere Unterstützung aus gesundheitlichen oder anderen Gründen benötigen sollten.",
+  PS_1_other_funding_contact_title: "6.3. Kontakt zu anderen Förderprogrammen",
   PP_1_overview_funding_own_description:
-    "Bitte geben Sie an, ob Eigenmittel für dieses Projekt zur Verfügung stehen und wenn ja, in welcher Höhe. <br/><br/>Bitte geben Sie nur liquide Mittel an.<br/><br/>Bitte teilen Sie die verfügbaren Mittel nach Kalenderjahren auf.",
+    "Geben Sie hier an, ob Sie Eigenmittel für das Projekt zur Verfügung haben und wenn ja wie viel. <br/><br/>Bitte geben Sie nur liquide Mittel an.<br/><br/>Bei überjährigen Projekten geben Sie bitte die Antragsumme nach Kalenderjahren (KJ) getrennt an. Bitte beachten Sie, dass bei überjährigen Projekten die Budgets der jeweiligen Kalenderjahre nicht gegenseitig deckungsfähig sind.",
   PP_1_overview_funding_total:
-    "Gesamtbudget aufgeteilt nach Kalenderjahr (EUR)",
-  PP_1_overview_funding_total_description: "MRI-Fonds Drittmittel Eigenmittel",
+    "Gesamtbudget nach KJ (EUR)",
+  PP_1_overview_funding_total_description: "Beantragte MRI-Förderung + Drittmittel + Eigenmittel",
   PP_1_overview_overall_title:
-    "Projektfinanzierung (z. B. durch Drittmittel) gewährleistet?",
+    "Gesamtfinanzierung sichergestellt?",
   PP_1_overview_overall_description:
-    "Wenn Sie eine Vollfinanzierung beantragen, kreuzen Sie <b>Ja</b> an, da die Projektkosten bei Bewilligung durch die MRT-Förderung abgedeckt werden.",
+    "Geben Sie hier an, ob die Gesamtfinanzierung sichergestellt ist. Dies ist vor allem notwendig, wenn Sie Drittmittel beantragt haben und noch nicht absehbar ist, ob diese auch bewilligt werden. Bei der Beantragung einer Vollfinanzierung, kreuzen Sie hier <b>Ja</b> an, da im Falle einer Bewilligung die gesamten Projektkosten durch eine MRI-Förderung gedeckt sind.",
   PS_1_other_funding_contact_description:
-    "Haben Sie bereits Kontakt zu anderen Relocation- oder Shelter-Programmen aufgenommen? Wenn ja, welche Organisationen haben Sie kontaktiert?",
+    "Haben Sie bereits Kontakt zu anderen Relocation-/Shelter-Programmen aufgenommen? Wenn ja, mit welchen Organisationen haben Sie Kontakt aufgenommen?",
   PS_1_other_further_title: "6.4. Weitere Informationen",
   PS_1_other_further_description:
-    "Gibt es noch etwas, das Sie uns mitteilen möchten? Bitte nutzen Sie dazu dieses Feld",
+    "Gibt es sonst noch etwas, worüber Sie uns informieren möchten? Bitte nutzen Sie dazu dieses Feld.",
   PS_1_others_1:
-    "Ich bestätige hiermit, dass mir bekannt ist, dass das MRI-Stipendium für einen begrenzten Zeitraum vergeben wird und dass die MRI-Förderung nach diesem Zeitraum endet.",
+    "HIERMIT BESTÄTIGE ICH, DASS MIR BEWUSST IST, DASS DAS MRI-STIPENDIUM ZEITLICH BEGRENZT VERGEBEN WIRD UND DASS DIE UNTERSTÜTZUNG DURCH MRI NACH DIESEM ZEITRAUM ENDET.",
   PS_1_others_2:
-    "Ich bestätige hiermit, dass ich bezüglich des Antrags in engem Kontakt mit der aufnehmenden Organisation stand bzw. stehen werde und mir die in diesem Antrag dargestellten Maßnahmen/Aktivitäten und das Budget des Projekts bekannt sind.",
+    "ICH BESTÄTIGE HIERMIT, DASS ICH VON MEINER GASTORGANISATION ÜBER DEN ANTRAG IN KENNTNIS GESETZT WORDEN BIN ODER DIES DEMNÄCHST GEPLANT IST UND DASS ICH ÜBER DIE MASSNAHMEN UND DAS BUDGET DES IM ANTRAG ANGEGEGEBENEN PROJEKTS INFORMIERT BIN.",
   PS_1_after_return_title:
-    "5.1. Wie wahrscheinlich ist es aus Ihrer Sicht, dass Sie nach dem MRT-Stipendium in Ihr Herkunftsland zurückkehren können?",
+    "5.1. Wie wahrscheinlich ist es aus Ihrer Sicht, dass Sie nach dem MRI-Stipendium in Ihr Herkunftsland zurückkehren können?",
   PS_1_after_exit_strategy_title:
-    "5.2 Bitte beschreiben Sie Ihre ersten Ideen für eine Exit-Strategie für die Zeit nach dem Stipendium.",
+    "5.2 Beschreiben Sie bitte Ihre ersten Pläne für eine Exit-Strategie für die Zeit nach dem Stipendium.",
   PS_1_after_exit_strategy_description:
-    "Das kann eine Vorbereitung auf die Rückkehr in Ihr Herkunftsland sein oder eine Perspektive in Deutschland oder einem anderen Land. Diese Ausstiegsstrategie werden Sie während Ihres Aufenthaltes weiterentwickeln.",
+    "Dies kann eine Vorbereitung auf die Rückkehr in Ihr Herkunftsland sein oder eine Perspektive in Deutschland oder einem anderen Land. Diese Exit-Strategie werden Sie während Ihres Stipendienaufenthaltes weiterentwickeln.",
   PS_1_after_after_title:
-    "5.3. Wenn es etwas gibt, das Ihnen helfen könnte, Ihre künstlerische/kulturelle Arbeit in Ihrem Herkunftsland wieder aufzunehmen, geben Sie dies bitte hier an.",
-  PS_1_other_title: "6. Andere",
+    "5.3. Wenn es etwas gibt, das Ihnen helfen könnte, Ihre künstlerische/kulturelle Arbeit in Ihrem Herkunftsland nach dem Stipendium wieder aufzunehmen, geben Sie dies bitte hier an.",
+  PS_1_other_title: "6. Sonstiges",
   PP_1_expenditure_description:
-    "Der Ausgaben- und Finanzierungsplan stellt eine detaillierte Aufstellung der Einnahmen und Ausgaben dar, mit denen der Zuwendungszweck erreicht werden soll. Hierfür ist ausschließlich das dafür vorgesehene Formular zu verwenden. Eigen- oder Drittmittel und Zuwendungen Dritter sind zahlenmäßig darzustellen und werden als verbindlich angesehen. Die Martin Roth-Initiative entscheidet im Einzelfall über die Förderungswürdigkeit der veranschlagten Ausgaben.<br/><br/>Jede veranschlagte Maßnahme sowie alle weiteren veranschlagten Ausgaben werden auf Notwendigkeit, Wirtschaftlichkeit, Sparsamkeit und Verhältnismäßigkeit geprüft. Das MRT verlangt eine ausreichende Aufschlüsselung und Erläuterung der Planzahlen.<br/><br/>Werden die Gesamtausgaben der antragstellenden Organisation überwiegend durch Zuwendungen oder Zuschüsse der öffentlichen Hand finanziert, darf die antragstellende Organisation kein Personal in den Haushalt aufnehmen, dessen Gehalt höher ist als das vergleichbarer Bundesbediensteter (Besserstellungsverbot). Höhere Gehälter und Zusatzleistungen außerhalb des Tarifvertrages für den öffentlichen Dienst (TVöD) dürfen nicht gewährt werden.",
+    "Der Ausgaben- und Finanzierungsplan stellt eine detaillierte Aufstellung der Einnahmen und Ausgaben, die zur Erreichung des Zuschusszwecks dienen, dar. Hierbei sollte die vorgegebene Gliederung genutzt werden. Ferner sind- Eigen bzw. Drittmittel und Zuschüsse Dritter verbindlich und zahlenmäßig darzulegen. Über die Zuschussfähigkeit der entsprechenden Positionen die Martin Roth-Initiative einzelfallbezogen entscheiden. <br/><br/>Jede budgetierte Maßnahme sowie anderweitig budgetierten Ausgaben werden auf ihre Notwendigkeit, Wirtschaftlichkeit/Sparsamkeit sowie auf die Verhältnismäßigkeit hin geprüft. Eine hinreichende Herleitung und Erläuterung der budgetierten Beträge setzt die MRI voraus. <br/><br/>Werden die Gesamtausgaben des Zuschussempfängers überwiegend aus Zuschüssen oder Zuwendungen der öffentlichen Hand bestritten, darf der Zuschussempfänger seine Beschäftigten nicht besserstellen als vergleichbare Bedienstete im öffentlichen Dienst der Bundesrepublik Deutschland (Besserstellungsverbot). Höhere Entgelte als nach dem Tarifvertrag für den öffentlichen Dienst (TVöD) sowie sonstige über- und außertarifliche Leistungen dürfen nicht gewährt werden.",
   PP_1_declaration_title: "5. Erklärung der antragstellenden Organisation",
   PP_1_declaration_1:
-    "Die antragstellende Organisation verpflichtet sich hiermit, die rechtlichen Anforderungen des Stipendiums - insbesondere im Hinblick auf das Visumverfahren des Stipendiaten - rechtzeitig, verantwortungsvoll und in enger Abstimmung mit MRI zu übernehmen. Die antragstellende Organisation verpflichtet sich außerdem, aufenthalts- und arbeitsrechtliche Angelegenheiten verantwortungsvoll zu behandeln.",
+    "Die antragstellende Organisation verpflichtet sich hiermit, sich im Vorfeld des Aufenthalts rechtzeitig und verantwortlich sowie in enger Absprache mit der MRI um die Erfüllung der aufenthaltsrechtlichen Voraussetzungen für den Aufenthalt zu kümmern sowie Sorge und Verantwortung für arbeitsrechtliche Belange zu tragen.",
   PP_1_declaration_2:
-    "Die antragstellende Organisation verpflichtet sich hiermit, in Übereinstimmung und unter Berücksichtigung der Interessen des Stipendiaten zu handeln und die Vertraulichkeit ihrer Mitarbeiter zu gewährleisten. Alle Presse- und Öffentlichkeitsaktivitäten müssen vor ihrer Durchführung eng mit dem Stipendiaten und der Martin Roth-Initiative abgestimmt werden.",
+    "Die antragstellende Organisation verpflichtet sich hiermit, immer in Absprache und unter Berücksichtigung der Interessen der Stipendiat*innen zu handeln sowie die Vertraulichkeit ihrer Mitarbeitenden zu gewährleisten. Maßnahmen der Presse- und Öffentlichkeitsarbeit müssen im Vorfeld eng mit den Stipendiat*innen und der Martin Roth-Initiative abgesprochen werden.",
   PP_1_declaration_3:
-    "Die antragstellende Organisation bestätigt hiermit, dass das Projekt noch nicht begonnen hat oder noch nicht durchgeführt wurde.",
+    "Hiermit bestätigen Sie, dass Sie mit dem Vorhaben noch nicht begonnen haben und auch nicht vor Vertragsabschluss beginnen werden.",
 };

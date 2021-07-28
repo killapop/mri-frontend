@@ -29,7 +29,7 @@ export const translation = {
   change_button: "Changer le mot de passe",
   change_new_password: "Entrez le nouveau mot de passe",
   delete_user_count:
-    "L'utilisateur {{qui}} a {{combien}} de formulaires de demande et ne peut pas être supprimé.",
+    "L'utilisateur {{qui}} a {{combien}} de formulaires de déclaration personnelle et ne peut pas être supprimé.",
   delete_user_confirm_message:
     "Etes-vous sûr de vouloir supprimer le compte de l'utilisateur - {{who}}",
   delete_user_warning:
@@ -55,14 +55,14 @@ export const translation = {
   application_meta_not_bundled: "Pas encore groupé",
   application_formActions_actions: "Actions",
   application_formActions_pdf: "Imprimer en PDF",
-  application_formActions_unfinalize: "Déterminer",
+  application_formActions_unfinalize: "Rétablir document finalisée",
   application_formActions_finalize: "Finalisez",
   application_formActions_lock: "Serrure",
-  application_formActions_close: "Enregistrer et fermer",
+  application_formActions_close: "Sauvegarder et fermer",
   application_formActions_continue: "Sauvegarder et continuer",
   message_logged_in_success: "Connecté",
   message_logged_out_success: "Déconnecté",
-  message_user_created: "Créé un compte d'utilisateur pour {{who}}",
+  message_user_created: "Compte d'utilisateur crée pour {{who}}",
   message_user_not_created:
     "Une erreur s'est produite lors de la création du compte de {{who}}.",
   message_activation_successful: "Activation réussie",
@@ -82,7 +82,7 @@ export const translation = {
   dashboard_change_password: "Modifier le mot de passe",
   dashboard_badge_activations: "Activations",
   dashboard_badge_users: "Utilisateurs",
-  dashboard_badge_proposals: "Propositions de projets",
+  dashboard_badge_proposals: "Applications de projets",
   dashboard_badge_statements: "Déclarations personnelles",
   dashboard_badge_bundles: "Liasses",
   dashboard_no_found: "Aucun élément trouvé",
@@ -99,8 +99,8 @@ export const translation = {
   dashboard_columns_password: "Mot de passe",
   dashboard_columns_created: "Créé à",
   dashboard_columns_expires: "Expire à",
-  dashboard_columns_valid: "Valable",
+  dashboard_columns_valid: "Valide",
   dashboard_columns_active: "Actif",
-  dashboard_valid: "Valable",
+  dashboard_valid: "Valide",
   dashboard_invalid: "Non valide",
 };
