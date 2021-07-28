@@ -19,9 +19,10 @@ class Header extends React.Component {
   }
 
   logout() {
+    const { t } = this.props;
     authStore.isLoggedIn = false;
     authStore.token = "";
-    addMessage("info", "Logged out");
+    addMessage("info", t("message_logged_out_success"));
     window.sessionStorage.clear();
   }
 

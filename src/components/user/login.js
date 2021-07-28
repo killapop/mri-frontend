@@ -33,7 +33,7 @@ class Login extends React.Component {
         authStore.token = data.token;
         authStore.user = jwt.decode(data.token);
         this.setState(() => ({ loggedIn: true }));
-        addMessage("success", i18n.t("logged_in_success"));
+        addMessage("success", i18n.t("message_logged_in_success"));
         window.sessionStorage.accessToken = data.token;
         window.sessionStorage.activeTitle = authStore.activeList.title;
         window.sessionStorage.activeList = authStore.activeList.slug;
