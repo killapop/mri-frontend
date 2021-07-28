@@ -614,10 +614,10 @@ export const personalStatements_1 = (t) => {
               type: "boolean",
               title: t("form:PS_1_others_1"),
             },
-            other_2: {
-              type: "boolean",
-              title: t("form:PS_1_others_2"),
-            },
+            // other_2: {
+            //   type: "boolean",
+            //   title: t("form:PS_1_others_2"),
+            // },
             other_3: {
               type: "boolean",
               title: t("form:PS_1_others_3"),

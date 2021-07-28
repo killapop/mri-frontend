@@ -42,8 +42,7 @@ export const form = {
   PS_1_other_title: "6. Autres",
   PS_1_personal_background_residency:
     "Avez-vous un accès légal pour vivre de façon permanente dans un autre pays ou un statut de résident dans un autre pays ? Veuillez expliquer.",
-  PS_1_personal_background_passport:
-    "Avez-vous un passeport valide ?",
+  PS_1_personal_background_passport: "Avez-vous un passeport valide ?",
   PS_1_personal_background_passport_validity:
     "Si vous avez un passeport valide, quand expire-t-il (JJ/MM/AAAA) ?",
   PS_1_personal_background_current_location:
@@ -133,7 +132,8 @@ export const form = {
   PP_1_project_description_title:
     "Veuillez décrire votre projet à l'aide des questions ci-dessous. Veuillez noter qu'une bonne planification de projet doit, avant tout, être axée sur les besoins, les objectifs, la durabilité et la cohérence.",
   PP_1_project_current_situation_title: "3.1. La situation actuelle",
-  PS_1_personal_background_education_institution_degree: "Diplôme universitaire",
+  PS_1_personal_background_education_institution_degree:
+    "Diplôme universitaire",
   PS_1_personal_background_career_title: "1.5. Carrière professionnelle",
   PS_1_personal_background_career_description:
     "Quelle est votre profession actuelle / Quelles sont les dernières professions que vous avez pratiquées ?",
@@ -157,7 +157,8 @@ export const form = {
     "De votre point de vue, quels sont les moments clés de votre carrière professionelle?",
   PS_1_host_work_description:
     "Que souhaitez-vous réaliser sur le plan artistique/professionnel pendant votre bourse MRI et votre séjour dans cette organisation hôte ? Vous pourriez indiquer des objectifs spécifiques et/ou des idées/plans de projet.",
-  PS_1_host_fit_title: "4.4. Base de coopération entre vous et votre organisation hôte",
+  PS_1_host_fit_title:
+    "4.4. Base de coopération entre vous et votre organisation hôte",
   PS_1_host_fit_description:
     "Pourquoi pensez-vous que votre organisation hôte est bien adaptée à la collaboration envisagée ? Comment l'organisation hôte pourrait vous soutenir dans votre travail artistique ? Veuillez également décrire comment vous vous connaissez et si vous avez déjà travaillé ensemble dans le passé.",
   PS_1_after_title: "5. Après la bourse / Stratégie de sortie",
@@ -282,7 +283,7 @@ export const form = {
   PS_1_others_6:
     "Je vous assure que je me coordonnerai avec mon organisation hôte avant d'entreprendre toute activité en rapport avec le grand public et, en général, toute questions relatives aux relations publiques.",
   PS_1_others_7:
-    "Vous confirmez par la présente que vous et les personnes et contacts que vous avez indiqués ont reçu et pris connaissance des informations sur la protection des données et le traitement de vos données personnelles conformément au DS-GVO (requis pour la demande/ en anglais).",
+    "Vous confirmez par la présente que vous et les personnes et contacts que vous avez indiqués ont reçu et pris connaissance des <a href='https://martin-roth-initiative.de/en/application#pid-112' target='_blank'>informations sur la protection des données et le traitement de vos données personnelles conformément au DS-GVO</a> (requis pour la demande/ en anglais).",
   PP_1_declaration_4:
     "L'organisation candidate garantit par la présente l'utilisation appropriée des fonds fournis par l'IRM.",
   PP_1_declaration_5:
@@ -290,8 +291,9 @@ export const form = {
   PP_1_declaration_6:
     "L'organisation candidate confirme par la présente qu'elle ne remet pas en question le droit à l'existence d'Israël, qu'elle n'appelle pas et n'appellera pas au boycott d'Israël de quelque manière que ce soit et qu'elle ne soutiendra pas activement le mouvement BDS. Le financement du ministère fédéral des Affaires étrangères ne permet pas de soutenir des organisations et des projets qui remettent en question le droit à l'existence d'Israël, appellent au boycott d'Israël ou mènent des activités de soutien au mouvement BDS. Ceci fait référence à la résolution du Bundestag allemand (https://www.bundestag.de/dokumente/textarchiv/2019/kw20-de-bds-642892)",
   PP_1_declaration_7:
-    "Vous confirmez par la présente que vous et les personnes et contacts que vous avez indiqués ont reçu et pris connaissance des informations sur la protection des données et le traitement de vos données personnelles conformément au DS-GVO (requis pour la demande/ en anglais).",
-  PP_1_declaration_8: "",
+    "Vous confirmez par la présente que vous et les personnes et contacts que vous avez indiqués ont reçu et pris connaissance des <a href='https://martin-roth-initiative.de/en/application#pid-112' target='_blank'>informations sur la protection des données et le traitement de vos données personnelles conformément au DS-GVO</a> (requis pour la demande/ en anglais).",
+  PP_1_declaration_8:
+    "Je consens par la présente au traitement de mes données personnelles aux objectifs suivants : (a) pour l'envoi (par téléphone/postal/numérique) d'invitations et d'informations sur les événements (également au-delà de la période de subvention/bourse) et (b) pour l'envoi/communication (par téléphone/écrit/numérique) d'informations pertinentes, par exemple sur l'initiative Martin Roth (également au-delà de la période de subvention/bourse).",
   PP_1_project_impact_description:
     "Veuillez décrire dans quelle mesure un impact sociétal positif (dans le pays d'origine ou le pays d'accueil du boursier) peut être attendu du projet ?",
   PP_1_project_fit_title: "3.4. Adaptation professionnelle",

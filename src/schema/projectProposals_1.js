@@ -683,6 +683,10 @@ export const projectProposals_1 = (t) => {
               type: "boolean",
               title: t("form:PP_1_declaration_8"),
             },
+            declaration_9: {
+              type: "boolean",
+              title: t("form:PP_1_declaration_9"),
+            },
             declaration_documents_title: {
               type: "object",
               title: t("form:PP_1_declaration_documents_title"),
@@ -716,6 +720,12 @@ export const projectProposals_1 = (t) => {
               title: t("form:PP_1_declaration_additional_information"),
             },
           },
+        },
+        declaration_signatory: {
+          type: "object",
+          title: t("form:PP_1_declaration_signatory_title"),
+          description: t("form:PP_1_declaration_signatory_description"),
+          properties: {},
         },
       },
     },
@@ -845,6 +855,7 @@ export const projectProposals_1 = (t) => {
               "ui:options": {
                 rows: 4,
               },
+              classNames: "to-print",
             },
             continuation: {
               goals: {
@@ -919,30 +930,8 @@ export const projectProposals_1 = (t) => {
           },
         },
       },
-      scholarship_holder: {
-        known_from: {
-          "ui:widget": "textarea",
-          "ui:options": {
-            rows: 4,
-          },
-          "ui:help": "Max. 500 Zeichen",
-        },
-      },
-      background_information: {
-        brief_description: {
-          "ui:widget": "textarea",
-          "ui:help": "Maximum 2500 characters",
-          "ui:options": {
-            rows: 6,
-          },
-        },
-        use_of_funds: {
-          "ui:widget": "textarea",
-          "ui:help": "Maximum 500 characters",
-          "ui:options": {
-            rows: 4,
-          },
-        },
+      expenditure: {
+        classNames: "to-print",
       },
       declaration: {
         additional_information: {
@@ -951,6 +940,9 @@ export const projectProposals_1 = (t) => {
             rows: 5,
           },
         },
+      },
+      declaration_signatory: {
+        classNames: "to-print",
       },
     },
   };

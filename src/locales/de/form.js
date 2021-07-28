@@ -39,7 +39,8 @@ export const form = {
   PP_1_overview_funding: "Antragssumme (EUR)",
   PS_1_personal_background_residency:
     "Haben sie eine rechtliche Möglichkeit, dauerhaft in einem anderen Land zu leben (z.b. durch eine doppelte Staatsangehörigkeit), oder eine Aufenthaltserlaubnis in einem anderen Land? Bitte erläutern Sie dies.",
-  PS_1_personal_background_passport: "Sind sie im Besitz eines gültigen Reisepasses?",
+  PS_1_personal_background_passport:
+    "Sind sie im Besitz eines gültigen Reisepasses?",
   PS_1_personal_background_passport_validity:
     "Wenn Sie einen gültigen Reisepass besitzen, wann läuft dieser ab?",
   PS_1_personal_background_current_location:
@@ -77,8 +78,7 @@ export const form = {
   PS_1_personal_background_title: "1. PERSÖNLICHER HINTERGRUND",
   PS_1_personal_background_personal_data_title: "1.1. Ihre persönlichen Daten",
   PS_1_personal_background_place_of_birth: "Geburtsort",
-  PS_1_personal_background_citizenship:
-    "Staatsangehörigkeit(en)",
+  PS_1_personal_background_citizenship: "Staatsangehörigkeit(en)",
   PS_1_personal_background_citizenship_help:
     "Geben Sie die Länder durch Kommata getrennt an",
   PS_1_personal_background_languages_write: "Schreiben",
@@ -141,7 +141,7 @@ export const form = {
   PS_1_others_6:
     "ICH VERSICHERE HIERMIT, DASS ICH MICH VOR DER DURCHFÜHRUNG VON PR-AKTIVITÄTEN UND GENERELL IN ALLEN FRAGEN DER ÖFFENTLICHKEITSARBEIT MIT MEINER GASTORGANISATION ABSTIMMEN WERDE.",
   PS_1_others_7:
-    'Hiermit bestätigen Sie, dass Sie und die von Ihnen angegebenen Personen und Kontakte die Datenschutzhinweise in den Informationen zum Datenschutz und zur Verarbeitung Ihrer personenbezogenen Daten gem. DS-GVO erhalten und zur Kenntnis genommen haben (erforderlich für die Antragstellung).',
+    "Hiermit bestätigen Sie, dass Sie und die von Ihnen angegebenen Personen und Kontakte die Datenschutzhinweise in den <a href='https://martin-roth-initiative.de/en/application#pid-112' target='_blank'>Informationen zum Datenschutz und zur Verarbeitung Ihrer personenbezogenen Daten gem. DS-GVO</a> erhalten und zur Kenntnis genommen haben (erforderlich für die Antragstellung).",
   PS_1_risk_references_title: "3.2. Referenzen zur Sicherheitslage",
   PS_1_risk_references_description:
     "Bitte hängen Sie an Ihre persönliche Erklärung Referenzen an, die dazu geeignet sind, Ihre Sicherheitsbedenken zu belegen (beispielsweise Presseartikel, Links, Polizeiberichte, Kommentare zum Kontext der Bedrohung).",
@@ -151,8 +151,7 @@ export const form = {
   PS_1_risk_referees_title: "3.4. Referenzpersonen",
   PS_1_personal_background_emergency_contact_description:
     "Auf welchem Weg möchte Ihr Notfallkontakt kontaktiert werden? Die Informationen der MRI zur sicheren Kommunikation  können bei der Entscheidungsfindung helfen. <br/> (Bitte stellen Sie sicher, dass Ihr Notfallkontakt mit der Weitergabe der persönlichen Daten einverstanden ist und die beiliegende Datenschutzinformation erhalten hat. Notfallkontakte werden während Ihres Aufenthaltes z.B. im Fall von Krankheit oder bei unvorhergesehene Umständen kontaktiert. Bitte beachten Sie, dass Sie Änderungen dieser Daten immer auch Ihrer potentiellen Gastorganisation mitteilen).",
-  PS_1_personal_background_emergency_contact_others:
-    "Signal/Wire/Protonmail",
+  PS_1_personal_background_emergency_contact_others: "Signal/Wire/Protonmail",
   PS_1_personal_background_emergency_languages_description:
     "Bitte stellen Sie sicher, dass Ihr Notfallkontakt und eine Person Ihrer Gastorganisation eine gemeinsame Sprache sprechen.",
   PS_1_personal_background_emergency_relationship_title: "Verhältnis",
@@ -176,29 +175,27 @@ export const form = {
   PS_1_host_contact_person:
     "4.2. Voller Name der Kontaktperson bei der Gastorganisation",
   PS_1_host_work_title: "4.3. Künstlerisches Projekt/künstlerische Arbeit",
-  PP_1_overview_further_explaination_title: "Weitergehende Erläuterung (optional)",
-  PP_1_applicant_title:
-    "2. Informationen zur antragstellenden Organisation",
+  PP_1_overview_further_explaination_title:
+    "Weitergehende Erläuterung (optional)",
+  PP_1_applicant_title: "2. Informationen zur antragstellenden Organisation",
   PP_1_applicant_name_title: "Name der Organisation",
   PP_1_applicant_name_description:
     "Geben Sie den Namen ihrer Organisation an, wie er in der amtlichen Registrierung steht.",
   PP_1_applicant_legal_form_title: "Rechtsform / amtliche Registrierung",
   PP_1_project_title: "3. Projektdarstellung",
   PP_1_project_scholar_title: "Informationen zum*zur Stipendiat*in",
-  PP_1_project_family_title:
-    "Mitausreisende Familienmitglieder",
+  PP_1_project_family_title: "Mitausreisende Familienmitglieder",
   PP_1_project_family_description:
     "Im Falle einer Mitausreise von Familienmitgliedern geben Sie die Namen bitte hier an.",
   PP_1_project_spouse_title: "Ehepartner*in",
-  PP_1_applicant_scholar_title: "Direkte Ansprechperson für den Stipendiaten*die Stipendiatin",
+  PP_1_applicant_scholar_title:
+    "Direkte Ansprechperson für den Stipendiaten*die Stipendiatin",
   PP_1_applicant_scholar_description:
     "In vielen Fällen ist die Projektkoordination auch die erste direkte Ansprechperson für die*den Stipendiat*in. Sollte dies in Ihrem Fall eine andere Person/Mitarbeiter*in übernehmen, bitten wir den Kontakt hier anzugeben.<br/>Wenn die Person noch nicht feststeht, können Sie dies hier vermerken und die Informationen nach Projektbeginn nachreichen.",
-  PP_1_applicant_financial_title:
-    "Ansprechperson für Finanzangelegenheiten",
+  PP_1_applicant_financial_title: "Ansprechperson für Finanzangelegenheiten",
   PP_1_applicant_financial_description:
     "Bitten geben Sie hier die zuständige bzw. verantwortliche Person für Finanzangelegenheiten an.",
-  PP_1_applicant_funds_use_title:
-    "Mittelverwendung und Abrechnung",
+  PP_1_applicant_funds_use_title: "Mittelverwendung und Abrechnung",
   PP_1_project_children_title: "Kinder (<18 Jahre)",
   PP_1_project_children_name: "Nachname, Vorname",
   PP_1_project_children_age: "Alter",
@@ -209,15 +206,13 @@ export const form = {
   PS_1_artistic_further_information_description:
     "Gibt es noch etwas, worüber Sie uns informieren möchten? Bitte nutzen Sie dieses Feld, um Links zu Ihrer künstlerischen/kulturellen Arbeit anzuhängen.",
   PS_1_risk: "3. Gefährdungslage",
-  PS_1_risk_description_title:
-    "3.1. Beschreibung der individuellen Gefährdung",
+  PS_1_risk_description_title: "3.1. Beschreibung der individuellen Gefährdung",
   PS_1_risk_description_description:
     "Die Martin Roth-Initiative unterstützt Künstler*innen, die wegen ihrer Arbeit oder aufgrund anderer Umstände gefährdet sind, bedroht, überwacht und/oder von staatlichen und/oder nichtstaatlichen Akteuren verfolgt werden. Bitte beschreiben Sie Ihre individuelle Sicherheitssituation so konkret wie möglich und nennen Sie spezifische Vorfälle und Daten. Fügen Sie gerne weitere allgemeine Informationen über die politische Situation in Ihrem Land hinzu, wenn Sie dies für relevant halten.",
   PP_1_project_current_situation_description:
     "Bitte schildern Sie, woher Sie die*den Kulturschaffende*n kennen und begründen Sie bitte, warum Sie die Person unterstützen möchten. Erläutern Sie, wie der Kontakt zustande kam und in welchem Verhältnis Sie zueinanderstehen. Gehen Sie dabei so weit wie möglich auf das künstlerische/kulturelle Schaffen (und die Relevanz dieses Schaffens) sowie konkreten Bedarfe (bspw. aufgrund der Gefährdungslage) des*der Betroffenen ein.",
   PP_1_project_goals_title: "3.2. Projektziele",
-  PP_1_project_relocation_title:
-    "3.2.1. Organisation des Schutzaufenthalts",
+  PP_1_project_relocation_title: "3.2.1. Organisation des Schutzaufenthalts",
   PP_1_project_relocation_description:
     "Das Projektziel >Stipendiat*in ist temporär außerhalb des Gefährdungskontexts und sicher< ist vorgegeben. Die untenstehenden Maßnahmen und Erfolgsindikatoren sind daher obligatorisch umzusetzen bzw. zu erreichen. Erläutern Sie bitte im untenstehenden Feld, ob bzw. wie Sie den Aufgaben nachkommen können bzw. wollen und welche Erfahrungen Sie dahingehend ggf. schon vorweisen können.",
   PP_1_project_continuation_title:
@@ -228,8 +223,7 @@ export const form = {
     "Werden die Gesamtausgaben Ihrer Organisation überwiegend (>50%) aus Zuschüssen oder Zuwendungen der öffentlichen Hand bestritten?",
   PP_1_applicant_funding_compliance_title:
     "Falls ja, beachten Sie dabei das Besserstellungsverbot?",
-  PP_1_applicant_4eyes_title:
-    "Können Sie das 4-Augen-Prinzip sicherstellen?",
+  PP_1_applicant_4eyes_title: "Können Sie das 4-Augen-Prinzip sicherstellen?",
   PP_1_applicant_legal_reps_title:
     "Bitte listen Sie die zeichnungsbefugten Personen auf",
   PP_1_declaration_4:
@@ -239,8 +233,11 @@ export const form = {
   PP_1_declaration_6:
     "Hiermit bestätigen Sie, dass Sie als antragstellende Organisation weder das Existenzrecht Israels in Frage stellen noch sie bzw. das zu fördernde Vorhaben in irgendeiner Weise zum Boykott Israels aufrufen oder die die BDS-Bewegung aktiv unterstützen soll bzw. wird. Die Förderung durch Mittel des Auswärtige Amts erlaubt keine Förderung von Gastorganisationen und Projekten, die das Existenzrecht Israels infrage stellen, zum Boykott Israels aufrufen oder Aktivitäten zur Unterstützung der BDS-Bewegung ausführen. Dies geht auf einen Beschluss des Deutschen Bundestages zurück. (https://www.bundestag.de/dokumente/textarchiv/2019/kw20-de-bds-642892)",
   PP_1_declaration_7:
-    "Hiermit bestätigen Sie, dass Sie und die von Ihnen angegebenen Personen und Kontakte die Datenschutzhinweise in den Informationen zum Datenschutz und zur Verarbeitung Ihrer personenbezogenen Daten gem. DS-GVO erhalten und zur Kenntnis genommen haben (erforderlich für die Antragstellung).",
-  PP_1_declaration_8: "",
+    "Hiermit bestätigen Sie, dass Sie und die von Ihnen angegebenen Personen und Kontakte die Datenschutzhinweise in den <a href='https://martin-roth-initiative.de/en/application#pid-112' target='_blank'>Informationen zum Datenschutz und zur Verarbeitung Ihrer personenbezogenen Daten gem. DS-GVO</a> erhalten und zur Kenntnis genommen haben (erforderlich für die Antragstellung).",
+  PP_1_declaration_8:
+    "Hiermit willige ich in die Verarbeitung meiner personenbezogenen Daten für folgende Zwecke ein: (a) zur Zusendung (telefonisch/postalisch/digital) von Einladungen und Mitteilung über Veranstaltungen (auch über den Förderzeitraum hinaus) und (b) für Zusendungen/Mitteilungen (telefonisch/schriftlich/digital) von relevanten Informationen bspw. zur Martin Roth-Initiative (auch über den Förderzeitraum hinaus)",
+  PP_1_declaration_9:
+    "Die antragstellende Organisation bestätigt hiermit, dass die Planung der beantragten Projektmaßnahmen (einschließlich des beantragten Budgets) in Abstimmung mit dem Stipendiaten*der Stipendiatin erfolgte. Sollte eine Abstimmung bspw. aus Sicherheitsgründen vorab nicht möglich sein, verpflichtet sich die antragstellende Organisation hiermit, dies zum nächstmöglichen Zeitpunkt nachzuholen.",
   PP_1_project_impact_description:
     "Beschreiben Sie bitte, inwieweit eine positive (Rück-)Wirkung auf die Herkunfts-/Gastgesellschaft des*der Stipendiat*in zu rechnen ist.",
   PP_1_project_fit_title: "3.4. Künstlerische/arbeitsrelevante Passung",
@@ -290,7 +287,8 @@ export const form = {
   PP_1_applicant_activities_title: "Tätigkeitsfeld",
   PP_1_applicant_activities_description:
     "Geben Sie knapp das Haupttätigkeitsfeld Ihrer Organisation an (bspw. Darstellende Kunst, Bildende Kunst, Musik, Literatur).",
-  PP_1_applicant_description_title: "Selbstdarstellung der antragstellenden Organisation",
+  PP_1_applicant_description_title:
+    "Selbstdarstellung der antragstellenden Organisation",
   PP_1_overview_funding_description:
     "Geben Sie die gesamte Antragssumme an, die Sie im Finanzierungsplan budgetiert haben. Die Antragssumme stellt die Gesamtausgaben abzüglich der Eigen- und den Drittmitteln dar. <br/><br/>Bei überjährigen Projekten geben Sie bitte die Antragsumme nach Kalenderjahren (KJ) getrennt an. <br/><br/>Bitte beachten Sie, dass bei überjährigen Projekten die Budgets der jeweiligen Kalenderjahre nicht gegenseitig deckungsfähig sind.",
   PP_1_overview_funding_calendar_year: "Kalenderjahr",
@@ -307,11 +305,10 @@ export const form = {
   PS_1_other_funding_contact_title: "6.3. Kontakt zu anderen Förderprogrammen",
   PP_1_overview_funding_own_description:
     "Geben Sie hier an, ob Sie Eigenmittel für das Projekt zur Verfügung haben und wenn ja wie viel. <br/><br/>Bitte geben Sie nur liquide Mittel an.<br/><br/>Bei überjährigen Projekten geben Sie bitte die Antragsumme nach Kalenderjahren (KJ) getrennt an. Bitte beachten Sie, dass bei überjährigen Projekten die Budgets der jeweiligen Kalenderjahre nicht gegenseitig deckungsfähig sind.",
-  PP_1_overview_funding_total:
-    "Gesamtbudget nach KJ (EUR)",
-  PP_1_overview_funding_total_description: "Beantragte MRI-Förderung + Drittmittel + Eigenmittel",
-  PP_1_overview_overall_title:
-    "Gesamtfinanzierung sichergestellt?",
+  PP_1_overview_funding_total: "Gesamtbudget nach KJ (EUR)",
+  PP_1_overview_funding_total_description:
+    "Beantragte MRI-Förderung + Drittmittel + Eigenmittel",
+  PP_1_overview_overall_title: "Gesamtfinanzierung sichergestellt?",
   PP_1_overview_overall_description:
     "Geben Sie hier an, ob die Gesamtfinanzierung sichergestellt ist. Dies ist vor allem notwendig, wenn Sie Drittmittel beantragt haben und noch nicht absehbar ist, ob diese auch bewilligt werden. Bei der Beantragung einer Vollfinanzierung, kreuzen Sie hier <b>Ja</b> an, da im Falle einer Bewilligung die gesamten Projektkosten durch eine MRI-Förderung gedeckt sind.",
   PS_1_other_funding_contact_description:
