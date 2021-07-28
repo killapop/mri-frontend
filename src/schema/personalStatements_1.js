@@ -676,14 +676,6 @@ export const personalStatements_1 = (t) => {
           },
         },
       },
-      host_institution: {
-        connection_to_host: {
-          "ui:widget": "textarea",
-          "ui:options": {
-            rows: 4,
-          },
-        },
-      },
       artistic_work: {
         genre: {
           "ui:widget": "textarea",

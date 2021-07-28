@@ -230,7 +230,6 @@ export const form = {
   PP_1_overview_funding_period: "Planned funding period",
   PP_1_overview_funding_period_description:
     "Please note that project expenses will only be eligible if they occur within the funding period. It is therefore recommended to plan time for preparation and follow up measures in addition to the scholarship period. You may plan for a maximum of two months preparation time (for visa and travel preparations) and a maximum of one month follow-up time.",
-  PP_1_overview_funding: "Requested funds (EUR)",
   PP_1_overview_funding_description:
     "Please enter the total amount of MRI funds that you are applying for. The requested MRI funds represent the total budget minus own funds and third-party funds. <br/><br/>Please split the requested funds by calendar year. <br/><br/>Please note that approved funds for one calendar year may not be used in another calendar year.",
   PP_1_overview_funding_calendar_year: "Calendar year",
