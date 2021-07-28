@@ -181,11 +181,13 @@
     /* white-space: nowrap; */
   }
 
-  form.rjsf .col-fieldset-2 > fieldset {
+  form.rjsf .col-fieldset-2 > fieldset,
+  form.rjsf .col-fieldset-3 > fieldset {
     display: flex;
   }
 
-  form.rjsf .col-fieldset-2 > fieldset legend {
+  form.rjsf .col-fieldset-2 > fieldset legend,
+  form.rjsf .col-fieldset-3 > fieldset legend {
     width: 100%;
     flex-grow: 1;
   }
@@ -194,7 +196,14 @@
     width: 45%;
     display: flex;
   }
-  form.rjsf .col-fieldset-2 > fieldset .form-group label {
+
+  form.rjsf .col-fieldset-3 > fieldset .form-group {
+    width: 30%;
+    display: flex;
+  }
+
+  form.rjsf .col-fieldset-2 > fieldset .form-group label,
+  form.rjsf .col-fieldset-3 > fieldset .form-group label {
     padding-right: 10px;
   }
 
@@ -213,7 +222,7 @@
   label,
   textarea,
   p.tmpDisplay {
-    page-break-inside: avoid;
+    break-inside: avoid-page;
   }
 
   .tmpDisplay {
@@ -222,6 +231,7 @@
     width: 100%;
     height: fit-content;
     border-width: 1px 0 0 0;
+    font-size: 1.2em;
   }
 
   span.tmpDisplay {
@@ -240,6 +250,10 @@
     font-size: 0.9em;
     display: none;
   }
+  .to-print .field-description {
+    display: initial !important;
+  }
+
   label,
   legend {
     color: #000a;
