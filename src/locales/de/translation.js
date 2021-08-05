@@ -82,7 +82,7 @@ export const translation = {
   dashboard_badge_activations: "Aktivierungen",
   dashboard_badge_users: "Benutzer:in",
   dashboard_badge_proposals: "Projekt-Vorschläge",
-  dashboard_badge_statements: "Persönliche Aussagen",
+  dashboard_badge_statements: "Personal Statements",
   dashboard_badge_bundles: "Bündel",
   dashboard_no_found: "Keine Artikel gefunden",
   dashboard_loading: "Laden",
