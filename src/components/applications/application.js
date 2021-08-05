@@ -52,6 +52,7 @@ class Application extends React.Component {
       isSidebarOpen: false,
       isFormButtonsOpen: false,
       formKey: Math.random(),
+      currentLangugage: "",
     };
     this.form = React.createRef();
   }
@@ -59,11 +60,29 @@ class Application extends React.Component {
   async componentDidMount() {
     await this.fetchData()
       .then(() => {
-        this.setState({ loaded: true });
+        const currentLangugage = this.props.i18n.language;
+        this.setState({ loaded: true, currentLangugage });
       })
       .then(() => {
         this.renderTextareas();
       });
+  }
+
+  componentDidUpdate(prevProps) {
+    const prevLang = this.state.currentLangugage;
+    const currLang = this.props.i18n.language;
+    if (prevLang !== currLang) {
+      this.setState({ currentLangugage: currLang });
+      const textsToDelete = document.getElementsByClassName("tmpDisplay");
+      while (textsToDelete[0]) {
+        textsToDelete[0].parentNode.removeChild(textsToDelete[0]);
+      }
+      const checkboxesToDelete = document.getElementsByClassName("checks");
+      while (checkboxesToDelete[0]) {
+        checkboxesToDelete[0].parentNode.removeChild(checkboxesToDelete[0]);
+      }
+      this.renderTextareas();
+    }
   }
 
   renderTextareas() {
@@ -133,7 +152,7 @@ class Application extends React.Component {
             "beforebegin",
             `<span class='fa fa-${
               checkbox.checked ? "check-square green" : "square red"
-            }'></span>`
+            } checks'></span>`
           );
           checkbox.parentNode.classList.add("pl0", "flex", "items-start");
           checkbox.parentNode.style.paddingLeft = "0";
@@ -150,7 +169,7 @@ class Application extends React.Component {
             if (input.value === "1" || input.value === "true") {
               input.insertAdjacentHTML(
                 "beforebegin",
-                `<span class='pr2 fa fa-check-square green'></span>`
+                `<span class='pr2 fa fa-check-square green checks'></span>`
               );
             } else {
               input.parentNode.parentNode.style.display = "none";
