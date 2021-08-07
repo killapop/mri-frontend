@@ -193,6 +193,7 @@ class Application extends React.Component {
               }</span>`
             );
           }
+          input.style.display = "none";
         });
       }
     }
