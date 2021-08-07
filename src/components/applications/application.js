@@ -165,7 +165,25 @@ class Application extends React.Component {
         return false;
       } else {
         _.forEach(inputs, (input) => {
-          if (input.type !== "radio") {
+          if (input.type === "radio") {
+            console.log(input.checked);
+            if (input.value === 1 || input.value === true) {
+              input.insertAdjacentHTML(
+                "beforebegin",
+                `<span class='pr2 fa fa-check-square green checks'></span>`
+              );
+            } else {
+              input.insertAdjacentHTML(
+                "beforebegin",
+                `<span class='pr2 fa fa-square red checks'></span>`
+              );
+            }
+            input.insertAdjacentHTML(
+              "beforebegin",
+              `<span>${input.value}</span>`
+            );
+            input.parentNode.parentNode.style.display = "none";
+          } else {
             input.insertAdjacentHTML(
               "afterend",
               `<span class='tmpDisplay'>${
@@ -175,36 +193,6 @@ class Application extends React.Component {
               }</span>`
             );
           }
-
-          // if (input.type === "radio") {
-          //   console.log(input.checked);
-          //   if (input.value === 1 || input.value === true) {
-          //     input.insertAdjacentHTML(
-          //       "beforebegin",
-          //       `<span class='pr2 fa fa-check-square green checks'></span>`
-          //     );
-          //   } else {
-          //     input.insertAdjacentHTML(
-          //       "beforebegin",
-          //       `<span class='pr2 fa fa-square red checks'></span>`
-          //     );
-          //   }
-          //   input.insertAdjacentHTML(
-          //     "beforebegin",
-          //     `<span>${input.value}</span>`
-          //   );
-          //   input.parentNode.parentNode.style.display = "none";
-          // } else {
-          //   input.insertAdjacentHTML(
-          //     "afterend",
-          //     `<span class='tmpDisplay'>${
-          //       input.tagName === "SELECT"
-          //         ? input.selectedOptions[0].label
-          //         : input.value
-          //     }</span>`
-          //   );
-          // }
-          input.style.display = "none";
         });
       }
     }
