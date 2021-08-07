@@ -257,9 +257,11 @@ export const projectProposals_1 = (t) => {
               },
             },
             overall_financing_guaranteed: {
-              type: "boolean",
+              type: "string",
               title: t("form:PP_1_overview_overall_title"),
               description: t("form:PP_1_overview_overall_description"),
+              enum: [true, false],
+              enumNames: [t("form:common_yes"), t("form:common_no")],
             },
             further_explaination: {
               type: "string",
@@ -386,7 +388,7 @@ export const projectProposals_1 = (t) => {
                 funding_funding: {
                   type: "string",
                   title: t("form:PP_1_applicant_funding_title"),
-                  enum: [1, 0],
+                  enum: [true, false],
                   enumNames: [t("form:common_yes"), t("form:common_no")],
                 },
                 compliance: {
@@ -404,7 +406,7 @@ export const projectProposals_1 = (t) => {
             four_eyes: {
               type: "string",
               title: t("form:PP_1_applicant_4eyes_title"),
-              enum: [1, 0],
+              enum: [true, false],
               enumNames: [t("form:common_yes"), t("form:common_no")],
             },
             four_eyes_information: {
@@ -419,7 +421,7 @@ export const projectProposals_1 = (t) => {
               type: "string",
               title: t("form:PP_1_applicant_bookkeeping_title"),
               description: t("form:PP_1_applicant_bookkeeping_description"),
-              enum: [1, 0],
+              enum: [true, false],
               enumNames: [t("form:common_yes"), t("form:common_no")],
             },
             bookkeeping_information: {
@@ -430,13 +432,13 @@ export const projectProposals_1 = (t) => {
               type: "string",
               title: t("form:PP_1_applicant_VAT_title"),
               description: t("form:PP_1_applicant_VAT_description"),
-              enum: [1, 0],
+              enum: [true, false],
               enumNames: [t("form:common_yes"), t("form:common_no")],
             },
             deduct: {
               type: "string",
               title: t("form:PP_1_applicant_deduct_title"),
-              enum: [1, 0],
+              enum: [true, false],
               enumNames: [t("form:common_yes"), t("form:common_no")],
             },
             deduct_information: {
@@ -750,7 +752,7 @@ export const projectProposals_1 = (t) => {
           classNames: "col-fieldset-3",
         },
         overall_financing_guaranteed: {
-          "ui:widget": "radio",
+          // "ui:widget": "radio",
         },
         further_explaination: {
           "ui:widget": "textarea",
@@ -774,10 +776,10 @@ export const projectProposals_1 = (t) => {
         },
         funding: {
           funding_funding: {
-            "ui:widget": "radio",
+            // "ui:widget": "radio",
           },
           compliance: {
-            "ui:widget": "radio",
+            // "ui:widget": "radio",
           },
           compliance_information: {
             "ui:widget": "textarea",
@@ -787,7 +789,7 @@ export const projectProposals_1 = (t) => {
           },
         },
         four_eyes: {
-          "ui:widget": "radio",
+          // "ui:widget": "radio",
         },
         four_eyes_information: {
           "ui:widget": "textarea",
@@ -802,7 +804,7 @@ export const projectProposals_1 = (t) => {
           },
         },
         bookkeeping: {
-          "ui:widget": "radio",
+          // "ui:widget": "radio",
         },
         bookkeeping_information: {
           "ui:widget": "textarea",
@@ -811,10 +813,10 @@ export const projectProposals_1 = (t) => {
           },
         },
         vat: {
-          "ui:widget": "radio",
+          // "ui:widget": "radio",
         },
         deduct: {
-          "ui:widget": "radio",
+          // "ui:widget": "radio",
         },
         deduct_information: {
           "ui:widget": "textarea",

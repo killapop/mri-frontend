@@ -57,12 +57,12 @@ export const personalStatements_1 = (t) => {
                 },
                 passport: {
                   type: "object",
-                  title: " ",
+                  title: "",
                   properties: {
                     passport_passport: {
-                      type: "string",
                       title: t("form:PS_1_personal_background_passport"),
-                      enum: [1, 0],
+                      type: "string",
+                      enum: [true, false],
                       enumNames: [t("form:common_yes"), t("form:common_no")],
                     },
                     passport_validity: {
@@ -659,7 +659,7 @@ export const personalStatements_1 = (t) => {
           },
           passport: {
             passport_passport: {
-              "ui:widget": "radio",
+              // "ui:widget": "radio",
             },
           },
           current_location_away: {
