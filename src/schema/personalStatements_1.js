@@ -559,29 +559,29 @@ export const personalStatements_1 = (t) => {
             },
           },
         },
-        after_scholarship: {
-          type: "object",
-          title: t("form:PS_1_after_title"),
-          description: t("form:PS_1_after_description"),
-          properties: {
-            return: {
-              type: "string",
-              title: t("form:PS_1_after_return_title"),
-              maxLength: 1000,
-            },
-            exit_strategy: {
-              type: "string",
-              title: t("form:PS_1_after_exit_strategy_title"),
-              description: t("form:PS_1_after_exit_strategy_description"),
-              maxLength: 1000,
-            },
-            after: {
-              type: "string",
-              title: t("form:PS_1_after_after_title"),
-              maxLength: 2000,
-            },
-          },
-        },
+        // after_scholarship: {
+        //   type: "object",
+        //   title: t("form:PS_1_after_title"),
+        //   description: t("form:PS_1_after_description"),
+        //   properties: {
+        //     return: {
+        //       type: "string",
+        //       title: t("form:PS_1_after_return_title"),
+        //       maxLength: 1000,
+        //     },
+        //     exit_strategy: {
+        //       type: "string",
+        //       title: t("form:PS_1_after_exit_strategy_title"),
+        //       description: t("form:PS_1_after_exit_strategy_description"),
+        //       maxLength: 1000,
+        //     },
+        //     after: {
+        //       type: "string",
+        //       title: t("form:PS_1_after_after_title"),
+        //       maxLength: 2000,
+        //     },
+        //   },
+        // },
         other: {
           type: "object",
           title: t("form:PS_1_other_title"),
