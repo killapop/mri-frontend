@@ -593,25 +593,25 @@ export const projectProposals_1 = (t) => {
                         },
                       },
                     },
-                    after: {
-                      type: "object",
-                      title: t("form:PP_1_project_after_title"),
-                      description: t("form:PP_1_project_after_description"),
-                      properties: {
-                        goals: {
-                          type: "string",
-                          title: t("form:PP_1_project_after_goals_title"),
-                        },
-                        activities: {
-                          type: "string",
-                          title: t("form:PP_1_project_after_activities_title"),
-                        },
-                        success: {
-                          type: "string",
-                          title: t("form:PP_1_project_after_success_title"),
-                        },
-                      },
-                    },
+                    // after: {
+                    //   type: "object",
+                    //   title: t("form:PP_1_project_after_title"),
+                    //   description: t("form:PP_1_project_after_description"),
+                    //   properties: {
+                    //     goals: {
+                    //       type: "string",
+                    //       title: t("form:PP_1_project_after_goals_title"),
+                    //     },
+                    //     activities: {
+                    //       type: "string",
+                    //       title: t("form:PP_1_project_after_activities_title"),
+                    //     },
+                    //     success: {
+                    //       type: "string",
+                    //       title: t("form:PP_1_project_after_success_title"),
+                    //     },
+                    //   },
+                    // },
                     impact: {
                       type: "string",
                       title: t("form:PP_1_project_impact_title"),
