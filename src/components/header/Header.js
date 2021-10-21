@@ -52,7 +52,7 @@ class Header extends React.Component {
                     })
                   }
                   style={{
-                    backgroundImage: `url(/${lang.code}.svg)`,
+                    backgroundImage: `url(/${lang.code}.svg)`
                   }}
                 >
                   {lang.code}
@@ -62,18 +62,43 @@ class Header extends React.Component {
           </div>
           <nav className="ttu flex justify-between mt3">
             <div className="userNav flex justify-start h-100 items-start">
-              <a
-                rel="noopener noreferrer"
-                href="https://martin-roth-initiative.de"
-                target="_blank"
-                title="Info"
-                className="navLink pv2 h-100"
-              >
-                <div className="flex items-center">
+              <div className="info-link flex">
+                <a className="flex flex-column items-center h-100 pv2">
                   <i className={`fa fa-info mb2`} />
                   <span className="dn db-l">{t("navbar_info")}</span>
-                </div>
-              </a>
+                </a>
+                <ul className="flex flex-column list">
+                  <li>
+                    <a
+                      rel="noopener noreferrer"
+                      href="https://martin-roth-initiative.de"
+                      target="_blank"
+                      title="Info"
+                      className="navLink h-100"
+                    >
+                      MRI website
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="link black pr5 b"
+                      href="https://martin-roth-initiative.de/en/imprint"
+                      target="_blank"
+                    >
+                      Imprint
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="link black pr3 b"
+                      href="https://martin-roth-initiative.de/en/data-protection-notice-application-website"
+                      target="_blank"
+                    >
+                      GDPR
+                    </a>
+                  </li>
+                </ul>
+              </div>
               {authStore.token !== "" ? (
                 <div className="flex">
                   <Link
@@ -117,7 +142,7 @@ class Header extends React.Component {
 Header.propTypes = {
   sticky: PropTypes.bool,
   i18n: PropTypes.any,
-  t: PropTypes.any,
+  t: PropTypes.any
 };
 
 export default withTranslation()(Header);
