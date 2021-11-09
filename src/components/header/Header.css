@@ -75,11 +75,16 @@
   padding: 0 0 10px 0;
 }
 
-.sticky .userNav a > div {
+.sticky .userNav a > div,
+.sticky .userNav button {
   flex-direction: row;
   align-items: baseline;
   padding: 0 10px;
   justify-content: center;
+}
+
+.sticky .info-link:hover ul {
+  top: 20px;
 }
 
 .sticky .userNav a .fa {
@@ -125,7 +130,7 @@
   border-radius: 4px;
   box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.04);
   position: absolute;
-  top: 50px;
+  top: 20px;
   left: -50px;
   padding: 5px 10px;
 }
@@ -160,6 +165,7 @@
 
 .info-link:hover > ul {
   display: block;
+  z-index: 50000;
 }
 
 .languages .language {
@@ -211,7 +217,12 @@
     margin-right: 50px;
   }
 
-  .sticky .userNav a {
+  .info-link > ul {
+    top: 50px;
+  }
+
+  .sticky .userNav a,
+  .sticky .userNav button {
     margin-right: 50px;
   }
 
@@ -219,7 +230,8 @@
     font-size: 1.3em;
   }
 
-  .sticky .userNav a .fa {
+  .sticky .userNav a .fa,
+  .sticky .userNav button .fa {
     font-size: 18px;
     margin-right: 5px;
   }
