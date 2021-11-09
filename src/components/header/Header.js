@@ -63,10 +63,10 @@ class Header extends React.Component {
           <nav className="ttu flex justify-between mt3">
             <div className="userNav flex justify-start h-100 items-start">
               <div className="info-link flex">
-                <a className="flex flex-column items-center h-100 pv2">
+                <button className="flex flex-column items-center h-100 pv2 ttu">
                   <i className={`fa fa-info mb2`} />
                   <span className="dn db-l">{t("navbar_info")}</span>
-                </a>
+                </button>
                 <ul className="flex flex-column list">
                   <li>
                     <a
@@ -84,6 +84,7 @@ class Header extends React.Component {
                       className="link black pr5 b"
                       href="https://martin-roth-initiative.de/en/imprint"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Imprint
                     </a>
@@ -93,6 +94,7 @@ class Header extends React.Component {
                       className="link black pr3 b"
                       href="https://martin-roth-initiative.de/en/data-protection-notice-application-website"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       GDPR
                     </a>

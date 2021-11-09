@@ -1,6 +1,11 @@
 @media print {
+  body {
+    background-color: transparent !important;
+  }
+
   * {
     overflow-y: visible;
+    font-size: 12pt !important;
   }
 
   .flex {
@@ -9,16 +14,71 @@
 
   .z-999,
   .sidebar,
-  .form-actions {
-    display: none;
+  .form-actions,
+  .dn-p {
+    display: none !important;
+  }
+
+  .db-p {
+    display: block;
+  }
+  .dib-p {
+    display: inline-block;
+  }
+
+  .bundle-meta {
+    margin: 0;
+    border-top: 0;
+    border-bottom-width: 1pt;
+    padding-bottom: 5pt;
+  }
+
+  .bundle-meta > div {
+    display: inline-block;
+    margin-right: 50px;
+    text-transform: initial;
+    padding-top: 0;
+    color: #666 !important;
+  }
+
+  .bundle-meta > * {
+    padding: 0;
+    color: #666;
+  }
+
+  .bundle-meta .form-title {
+    font-size: 18pt !important;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  legend,
+  label {
+    text-transform: unset !important;
+    font-weight: normal !important;
+    color: #999 !important;
+  }
+  .applications form.rjsf > .form-group > fieldset > .form-group {
+    padding: 0;
   }
 
   form > .form-group > fieldset > .form-group > fieldset > legend {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    padding: 10pt 0 0 30px;
+    border: 0;
+    color: #666 !important;
+    font-size: 13pt !important;
   }
 
   #application-form > .form-group > fieldset > .form-group {
-    padding: 10px;
+    /* padding: 10px; */
+  }
+
+  #application-form {
+    #root__title {
+      display: none;
+    }
   }
 
   form
@@ -29,10 +89,11 @@
     > .form-group
     > fieldset
     > legend {
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     padding-bottom: 5px;
-    font-weight: bold;
-    border-bottom: 1px solid #0002;
+    font-weight: bold !important;
+    color: #333 !important;
+    border-bottom: 0;
   }
   #application-form > .form-group > fieldset > .form-group > fieldset {
     page-break-after: always;
@@ -68,7 +129,7 @@
     > .form-group
     > fieldset
     > .form-group {
-    padding: 0 0 0 5px;
+    padding: 0;
     /* display: flex; */
     align-items: baseline;
     width: 100%;
@@ -101,10 +162,13 @@
     > .form-group
     > fieldset
     > .form-group
-    > label {
+    > label,
+  form label {
     flex-basis: 1;
     min-width: fit-content;
-    padding: 5px 5px 5px 0;
+    padding: 0 !important;
+    color: #ss !important;
+    font-family: "PTSansNarrowRegular";
   }
 
   #application-form
@@ -215,6 +279,7 @@
   #application-form .title,
   #application-form #root__title {
     margin-left: 0;
+    display: none !important;
   }
 
   .form-control,
@@ -230,13 +295,15 @@
     margin: 0;
     width: 100%;
     height: fit-content;
-    border-width: 1px 0 0 0;
-    font-size: 1.2em;
+    border-width: 0;
+    font-size: 12pt;
+    color: #000 !important;
   }
 
   span.tmpDisplay {
-    font-weight: bold;
-    font-size: 1.2em;
+    display: inline;
+    font-weight: normal;
+    font-size: 12pt;
     margin: 2px 0 0 15px;
   }
 

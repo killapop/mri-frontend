@@ -7,7 +7,6 @@ import { authStore } from "../../lib/store";
 import { view } from "@risingstack/react-easy-state";
 import { withTranslation } from "react-i18next";
 import { allForms } from "../../schema/forms.js";
-import i18n from "../../i18n.js";
 import Clock from "../../components/common/clock";
 import { apiCall } from "../../lib/api-calls";
 import { add as addMessage } from "../../lib/message";
@@ -52,7 +51,7 @@ class Application extends React.Component {
       isSidebarOpen: false,
       isFormButtonsOpen: false,
       formKey: Math.random(),
-      currentLangugage: "",
+      currentLangugage: ""
     };
     this.form = React.createRef();
   }
@@ -90,7 +89,7 @@ class Application extends React.Component {
     if (!descriptions) {
       return false;
     } else {
-      _.forEach(descriptions, (description) => {
+      _.forEach(descriptions, description => {
         const text = description.innerHTML;
         const exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/gi;
         const text1 = text
@@ -106,7 +105,7 @@ class Application extends React.Component {
     if (!labels) {
       return false;
     } else {
-      _.forEach(labels, (label) => {
+      _.forEach(labels, label => {
         const text = label.innerHTML;
         const text1 = text
           ? text
@@ -120,13 +119,12 @@ class Application extends React.Component {
     if (this.state.disabled) {
       const elements = document.getElementsByTagName("TEXTAREA");
       const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-      const radios = document.querySelectorAll('input[type="radio"]');
       const inputs = document.querySelectorAll(
         "input:not([type='checkbox']), select",
         !""
       );
       if (elements.length) {
-        _.forEach(document.getElementsByTagName("TEXTAREA"), (element) => {
+        _.forEach(document.getElementsByTagName("TEXTAREA"), element => {
           element.style.height = `${element.scrollHeight}px`;
           element.removeAttribute("disabled");
           element.setAttribute("readonly", true);
@@ -147,7 +145,7 @@ class Application extends React.Component {
       if (!checkboxes) {
         return false;
       } else {
-        _.forEach(checkboxes, (checkbox) => {
+        _.forEach(checkboxes, checkbox => {
           checkbox.insertAdjacentHTML(
             "beforebegin",
             `<span class='fa fa-${
@@ -164,7 +162,7 @@ class Application extends React.Component {
       if (!inputs) {
         return false;
       } else {
-        _.forEach(inputs, (input) => {
+        _.forEach(inputs, input => {
           if (input.type === "radio") {
             console.log(input.checked);
             if (input.value === 1 || input.value === true) {
@@ -236,7 +234,7 @@ class Application extends React.Component {
         disabled:
           authStore.user.roles.indexOf("mri-staff") !== -1 ||
           (authStore.user.roles.indexOf("mri-staff") === -1 &&
-            ["finalized", "locked"].includes(appData.state)),
+            ["finalized", "locked"].includes(appData.state))
       });
     } catch (err) {
       console.log(err);
@@ -249,7 +247,7 @@ class Application extends React.Component {
 
   async lockHandler(ev) {
     this.setState({
-      type: "lock",
+      type: "lock"
     });
     await this.form.current.onSubmit(ev);
   }
@@ -262,7 +260,7 @@ class Application extends React.Component {
   async finalizeForm(ev) {
     this.setState({
       locked: true,
-      close: true,
+      close: true
     });
     await this.form.current.onSubmit(ev);
   }
@@ -270,7 +268,7 @@ class Application extends React.Component {
   async unfinalizeForm(ev) {
     this.setState({
       unfinalize: true,
-      close: true,
+      close: true
     });
     await this.form.current.onSubmit(ev);
   }
@@ -305,7 +303,7 @@ class Application extends React.Component {
       JSON.stringify(body),
       true
     )
-      .then((data) => {
+      .then(data => {
         if (data === 500) {
           addMessage(
             "danger",
@@ -315,7 +313,7 @@ class Application extends React.Component {
           this.setState({
             form: data,
             account: data.account,
-            history: data.history,
+            history: data.history
           });
           addMessage("success", message);
         }
@@ -325,7 +323,7 @@ class Application extends React.Component {
           return this.props.history.push("/");
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
         addMessage("danger", "Error retrieving data");
       });
@@ -424,22 +422,22 @@ class Application extends React.Component {
       true,
       "form"
     )
-      .then((data) => {
+      .then(data => {
         if (data === 204) {
           return apiCall(
             "GET",
             "/applications/" + this.props.match.params.id + "/attachments",
             "",
             true
-          ).then((attachments) => {
+          ).then(attachments => {
             this.setState({
-              attachments,
+              attachments
             });
             addMessage("success", "File uploaded");
           });
         }
       })
-      .catch((err) => addMessage("danger", "Error uploading the file"));
+      .catch(err => addMessage("danger", "Error uploading the file"));
   }
 
   errors({ errors }) {
@@ -455,14 +453,14 @@ class Application extends React.Component {
   toggleSidebar(e) {
     this.setState({
       isSidebarOpen: !this.state.isSidebarOpen,
-      isFormButtonsOpen: false,
+      isFormButtonsOpen: false
     });
   }
 
   toggleFormButtons(e) {
     this.setState({
       isSidebarOpen: false,
-      isFormButtonsOpen: !this.state.isFormButtonsOpen,
+      isFormButtonsOpen: !this.state.isFormButtonsOpen
     });
   }
 
@@ -478,9 +476,8 @@ class Application extends React.Component {
       disabled,
       isSidebarOpen,
       isFormButtonsOpen,
-      formKey,
+      formKey
     } = this.state;
-
     const { t } = this.props;
     let formData = {};
     if (_.size(form) > 0) {
@@ -488,33 +485,32 @@ class Application extends React.Component {
         t
       );
       _.merge(formData, {
-        template: formToFetch,
+        template: formToFetch
       });
       if (authStore.user.roles.indexOf("mri-staff") !== -1) {
         _.merge(formData.template.schema, {
           title: `${formData.template.schema.title} ${
             form.form.indexOf("-1.json") !== -1 ? "PL1" : "PL2"
-          }`,
+          }`
         });
       }
     }
-
     const tabs = [
       {
         title: "history",
         label: t("application_tab_history"),
-        icon: "clipboard-list",
+        icon: "clipboard-list"
       },
       {
         title: "comments",
         label: t("application_tab_comments"),
-        icon: "comments",
+        icon: "comments"
       },
       {
         title: "attachments",
         label: t("application_tab_attachments"),
-        icon: "paperclip",
-      },
+        icon: "paperclip"
+      }
     ];
 
     if (authStore.token === "") {
@@ -532,7 +528,7 @@ class Application extends React.Component {
       }
     };
 
-    const HTMLDescriptionField = (props) => {
+    const HTMLDescriptionField = props => {
       return (
         <div
           id={props.id}
@@ -554,17 +550,27 @@ class Application extends React.Component {
             <div
               id="formContainer"
               className="formContainer w-70-l"
-              ref={(e) => (this.formDiv = e)}
+              ref={e => (this.formDiv = e)}
             >
               <div className="bundle-meta flex flex-column flex-row-l">
+                <div
+                  className="dib-p form-title"
+                  style={{ display: "none !important" }}
+                >
+                  {formData.template.schema.title}
+                </div>
                 <div>
-                  {t("application_meta_applicant")}: <b>{account.email}</b>
+                  {t("application_meta_applicant")}:{" "}
+                  <b>
+                    {form.account.name}
+                    {` `}({account.email})
+                  </b>
                 </div>
                 <div>
                   {t("application_meta_formId")}: <b>{form.id}</b>
                 </div>
 
-                <div>
+                <div className="dn-p">
                   {form.bundle &&
                   authStore.user.roles.indexOf("mri-staff") !== -1 ? (
                     <span>
@@ -600,7 +606,7 @@ class Application extends React.Component {
                   <button
                     type="button"
                     className="dn-l form-actions-toggle"
-                    onClick={(e) => this.toggleFormButtons(e)}
+                    onClick={e => this.toggleFormButtons(e)}
                   >
                     <i className="fa fa-cog white z-999" /> {`  `}
                     {isFormButtonsOpen
@@ -612,16 +618,16 @@ class Application extends React.Component {
                     style={
                       isFormButtonsOpen
                         ? {
-                            transform: "translateY(-44px)",
+                            transform: "translateY(-44px)"
                           }
                         : {
-                            transform: "translateY(240px)",
+                            transform: "translateY(240px)"
                           }
                     }
                   >
                     <button
                       className="pdf-export"
-                      onClick={(e) => this.exportPDF(e)}
+                      onClick={e => this.exportPDF(e)}
                       type="button"
                     >
                       {t("application_formActions_pdf")}{" "}
@@ -689,14 +695,14 @@ class Application extends React.Component {
             <div
               className="sidebar"
               style={{
-                transform: `translateX(${isSidebarOpen ? "10vw" : "100vw"})`,
+                transform: `translateX(${isSidebarOpen ? "10vw" : "100vw"})`
               }}
             >
               <div
                 className={`sidebar-toggle dn-l fa fa-angle-double-${
                   isSidebarOpen ? "right" : "left"
                 }`}
-                onClick={(e) => this.toggleSidebar(e)}
+                onClick={e => this.toggleSidebar(e)}
               />
               <div className={`sidebar-content`}>
                 {" "}
@@ -704,7 +710,7 @@ class Application extends React.Component {
                   {tabs.map((tab, idx) => (
                     <div
                       id={tab.title}
-                      onClick={(e) => this.tabHandler(e)}
+                      onClick={e => this.tabHandler(e)}
                       key={idx}
                       className={`tab tab-${tab.title} ${
                         currentTab === tab.title ? "active" : ""
