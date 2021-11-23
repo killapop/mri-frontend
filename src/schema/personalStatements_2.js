@@ -1,4 +1,4 @@
-export const personalStatements_2 = (t) => {
+export const personalStatements_2 = t => {
   return {
     schema: {
       title: "Personal Statement",
@@ -18,34 +18,34 @@ export const personalStatements_2 = (t) => {
                   type: "string",
                   title: "Title",
                   enum: [1, 2, 3],
-                  enumNames: ["No choice", "Mr.", "Mrs."],
+                  enumNames: ["No choice", "Mr.", "Mrs."]
                 },
                 academic_title: {
                   type: "string",
-                  title: "Academic title",
+                  title: "Academic title"
                 },
                 first_name: {
                   type: "string",
-                  title: "First name",
+                  title: "First name"
                 },
                 last_name: {
                   type: "string",
-                  title: "Last name",
+                  title: "Last name"
                 },
                 date_of_birth: {
                   type: "string",
                   format: "date",
-                  title: "Date of birth",
+                  title: "Date of birth"
                 },
                 place_of_birth: {
                   type: "string",
-                  title: "Place of birth",
+                  title: "Place of birth"
                 },
                 nationaity: {
                   type: "string",
-                  title: "Nationality/ ies",
-                },
-              },
+                  title: "Nationality/ ies"
+                }
+              }
             },
             contact: {
               type: "object",
@@ -53,34 +53,34 @@ export const personalStatements_2 = (t) => {
               properties: {
                 address: {
                   type: "string",
-                  title: "Address",
+                  title: "Address"
                 },
                 postal_code: {
                   type: "string",
-                  title: "Postal code",
+                  title: "Postal code"
                 },
                 city: {
                   type: "string",
-                  title: "City",
+                  title: "City"
                 },
                 country: {
                   type: "string",
-                  title: "Country",
+                  title: "Country"
                 },
                 residence_status: {
                   type: "string",
                   title: "Residence status",
                   description:
-                    "(citizen, temporary residence permit until …, tourist visa, etc.)",
+                    "(citizen, temporary residence permit until …, tourist visa, etc.)"
                 },
                 email: {
                   type: "string",
                   format: "email",
-                  title: "Email",
+                  title: "Email"
                 },
                 telephone: {
                   type: "string",
-                  title: "Telephone",
+                  title: "Telephone"
                 },
                 signal: { type: "string", title: "Signal" },
                 wire: { type: "string", title: "Wire" },
@@ -89,9 +89,9 @@ export const personalStatements_2 = (t) => {
                   type: "string",
                   title: "Current Address",
                   description:
-                    "Where are you currently located and since when have you been there? What is your residence status there?",
-                },
-              },
+                    "Where are you currently located and since when have you been there? What is your residence status there?"
+                }
+              }
             },
             emergency_contact: {
               type: "object",
@@ -103,47 +103,47 @@ export const personalStatements_2 = (t) => {
                   type: "string",
                   title: "Title",
                   enum: [1, 2, 3],
-                  enumNames: ["No choice", "Mr.", "Mrs."],
+                  enumNames: ["No choice", "Mr.", "Mrs."]
                 },
                 academic_title: {
                   type: "string",
-                  title: "Academic title",
+                  title: "Academic title"
                 },
                 first_name: {
                   type: "string",
-                  title: "First name",
+                  title: "First name"
                 },
                 last_name: {
                   type: "string",
-                  title: "Last name",
+                  title: "Last name"
                 },
                 country_of_residence: {
                   type: "string",
-                  title: "Country of residence",
+                  title: "Country of residence"
                 },
                 email: {
                   type: "string",
                   title: "Email",
-                  format: "email",
+                  format: "email"
                 },
                 telephone_0: {
                   type: "string",
-                  title: "Telephone number",
+                  title: "Telephone number"
                 },
                 signal: {
                   type: "string",
-                  title: "Signal",
+                  title: "Signal"
                 },
                 languages: {
                   type: "string",
-                  title: "Language(s) of communication",
+                  title: "Language(s) of communication"
                 },
                 relationship: {
                   type: "string",
                   title: "Relationship",
-                  description: "What is your relationship with this person",
-                },
-              },
+                  description: "What is your relationship with this person"
+                }
+              }
             },
             qualification: {
               type: "object",
@@ -155,7 +155,7 @@ export const personalStatements_2 = (t) => {
                   properties: {
                     institution: {
                       type: "string",
-                      title: "Institution/Employer/School",
+                      title: "Institution/Employer/School"
                     },
                     duration: {
                       type: "object",
@@ -164,20 +164,20 @@ export const personalStatements_2 = (t) => {
                         from: {
                           type: "string",
                           format: "date",
-                          title: "From",
+                          title: "From"
                         },
                         to: {
                           type: "string",
                           format: "date",
-                          title: "To",
-                        },
-                      },
+                          title: "To"
+                        }
+                      }
                     },
                     degree: {
                       type: "string",
-                      title: "Degree",
-                    },
-                  },
+                      title: "Degree"
+                    }
+                  }
                 },
                 institution_1: {
                   type: "object",
@@ -185,7 +185,7 @@ export const personalStatements_2 = (t) => {
                   properties: {
                     institution: {
                       type: "string",
-                      title: "Institution/Employer/School",
+                      title: "Institution/Employer/School"
                     },
                     duration: {
                       type: "object",
@@ -194,22 +194,22 @@ export const personalStatements_2 = (t) => {
                         from: {
                           type: "string",
                           format: "date",
-                          title: "From",
+                          title: "From"
                         },
                         to: {
                           type: "string",
                           format: "date",
-                          title: "To",
-                        },
-                      },
+                          title: "To"
+                        }
+                      }
                     },
                     degree: {
                       type: "string",
-                      title: "Degree",
-                    },
-                  },
-                },
-              },
+                      title: "Degree"
+                    }
+                  }
+                }
+              }
             },
             career: {
               type: "object",
@@ -223,11 +223,11 @@ export const personalStatements_2 = (t) => {
                   properties: {
                     position: {
                       type: "string",
-                      title: "Profession/ Position",
+                      title: "Profession/ Position"
                     },
                     institution: {
                       type: "string",
-                      title: "Employer/ self-employed",
+                      title: "Employer/ self-employed"
                     },
                     duration: {
                       type: "object",
@@ -237,16 +237,16 @@ export const personalStatements_2 = (t) => {
                         from: {
                           type: "string",
                           format: "date",
-                          title: "From",
+                          title: "From"
                         },
                         to: {
                           type: "string",
                           format: "date",
-                          title: "Until",
-                        },
-                      },
-                    },
-                  },
+                          title: "Until"
+                        }
+                      }
+                    }
+                  }
                 },
                 postion_1: {
                   type: "object",
@@ -254,11 +254,11 @@ export const personalStatements_2 = (t) => {
                   properties: {
                     position: {
                       type: "string",
-                      title: "Profession/ Position",
+                      title: "Profession/ Position"
                     },
                     institution: {
                       type: "string",
-                      title: "Employer/ self-employed",
+                      title: "Employer/ self-employed"
                     },
                     duration: {
                       type: "object",
@@ -268,18 +268,18 @@ export const personalStatements_2 = (t) => {
                         from: {
                           type: "string",
                           format: "date",
-                          title: "From",
+                          title: "From"
                         },
                         to: {
                           type: "string",
                           format: "date",
-                          title: "Until",
-                        },
-                      },
-                    },
-                  },
-                },
-              },
+                          title: "Until"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             },
             languages: {
               type: "object",
@@ -290,10 +290,10 @@ export const personalStatements_2 = (t) => {
                 read: { type: "string", title: "Read" },
                 write: { type: "string", title: "Write" },
                 understand: { type: "string", title: "Understand" },
-                speak: { type: "string", title: "Speak" },
-              },
-            },
-          },
+                speak: { type: "string", title: "Speak" }
+              }
+            }
+          }
         },
         scholarship: {
           type: "object",
@@ -310,7 +310,7 @@ export const personalStatements_2 = (t) => {
                 name: { type: "string", title: "Name of Institution" },
                 address: {
                   type: "string",
-                  title: "Street and house number",
+                  title: "Street and house number"
                 },
                 postal_code: { type: "string", title: "Postal code" },
                 city: { type: "string", title: "City" },
@@ -323,31 +323,31 @@ export const personalStatements_2 = (t) => {
                   properties: {
                     surname: {
                       type: "string",
-                      title: "Surname",
+                      title: "Surname"
                     },
                     first_name: {
                       type: "string",
-                      title: "First name",
+                      title: "First name"
                     },
                     email: {
                       type: "string",
                       format: "email",
-                      title: "E-mail",
+                      title: "E-mail"
                     },
                     telephone: {
                       type: "string",
-                      title: "Telephone",
-                    },
-                  },
-                },
-              },
+                      title: "Telephone"
+                    }
+                  }
+                }
+              }
             },
             connection_to_host: {
               type: "string",
               title: "2.2. Connection to host institution",
               description:
                 "Where did you learn about the host institution? Why would you like to collaborate with the host institution? (Max 500 characters)",
-              maxLength: 500,
+              maxLength: 500
             },
             rest_and_respite: {
               type: "object",
@@ -359,17 +359,17 @@ export const personalStatements_2 = (t) => {
                   type: "string",
                   title:
                     "Please briefly describe how you are planning and preparing your „Rest & Respite“-residence. Please state where you would like to be accommodated.",
-                  maxLength: 2000,
+                  maxLength: 2000
                 },
                 usage: {
                   type: "string",
                   title:
                     "Please briefly describe how you plan to use your residence for your professional and/or artistic work.",
-                  maxLength: 2000,
-                },
-              },
-            },
-          },
+                  maxLength: 2000
+                }
+              }
+            }
+          }
         },
         artistic_work: {
           type: "object",
@@ -380,30 +380,30 @@ export const personalStatements_2 = (t) => {
               title: "3.1. Artistic/cultural genre",
               description:
                 "Please state the artistic/cultural genre you work in",
-              maxLength: 1500,
+              maxLength: 1500
             },
             focus: {
               type: "string",
               title: "3.2. Civil society focus",
               description:
                 "For civil society actors – please state the thematic focus of your work:",
-              maxLength: 2000,
+              maxLength: 2000
             },
             description: {
               type: "string",
               title: "3.3. Description of artistic/cultural work",
               description:
                 "Please describe your artistic/cultural work.  Please state since when you have been undertaking your artistic/cultural work.",
-              maxLength: 2000,
+              maxLength: 2000
             },
             milestones: {
               type: "string",
               title: "3.4. Professional milestones",
               description:
                 "Please describe the most important professional milestones in your career from your point of view.",
-              maxLength: 1000,
-            },
-          },
+              maxLength: 1000
+            }
+          }
         },
         existing_risk: {
           type: "object",
@@ -414,23 +414,23 @@ export const personalStatements_2 = (t) => {
               title: "4.1. Description of the security situation",
               description:
                 "The Martin Roth initiative supports artists who are at risk, who face threats, are under surveillance and/or are being persecuted by state and/or non-state actors because of their work or due to other circumstances. <p>Please describe your individual security situation and be as specific as possible, listing incidents and dates. </p>Please also give more general information about the political situation in your country if you feel this is important for context.",
-              maxLength: 2500,
+              maxLength: 2500
             },
             references: {
               type: "string",
               title: "4.2. References to the security situation",
               description:
                 "Please attach references to your personal statement supporting your security concerns (e.g. articles, links, police reports, comments on the context of the threat)",
-              maxLength: 1000,
+              maxLength: 1000
             },
             public_relations: {
               type: "string",
               title: "4.3. Public relations",
               description:
                 "To what extent would it be possible for you to appear in public, publish work or to make any other public appearance within the scope of the scholarship? <p>Is it possible for you to appear publicly as a fellow of the Martin Roth Initiative? </p> Give details of the security-related implications for you and your relatives.",
-              maxLength: 1000,
-            },
-          },
+              maxLength: 1000
+            }
+          }
         },
         scholarship_period: {
           type: "object",
@@ -442,23 +442,23 @@ export const personalStatements_2 = (t) => {
               title: "5.1. Benefit of scholarship",
               description:
                 "How would you benefit from the scholarship on a personal, professional and artistic level?",
-              maxLength: 1000,
+              maxLength: 1000
             },
             integration: {
               type: "string",
               title: "5.2. Support during the scholarship",
               description:
                 "What type of individual support do you need to make sure that you get the maximum benefit out of your stay?",
-              maxLength: 1000,
+              maxLength: 1000
             },
             after: {
               type: "string",
               title: "5.3. Following the scholarship",
               description:
                 "What could help you to resume / continue your work in your home country?",
-              maxLength: 2000,
-            },
-          },
+              maxLength: 2000
+            }
+          }
         },
         other: {
           type: "object",
@@ -469,14 +469,14 @@ export const personalStatements_2 = (t) => {
               title: "6.1. Relatives",
               description:
                 "Are you planning to leave the country with relatives? If so, please enter the names of the relatives, their dates of birth as well as your relation to each person here. Please explain why the respective family member accompanying you appears to be necessary.",
-              maxLength: 500,
+              maxLength: 500
             },
             special_support: {
               type: "string",
               title: "6.2. Special support",
               description:
                 "Do you require special support due to health and wellbeing issues, disabilities or for other reasons?",
-              maxLength: 500,
+              maxLength: 500
             },
             references: {
               type: "object",
@@ -490,30 +490,30 @@ export const personalStatements_2 = (t) => {
                   properties: {
                     name: {
                       type: "string",
-                      title: "Name",
+                      title: "Name"
                     },
                     position: {
                       type: "string",
-                      title: "position",
+                      title: "position"
                     },
                     institution: {
                       type: "string",
-                      title: "Institution",
+                      title: "Institution"
                     },
                     email: {
                       type: "string",
                       title: "Email",
-                      format: "email",
+                      format: "email"
                     },
                     telephone: {
                       type: "string",
-                      title: "Telephone",
+                      title: "Telephone"
                     },
                     languages: {
                       type: "string",
-                      title: "Language(s) of communication",
-                    },
-                  },
+                      title: "Language(s) of communication"
+                    }
+                  }
                 },
                 reference_2: {
                   type: "object",
@@ -521,260 +521,307 @@ export const personalStatements_2 = (t) => {
                   properties: {
                     name: {
                       type: "string",
-                      title: "Name",
+                      title: "Name"
                     },
                     position: {
                       type: "string",
-                      title: "position",
+                      title: "position"
                     },
                     institution: {
                       type: "string",
-                      title: "Institution",
+                      title: "Institution"
                     },
                     email: {
                       type: "string",
                       title: "Email",
-                      format: "email",
+                      format: "email"
                     },
                     telephone: {
                       type: "string",
-                      title: "Telephone",
+                      title: "Telephone"
                     },
                     languages: {
                       type: "string",
-                      title: "Language(s) of communication",
-                    },
-                  },
-                },
-              },
+                      title: "Language(s) of communication"
+                    }
+                  }
+                }
+              }
             },
             additional_information: {
               type: "string",
               title: "Additional information",
               description:
                 "You have the possibility to add, respectively attach references to this application in the form of project links, project documentation, press releases and media reports on your work, etc. List your attachments and references here:",
-              maxLength: 500,
+              maxLength: 500
             },
             funding_contact: {
               type: "string",
               title: "6.4. Contact with other funding programmes",
               description:
                 "Have you already contacted other relocation or shelter programmes? If so, which organisations have you contacted?",
-              maxLength: 1000,
+              maxLength: 1000
             },
             german_collaboration: {
               type: "string",
               title: "6.5. Collaboration with organisations from Germany",
               description:
                 "Have you previously worked with organisations from or in Germany respectively and/or received scholarships? If so, please elaborate.",
-              maxLength: 1000,
+              maxLength: 1000
             },
             further_information: {
               type: "string",
               title: "6.6. Further information",
               description:
                 "Is there anything else you would like to inform us about? Please use this field to do so",
-              maxLength: 1000,
+              maxLength: 1000
             },
             other_1: {
               type: "boolean",
               title:
-                "You hereby confirm that you do not have permanent access to a safe third country (e.g. by virtue of dual citizenship or for other reasons).",
+                "You hereby confirm that you do not have permanent access to a safe third country (e.g. by virtue of dual citizenship or for other reasons)."
             },
             other_2: {
               type: "boolean",
               title:
-                "You hereby confirm that you hold a valid passport both before and during the period of the scholarship and that you are able to leave the country in which you are currently residing.",
+                "You hereby confirm that you hold a valid passport both before and during the period of the scholarship and that you are able to leave the country in which you are currently residing."
             },
             other_3: {
               type: "boolean",
               title:
-                "You hereby assure that you will coordinate matters with your host institution prior to carrying out any activities that are relevant to the general public and, in general, all matters with regard to public relations",
+                "You hereby assure that you will coordinate matters with your host institution prior to carrying out any activities that are relevant to the general public and, in general, all matters with regard to public relations"
             },
             other_4: {
               type: "boolean",
               title:
-                "You herewith confirm to agree to the processing of your data for working on your application and regarding other purposes listed in the information sheet on data protection.",
+                "You herewith confirm to agree to the processing of your data for working on your application and regarding other purposes listed in the information sheet on data protection."
             },
             other_5: {
               type: "boolean",
               title:
-                "You herewith confirm that you and your listed referees and contacts have duly received and noted the details on privacy highlighted in the document <a href='https://martin-roth-initiative.de/en/application#pid-112' target='_blank'>“Information on data protection and processing of your personal data according to GDPR”</a> and that you and your referees and contacts agree to the outlined intended use.",
-            },
-          },
-        },
-      },
+                "You herewith confirm that you and your listed referees and contacts have duly received and noted the details on privacy highlighted in the document <a href='https://martin-roth-initiative.de/en/application#pid-112' target='_blank'>“Information on data protection and processing of your personal data according to GDPR”</a> and that you and your referees and contacts agree to the outlined intended use."
+            }
+          }
+        }
+      }
     },
     uiSchema: {
       personal_background: {
         personal_data: {
+          classNames: "col-2",
           date_of_birth: {},
           nationaity: {
-            "ui:help": "Specify contries separated by commas",
-          },
+            "ui:help": "Specify contries separated by commas"
+          }
         },
         contact: {
+          classNames: "col-2",
           address: {
+            classNames: "full-width",
             "ui:widget": "textarea",
             "ui:options": {
-              rows: 4,
+              rows: 4
             },
             alternative_address: {
+              classNames: "full-width",
               "ui:widget": "textarea",
               "ui:options": {
-                rows: 4,
-              },
+                rows: 4
+              }
             },
             institution_residence_status: {
+              classNames: "full-width",
               "ui:widget": "textarea",
               "ui:options": {
-                rows: 4,
-              },
-            },
-          },
+                rows: 4
+              }
+            }
+          }
         },
+        emergency_contact: {
+          classNames: "col-2"
+        },
+        qualification: {
+          institution_0: {
+            duration: {
+              classNames: "col-2"
+            }
+          },
+          institution_1: {
+            duration: {
+              classNames: "col-2"
+            }
+          }
+        },
+        career: {
+          postion_0: {
+            duration: {
+              classNames: "col-2"
+            }
+          },
+          postion_1: {
+            duration: {
+              classNames: "col-2"
+            }
+          }
+        }
       },
       scholarship: {
+        contact_details: {
+          classNames: "col-2",
+          name: { classNames: "full-width" },
+          contact_person: {
+            classNames: "col-2"
+          }
+        },
         type: {
           german_host: {
-            classNames: "checkbox-description",
+            classNames: "checkbox-description"
           },
           non_german_host: {
-            classNames: "checkbox-description",
+            classNames: "checkbox-description"
           },
           rest_and_respite: {
-            classNames: "checkbox-description",
+            classNames: "checkbox-description"
           },
           reason: {
-            "ui:widget": "textarea",
-          },
+            "ui:widget": "textarea"
+          }
         },
         connection_to_host: {
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
+            rows: 4
+          }
         },
         rest_and_respite: {
           planning: {
             "ui:widget": "textarea",
             "ui:options": {
-              rows: 4,
-            },
+              rows: 4
+            }
           },
           usage: {
             "ui:widget": "textarea",
             "ui:options": {
-              rows: 4,
-            },
-          },
-        },
+              rows: 4
+            }
+          }
+        }
       },
       host_institution: {},
       artistic_work: {
         genre: {
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
+            rows: 4
+          }
         },
         focus: {
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
+            rows: 4
+          }
         },
         description: {
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
+            rows: 4
+          }
         },
         milestones: {
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
-        },
+            rows: 4
+          }
+        }
       },
       existing_risk: {
         description: {
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
+            rows: 4
+          }
         },
         references: {
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
+            rows: 4
+          }
         },
         public_relations: {
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
-        },
+            rows: 4
+          }
+        }
       },
       scholarship_period: {
         artistic_goal: {
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
+            rows: 4
+          }
         },
         integration: {
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
+            rows: 4
+          }
         },
         after: {
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
-        },
+            rows: 4
+          }
+        }
       },
       other: {
+        references: {
+          reference_1: {
+            classNames: "col-2"
+          },
+          reference_2: {
+            classNames: "col-2"
+          }
+        },
         relatives: {
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
+            rows: 4
+          }
         },
         special_support: {
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
+            rows: 4
+          }
         },
         funding_contact: {
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
+            rows: 4
+          }
         },
         additional_information: {
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
+            rows: 4
+          }
         },
         german_collaboration: {
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
+            rows: 4
+          }
         },
         further_information: {
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
-        },
-      },
-    },
+            rows: 4
+          }
+        }
+      }
+    }
   };
 };
