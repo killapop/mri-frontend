@@ -20,34 +20,41 @@ class CreateForm extends React.Component {
       schema: [
         {
           accessor: "id",
-          Header: "Id",
+          Header: "Id"
         },
         {
           accessor: "account.email",
-          Header: "Applicant",
+          Header: "Applicant"
+        },
+        {
+          accessor: "state",
+          Header: "Status"
         },
         {
           accessor: "form",
           Header: "Type",
-          Cell: (row) => this.getType(row.row.form),
+          Cell: row => this.getType(row.row.form)
         },
         {
           Header: "Actions",
           accessor: "id",
           filterable: false,
           sortable: false,
-          Cell: (row) => (
+          Cell: row => (
             <div
               id={row.value}
               onClick={this.select}
               className="center pointer"
             >
-              <i className="mr2 fa fa-folder-plus fa-15x green" />
+              <i
+                className="mr2 fa fa-folder-plus fa-15x green"
+                style={{ pointerEvents: "none" }}
+              />
               select
             </div>
-          ),
-        },
-      ],
+          )
+        }
+      ]
     };
     this.select = this.select.bind(this);
     this.deselect = this.deselect.bind(this);
@@ -57,34 +64,33 @@ class CreateForm extends React.Component {
   select(ev) {
     ev.persist();
     const { listed, selected } = this.state;
-    this.setState((state) => ({
+    this.setState(state => ({
       listed: _.without(listed, ev.target.id),
-      selected: _.concat(selected, ev.target.id),
+      selected: _.concat(selected, ev.target.id)
     }));
   }
 
   deselect(ev) {
     ev.persist();
     const { listed, selected } = this.state;
-    this.setState((state) => ({
+    this.setState(state => ({
       listed: _.concat(listed, ev.target.id),
-      selected: _.without(selected, ev.target.id),
+      selected: _.without(selected, ev.target.id)
     }));
   }
 
   async componentDidMount() {
     await apiCall("GET", "/applications", "", true)
-      .then((applications) => {
+      .then(applications => {
         if (applications) {
           const all = _.filter(
             applications,
-            (application) =>
-              application.state === "locked" && !application.bundle
+            application => !application.bundle
           );
-          this.setState((state) => ({ all, listed: _.map(all, "id") }));
+          this.setState(state => ({ all, listed: _.map(all, "id") }));
         }
       })
-      .catch((err) => this.setState((state) => ({ all: [] })));
+      .catch(err => this.setState(state => ({ all: [] })));
   }
 
   async create(e) {
@@ -94,15 +100,15 @@ class CreateForm extends React.Component {
       "/bundles",
       JSON.stringify({
         case_worker: authStore.user.email,
-        applications: this.state.selected,
+        applications: this.state.selected
       }),
       true
     )
-      .then((data) => {
-        this.setState((state) => ({ created: true }));
+      .then(data => {
+        this.setState(state => ({ created: true }));
         addMessage("success", "New bundle created");
       })
-      .catch((err) => {
+      .catch(err => {
         addMessage(
           "danger",
           "There was an error creating the bundle. Please try again after some time"
@@ -129,16 +135,17 @@ class CreateForm extends React.Component {
       sApplications = [];
     _.forEach(
       listed,
-      (li) => (lApplications[li] = _.find(all, (a) => a.id === li))
+      li => (lApplications[li] = _.find(all, a => a.id === li))
     );
     _.forEach(
       selected,
-      (li) => (sApplications[li] = _.find(all, (a) => a.id === li))
+      li => (sApplications[li] = _.find(all, a => a.id === li))
     );
 
     if (authStore.token === "" || created) {
       return <Redirect to="/" />;
     }
+
     return (
       <div className=" w-80-ns center pa4 flex flex-column">
         <div className="title pb0 flex justify-start">Create a bundle</div>
@@ -148,10 +155,21 @@ class CreateForm extends React.Component {
             <span className="list-size">{_.size(selected)}</span>
           </h1>
           {selected.length > 0 ? (
+            <div className="form-actions form-group flex justify-end">
+              <button type="button" onClick={e => this.create(e)}>
+                Create bundle
+                <i className="fa fa-cubes ml2" />
+              </button>
+            </div>
+          ) : (
+            ""
+          )}
+          {selected.length > 0 ? (
             <div className="flex flex-column">
               <div className="selected-header w-100 flex">
                 <div className="text-center b">Id</div>
                 <div className="text-center b">Applicant</div>
+                <div className="text-center b">Status</div>
                 <div className="text-center b">Type</div>
                 <div className="text-center b">Actions</div>
               </div>
@@ -159,12 +177,16 @@ class CreateForm extends React.Component {
                 <div className="selected-item w-100 flex" key={idx}>
                   <div className="id">{item}</div>
                   <div className="id">{sApplications[item].account.email}</div>
+                  <div className="id">{sApplications[item].state}</div>
                   <div className="id">
                     {this.getType(sApplications[item].form)}
                   </div>
                   <div className="id">
                     <div id={item} onClick={this.deselect} className="pointer">
-                      <i className="mr2 fa fa-trash red" />
+                      <i
+                        className="mr2 fa fa-trash red"
+                        style={{ pointerEvents: "none" }}
+                      />
                       deselect
                     </div>
                   </div>
@@ -186,7 +208,7 @@ class CreateForm extends React.Component {
                 data={_.values(lApplications)}
                 columns={this.state.schema}
                 filterable={true}
-                defaultPageSize={5}
+                defaultPageSize={20}
                 className="-striped -highlight"
                 defaultFilterMethod={(filter, row) =>
                   String(row[filter.id])
@@ -199,16 +221,6 @@ class CreateForm extends React.Component {
             <div />
           )}
         </div>
-        {selected.length > 0 ? (
-          <div className="form-actions form-group flex justify-end">
-            <button type="button" onClick={(e) => this.create(e)}>
-              Create bundle
-              <i className="fa fa-cubes ml2" />
-            </button>
-          </div>
-        ) : (
-          ""
-        )}
       </div>
     );
   }

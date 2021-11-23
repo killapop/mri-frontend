@@ -25,7 +25,7 @@ class FacilitatorList extends React.Component {
     selectAll: false,
     selection: [],
     filtered: [],
-    filteredSize: 0,
+    filteredSize: 0
   };
 
   async componentDidMount() {
@@ -45,9 +45,9 @@ class FacilitatorList extends React.Component {
         "users",
         "projectProposals",
         "personalStatements",
-        "bundles",
+        "bundles"
       ],
-      (k) => {
+      k => {
         apiCall(
           "GET",
           "/" +
@@ -56,19 +56,19 @@ class FacilitatorList extends React.Component {
               : k),
           "",
           true
-        ).then((data) => {
+        ).then(data => {
           if (data === 401) {
             authStore.token = "";
             authStore.user = {};
             window.sessionStorage.clear();
           }
-          this.setState((state) => ({
+          this.setState(state => ({
             [k]:
               k === "personalStatements" || k === "projectProposals"
-                ? _.filter(data, (r) => _.startsWith(r.form, k))
+                ? _.filter(data, r => _.startsWith(r.form, k))
                 : data,
             loaded: true,
-            selection: [],
+            selection: []
           }));
         });
       }
@@ -82,7 +82,7 @@ class FacilitatorList extends React.Component {
         ? ""
         : "/" + action;
     const pathname = `/${type}${actionPath}/${id}`;
-    this.setState((state) => ({ redirect: pathname }));
+    this.setState(state => ({ redirect: pathname }));
   }
 
   async export2Csv(e) {
@@ -93,7 +93,7 @@ class FacilitatorList extends React.Component {
         : this.props.list.slug
     }/csv`;
     const body = JSON.stringify({ ids: this.state.selection });
-    await apiCall("POST", path, body, true, "csv").then((data) => {
+    await apiCall("POST", path, body, true, "csv").then(data => {
       const element = document.createElement("a");
       const filename = `mri-${new Date()
         .toLocaleDateString("de-DE")
@@ -118,7 +118,7 @@ class FacilitatorList extends React.Component {
         selection: _.map(
           this.resultsTable.wrappedInstance.getResolvedState().sortedData,
           "id"
-        ),
+        )
       });
     } else {
       this.setState({ selectAll, selection: [] });
@@ -161,52 +161,52 @@ class FacilitatorList extends React.Component {
         {
           icon: "ban",
           label: "invalidate",
-          title: t("dashboard_actionButtons_invalidate"),
-        },
+          title: t("dashboard_actionButtons_invalidate")
+        }
       ],
       users: [
         {
           icon: "trash",
           label: "delete",
-          title: t("dashboard_actionButtons_delete"),
+          title: t("dashboard_actionButtons_delete")
         },
         {
           icon: "key",
           label: "password",
-          title: t("dashboard_actionButtons_password"),
-        },
+          title: t("dashboard_actionButtons_password")
+        }
       ],
       applications: [
         {
           icon: "eye",
           label: "view",
-          title: t("dashboard_actionButtons_view"),
+          title: t("dashboard_actionButtons_view")
         },
         {
           icon: "trash",
           label: "delete",
-          title: t("dashboard_actionButtons_delete"),
-        },
+          title: t("dashboard_actionButtons_delete")
+        }
       ],
       bundles: [
         {
           icon: "eye",
           label: "view",
-          title: t("dashboard_actionButtons_view"),
+          title: t("dashboard_actionButtons_view")
         },
         {
           icon: "trash",
           label: "delete",
-          title: t("dashboard_actionButtons_delete"),
-        },
-      ],
+          title: t("dashboard_actionButtons_delete")
+        }
+      ]
     };
     const addActions = {
       Header: t("dashboard_column_actions"),
       accessor: customIDs(),
       filterable: false,
       sortable: false,
-      Cell: (row) => {
+      Cell: row => {
         return (
           <div>
             <div id={row.row[customIDs()]} className="actions">
@@ -224,7 +224,7 @@ class FacilitatorList extends React.Component {
                       data-id={row.row[customIDs()]}
                       data-data={row.row}
                       className={`fa fa-${b.icon} action pointer`}
-                      onClick={(e) => this.clickHandler(e)}
+                      onClick={e => this.clickHandler(e)}
                       title={b.title}
                     />
                   ) : (
@@ -235,7 +235,7 @@ class FacilitatorList extends React.Component {
             </div>
           </div>
         );
-      },
+      }
     };
 
     const listSchema = listSchemas(t);
@@ -266,7 +266,7 @@ class FacilitatorList extends React.Component {
                     <button
                       className="csv pointer right ttu f6 b self-end pv2 ph3 gray bg-light-gray mb2 mr2 ba b--silver link"
                       type="button"
-                      onClick={(e) => this.export2Csv(e)}
+                      onClick={e => this.export2Csv(e)}
                     >
                       {t("dashboard_button_export")}
                       <i className="fa fa-table ml2" />
@@ -305,14 +305,14 @@ class FacilitatorList extends React.Component {
                       .indexOf(filter.value.toLowerCase()) >= 0
                   }
                   keyField="id"
-                  isSelected={(key) => _.includes(selection, key)}
+                  isSelected={key => _.includes(selection, key)}
                   selectAll={selectAll}
                   toggleAll={() => this.toggleAll()}
                   toggleSelection={(key, shift, row) =>
                     this.toggleSelection(key, shift, row)
                   }
                   selectType="checkbox"
-                  ref={(r) => {
+                  ref={r => {
                     this.resultsTable = r;
                   }}
                 />
@@ -330,7 +330,7 @@ class FacilitatorList extends React.Component {
 }
 
 FacilitatorList.propTypes = {
-  list: PropTypes.object,
+  list: PropTypes.object
 };
 
 export default withRouter(withTranslation()(view(FacilitatorList)));
