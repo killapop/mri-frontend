@@ -566,7 +566,7 @@ class Application extends React.Component {
                     {` `}({account.email})
                   </b>
                 </div>
-                <div>
+                <div className="dn-p">
                   {t("application_meta_formId")}: <b>{form.id}</b>
                 </div>
 

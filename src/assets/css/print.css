@@ -5,7 +5,10 @@
 
   * {
     overflow-y: visible;
+    letter-spacing: normal !important;
     font-size: 12pt !important;
+    font-family: sans-serif !important;
+    color: #666 !important;
   }
 
   .flex {
@@ -57,8 +60,16 @@
   label {
     text-transform: unset !important;
     font-weight: normal !important;
-    color: #999 !important;
+    color: #333 !important;
+    font-size: 11pt !important;
+    letter-spacing: 1;
   }
+
+  label {
+    color: #444 !important;
+    text-decoration: underline;
+  }
+
   .applications form.rjsf > .form-group > fieldset > .form-group {
     padding: 0;
   }
@@ -67,8 +78,8 @@
     margin-bottom: 5px;
     padding: 10pt 0 0 30px;
     border: 0;
-    color: #666 !important;
-    font-size: 13pt !important;
+    color: #000 !important;
+    font-size: 15pt !important;
   }
 
   #application-form > .form-group > fieldset > .form-group {
@@ -91,12 +102,13 @@
     > legend {
     /* margin-bottom: 10px; */
     padding-bottom: 5px;
-    font-weight: bold !important;
-    color: #333 !important;
+    /* font-weight: bold !important; */
+    color: #000 !important;
     border-bottom: 0;
+    font-size: 13pt !important;
   }
   #application-form > .form-group > fieldset > .form-group > fieldset {
-    page-break-after: always;
+    page-break-after: avoid;
   }
 
   /* #application-form
@@ -250,6 +262,16 @@
     display: flex;
   }
 
+  .col-2 > fieldset {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .full-width {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
   form.rjsf .col-fieldset-2 > fieldset legend,
   form.rjsf .col-fieldset-3 > fieldset legend {
     width: 100%;
@@ -287,7 +309,7 @@
   label,
   textarea,
   p.tmpDisplay {
-    break-inside: avoid-page;
+    /* break-inside: avoid-page; */
   }
 
   .tmpDisplay {
@@ -298,6 +320,7 @@
     border-width: 0;
     font-size: 12pt;
     color: #000 !important;
+    font-weight: normal !important;
   }
 
   span.tmpDisplay {
