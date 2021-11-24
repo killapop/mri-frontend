@@ -4,7 +4,7 @@ export const form = {
   common_cancel: "Cancelar",
   common_printPDF: "Imprimir en PDF",
   PS_1_title: "Declaración personal",
-  common_title_title: "Título",
+  common_title_title: "Género",
   common_title_choice_1: "diverso",
   common_title_choice_2: "Sr.",
   common_title_choice_3: "Sra.",
@@ -54,7 +54,7 @@ export const form = {
     "Si no se encuentra en su país de origin, por favor indique su estado de visa o de estadía en su ubicación actual y, dado el caso, cuando expira este estado.",
   PS_1_personal_background_residence_status_description:
     "(nacionalidad, permiso de residencia temporal hasta ..., visado de turista, etc.)",
-  common_contact_other: "Otros",
+  common_contact_other: "Otro",
   common_online_presence: "Presencia en línea",
   common_social_media: "Medios de comunicación social",
   common_website: "Página web",
@@ -137,7 +137,7 @@ export const form = {
   PS_1_artistic_title: "2. Trabajo artístico/ cultural",
   PS_1_artistic_genre: "2.1. Género artístico/cultural",
   PS_1_artistic_genre_description:
-    "Por favor, indique el género artístico/cultural en el cuál trabaja",
+    "Por favor, indique el género artístico/cultural en el cual trabaja",
   PS_1_artistic_description: "2.2. Descripción del trabajo artístico/cultural",
   PP_1_overview: "1. Resumen del proyecto",
   PP_1_overview_title: "Título del proyecto",
@@ -165,11 +165,11 @@ export const form = {
     "Por favor, adjunte referencias a su declaración personal que sean adecuadas para fundamentar sus preocupaciones de seguridad (por ejemplo, artículos de prensa, documentación, enlaces, etc.).",
   PS_1_personal_background_contact_title: "1.2. Datos de contacto:",
   PS_1_personal_background_contact_description:
-    "¿Cómo le gustaría ser contactado? <a hef='https://martin-roth-initiative.de/en/application#pid-107' target='_blank'>Las informaciones de MRI sobre comunicación segura</a> pueden ayudarle a tomar una decisión.",
+    "¿Cómo le gustaría ser contactado? <a hef='https://martin-roth-initiative.de/en/application#pid-107' target='_blank'>Las informaciones sobre comunicación segura</a> de la MRI pueden ayudarle a tomar una decisión.",
   PS_1_personal_background_emergency_contact_title:
     "1.3. Contacto de emergencia",
   PS_1_personal_background_emergency_contact_description:
-    "¿Cómo le gustaría a su contacto de emergencia ser contactado? Las informaciones de la MRI sobre la comunicación segura pueden ayudarle a tomar una decisión. <br/> (Asegúrese de que su contacto de emergencia esté de acuerdo con la transferencia <a href='https://martin-roth-initiative.de/en/application#pid-112' target='_blank'>de datos personales y haya recibido la información de protección de datos adjunta.</a>. Los contactos de emergencia son informados durante su estadía, por ejemplo, en caso de enfermedad o circunstancias imprevistas. Tenga en cuenta usted siempre debe comunicar los cambios en estos datos a su posible organización anfitriona.).",
+    "¿Cómo le gustaría a su contacto de emergencia ser contactado? Las informaciones de la MRI sobre la comunicación segura pueden ayudarle a tomar una decisión. <br/> (Asegúrese de que su contacto de emergencia esté de acuerdo con la transferencia <a href='https://martin-roth-initiative.de/en/application#pid-112' target='_blank'>de datos personales y haya recibido la información de protección de datos adjunta.</a> Los contactos de emergencia séran contactados durante su estadía, por ejemplo, en caso de enfermedad o circunstancias imprevistas. Tenga en cuenta usted siempre debe comunicar los cambios en estos datos a su posible organización anfitriona.).",
   PS_1_personal_background_emergency_contact_others: "Signal/ Wire/ Protonmail",
   PP_1_applicant_coordinator_description:
     "Por favor, nombre a la persona que será la persona de contacto para el MRI durante toda la duración del proyecto.  Si aún no se ha determinado un coordinador del proyecto, puede presentar esta información más adelante.",
@@ -295,10 +295,9 @@ export const form = {
   PP_1_project_risks_title: "3.7. Riesgos",
   PP_1_project_risks_description:
     "¿Qué riesgos u otros impactos negativos no previstos podrían influir en los objetivos del proyecto? ¿Cómo se pueden minimizar o mitigar estos riesgos? Si procede, mencione también los posibles impactos positivos no deseados. (Tenga en cuenta que se trata principalmente de la no aplicación de medidas o de la no consecución de objetivos/indicadores).",
-  PS_1_others_6:
-    "Asegura que coordinaré con mi organización anfitriona antes de realizar actividades de relaciones públicas y en general sobre todos los temas relacionados con relaciones públicas.",
+  PS_1_others_6: "FALSE",
   PS_1_others_7:
-    "Usted confirma que usted y las personas y contactos que ha indicado han recibido y tienen conocimiento sobre los avisos de privacidad en las informaciones sobre protección de datos y el procesamiento de datos personales en confirmidad con DS-GVO <a href='https://martin-roth-initiative.de/en/application#pid-112' target='_blank'> (requerido para la solicitud)",
+    "Usted confirma que usted y las personas y contactos que ha indicado han recibido y tienen conocimiento sobre los avisos de privacidad en las <a href='https://martin-roth-initiative.de/en/application#pid-112' target='_blank'>informaciones sobre protección de datos y el procesamiento de datos personales en confirmidad con DS-GVO</a>  (requerido para la solicitud)",
   PS_1_others_8:
     "Por la presente apruebo el procesamiento de mis datos personales para los siguientes fines: (a) para el envío (telefónico/postal/digital) de invitaciones y notificación de eventos (también más allá del período de financiación), (b) para el envío (telefónico/ postal/ digital) de información relevante, p.ej. sobre la Martin Roth-Initiative (también más allá del período de financiación)",
   PP_1_title: "Propuesta de proyecto",
