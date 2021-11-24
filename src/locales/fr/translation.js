@@ -102,5 +102,5 @@ export const translation = {
   dashboard_columns_valid: "Valide",
   dashboard_columns_active: "Actif",
   dashboard_valid: "Valide",
-  dashboard_invalid: "Non valide",
+  dashboard_invalid: "Non valide"
 };
