@@ -256,24 +256,12 @@ class FacilitatorList extends React.Component {
             <div className="lists flex flex-column">
               <div className="flex justify-between">
                 <h1>
-                  {list.title} {` `}
+                  {authStore.activeList.title} {` `}
                   <span className="list-size">
                     {_.size(this.state[list.slug]) || 0}
                   </span>
                 </h1>
                 <div className="flex justify-end items-end">
-                  {!["users", "activations"].includes(list.slug) ? (
-                    <button
-                      className="csv pointer right ttu f6 b self-end pv2 ph3 gray bg-light-gray mb2 mr2 ba b--silver link"
-                      type="button"
-                      onClick={e => this.export2Csv(e)}
-                    >
-                      {t("dashboard_button_export")}
-                      <i className="fa fa-table ml2" />
-                    </button>
-                  ) : (
-                    ""
-                  )}
                   {list.slug !== "activations" ? (
                     <Link
                       to={`/${path}/create${
