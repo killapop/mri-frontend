@@ -158,15 +158,14 @@ export const form = {
     "¿Hay algo más que le gustaría contarnos? Por favor, utilice este campo para hacerlo",
   PS_1_others_1:
     "Confirmo que sé que la financiación de la Martin Roth-Initiative se otorga por tiempo limitado y que el soporte de la MRI terminará después de este período.",
-  PS_1_others_2:
-    "Confirmo que informaré a mi organización potencial anfitriona y a la Martin Roth-Initiative si plaeno volver a mi país de origen/ mi contexto de riesgo durante el periodo de financiación.",
   PS_1_others_3:
-    "Aseguro que coordinaré con mi organización anfitriona antes de realizar actividades de relaciones públicas y en general sobre todos los temas relacionados con relaciones públicas.",
+    "Confirmo que informaré a mi organización potencial anfitriona y a la Martin Roth-Initiative si plaeno volver a mi país de origen/ mi contexto de riesgo durante el periodo de financiación.",
   PS_1_others_4:
-    "Confirmo que no tengo acceso permanente a un tercer país seguro (por ejemplo, por doble ciudadanía o otras razones.",
+    "Aseguro que coordinaré con mi organización anfitriona antes de realizar actividades de relaciones públicas y en general sobre todos los temas relacionados con relaciones públicas.",
   PS_1_others_5:
+    "Confirmo que no tengo acceso permanente a un tercer país seguro (por ejemplo, por doble ciudadanía o otras razones.",
+  PS_1_others_6:
     "Confirmo que poseo un pasaporte válido antes y durante la financiación y que podré salir del país en el que me encuentro actualmente.",
-  PS_1_others_6: "FALSE",
   PS_1_others_7:
     "Usted confirma que usted y las personas y contactos que ha indicado han recibido y tienen conocimiento sobre los avisos de privacidad en las <a href='https://martin-roth-initiative.de/en/application#pid-112' target='_blank'>informaciones sobre protección de datos y el procesamiento de datos personales en confirmidad con DS-GVO</a>  (requerido para la solicitud)",
   PS_1_others_8:
