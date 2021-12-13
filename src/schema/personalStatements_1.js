@@ -667,6 +667,7 @@ export const personalStatements_1 = t => {
             classNames: "full-width"
           },
           current_location_away: {
+            classNames: "full-width",
             "ui:widget": "textarea",
             "ui:options": { rows: 4 }
           }
@@ -791,6 +792,7 @@ export const personalStatements_1 = t => {
         }
       },
       other: {
+        classNames: "other",
         relatives: {
           "ui:widget": "textarea",
           "ui:options": {

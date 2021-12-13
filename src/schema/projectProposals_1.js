@@ -1,4 +1,4 @@
-export const projectProposals_1 = (t) => {
+export const projectProposals_1 = t => {
   return {
     schema: {
       definitions: {
@@ -8,21 +8,21 @@ export const projectProposals_1 = (t) => {
           properties: {
             street: {
               type: "string",
-              title: t("form:common_street"),
+              title: t("form:common_street")
             },
             house_no: {
               type: "string",
-              title: t("form:common_house"),
+              title: t("form:common_house")
             },
             postal_code: {
               type: "string",
-              title: t("form:common_pin"),
+              title: t("form:common_pin")
             },
             place: {
               type: "string",
-              title: t("form:common_place"),
-            },
-          },
+              title: t("form:common_place")
+            }
+          }
         },
         contact: {
           type: "object",
@@ -30,22 +30,22 @@ export const projectProposals_1 = (t) => {
           properties: {
             phone_office: {
               type: "string",
-              title: t("form:common_office_telephone"),
+              title: t("form:common_office_telephone")
             },
             mobile: {
               type: "string",
-              title: t("form:common_mobile"),
+              title: t("form:common_mobile")
             },
             others: {
               type: "string",
-              title: t("form:common_contact_other"),
+              title: t("form:common_contact_other")
             },
             email: {
               type: "string",
               format: "email",
-              title: t("form:common_email"),
-            },
-          },
+              title: t("form:common_email")
+            }
+          }
         },
         online_presence: {
           type: "object",
@@ -53,17 +53,17 @@ export const projectProposals_1 = (t) => {
           properties: {
             website: {
               type: "string",
-              title: t("form:common_website"),
+              title: t("form:common_website")
             },
             social_media: {
               type: "string",
-              title: t("form:common_social_media"),
+              title: t("form:common_social_media")
             },
             others: {
               type: "string",
-              title: t("form:common_contact_other"),
-            },
-          },
+              title: t("form:common_contact_other")
+            }
+          }
         },
         bank_details: {
           type: "object",
@@ -71,17 +71,17 @@ export const projectProposals_1 = (t) => {
           properties: {
             name: {
               type: "string",
-              title: "Name der Bank",
+              title: "Name der Bank"
             },
             iban: {
               type: "string",
-              title: "IBAN",
+              title: "IBAN"
             },
             bic: {
               type: "string",
-              title: "BIC",
-            },
-          },
+              title: "BIC"
+            }
+          }
         },
         title_name_function: {
           type: "object",
@@ -94,36 +94,36 @@ export const projectProposals_1 = (t) => {
               enumNames: [
                 t("form:common_title_choice_1"),
                 t("form:common_title_choice_2"),
-                t("form:common_title_choice_3"),
-              ],
+                t("form:common_title_choice_3")
+              ]
             },
             academic_title: {
               type: "string",
-              title: t("form:common_academic_title"),
+              title: t("form:common_academic_title")
             },
             first_name: {
               type: "string",
-              title: t("form:common_first_name"),
+              title: t("form:common_first_name")
             },
             last_name: {
               type: "string",
-              title: t("form:common_last_name"),
+              title: t("form:common_last_name")
             },
             position: {
               type: "string",
-              title: t("form:common_function"),
+              title: t("form:common_function")
             },
             telephone: {
               type: "string",
-              title: t("form:common_telephone"),
+              title: t("form:common_telephone")
             },
             email: {
               type: "string",
               format: "email",
-              title: t("form:common_email"),
-            },
-          },
-        },
+              title: t("form:common_email")
+            }
+          }
+        }
       },
       title: t("form:PP_1_title"),
       description: t("form:PP_1_description"),
@@ -139,12 +139,12 @@ export const projectProposals_1 = (t) => {
             project_title: {
               type: "string",
               title: t("form:PP_1_overview_title"),
-              description: t("form:PP_1_overview_title_description"),
+              description: t("form:PP_1_overview_title_description")
             },
             project_places: {
               type: "string",
               title: t("form:PP_1_overview_place"),
-              description: t("form:PP_1_overview_place_description"),
+              description: t("form:PP_1_overview_place_description")
             },
             project_period: {
               type: "object",
@@ -154,14 +154,14 @@ export const projectProposals_1 = (t) => {
                 project_period_from: {
                   title: t("form:common_from"),
                   type: "string",
-                  format: "date",
+                  format: "date"
                 },
                 project_period_until: {
                   title: t("form:common_to"),
                   type: "string",
-                  format: "date",
-                },
-              },
+                  format: "date"
+                }
+              }
             },
             project_funding_period: {
               type: "object",
@@ -171,14 +171,14 @@ export const projectProposals_1 = (t) => {
                 project_funding_period_from: {
                   title: t("form:common_from"),
                   type: "string",
-                  format: "date",
+                  format: "date"
                 },
                 project_funding_period_until: {
                   title: t("form:common_to"),
                   type: "string",
-                  format: "date",
-                },
-              },
+                  format: "date"
+                }
+              }
             },
             requested_funding: {
               type: "object",
@@ -187,17 +187,17 @@ export const projectProposals_1 = (t) => {
               properties: {
                 year_1: {
                   title: `${t("form:PP_1_overview_funding_calendar_year")} 1`,
-                  type: "number",
+                  type: "number"
                 },
                 year_2: {
                   title: `${t("form:PP_1_overview_funding_calendar_year")} 2`,
-                  type: "number",
+                  type: "number"
                 },
                 total: {
                   title: t("form:PP_1_overview_funding_calendar_total"),
-                  type: "number",
-                },
-              },
+                  type: "number"
+                }
+              }
             },
             third_party_funds: {
               type: "object",
@@ -206,17 +206,17 @@ export const projectProposals_1 = (t) => {
               properties: {
                 year_1: {
                   title: `${t("form:PP_1_overview_funding_calendar_year")} 1`,
-                  type: "number",
+                  type: "number"
                 },
                 year_2: {
                   title: `${t("form:PP_1_overview_funding_calendar_year")} 2`,
-                  type: "number",
+                  type: "number"
                 },
                 total: {
                   title: t("form:PP_1_overview_funding_calendar_total"),
-                  type: "number",
-                },
-              },
+                  type: "number"
+                }
+              }
             },
             own_funds_equity: {
               type: "object",
@@ -225,17 +225,17 @@ export const projectProposals_1 = (t) => {
               properties: {
                 year_1: {
                   title: `${t("form:PP_1_overview_funding_calendar_year")} 1`,
-                  type: "number",
+                  type: "number"
                 },
                 year_2: {
                   title: `${t("form:PP_1_overview_funding_calendar_year")} 2`,
-                  type: "number",
+                  type: "number"
                 },
                 total: {
                   title: t("form:PP_1_overview_funding_calendar_total"),
-                  type: "number",
-                },
-              },
+                  type: "number"
+                }
+              }
             },
             total_expenditure: {
               type: "object",
@@ -244,30 +244,30 @@ export const projectProposals_1 = (t) => {
               properties: {
                 year_1: {
                   title: `${t("form:PP_1_overview_funding_calendar_year")} 1`,
-                  type: "number",
+                  type: "number"
                 },
                 year_2: {
                   title: `${t("form:PP_1_overview_funding_calendar_year")} 2`,
-                  type: "number",
+                  type: "number"
                 },
                 total: {
                   title: t("form:PP_1_overview_funding_calendar_total"),
-                  type: "number",
-                },
-              },
+                  type: "number"
+                }
+              }
             },
             overall_financing_guaranteed: {
               type: "string",
               title: t("form:PP_1_overview_overall_title"),
               description: t("form:PP_1_overview_overall_description"),
               enum: [true, false],
-              enumNames: [t("form:common_yes"), t("form:common_no")],
+              enumNames: [t("form:common_yes"), t("form:common_no")]
             },
             further_explaination: {
               type: "string",
-              title: t("form:PP_1_overview_further_explaination_title"),
-            },
-          },
+              title: t("form:PP_1_overview_further_explaination_title")
+            }
+          }
         },
         applicant_organisation: {
           type: "object",
@@ -276,35 +276,35 @@ export const projectProposals_1 = (t) => {
             organisation_name: {
               type: "string",
               title: t("form:PP_1_applicant_name_title"),
-              description: t("form:PP_1_applicant_name_description"),
+              description: t("form:PP_1_applicant_name_description")
             },
             legal_form: {
               type: "string",
               title: t("form:PP_1_applicant_legal_form_title"),
-              description: t("form:PP_1_applicant_legal_form_description"),
+              description: t("form:PP_1_applicant_legal_form_description")
             },
             registration_number: {
               type: "string",
-              title: "Registration number",
+              title: "Registration number"
             },
             field_of_activities: {
               type: "string",
               title: t("form:PP_1_applicant_activities_title"),
-              description: t("form:PP_1_applicant_activities_description"),
+              description: t("form:PP_1_applicant_activities_description")
             },
             description: {
               type: "string",
               title: t("form:PP_1_applicant_description_title"),
-              description: t("form:PP_1_applicant_description_description"),
+              description: t("form:PP_1_applicant_description_description")
             },
             address: {
-              $ref: "#/definitions/address",
+              $ref: "#/definitions/address"
             },
             contact: {
-              $ref: "#/definitions/contact",
+              $ref: "#/definitions/contact"
             },
             online: {
-              $ref: "#/definitions/online_presence",
+              $ref: "#/definitions/online_presence"
             },
             authorized_person: {
               type: "object",
@@ -314,13 +314,13 @@ export const projectProposals_1 = (t) => {
               ),
               properties: {
                 title_name_function: {
-                  $ref: "#/definitions/title_name_function",
+                  $ref: "#/definitions/title_name_function"
                 },
                 other: {
                   type: "string",
-                  title: t("form:common_contact_other"),
-                },
-              },
+                  title: t("form:common_contact_other")
+                }
+              }
             },
             project_coordinator: {
               type: "object",
@@ -328,17 +328,17 @@ export const projectProposals_1 = (t) => {
               description: t("form:PP_1_applicant_coordinator_description"),
               properties: {
                 title_name_function: {
-                  $ref: "#/definitions/title_name_function",
+                  $ref: "#/definitions/title_name_function"
                 },
                 signal: {
                   type: "string",
-                  title: t("form:common_signal"),
+                  title: t("form:common_signal")
                 },
                 protonmail: {
                   type: "string",
-                  title: t("form:common_protonmail"),
-                },
-              },
+                  title: t("form:common_protonmail")
+                }
+              }
             },
             scholarship_contact: {
               type: "object",
@@ -346,17 +346,17 @@ export const projectProposals_1 = (t) => {
               description: t("form:PP_1_applicant_scholar_description"),
               properties: {
                 title_name_function: {
-                  $ref: "#/definitions/title_name_function",
+                  $ref: "#/definitions/title_name_function"
                 },
                 signal: {
                   type: "string",
-                  title: t("form:common_signal"),
+                  title: t("form:common_signal")
                 },
                 protonmail: {
                   type: "string",
-                  title: t("form:common_protonmail"),
-                },
-              },
+                  title: t("form:common_protonmail")
+                }
+              }
             },
             financial_contact: {
               type: "object",
@@ -364,22 +364,22 @@ export const projectProposals_1 = (t) => {
               description: t("form:PP_1_applicant_financial_description"),
               properties: {
                 title_name_function: {
-                  $ref: "#/definitions/title_name_function",
+                  $ref: "#/definitions/title_name_function"
                 },
                 signal: {
                   type: "string",
-                  title: t("form:common_signal"),
+                  title: t("form:common_signal")
                 },
                 protonmail: {
                   type: "string",
-                  title: t("form:common_protonmail"),
-                },
-              },
+                  title: t("form:common_protonmail")
+                }
+              }
             },
             funds_use: {
               type: "string",
               title: t("form:PP_1_applicant_funds_use_title"),
-              description: t("form:PP_1_applicant_funds_use_description"),
+              description: t("form:PP_1_applicant_funds_use_description")
             },
             funding: {
               type: "object",
@@ -389,63 +389,63 @@ export const projectProposals_1 = (t) => {
                   type: "string",
                   title: t("form:PP_1_applicant_funding_title"),
                   enum: [true, false],
-                  enumNames: [t("form:common_yes"), t("form:common_no")],
+                  enumNames: [t("form:common_yes"), t("form:common_no")]
                 },
                 compliance: {
                   type: "string",
                   title: t("form:PP_1_applicant_funding_compliance_title"),
                   enum: [1, 0],
-                  enumNames: [t("form:common_yes"), t("form:common_no")],
+                  enumNames: [t("form:common_yes"), t("form:common_no")]
                 },
                 compliance_information: {
                   type: "string",
-                  title: t("form:PP_1_overview_further_explaination_title"),
-                },
-              },
+                  title: t("form:PP_1_overview_further_explaination_title")
+                }
+              }
             },
             four_eyes: {
               type: "string",
               title: t("form:PP_1_applicant_4eyes_title"),
               enum: [true, false],
-              enumNames: [t("form:common_yes"), t("form:common_no")],
+              enumNames: [t("form:common_yes"), t("form:common_no")]
             },
             four_eyes_information: {
               type: "string",
-              title: t("form:PP_1_overview_further_explaination_title"),
+              title: t("form:PP_1_overview_further_explaination_title")
             },
             respresentatives: {
               type: "string",
-              title: t("form:PP_1_applicant_legal_reps_title"),
+              title: t("form:PP_1_applicant_legal_reps_title")
             },
             bookkeeping: {
               type: "string",
               title: t("form:PP_1_applicant_bookkeeping_title"),
               description: t("form:PP_1_applicant_bookkeeping_description"),
               enum: [true, false],
-              enumNames: [t("form:common_yes"), t("form:common_no")],
+              enumNames: [t("form:common_yes"), t("form:common_no")]
             },
             bookkeeping_information: {
               type: "string",
-              title: t("form:PP_1_overview_further_explaination_title"),
+              title: t("form:PP_1_overview_further_explaination_title")
             },
             vat: {
               type: "string",
               title: t("form:PP_1_applicant_VAT_title"),
               description: t("form:PP_1_applicant_VAT_description"),
               enum: [true, false],
-              enumNames: [t("form:common_yes"), t("form:common_no")],
+              enumNames: [t("form:common_yes"), t("form:common_no")]
             },
             deduct: {
               type: "string",
               title: t("form:PP_1_applicant_deduct_title"),
               enum: [true, false],
-              enumNames: [t("form:common_yes"), t("form:common_no")],
+              enumNames: [t("form:common_yes"), t("form:common_no")]
             },
             deduct_information: {
               type: "string",
-              title: t("form:PP_1_overview_further_explaination_title"),
-            },
-          },
+              title: t("form:PP_1_overview_further_explaination_title")
+            }
+          }
         },
         project_description: {
           type: "object",
@@ -462,43 +462,43 @@ export const projectProposals_1 = (t) => {
                   enumNames: [
                     t("form:common_title_choice_1"),
                     t("form:common_title_choice_2"),
-                    t("form:common_title_choice_3"),
-                  ],
+                    t("form:common_title_choice_3")
+                  ]
                 },
                 academic_title: {
                   type: "string",
-                  title: t("form:common_academic_title"),
+                  title: t("form:common_academic_title")
                 },
                 first_name: {
                   type: "string",
-                  title: t("form:common_first_name"),
+                  title: t("form:common_first_name")
                 },
                 last_name: {
                   type: "string",
-                  title: t("form:common_last_name"),
+                  title: t("form:common_last_name")
                 },
                 profession: {
                   type: "string",
-                  title: t("form:common_profession"),
+                  title: t("form:common_profession")
                 },
                 telephone: {
                   type: "string",
-                  title: t("form:common_telephone"),
+                  title: t("form:common_telephone")
                 },
                 email: {
                   type: "string",
                   format: "email",
-                  title: t("form:common_email"),
+                  title: t("form:common_email")
                 },
                 signal: {
                   type: "string",
-                  title: t("form:common_signal"),
+                  title: t("form:common_signal")
                 },
                 protonmail: {
                   type: "string",
-                  title: t("form:common_protonmail"),
-                },
-              },
+                  title: t("form:common_protonmail")
+                }
+              }
             },
             family: {
               type: "object",
@@ -511,18 +511,18 @@ export const projectProposals_1 = (t) => {
                   properties: {
                     first_name: {
                       type: "string",
-                      title: t("form:common_first_name"),
+                      title: t("form:common_first_name")
                     },
                     last_name: {
                       type: "string",
-                      title: t("form:common_last_name"),
+                      title: t("form:common_last_name")
                     },
                     telephone: {
                       type: "string",
-                      title: t("form:common_telephone"),
+                      title: t("form:common_telephone")
                     },
-                    email: { type: "string", title: t("form:common_email") },
-                  },
+                    email: { type: "string", title: t("form:common_email") }
+                  }
                 },
                 children: {
                   title: t("form:PP_1_project_children_title"),
@@ -532,17 +532,17 @@ export const projectProposals_1 = (t) => {
                     properties: {
                       name: {
                         type: "string",
-                        title: t("form:PP_1_project_children_name"),
+                        title: t("form:PP_1_project_children_name")
                       },
                       age: {
                         type: "number",
                         title: t("form:PP_1_project_children_age"),
-                        min: 0,
-                      },
-                    },
-                  },
-                },
-              },
+                        min: 0
+                      }
+                    }
+                  }
+                }
+              }
             },
             full_description: {
               type: "object",
@@ -553,7 +553,7 @@ export const projectProposals_1 = (t) => {
                   title: t("form:PP_1_project_current_situation_title"),
                   description: t(
                     "form:PP_1_project_current_situation_description"
-                  ),
+                  )
                 },
                 project_goals: {
                   type: "object",
@@ -562,9 +562,7 @@ export const projectProposals_1 = (t) => {
                     relocation: {
                       type: "string",
                       title: t("form:PP_1_project_relocation_title"),
-                      description: t(
-                        "form:PP_1_project_relocation_description"
-                      ),
+                      description: t("form:PP_1_project_relocation_description")
                     },
                     continuation: {
                       type: "object",
@@ -575,23 +573,21 @@ export const projectProposals_1 = (t) => {
                       properties: {
                         goals: {
                           type: "string",
-                          title: t(
-                            "form:PP_1_project_continuation_goals_title"
-                          ),
+                          title: t("form:PP_1_project_continuation_goals_title")
                         },
                         activities: {
                           type: "string",
                           title: t(
                             "form:PP_1_project_continuation_activities_title"
-                          ),
+                          )
                         },
                         success: {
                           type: "string",
                           title: t(
                             "form:PP_1_project_continuation_success_title"
-                          ),
-                        },
-                      },
+                          )
+                        }
+                      }
                     },
                     // after: {
                     //   type: "object",
@@ -615,39 +611,39 @@ export const projectProposals_1 = (t) => {
                     impact: {
                       type: "string",
                       title: t("form:PP_1_project_impact_title"),
-                      description: t("form:PP_1_project_impact_description"),
+                      description: t("form:PP_1_project_impact_description")
                     },
                     fit: {
                       type: "string",
                       title: t("form:PP_1_project_fit_title"),
-                      description: t("form:PP_1_project_fit_description"),
+                      description: t("form:PP_1_project_fit_description")
                     },
                     support: {
                       type: "string",
                       title: t("form:PP_1_project_support_title"),
-                      description: t("form:PP_1_project_support_description"),
+                      description: t("form:PP_1_project_support_description")
                     },
                     security: {
                       type: "string",
                       title: t("form:PP_1_project_security_title"),
-                      description: t("form:PP_1_project_security_description"),
+                      description: t("form:PP_1_project_security_description")
                     },
                     risks: {
                       type: "string",
                       title: t("form:PP_1_project_risks_title"),
-                      description: t("form:PP_1_project_risks_description"),
-                    },
-                  },
-                },
-              },
-            },
-          },
+                      description: t("form:PP_1_project_risks_description")
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         expenditure: {
           type: "object",
           title: t("form:PP_1_expenditure_title"),
           description: t("form:PP_1_expenditure_description"),
-          properties: {},
+          properties: {}
         },
         declaration: {
           type: "object",
@@ -655,101 +651,101 @@ export const projectProposals_1 = (t) => {
           properties: {
             declaration_1: {
               type: "boolean",
-              title: t("form:PP_1_declaration_1"),
+              title: t("form:PP_1_declaration_1")
             },
             declaration_2: {
               type: "boolean",
-              title: t("form:PP_1_declaration_2"),
+              title: t("form:PP_1_declaration_2")
             },
             declaration_3: {
               type: "boolean",
-              title: t("form:PP_1_declaration_3"),
+              title: t("form:PP_1_declaration_3")
             },
             declaration_4: {
               type: "boolean",
-              title: t("form:PP_1_declaration_4"),
+              title: t("form:PP_1_declaration_4")
             },
             declaration_5: {
               type: "boolean",
-              title: t("form:PP_1_declaration_5"),
+              title: t("form:PP_1_declaration_5")
             },
             declaration_6: {
               type: "boolean",
-              title: t("form:PP_1_declaration_6"),
+              title: t("form:PP_1_declaration_6")
             },
             declaration_7: {
               type: "boolean",
-              title: t("form:PP_1_declaration_7"),
+              title: t("form:PP_1_declaration_7")
             },
             declaration_8: {
               type: "boolean",
-              title: t("form:PP_1_declaration_8"),
+              title: t("form:PP_1_declaration_8")
             },
             declaration_9: {
               type: "boolean",
-              title: t("form:PP_1_declaration_9"),
+              title: t("form:PP_1_declaration_9")
             },
             declaration_documents_title: {
               type: "object",
               title: t("form:PP_1_declaration_documents_title"),
-              properties: {},
+              properties: {}
             },
             declaration_documents_1: {
               type: "boolean",
-              title: t("form:PP_1_declaration_documents_1"),
+              title: t("form:PP_1_declaration_documents_1")
             },
             declaration_documents_2: {
               type: "boolean",
-              title: t("form:PP_1_declaration_documents_2"),
+              title: t("form:PP_1_declaration_documents_2")
             },
             declaration_documents_3: {
               type: "boolean",
-              title: t("form:PP_1_declaration_documents_3"),
+              title: t("form:PP_1_declaration_documents_3")
             },
             declaration_documents_4: {
               type: "boolean",
-              title: t("form:PP_1_declaration_documents_4"),
+              title: t("form:PP_1_declaration_documents_4")
             },
             declaration_documents_5: {
               type: "boolean",
-              title: t("form:PP_1_declaration_documents_5"),
+              title: t("form:PP_1_declaration_documents_5")
             },
             additional_information: {
               type: "string",
               format: "textarea",
               maxLength: 3000,
               rows: 4,
-              title: t("form:PP_1_declaration_additional_information"),
-            },
-          },
+              title: t("form:PP_1_declaration_additional_information")
+            }
+          }
         },
         declaration_signatory: {
           type: "object",
           title: t("form:PP_1_declaration_signatory_title"),
           description: t("form:PP_1_declaration_signatory_description"),
-          properties: {},
-        },
-      },
+          properties: {}
+        }
+      }
     },
     uiSchema: {
       project_overview: {
         project_period: {
-          classNames: "col-fieldset-2",
+          classNames: "col-fieldset-2"
         },
         project_funding_period: {
-          classNames: "col-fieldset-2",
+          classNames: "col-fieldset-2"
         },
         requested_funding: {
-          classNames: "col-fieldset-3",
+          classNames: "col-fieldset-3"
         },
         third_party_funds: {
-          classNames: "col-fieldset-3",
+          classNames: "col-fieldset-3"
         },
         own_funds_equity: {
-          classNames: "col-fieldset-3",
+          classNames: "col-fieldset-3"
         },
         total_expenditure: {
-          classNames: "col-fieldset-3",
+          classNames: "col-fieldset-3"
         },
         overall_financing_guaranteed: {
           // "ui:widget": "radio",
@@ -757,195 +753,248 @@ export const projectProposals_1 = (t) => {
         further_explaination: {
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
-        },
+            rows: 4
+          }
+        }
       },
       applicant_organisation: {
+        classNames: "col-2",
         description: {
+          classNames: "full-width",
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
+            rows: 4
+          }
+        },
+        address: {
+          classNames: "full-width col-2"
+        },
+        contact: {
+          classNames: "full-width col-2"
+        },
+        online: {
+          classNames: "full-width col-2"
+        },
+        authorized_person: {
+          classNames: "full-width",
+          title_name_function: {
+            classNames: "col-2"
+          }
+        },
+        project_coordinator: {
+          classNames: "full-width",
+          title_name_function: {
+            classNames: "col-2"
+          }
+        },
+        scholarship_contact: {
+          classNames: "full-width",
+          title_name_function: {
+            classNames: "col-2"
+          }
+        },
+        financial_contact: {
+          classNames: "full-width",
+          title_name_function: {
+            classNames: "col-2"
+          }
         },
         funds_use: {
+          classNames: "full-width",
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
+            rows: 4
+          }
         },
         funding: {
+          classNames: "full-width",
           funding_funding: {
+            classNames: "full-width"
             // "ui:widget": "radio",
           },
           compliance: {
+            classNames: "full-width"
             // "ui:widget": "radio",
           },
           compliance_information: {
+            classNames: "full-width",
             "ui:widget": "textarea",
             "ui:options": {
-              rows: 4,
-            },
-          },
+              rows: 4
+            }
+          }
         },
         four_eyes: {
+          classNames: "full-width"
           // "ui:widget": "radio",
         },
         four_eyes_information: {
+          classNames: "full-width",
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
+            rows: 4
+          }
         },
         respresentatives: {
+          classNames: "full-width",
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
+            rows: 4
+          }
         },
         bookkeeping: {
+          classNames: "full-width"
           // "ui:widget": "radio",
         },
         bookkeeping_information: {
+          classNames: "full-width",
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
+            rows: 4
+          }
         },
         vat: {
+          classNames: "full-width"
           // "ui:widget": "radio",
         },
         deduct: {
+          classNames: "full-width"
           // "ui:widget": "radio",
         },
         deduct_information: {
+          classNames: "full-width",
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 4,
-          },
-        },
+            rows: 4
+          }
+        }
       },
       authorized_person: {
         title_name_function: {
           person_title: {
             "ui:widget": "select",
-            "ui:placeholder": "Select one",
-          },
-        },
+            "ui:placeholder": "Select one"
+          }
+        }
       },
       project_description: {
+        scholarship_holder: {
+          classNames: "col-2"
+        },
         family: {
+          spouse: { classNames: "col-2" },
           children: {
             "ui:options": {
-              orderable: false,
+              orderable: false
             },
             items: {
-              classNames: "col-fieldset-2",
-            },
-          },
+              classNames: "col-fieldset-2"
+            }
+          }
         },
         full_description: {
           current_situation: {
             "ui:widget": "textarea",
             "ui:options": {
-              rows: 4,
-            },
+              rows: 4
+            }
           },
           project_goals: {
             relocation: {
               "ui:widget": "textarea",
               "ui:options": {
-                rows: 4,
+                rows: 4
               },
-              classNames: "to-print",
+              classNames: "to-print"
             },
             continuation: {
               goals: {
                 "ui:widget": "textarea",
                 "ui:options": {
-                  rows: 4,
-                },
+                  rows: 4
+                }
               },
               activities: {
                 "ui:widget": "textarea",
                 "ui:options": {
-                  rows: 4,
-                },
+                  rows: 4
+                }
               },
               success: {
                 "ui:widget": "textarea",
                 "ui:options": {
-                  rows: 4,
-                },
-              },
+                  rows: 4
+                }
+              }
             },
             after: {
               goals: {
                 "ui:widget": "textarea",
                 "ui:options": {
-                  rows: 4,
-                },
+                  rows: 4
+                }
               },
               activities: {
                 "ui:widget": "textarea",
                 "ui:options": {
-                  rows: 4,
-                },
+                  rows: 4
+                }
               },
               success: {
                 "ui:widget": "textarea",
                 "ui:options": {
-                  rows: 4,
-                },
-              },
+                  rows: 4
+                }
+              }
             },
             impact: {
               "ui:widget": "textarea",
               "ui:options": {
-                rows: 4,
-              },
+                rows: 4
+              }
             },
             fit: {
               "ui:widget": "textarea",
               "ui:options": {
-                rows: 4,
-              },
+                rows: 4
+              }
             },
             support: {
               "ui:widget": "textarea",
               "ui:options": {
-                rows: 4,
-              },
+                rows: 4
+              }
             },
             security: {
               "ui:widget": "textarea",
               "ui:options": {
-                rows: 4,
-              },
+                rows: 4
+              }
             },
             risks: {
               "ui:widget": "textarea",
               "ui:options": {
-                rows: 4,
-              },
-            },
-          },
-        },
+                rows: 4
+              }
+            }
+          }
+        }
       },
       expenditure: {
-        classNames: "to-print",
+        classNames: "to-print"
       },
       declaration: {
+        classNames: "other",
         additional_information: {
           "ui:widget": "textarea",
           "ui:options": {
-            rows: 5,
-          },
-        },
+            rows: 5
+          }
+        }
       },
       declaration_signatory: {
-        classNames: "to-print",
-      },
-    },
+        classNames: "to-print new-page"
+      }
+    }
   };
 };

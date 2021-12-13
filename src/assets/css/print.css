@@ -66,8 +66,8 @@
   }
 
   label {
-    color: #444 !important;
-    text-decoration: underline;
+    color: #333 !important;
+    font-style: italic;
   }
 
   .applications form.rjsf > .form-group > fieldset > .form-group {
@@ -252,6 +252,35 @@
     /* display: none; */
   }
 
+  .checks {
+    display: none !important;
+  }
+
+  .other input.dn[type="checkbox"] {
+    display: block !important;
+    margin: 0;
+    background-color: transparent;
+    appearance: none;
+    font: inherit;
+    color: #000 !important;
+    width: 1em;
+    height: 1em;
+    border: 1pt solid #000;
+    border-radius: 2px;
+  }
+
+  .other input.dn[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    box-shadow: inset 1em 1em #333;
+    display: block;
+    margin: 0.1em auto;
+  }
+  .other .checkbox label span {
+    margin-left: 20pt;
+  }
+
   form.rjsf .col-fieldset-2 > fieldset legend,
   form label {
     /* white-space: nowrap; */
@@ -342,6 +371,9 @@
   }
   .to-print .field-description {
     display: initial !important;
+  }
+  .new-page {
+    page-break-before: always !important;
   }
 
   label,

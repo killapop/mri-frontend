@@ -777,6 +777,7 @@ export const personalStatements_2 = t => {
         }
       },
       other: {
+        classNames: "other",
         references: {
           reference_1: {
             classNames: "col-2"
