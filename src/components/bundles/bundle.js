@@ -143,7 +143,6 @@ class Bundle extends React.Component {
       currentTab,
       states
     } = this.state;
-    console.log(applications);
     if (authStore.token === "") {
       return <Redirect to="/" />;
     }
