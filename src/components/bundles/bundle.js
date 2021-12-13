@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect, Link } from "react-router-dom";
 import { Sticky } from "react-sticky";
-import { view } from '@risingstack/react-easy-state';
+import { view } from "@risingstack/react-easy-state";
 import Reactahead from "reactahead";
 import moment from "moment";
 import _ from "lodash";
@@ -53,6 +53,10 @@ class Bundle extends React.Component {
     this.fetchData();
   }
 
+  getIdAndEmail(n) {
+    return `${n.id} (${n.account.email})`;
+  }
+
   async fetchData() {
     try {
       const bundleData = await apiCall(
@@ -68,13 +72,11 @@ class Bundle extends React.Component {
         true
       );
       const applicationData = await apiCall("GET", "/applications", "", true);
+
       this.setState(state => ({
         applications: _.map(
-          _.filter(
-            applicationData,
-            application => application.state === "locked" && !application.bundle
-          ),
-          "id"
+          _.filter(applicationData, application => !application.bundle),
+          this.getIdAndEmail
         ),
         bundle: bundleData,
         case_worker: bundleData.case_worker,
@@ -97,7 +99,7 @@ class Bundle extends React.Component {
     document.getElementsByClassName("reactahead-input")[0].innertext = o;
     this.applicationChooser.clearInput();
     document.getElementById("associate").innerHTML = o;
-    this.associateButton.current.id = o;
+    this.associateButton.current.id = o.split(" ")[0];
   }
 
   async updateBundle(e) {
@@ -107,9 +109,7 @@ class Bundle extends React.Component {
     let successMessage = "";
     if (type === "associate" || type === "dissociate") {
       Object.assign(body, { applications: [e.target.id] });
-      successMessage = `Application ${
-        e.target.id
-      } has been successfully ${type}d`;
+      successMessage = `Application ${e.target.id} has been successfully ${type}d`;
       this.associateButton.current.id = null;
       document.getElementById("associate").innerHTML = "";
     } else {
@@ -143,6 +143,7 @@ class Bundle extends React.Component {
       currentTab,
       states
     } = this.state;
+    console.log(applications);
     if (authStore.token === "") {
       return <Redirect to="/" />;
     }
